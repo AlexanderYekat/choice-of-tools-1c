@@ -4,9 +4,12 @@
 Kit использован как шаблон: методика и скрипт лежат в skill, а содержимое
 `evaluations/` и `request.json` — часть этого репозитория.
 
-Текущее исследование: `evaluations/main/`. Цель и ссылки — в корневом
-`request.json` и в `evaluations/main/request.json`. Продолжай по
+Текущее исследование: `evaluations/main/`. Актуальный ответ —
+`evaluations/main/DECISION.md`. Цель обзора — в корневом `request.json`
+и в `evaluations/main/request.json`. Продолжай по
 `evaluations/main/STATE.md`, не начинай новый запуск без явной просьбы.
+Контур выбран: не предлагать заново обзор всех 19 и не возвращать
+rlm / cursor-skills в ежедневный набор без новой просьбы.
 
 Для исследования кандидатов используй [repo-evaluation](.agents/skills/repo-evaluation/SKILL.md).
 Единый источник содержательных правил — его `references/methodology.md`;

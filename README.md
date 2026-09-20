@@ -2,7 +2,7 @@
 
 Исследовательский репозиторий: какой минимальный контур из существующих
 open-source компонентов собрать для ежедневной разработки в 1С 8
-(управляемые и обычные формы) с coding-agent’ом.
+с coding-agent’ом.
 
 Репозиторий начат с шаблона repo-evaluation-kit. Методика осталась в
 `.agents/skills/repo-evaluation/`; сами результаты исследования
@@ -12,11 +12,13 @@ open-source компонентов собрать для ежедневной р
 
 Актуальное исследование: [`evaluations/main/`](evaluations/main/).
 
-- [`evaluations/main/REPORT.md`](evaluations/main/REPORT.md) — главный ответ: что использовать, ограничения и следующий шаг.
+- [`evaluations/main/DECISION.md`](evaluations/main/DECISION.md) — **выбранный контур**: Unica, code-index-mcp, тестовый раннер, Answer42, Vanessa и обвязка.
+- [`evaluations/main/GOAL-CHANGE.md`](evaluations/main/GOAL-CHANGE.md) — чем это решение отличается от вывода обзора.
+- [`evaluations/main/REPORT.md`](evaluations/main/REPORT.md) — обзор 19 кандидатов (исторический синтез).
 - [`evaluations/main/reports/`](evaluations/main/reports/) — карточки кандидатов.
 - [`evaluations/main/CAPABILITY-MAP.md`](evaluations/main/CAPABILITY-MAP.md) — какие требования закрывает каждый кандидат.
 - [`evaluations/main/STATE.md`](evaluations/main/STATE.md) — что сделано и с чего продолжить.
-- [`request.json`](request.json) — цель, ограничения и список репозиториев.
+- [`request.json`](request.json) — исходная цель, ограничения и список репозиториев.
 
 ## Как продолжить исследование
 
