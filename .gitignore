@@ -1,0 +1,16 @@
+# Local user materials and research results.
+/evaluations/
+/request.json
+**/_sources/
+**/source-checkouts/
+**/.venv/
+**/node_modules/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+/tests/.tmp/
+*.tmp
+.env
+.env.*
+*.key
+*.pem
