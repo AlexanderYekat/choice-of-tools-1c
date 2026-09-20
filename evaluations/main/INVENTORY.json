@@ -504,21 +504,26 @@
       "id": "r21",
       "input_index": 21,
       "input_url": "https://github.com/Pr-Mex/vanessa-automation",
-      "canonical_url": null,
-      "access": "NOT_CHECKED",
-      "access_reason": "Доступность ещё не проверялась.",
-      "default_branch": null,
-      "commit": null,
-      "commit_source": null,
+      "canonical_url": "https://github.com/Pr-Mex/vanessa-automation",
+      "access": "AVAILABLE",
+      "access_reason": "GitHub API и файлы доступны; статически прочитано 2026-09-20.",
+      "default_branch": "develop",
+      "commit": "7db5c2bbbf91fd965613a6119121a098bf64cd9e",
+      "commit_source": "https://api.github.com/repos/Pr-Mex/vanessa-automation/commits/develop",
       "origin": {
-        "kind": "UNKNOWN",
+        "kind": "ORIGINAL",
         "upstream_url": null,
-        "comparison": "NOT_CHECKED"
+        "comparison": "NOT_APPLICABLE"
       },
-      "project_type": null,
-      "roles": [],
-      "priority": null,
-      "scope": "PENDING",
+      "project_type": "Vanessa Automation: BDD/Gherkin UI-тестирование 1С; batch CLI через 1С и Streamable HTTP MCP",
+      "roles": [
+        "ui-scenario-testing",
+        "runtime-verification",
+        "batch-cli",
+        "mcp-integration"
+      ],
+      "priority": "Высокий для verify.scenario: подтверждены batch CLI, один .feature, scenario filter, status file и MCP interactive backend.",
+      "scope": "DEEP_STATIC",
       "duplicate_of": null,
       "report": "reports/r21.md"
     }

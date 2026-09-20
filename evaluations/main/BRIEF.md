@@ -207,9 +207,9 @@ Cursor не критерий успеха. Одна capability не реализ
 ## Объём и разрешения
 
 Кандидаты входа: 21 URL, реестр [INVENTORY.json](INVENTORY.json).
-r01–r19: overview (как в снимке v1). r20 Answer42 и r21 Vanessa:
-добавлены в активный вход после выбора контура, `access: NOT_CHECKED`,
-`scope: PENDING`, commit не зафиксирован, аудит не начат. Снимок
+r01–r19: overview (как в снимке v1). r20 Answer42 остаётся
+`NOT_CHECKED / PENDING`. **r21 Vanessa достиг DEEP_STATIC по S1–S5**
+на commit `7db5c2bbbf91fd965613a6119121a098bf64cd9e`; execution не выполнялся. Снимок
 `history/goal-v1` остаётся на исходных 19. `permissions.* = false`.
 
 Обещанные результаты шага согласования цели v2 уже на месте. Этот шаг

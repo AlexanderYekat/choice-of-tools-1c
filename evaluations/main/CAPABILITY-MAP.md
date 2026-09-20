@@ -5,9 +5,8 @@
 (читать только если нужен старый критерий).
 Основания обзора — [EVIDENCE.json](EVIDENCE.json), кандидаты —
 [INVENTORY.json](INVENTORY.json).
-Глубина: r01–r19 overview; r20/r21 PENDING. Покрытие — по прочитанному
-объёму. Состав контура v2 — [DECISION.md](DECISION.md); стыковка не
-проверялась.
+Глубина: r01–r19 overview; r20 PENDING; **r21 DEEP_STATIC по S1–S5**.
+Покрытие — по прочитанному объёму. Полная стыковка пяти ещё не закрыта.
 
 Обозначения покрытия: **полное** (в роли кандидата), **частичное**,
 **не установлено**, **неприменимо**.
@@ -23,9 +22,9 @@
 | C5 edit | r01 основной; r12 дубль, не в контуре; r17 только EDT | частичное (УФ+метаданные) | c01-facade, c12-managed-forms | высокая заявка | стыковка Unica; ОФ не требуется |
 | C6 static | r01 `unica.check`; r09 CheckConfig/EDT | частичное | c01, c09-eight-tools | продуктовая заявка | компактность отчёта |
 | C7 build/run | r01 `unica.run`; r09 build/launch | частичное | c09-eight-tools | высокая заявка | стыковка / execution |
-| C8 runtime/UI test | r09 YaXUnit (сервер); UI: **r20 Answer42 и r21 Vanessa в реестре, не аудированы**; r12 Vanessa-скил — не движок | частичное | c09-eight-tools | YaXUnit заявлен; UI неизвестно | стыковка r09/r20/r21 |
+| C8 runtime/UI test | r09 YaXUnit; r20 Answer42 PENDING; **r21 Vanessa: batch single-feature run + status file и MCP run_scenario/get_test_results подтверждены static** | частичное | c09-eight-tools; c21-cli-target; c21-cli-status | r21 static готовность подтверждена, runtime NOT_RUN | r09/r20 static; r21 execution/two-target |
 | C9 compact results | r01 typed data; r15 fragments; r02 truncation (не в контуре) | частичное | architecture/tool-surface | заложено | замер токенов; фасад |
-| C10 min surface | фасад обязателен; r01 11 tools, r15 широкая, r09 8 | частичное без фасада | c01-facade, c15, c09-eight-tools | лучше у r01 как образца | стыковка фасада |
+| C10 min surface | фасад обязателен; r01 11 tools, r15 широкая, r09 8; r21 MCP 37 active static, **но r21 имеет batch CLI без MCP surface** | частичное | c01-facade, c15, c09-eight-tools, c21-tool-surface, c21-adapter-choice | r21 CLI хорошо ложится за facade | стыковка остальных |
 | C11 знания вне окна | r15 SQLite; r01 кэш; r04 | полное у индексных | c15; c01; c04 | высокая | — |
 | C12 независимость от адаптера | r01 ядро vs plugin; r15 бинарь; Cursor не критерий | частичное | c01-mcp-json | средняя | свой фасад |
 | C13 feedback loop | контур r15→r01→r01.check/r09→r09/r20/r21 | системное, не закрыто одним | синтез v2 | собираемый на бумаге | стыковка; оркестратор |
@@ -53,8 +52,9 @@
 
 - **Сборка+YaXUnit:** r09.
 - **Клиент без тестов:** r01 `unica.run`.
-- **UI формы / сценарий:** r20 Answer42 и r21 Vanessa — решение v2;
-  в реестре PENDING, не обзор 19.
+- **UI формы / сценарий:** r20 Answer42 остаётся PENDING. r21 Vanessa
+  static подтверждён; для `verify.scenario` предпочтителен batch CLI,
+  MCP — дополнительный интерактивный backend.
 - **Спецслучаи:** r06, r07, r17 (EDT; конфликт с обязательными ОФ в v1 снят, роль EDT не выросла).
 
 ### Предлагаемый минимальный контур (цель v2)

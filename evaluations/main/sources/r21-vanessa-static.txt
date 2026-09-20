@@ -1,0 +1,29 @@
+# r21 Vanessa Automation — static evidence receipt
+
+Date: 2026-09-20
+Commit: 7db5c2bbbf91fd965613a6119121a098bf64cd9e
+Execution: NOT_RUN
+
+Read coordinates:
+
+- docs/CommandSetting/CommandSetting.md, lines 1–110:
+  command-line parameters, StartFeaturePlayer, /C and VAParams examples,
+  Test Client data can be passed as JSON.
+- docs/JsonParams/JsonParamsRU.md, lines 1–35:
+  featurepath accepts directory or one feature file; scenariofilter and
+  FeaturesToRun are documented.
+- docs/ReturnStatus/ReturnStatus.md, lines 1–18:
+  status-file result codes 0–4.
+- tools/onescript/RunVA.os, lines 1–220:
+  OneScript wrapper launches process, waits, reads status file and maps
+  nonzero status to failure.
+- docs/AI/index.md, lines 1–23 and 149–180:
+  MCP quick start and Streamable HTTP configuration.
+- VanessaAutomation/Forms/MCPVA_Служебный/Ext/Form/Module.bsl,
+  lines 70–630: 40 MCP descriptors; 3 disabled; scenario/profile tools.
+- VanessaAutomation/Forms/MCPVA/Ext/Form/Module.bsl, lines 48–55:
+  only non-disabled descriptors are registered.
+- VanessaAutomation/Forms/MCPVA_Служебный/Ext/Form/Module.bsl,
+  lines 3238–3475: named profile connection and profile table.
+
+No 1C/Vanessa/MCP/Test Client process was started.

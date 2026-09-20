@@ -19,7 +19,10 @@
       "commit": "56a67d4a460c97101b6b542b4fe940298ab0edd8",
       "url": "https://github.com/IngvarConsulting/unica/blob/56a67d4a460c97101b6b542b4fe940298ab0edd8/plugins/unica/README.md",
       "path": "plugins/unica/README.md",
-      "lines": [1, 40],
+      "lines": [
+        1,
+        40
+      ],
       "captured_at": "2026-09-20",
       "note": "Плагин: один публичный stdio MCP; анализаторы и runner — private implementation details."
     },
@@ -30,7 +33,10 @@
       "commit": "56a67d4a460c97101b6b542b4fe940298ab0edd8",
       "url": "https://github.com/IngvarConsulting/unica/blob/56a67d4a460c97101b6b542b4fe940298ab0edd8/crates/unica-bootstrap/src/verification.rs#L13-L25",
       "path": "crates/unica-bootstrap/src/verification.rs",
-      "lines": [13, 25],
+      "lines": [
+        13,
+        25
+      ],
       "captured_at": "2026-09-20",
       "note": "Жёсткий список 11 compatibility tools; tools/list сверяется на равенство."
     },
@@ -52,7 +58,10 @@
       "commit": "56a67d4a460c97101b6b542b4fe940298ab0edd8",
       "url": "https://github.com/IngvarConsulting/unica/blob/56a67d4a460c97101b6b542b4fe940298ab0edd8/plugins/unica/skills/form-edit/SKILL.md#L1-L26",
       "path": "plugins/unica/skills/form-edit/SKILL.md",
-      "lines": [1, 26],
+      "lines": [
+        1,
+        26
+      ],
       "captured_at": "2026-09-20",
       "note": "Навык и маршрутизация unica.apply явно про управляемую форму и теги управляемого приложения."
     },
@@ -63,7 +72,10 @@
       "commit": "56a67d4a460c97101b6b542b4fe940298ab0edd8",
       "url": "https://github.com/IngvarConsulting/unica/blob/56a67d4a460c97101b6b542b4fe940298ab0edd8/crates/unica-coder/src/infrastructure/native_operations/help.rs",
       "path": "crates/unica-coder/src/infrastructure/native_operations/help.rs",
-      "lines": [88, 107],
+      "lines": [
+        88,
+        107
+      ],
       "captured_at": "2026-09-20",
       "note": "help.add принимает FormType Managed или Ordinary; это валидация владельца справки, не редактор формы. Диапазон строк по прочитанному файлу целиком."
     },
@@ -74,7 +86,10 @@
       "commit": "56a67d4a460c97101b6b542b4fe940298ab0edd8",
       "url": "https://github.com/IngvarConsulting/unica/blob/56a67d4a460c97101b6b542b4fe940298ab0edd8/Cargo.toml#L1-L12",
       "path": "Cargo.toml",
-      "lines": [1, 12],
+      "lines": [
+        1,
+        12
+      ],
       "captured_at": "2026-09-20",
       "note": "Workspace 0.12.0, license LGPL-3.0-or-later, crates unica-bootstrap и unica-coder."
     },
@@ -85,7 +100,10 @@
       "commit": "56a67d4a460c97101b6b542b4fe940298ab0edd8",
       "url": "https://github.com/IngvarConsulting/unica/blob/56a67d4a460c97101b6b542b4fe940298ab0edd8/plugins/unica/.mcp.json",
       "path": "plugins/unica/.mcp.json",
-      "lines": [1, 22],
+      "lines": [
+        1,
+        22
+      ],
       "captured_at": "2026-09-20",
       "note": "Один stdio-сервер unica; в checkout запускается через cargo run --bin unica."
     },
@@ -107,7 +125,10 @@
       "commit": "278f61fc4537220fba085132d5405ab808d3e190",
       "url": "https://github.com/Dach-Coin/rlm-tools-bsl/blob/278f61fc4537220fba085132d5405ab808d3e190/docs/ARCHITECTURE.md",
       "path": "docs/ARCHITECTURE.md",
-      "lines": [1, 30],
+      "lines": [
+        1,
+        30
+      ],
       "captured_at": "2026-09-20",
       "note": "Таблица MCP-инструментов (в заголовке «пять», без rlm_help), песочница, индекс, пример графа."
     },
@@ -118,7 +139,10 @@
       "commit": "278f61fc4537220fba085132d5405ab808d3e190",
       "url": "https://github.com/Dach-Coin/rlm-tools-bsl/blob/278f61fc4537220fba085132d5405ab808d3e190/src/rlm_tools_bsl/server.py#L1709-L2376",
       "path": "src/rlm_tools_bsl/server.py",
-      "lines": [1709, 2376],
+      "lines": [
+        1709,
+        2376
+      ],
       "captured_at": "2026-09-20",
       "note": "Шесть @mcp.tool: rlm_start, rlm_execute, rlm_end, rlm_help, rlm_projects, rlm_index. Файл 3459 строк."
     },
@@ -129,7 +153,10 @@
       "commit": "278f61fc4537220fba085132d5405ab808d3e190",
       "url": "https://github.com/Dach-Coin/rlm-tools-bsl/blob/278f61fc4537220fba085132d5405ab808d3e190/src/rlm_tools_bsl/format_detector.py#L10-L104",
       "path": "src/rlm_tools_bsl/format_detector.py",
-      "lines": [10, 104],
+      "lines": [
+        10,
+        104
+      ],
       "captured_at": "2026-09-20",
       "note": "Форматы cf/edt/unknown; OrdinaryApplicationModule.bsl в карте типов модулей."
     },
@@ -140,7 +167,10 @@
       "commit": "278f61fc4537220fba085132d5405ab808d3e190",
       "url": "https://github.com/Dach-Coin/rlm-tools-bsl/blob/278f61fc4537220fba085132d5405ab808d3e190/src/rlm_tools_bsl/bsl_xml_parsers.py#L2488-L2542",
       "path": "src/rlm_tools_bsl/bsl_xml_parsers.py",
-      "lines": [2358, 2542],
+      "lines": [
+        2358,
+        2542
+      ],
       "captured_at": "2026-09-20",
       "note": "Парсеры EDT Form.form и CF Ext/Form.xml по схеме управляемой формы (ChildItems, InputField). FormType/Ordinary/Form.bin в файле нет."
     },
@@ -151,7 +181,10 @@
       "commit": "278f61fc4537220fba085132d5405ab808d3e190",
       "url": "https://github.com/Dach-Coin/rlm-tools-bsl/blob/278f61fc4537220fba085132d5405ab808d3e190/pyproject.toml#L1-L40",
       "path": "pyproject.toml",
-      "lines": [1, 40],
+      "lines": [
+        1,
+        40
+      ],
       "captured_at": "2026-09-20",
       "note": "Версия 1.37.0, MIT, scripts rlm-tools-bsl и rlm-bsl-index, mcp<2."
     },
@@ -162,7 +195,10 @@
       "commit": "278f61fc4537220fba085132d5405ab808d3e190",
       "url": "https://github.com/Dach-Coin/rlm-tools-bsl/blob/278f61fc4537220fba085132d5405ab808d3e190/LICENSE",
       "path": "LICENSE",
-      "lines": [1, 8],
+      "lines": [
+        1,
+        8
+      ],
       "captured_at": "2026-09-20",
       "note": "MIT; copyright Stefan O'Shea и Roman Starchenko, 2026."
     },
@@ -173,7 +209,10 @@
       "commit": "832a5bff810e368f34d005c471481c2091395455",
       "url": "https://github.com/alkoleft/v8-context-hbk/blob/832a5bff810e368f34d005c471481c2091395455/Cargo.toml",
       "path": "Cargo.toml",
-      "lines": [1, 20],
+      "lines": [
+        1,
+        20
+      ],
       "captured_at": "2026-09-20",
       "note": "Workspace 0.2.11; path-зависимость ../v8-context-semantic-entities вне репозитория."
     },
@@ -195,7 +234,10 @@
       "commit": "350d87cd9033e2c8be280513151adfc3c3529c47",
       "url": "https://github.com/IT-Medved/onec-setup-build-env-action/blob/350d87cd9033e2c8be280513151adfc3c3529c47/action.yml",
       "path": "action.yml",
-      "lines": [1, 30],
+      "lines": [
+        1,
+        30
+      ],
       "captured_at": "2026-09-20",
       "note": "Входы type edt|onec при шаблонном README."
     },
@@ -206,7 +248,10 @@
       "commit": "350d87cd9033e2c8be280513151adfc3c3529c47",
       "url": "https://github.com/IT-Medved/onec-setup-build-env-action/blob/350d87cd9033e2c8be280513151adfc3c3529c47/src/index.ts",
       "path": "src/index.ts",
-      "lines": [280, 360],
+      "lines": [
+        280,
+        360
+      ],
       "captured_at": "2026-09-20",
       "note": "Классы OnecPlatform/EDT/OneGet; run() ставит платформу или EDT."
     },
@@ -228,7 +273,10 @@
       "commit": "8e9faca5bf516215c2a67a040c09288e2a31c16a",
       "url": "https://github.com/Desko77/cursor-1c-skills/blob/8e9faca5bf516215c2a67a040c09288e2a31c16a/skills/1c-form-decompile/SKILL.md#L1-L8",
       "path": "skills/1c-form-decompile/SKILL.md",
-      "lines": [1, 8],
+      "lines": [
+        1,
+        8
+      ],
       "captured_at": "2026-09-20",
       "note": "Декомпиляция только управляемой Form.xml."
     },
@@ -250,7 +298,10 @@
       "commit": "4bde72b60a09187c0667d451a02c7be5e0169835",
       "url": "https://github.com/Regsorm/code-index-mcp/blob/4bde72b60a09187c0667d451a02c7be5e0169835/docs/bsl-indexer.md",
       "path": "docs/bsl-indexer.md",
-      "lines": [1, 20],
+      "lines": [
+        1,
+        20
+      ],
       "captured_at": "2026-09-20",
       "note": "Документ называет четыре 1С-tool — расходится с README и с кодом регистратора."
     },
@@ -261,7 +312,10 @@
       "commit": "b765b358c39eee85669ddd3245ebfbdae423f73b",
       "url": "https://github.com/alkoleft/mcp-onec-test-runner/blob/b765b358c39eee85669ddd3245ebfbdae423f73b/src/main/kotlin/io/github/alkoleft/mcp/server/McpServer.kt",
       "path": "sources/r09-mcpserver-tools.txt",
-      "lines": [1, 22],
+      "lines": [
+        1,
+        22
+      ],
       "captured_at": "2026-09-20",
       "note": "Восемь @Tool в McpServer.kt; README-имена list_modules/get_configuration/check_platform отсутствуют."
     },
@@ -272,7 +326,10 @@
       "commit": "4bde72b60a09187c0667d451a02c7be5e0169835",
       "url": "https://github.com/Regsorm/code-index-mcp/blob/4bde72b60a09187c0667d451a02c7be5e0169835/crates/bsl-extension/src/processor.rs",
       "path": "sources/r15-bsl-tools.txt",
-      "lines": [1, 28],
+      "lines": [
+        1,
+        28
+      ],
       "captured_at": "2026-09-20",
       "note": "additional_tools() и тест additional_tools_registered: ровно 13 1С-tools, включая get_dcs_schema."
     },
@@ -283,7 +340,10 @@
       "commit": "4bde72b60a09187c0667d451a02c7be5e0169835",
       "url": "https://github.com/Regsorm/code-index-mcp/blob/4bde72b60a09187c0667d451a02c7be5e0169835/crates/bsl-extension/src/xml/forms.rs",
       "path": "sources/r15-bsl-tools.txt",
-      "lines": [25, 28],
+      "lines": [
+        25,
+        28
+      ],
       "captured_at": "2026-09-20",
       "note": "Заголовок forms.rs: парсер управляемых Form.xml / Ext/Form.xml; Form.bin нет."
     },
@@ -294,7 +354,10 @@
       "commit": "dd969b986ecfdb13798acce1ee541059b21ebdc0",
       "url": "https://github.com/Desko77/ai-edt/blob/dd969b986ecfdb13798acce1ee541059b21ebdc0/skills/ai-edt/SKILL.md",
       "path": "sources/r17-ordinary-refusal.txt",
-      "lines": [1, 16],
+      "lines": [
+        1,
+        16
+      ],
       "captured_at": "2026-09-20",
       "note": "When not to use it: Ordinary (non-managed) forms. The form operations assume managed forms."
     },
@@ -305,7 +368,10 @@
       "commit": "16b02fd97a0234af64415b4e77c51612e16df7b3",
       "url": "https://github.com/Antonio1C/1c-syntax-helper-mcp/blob/16b02fd97a0234af64415b4e77c51612e16df7b3/src/models/mcp_models.py",
       "path": "sources/r18-mcp-tools.txt",
-      "lines": [1, 16],
+      "lines": [
+        1,
+        16
+      ],
       "captured_at": "2026-09-20",
       "note": "MCPToolType: пять имён, не совпадающих с README."
     },
@@ -316,9 +382,135 @@
       "commit": "8e9faca5bf516215c2a67a040c09288e2a31c16a",
       "url": "https://github.com/Desko77/cursor-1c-skills/blob/8e9faca5bf516215c2a67a040c09288e2a31c16a/rules/1c-ordinary-forms.mdc",
       "path": "rules/1c-ordinary-forms.mdc",
-      "lines": [1, 20],
+      "lines": [
+        1,
+        20
+      ],
       "captured_at": "2026-09-20",
       "note": "Правило alwaysApply:false про ЭлементыФормы; не редактор Form.bin."
+    },
+    {
+      "id": "s21-meta",
+      "repository_id": "r21",
+      "kind": "METADATA",
+      "commit": "7db5c2bbbf91fd965613a6119121a098bf64cd9e",
+      "url": "https://api.github.com/repos/Pr-Mex/vanessa-automation",
+      "path": null,
+      "lines": null,
+      "captured_at": "2026-09-20",
+      "note": "public; develop; fork=false; BSD-3-Clause"
+    },
+    {
+      "id": "s21-cli-doc",
+      "repository_id": "r21",
+      "kind": "DOCUMENTATION",
+      "commit": "7db5c2bbbf91fd965613a6119121a098bf64cd9e",
+      "url": "https://github.com/Pr-Mex/vanessa-automation/blob/7db5c2bbbf91fd965613a6119121a098bf64cd9e/docs/CommandSetting/CommandSetting.md#L1-L110",
+      "path": "docs/CommandSetting/CommandSetting.md",
+      "lines": [
+        1,
+        110
+      ],
+      "captured_at": "2026-09-20",
+      "note": "Batch command line: StartFeaturePlayer, /C, VAParams, Test Client JSON."
+    },
+    {
+      "id": "s21-jsonparams",
+      "repository_id": "r21",
+      "kind": "DOCUMENTATION",
+      "commit": "7db5c2bbbf91fd965613a6119121a098bf64cd9e",
+      "url": "https://github.com/Pr-Mex/vanessa-automation/blob/7db5c2bbbf91fd965613a6119121a098bf64cd9e/docs/JsonParams/JsonParamsRU.md#L1-L35",
+      "path": "docs/JsonParams/JsonParamsRU.md",
+      "lines": [
+        1,
+        35
+      ],
+      "captured_at": "2026-09-20",
+      "note": "featurepath can be one .feature; scenariofilter and FeaturesToRun."
+    },
+    {
+      "id": "s21-return-status",
+      "repository_id": "r21",
+      "kind": "DOCUMENTATION",
+      "commit": "7db5c2bbbf91fd965613a6119121a098bf64cd9e",
+      "url": "https://github.com/Pr-Mex/vanessa-automation/blob/7db5c2bbbf91fd965613a6119121a098bf64cd9e/docs/ReturnStatus/ReturnStatus.md#L1-L18",
+      "path": "docs/ReturnStatus/ReturnStatus.md",
+      "lines": [
+        1,
+        18
+      ],
+      "captured_at": "2026-09-20",
+      "note": "CLI status file codes 0..4."
+    },
+    {
+      "id": "s21-runva",
+      "repository_id": "r21",
+      "kind": "SOURCE",
+      "commit": "7db5c2bbbf91fd965613a6119121a098bf64cd9e",
+      "url": "https://github.com/Pr-Mex/vanessa-automation/blob/7db5c2bbbf91fd965613a6119121a098bf64cd9e/tools/onescript/RunVA.os#L1-L220",
+      "path": "tools/onescript/RunVA.os",
+      "lines": [
+        1,
+        220
+      ],
+      "captured_at": "2026-09-20",
+      "note": "OneScript wrapper starts process, waits and reads build status."
+    },
+    {
+      "id": "s21-ai-mcp",
+      "repository_id": "r21",
+      "kind": "DOCUMENTATION",
+      "commit": "7db5c2bbbf91fd965613a6119121a098bf64cd9e",
+      "url": "https://github.com/Pr-Mex/vanessa-automation/blob/7db5c2bbbf91fd965613a6119121a098bf64cd9e/docs/AI/index.md#L1-L23",
+      "path": "docs/AI/index.md",
+      "lines": [
+        1,
+        23
+      ],
+      "captured_at": "2026-09-20",
+      "note": "MCP quick start and runMcp;mcpPort bootstrap."
+    },
+    {
+      "id": "s21-mcp-tools",
+      "repository_id": "r21",
+      "kind": "SOURCE",
+      "commit": "7db5c2bbbf91fd965613a6119121a098bf64cd9e",
+      "url": "https://github.com/Pr-Mex/vanessa-automation/blob/7db5c2bbbf91fd965613a6119121a098bf64cd9e/VanessaAutomation/Forms/MCPVA_%D0%A1%D0%BB%D1%83%D0%B6%D0%B5%D0%B1%D0%BD%D1%8B%D0%B9/Ext/Form/Module.bsl#L70-L630",
+      "path": "VanessaAutomation/Forms/MCPVA_Служебный/Ext/Form/Module.bsl",
+      "lines": [
+        70,
+        630
+      ],
+      "captured_at": "2026-09-20",
+      "note": "40 descriptors, 3 disabled; scenario/profile tools."
+    },
+    {
+      "id": "s21-mcp-register",
+      "repository_id": "r21",
+      "kind": "SOURCE",
+      "commit": "7db5c2bbbf91fd965613a6119121a098bf64cd9e",
+      "url": "https://github.com/Pr-Mex/vanessa-automation/blob/7db5c2bbbf91fd965613a6119121a098bf64cd9e/VanessaAutomation/Forms/MCPVA/Ext/Form/Module.bsl#L48-L55",
+      "path": "VanessaAutomation/Forms/MCPVA/Ext/Form/Module.bsl",
+      "lines": [
+        48,
+        55
+      ],
+      "captured_at": "2026-09-20",
+      "note": "Only non-disabled descriptors are registered."
+    },
+    {
+      "id": "s21-profile-impl",
+      "repository_id": "r21",
+      "kind": "SOURCE",
+      "commit": "7db5c2bbbf91fd965613a6119121a098bf64cd9e",
+      "url": "https://github.com/Pr-Mex/vanessa-automation/blob/7db5c2bbbf91fd965613a6119121a098bf64cd9e/VanessaAutomation/Forms/MCPVA_%D0%A1%D0%BB%D1%83%D0%B6%D0%B5%D0%B1%D0%BD%D1%8B%D0%B9/Ext/Form/Module.bsl#L3238-L3475",
+      "path": "VanessaAutomation/Forms/MCPVA_Служебный/Ext/Form/Module.bsl",
+      "lines": [
+        3238,
+        3475
+      ],
+      "captured_at": "2026-09-20",
+      "note": "Connect by profileName; profile table stores infobase path/status."
     }
   ],
   "claims": [
@@ -327,7 +519,10 @@
       "repository_id": "r01",
       "status": "SOURCE",
       "statement": "Публичная MCP-поверхность Unica v0.12/v0.13 — ровно 11 именованных tools; внутренние анализаторы и runner за оркестратором не публикуются.",
-      "source_ids": ["s01-verification", "s01-plugin-readme"],
+      "source_ids": [
+        "s01-verification",
+        "s01-plugin-readme"
+      ],
       "run_ids": [],
       "limitations": "Проверено наличие списка и сверки tools/list в bootstrap; обработчики каждого tool в application/v13 не трассировались."
     },
@@ -336,7 +531,9 @@
       "repository_id": "r01",
       "status": "DOCUMENTATION",
       "statement": "Контракт разделяет search (text/names, limit, scope), view (логический узел, filter/limit/cursor) и resolve (аварийный путь).",
-      "source_ids": ["s01-tool-surface"],
+      "source_ids": [
+        "s01-tool-surface"
+      ],
       "run_ids": [],
       "limitations": "Ведомость генерируется из реестра аргументов; поведение обработчика авторы сами помечают как наблюдение ревью."
     },
@@ -345,7 +542,9 @@
       "repository_id": "r01",
       "status": "DOCUMENTATION",
       "statement": "На поверхности v0.13 regex и symbol search помечены неподдержанными.",
-      "source_ids": ["s01-tool-surface"],
+      "source_ids": [
+        "s01-tool-surface"
+      ],
       "run_ids": [],
       "limitations": "Не проверяли, есть ли скрытый symbol index во внутренних движках, недоступный публичному tool."
     },
@@ -354,7 +553,9 @@
       "repository_id": "r01",
       "status": "SOURCE",
       "statement": "Публичный навык и операции редактирования формы описаны только для управляемой формы.",
-      "source_ids": ["s01-form-edit"],
+      "source_ids": [
+        "s01-form-edit"
+      ],
       "run_ids": [],
       "limitations": "Не доказано, что unica.view отказывается читать узел Ordinary; доказано, что edit-словарь — управляемое приложение."
     },
@@ -363,7 +564,9 @@
       "repository_id": "r01",
       "status": "SOURCE",
       "statement": "Валидатор help.add принимает FormType Managed или Ordinary в контракте выгрузки 8.3.27.",
-      "source_ids": ["s01-help-formtype"],
+      "source_ids": [
+        "s01-help-formtype"
+      ],
       "run_ids": [],
       "limitations": "Это не редактор структуры обычной формы и не UI-модель обычного приложения."
     },
@@ -372,7 +575,10 @@
       "repository_id": "r01",
       "status": "DOCUMENTATION",
       "statement": "Официально поддерживаемые хосты плагина — Codex CLI и Claude Code; Cursor в README не назван.",
-      "source_ids": ["s01-readme", "s01-plugin-readme"],
+      "source_ids": [
+        "s01-readme",
+        "s01-plugin-readme"
+      ],
       "run_ids": [],
       "limitations": "Бинарь stdio MCP теоретически подключаем к Cursor; это не проверялось."
     },
@@ -381,7 +587,9 @@
       "repository_id": "r02",
       "status": "SOURCE",
       "statement": "Внешняя MCP-поверхность состоит из шести tools: rlm_start, rlm_execute, rlm_end, rlm_help, rlm_projects, rlm_index.",
-      "source_ids": ["s02-server-tools"],
+      "source_ids": [
+        "s02-server-tools"
+      ],
       "run_ids": [],
       "limitations": "ARCHITECTURE.md в заголовке пишет «пять» и опускает rlm_help; код server.py важнее."
     },
@@ -390,7 +598,9 @@
       "repository_id": "r02",
       "status": "SOURCE",
       "statement": "Поддержанные раскладки исходников — выгрузка Конфигуратора (cf) и проект EDT (edt); иное идёт в foreign/generic режим.",
-      "source_ids": ["s02-format"],
+      "source_ids": [
+        "s02-format"
+      ],
       "run_ids": [],
       "limitations": "Наличие OrdinaryApplicationModule в карте модулей не означает разбор обычных форм."
     },
@@ -399,7 +609,9 @@
       "repository_id": "r02",
       "status": "SOURCE",
       "statement": "parse_form_xml разбирает XML управляемой формы (CF Form.xml ChildItems/InputField и EDT Form.form), без FormType Ordinary и без Form.bin.",
-      "source_ids": ["s02-form-parser"],
+      "source_ids": [
+        "s02-form-parser"
+      ],
       "run_ids": [],
       "limitations": "Модуль формы по пути Forms/.../Module.bsl может находиться и для обычной формы; структура обычной формы этим парсером не доказана."
     },
@@ -408,7 +620,11 @@
       "repository_id": "r02",
       "status": "INFERENCE",
       "statement": "Продукт закрывает исследование исходников, а не их изменение, сборку или запуск 1С.",
-      "source_ids": ["s02-readme", "s02-server-tools", "s02-pyproject"],
+      "source_ids": [
+        "s02-readme",
+        "s02-server-tools",
+        "s02-pyproject"
+      ],
       "run_ids": [],
       "limitations": "Вывод из публичных tools, описания пакета и отсутствия write-API в просмотренных файлах; каждый хелпер в bsl_helpers.py на запись не проверялся."
     },
@@ -417,7 +633,9 @@
       "repository_id": "r02",
       "status": "SOURCE",
       "statement": "Индекс можно строить без MCP через CLI-скрипт rlm-bsl-index.",
-      "source_ids": ["s02-pyproject"],
+      "source_ids": [
+        "s02-pyproject"
+      ],
       "run_ids": [],
       "limitations": "Поведение CLI не запускалось; точка входа объявлена в pyproject.toml."
     },
@@ -426,7 +644,9 @@
       "repository_id": "r04",
       "status": "SOURCE",
       "statement": "Cargo workspace ссылается на ../v8-context-semantic-entities вне данного репозитория.",
-      "source_ids": ["s04-cargo"],
+      "source_ids": [
+        "s04-cargo"
+      ],
       "run_ids": [],
       "limitations": "Не проверяли, есть ли vendoring или optional feature, маскирующие эту зависимость."
     },
@@ -435,7 +655,9 @@
       "repository_id": "r04",
       "status": "DOCUMENTATION",
       "statement": "Проект позиционируется как локальный индекс/provider фактов синтакс-помощника из HBK, не как MCP и не как парсер BSL.",
-      "source_ids": ["s04-readme"],
+      "source_ids": [
+        "s04-readme"
+      ],
       "run_ids": [],
       "limitations": "Baseline 8.5.1.1150; пригодность HBK 8.3.27 не проверялась."
     },
@@ -444,7 +666,10 @@
       "repository_id": "r07",
       "status": "SOURCE",
       "statement": "Action ставит EDT или платформу 1С через oneget; README при этом остаётся шаблоном typescript-action.",
-      "source_ids": ["s07-action", "s07-index"],
+      "source_ids": [
+        "s07-action",
+        "s07-index"
+      ],
       "run_ids": [],
       "limitations": "Дистрибутивы 1С и успешная установка в CI не запускались."
     },
@@ -453,7 +678,9 @@
       "repository_id": "r09",
       "status": "DOCUMENTATION",
       "statement": "README перечисляет 11 MCP-инструментов, включая list_modules, get_configuration, check_platform.",
-      "source_ids": ["s09-readme"],
+      "source_ids": [
+        "s09-readme"
+      ],
       "run_ids": [],
       "limitations": "Эти три имени отсутствуют в McpServer.kt того же SHA; см. c09-eight-tools."
     },
@@ -462,7 +689,9 @@
       "repository_id": "r09",
       "status": "SOURCE",
       "statement": "Публичная MCP-поверхность METR на этом SHA — ровно 8 @Tool в McpServer.kt.",
-      "source_ids": ["s09-mcpserver"],
+      "source_ids": [
+        "s09-mcpserver"
+      ],
       "run_ids": [],
       "limitations": "tools/list живого процесса не снимался; другие классы @Tool не искались по всему дереву."
     },
@@ -471,7 +700,9 @@
       "repository_id": "r09",
       "status": "SOURCE",
       "statement": "CheckConfig принимает флаги thickClientOrdinaryApplication — эмуляция режима, не UI-тест обычных форм.",
-      "source_ids": ["s09-mcpserver"],
+      "source_ids": [
+        "s09-mcpserver"
+      ],
       "run_ids": [],
       "limitations": "Обработчик CheckConfig в DSL не трассировался."
     },
@@ -480,7 +711,9 @@
       "repository_id": "r12",
       "status": "SOURCE",
       "statement": "Скил 1c-form-decompile работает только с управляемой Form.xml выгрузки Конфигуратора.",
-      "source_ids": ["s12-form-decompile"],
+      "source_ids": [
+        "s12-form-decompile"
+      ],
       "run_ids": [],
       "limitations": "Другие скилы форм не доказывают поддержку Ordinary/Form.bin."
     },
@@ -489,7 +722,10 @@
       "repository_id": "r15",
       "status": "DOCUMENTATION",
       "statement": "README и docs/bsl-indexer.md расходятся в числе 1С-специфичных MCP tools.",
-      "source_ids": ["s15-readme", "s15-bsl-doc"],
+      "source_ids": [
+        "s15-readme",
+        "s15-bsl-doc"
+      ],
       "run_ids": [],
       "limitations": "Код регистратора фиксирует 13 1С-tools; живой tools/list бинаря не снимался."
     },
@@ -498,7 +734,9 @@
       "repository_id": "r15",
       "status": "SOURCE",
       "statement": "BslLanguageProcessor.additional_tools регистрирует ровно 13 1С-tools, включая get_dcs_schema.",
-      "source_ids": ["s15-processor"],
+      "source_ids": [
+        "s15-processor"
+      ],
       "run_ids": [],
       "limitations": "Число универсальных core-tools (20) взято из чужого acceptance-теста и здесь не закреплено."
     },
@@ -507,7 +745,9 @@
       "repository_id": "r15",
       "status": "SOURCE",
       "statement": "Парсер форм bsl-indexer разбирает XML управляемых форм (Form.xml / Ext/Form.xml), не Form.bin.",
-      "source_ids": ["s15-forms-rs"],
+      "source_ids": [
+        "s15-forms-rs"
+      ],
       "run_ids": [],
       "limitations": "Модуль обычной формы по пути может индексироваться как BSL; структура ОФ этим парсером не извлекается."
     },
@@ -516,7 +756,9 @@
       "repository_id": "r17",
       "status": "SOURCE",
       "statement": "Skill AI-EDT явно исключает ordinary (non-managed) forms: операции форм предполагают управляемые.",
-      "source_ids": ["s17-skill-ordinary"],
+      "source_ids": [
+        "s17-skill-ordinary"
+      ],
       "run_ids": [],
       "limitations": "Это инструкция скила, не Java-guard; скрытый ops для Form.bin не искался."
     },
@@ -525,7 +767,9 @@
       "repository_id": "r18",
       "status": "SOURCE",
       "statement": "MCPToolType объявляет пять tools с именами, не совпадающими с тройкой из README.",
-      "source_ids": ["s18-mcp-models"],
+      "source_ids": [
+        "s18-mcp-models"
+      ],
       "run_ids": [],
       "limitations": "Маршрутизатор tools/call не трассировался; устаревшие README-имена могут ещё где-то алиаситься."
     },
@@ -534,9 +778,116 @@
       "repository_id": "r12",
       "status": "SOURCE",
       "statement": "Обычные формы 8.x закрыты только правилом 1c-ordinary-forms.mdc (alwaysApply: false), не редактором.",
-      "source_ids": ["s12-ordinary-rule"],
+      "source_ids": [
+        "s12-ordinary-rule"
+      ],
       "run_ids": [],
       "limitations": "Поиск компилятора Form.bin по всем 115 скилам не выполнялся; form-compile помечен как managed."
+    },
+    {
+      "id": "c21-cli-batch",
+      "repository_id": "r21",
+      "status": "DOCUMENTATION",
+      "statement": "Vanessa Automation has a documented batch command-line mode through 1C /Execute + /C StartFeaturePlayer/VAParams; it is not limited to GUI or MCP.",
+      "source_ids": [
+        "s21-cli-doc"
+      ],
+      "run_ids": [],
+      "limitations": "1C and Vanessa were not started."
+    },
+    {
+      "id": "c21-cli-wrapper",
+      "repository_id": "r21",
+      "status": "SOURCE",
+      "statement": "The repository includes RunVA.os, a OneScript wrapper that starts the configured process, waits for completion and reads the status file.",
+      "source_ids": [
+        "s21-runva"
+      ],
+      "run_ids": [],
+      "limitations": "Wrapper was not executed."
+    },
+    {
+      "id": "c21-cli-target",
+      "repository_id": "r21",
+      "status": "DOCUMENTATION",
+      "statement": "CLI parameter featurepath/КаталогФич accepts either a directory or one feature file; scenariofilter can restrict execution to named scenarios.",
+      "source_ids": [
+        "s21-jsonparams"
+      ],
+      "run_ids": [],
+      "limitations": "Filter behavior was not executed."
+    },
+    {
+      "id": "c21-cli-status",
+      "repository_id": "r21",
+      "status": "DOCUMENTATION",
+      "statement": "Batch execution can write a machine-readable status code 0..4 distinguishing success, scenario failure, infrastructure/Test Client failure, no scenarios, and VanessaExt install failure.",
+      "source_ids": [
+        "s21-return-status"
+      ],
+      "run_ids": [],
+      "limitations": "Only overall status semantics are documented; detailed result size was not measured."
+    },
+    {
+      "id": "c21-mcp-entry",
+      "repository_id": "r21",
+      "status": "DOCUMENTATION",
+      "statement": "Vanessa also provides a Streamable HTTP MCP mode that can be bootstrapped from the 1C command line with runMcp;mcpPort.",
+      "source_ids": [
+        "s21-ai-mcp"
+      ],
+      "run_ids": [],
+      "limitations": "MCP server was not started."
+    },
+    {
+      "id": "c21-tool-surface",
+      "repository_id": "r21",
+      "status": "SOURCE",
+      "statement": "Pinned source defines 40 MCP tool descriptors, marks 3 disabled, and registers only non-disabled descriptors; 37 are statically active.",
+      "source_ids": [
+        "s21-mcp-tools",
+        "s21-mcp-register"
+      ],
+      "run_ids": [],
+      "limitations": "Static count; live tools/list was not captured."
+    },
+    {
+      "id": "c21-target-profiles",
+      "repository_id": "r21",
+      "status": "SOURCE",
+      "statement": "MCP Test Client selection uses named profiles; profile rows store infobase connection paths and connection status.",
+      "source_ids": [
+        "s21-mcp-tools",
+        "s21-profile-impl"
+      ],
+      "run_ids": [],
+      "limitations": "No real profile was connected."
+    },
+    {
+      "id": "c21-multitarget",
+      "repository_id": "r21",
+      "status": "INFERENCE",
+      "statement": "Facade targets can map to distinct Vanessa Test Client definitions/profiles, but simultaneous two-target execution through one process/MCP is not established.",
+      "source_ids": [
+        "s21-cli-doc",
+        "s21-profile-impl"
+      ],
+      "run_ids": [],
+      "limitations": "Current-client semantics are singular in reviewed MCP code; concurrent exchange needs execution."
+    },
+    {
+      "id": "c21-adapter-choice",
+      "repository_id": "r21",
+      "status": "INFERENCE",
+      "statement": "For ordinary verify.scenario the existing batch CLI is a stronger facade boundary than exposing Vanessa MCP tools; MCP remains useful for interactive debugging.",
+      "source_ids": [
+        "s21-cli-doc",
+        "s21-jsonparams",
+        "s21-return-status",
+        "s21-tool-surface"
+      ],
+      "run_ids": [],
+      "limitations": "This is an architectural inference; performance and error detail require execution comparison."
     }
   ],
   "runs": [

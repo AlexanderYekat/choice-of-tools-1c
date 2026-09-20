@@ -1,55 +1,26 @@
 # Проверки и следующий эксперимент
 
-До исполнения все сценарии NOT_RUN, кроме статического чтения карточек.
-Основания обзора 19: [EVIDENCE.json](EVIDENCE.json).
-Версия цели: 2. Текст перехода и снимок v1 — по необходимости,
-не для обычного CONTINUE.
+Запуски продуктов не выполнялись. Основания: [EVIDENCE.json](EVIDENCE.json).
+Версия цели: 2.
 
-## Корпус обзора (цель v1, не приоритет)
+## Стыковка (цель v2)
 
-Эталон и таблица V1–V8 написаны для цели v1 (обязательные обычные формы,
-оценка Unica в Cursor, rlm как основной explore). Полный текст снимка
-не нужен для S1–S5; путь при проверке происхождения:
-`history/goal-v1/VALIDATION.md`.
+План — [INTEGRATION-PLAN.md](INTEGRATION-PLAN.md), частичный результат —
+[INTEGRATION.md](INTEGRATION.md).
 
-| ID | Вопрос | Кандидат | Приоритет v2 | Статус |
-|---|---|---|---|---|
-| V1 | Unica MCP в Cursor: 11 имён? | r01 | снят (хост не Cursor) | NOT_RUN |
-| V2 | unica.view на FormType=Ordinary | r01 | снят (ОФ не обязательны) | NOT_RUN |
-| V3 | rlm parse_form на Ordinary / Form.bin | r02 | снят (rlm не в контуре) | NOT_RUN |
-| V4 | Состав 1С-tools bsl-indexer vs README | r15 | средний, войдёт в стыковку | SOURCE: 13 tools; живой list NOT_RUN |
-| V5 | Трасса callers rlm | r02 | снят | не делался |
-| V6 | Компактный отчёт YaXUnit одного модуля | r09 | средний, стыковка | NOT_RUN |
-| V7 | r04 HBK без соседнего crate | r04 | низкий (не в контуре) | NOT_RUN |
-| V8 | r10 vs unica.docs | r10, r01 | низкий (r10 не в контуре) | NOT_RUN |
+Сейчас только **r21 Vanessa достиг DEEP_STATIC**; r01/r15/r09 остаются
+OVERVIEW, r20 PENDING.
 
-Развёрнутый эксперимент «Unica в Cursor + ordinary form» из v1 **не
-исполняется** и не является следующим шагом.
+| ID | Вопрос | r21 Vanessa |
+|---|---|---|
+| S1 | Чем звать | DOCUMENTATION+SOURCE: batch CLI через 1С; дополнительно Streamable HTTP MCP |
+| S2 | Как передать feature/ИБ | DOCUMENTATION+SOURCE: один feature через featurepath, scenariofilter, Test Client definitions/profiles |
+| S3 | Узкая surface | SOURCE+INFERENCE: CLI без MCP tools; MCP 37 statically active, скрывать фасадом |
+| S4 | Две цели | SOURCE+INFERENCE: несколько definitions/profiles; simultaneous two-target UNKNOWN |
+| S5 | Project detection | INFERENCE: explicit WorkspaceRoot/projectpath; generic 1C detection facade-side |
 
-## План стыковки (цель v2)
+Шкала r21: S1 удобно; S2 удобно; S3 удобно через CLI / терпимо через MCP;
+S4 терпимо с неизвестной одновременностью; S5 терпимо.
 
-Вопрос: можно ли вызвать пять выбранных компонентов из тонкого фасада
-так, чтобы агент не видел сырой `tools/list`, передавались выгрузка и
-именованная ИБ, две цели в одном проекте не затирали друг друга, а
-1С-проект определялся без обязательного нового yaml.
-
-Порядок чтения, границы, версии и критерии закрытия —
-[INTEGRATION-PLAN.md](INTEGRATION-PLAN.md). Этот реестр хранит статусы.
-План **не исполняет** аудит и не пишет код.
-
-Кандидаты в реестре: r01, r15, r09, r20 (Answer42), r21 (Vanessa).
-r20/r21: NOT_CHECKED / PENDING, карточки-заготовки, аудит не начат.
-
-| ID | Вопрос | Приоритет | Статус |
-|---|---|---|---|
-| S1 | Чем звать каждый из пяти (CLI / stdio / HTTP / только GUI) | высокий | NOT_RUN |
-| S2 | Как передать каталог выгрузки и/или информационную базу | высокий | NOT_RUN |
-| S3 | Можно ли не светить весь tools/list агенту | высокий | NOT_RUN |
-| S4 | Две цели (обмен): снаружи или мешает singleton | высокий | NOT_RUN |
-| S5 | Признаки автоопределения 1С-проекта vs опциональный манифест | средний | NOT_RUN |
-
-Шкала ответа — как в [FACADE.md](FACADE.md): удобно / терпимо / мешает.
-Сначала адаптер фасада, потом патч продукта.
-
-Нет разрешения на установку и запуск (`permissions.* = false`).
-Следующий CONTINUE-AUDIT исполняет INTEGRATION-PLAN, не V1–V8.
+Execution запрещён текущими permissions и остаётся NOT_RUN.
+Следующий static CONTINUE-AUDIT — r01/r15/r09/r20.

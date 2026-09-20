@@ -1,80 +1,47 @@
 # Состояние main / 20260920T044856175227Z
 
-Версия цели: **2**. Статус: INTEGRATION_PLAN_READY; аудит стыковки не начат.
-Последнее обновление: 2026-09-20T17:10+00:00.
+Версия цели: **2**. Статус: INTEGRATION_PARTIAL_R21.
+Последнее обновление: 2026-09-20.
 
-Обзор 19 закрыт. Состав контура выбран ([DECISION.md](DECISION.md)).
-Методика фасада: [FACADE.md](FACADE.md). Подробный план стыковки:
-[INTEGRATION-PLAN.md](INTEGRATION-PLAN.md). Сама стыковка пяти
-компонентов ещё не исследована. Внедрение не начато.
+Состав контура выбран ([DECISION.md](DECISION.md)).
+План: [INTEGRATION-PLAN.md](INTEGRATION-PLAN.md).
+Стыковка начата: **r21 Vanessa достиг DEEP_STATIC по S1–S5**.
+Внедрение и execution не начинались.
 
 ## Восстановление без чата
 
-Обычное продолжение читает **только актуальные** файлы. Не открывать
-[GOAL-CHANGE.md](GOAL-CHANGE.md) и не загружать каталог
-[history/goal-v1/](history/goal-v1/) целиком, пока не нужно проверить
-происхождение решения, старый критерий или evidence v1.
+1. Этот файл.
+2. [request.json](request.json), [BRIEF.md](BRIEF.md).
+3. [DECISION.md](DECISION.md), [FACADE.md](FACADE.md).
+4. [INTEGRATION-PLAN.md](INTEGRATION-PLAN.md).
+5. [INTEGRATION.md](INTEGRATION.md) — фактический частичный результат.
+6. [VALIDATION.md](VALIDATION.md).
+7. Для r21 — [reports/r21.md](reports/r21.md); остальные карточки читать по необходимости.
 
-1. Этот файл — версия цели, прогресс, следующий шаг.
-2. [request.json](request.json), [BRIEF.md](BRIEF.md) — цель v2 и C*.
-3. [DECISION.md](DECISION.md), [FACADE.md](FACADE.md) — контур и обвязка.
-4. [INTEGRATION-PLAN.md](INTEGRATION-PLAN.md) — как исследовать стыковку.
-5. [VALIDATION.md](VALIDATION.md) — реестр S1–S5 (ещё NOT_RUN).
-6. [INVENTORY.json](INVENTORY.json) и карточки **нужных** кандидатов
-   (для стыковки пяти: r01, r09, r15, r20, r21). Не читать все 19 карточек
-   и весь [EVIDENCE.json](EVIDENCE.json) «на всякий случай».
+## Прогресс
 
-По запросу, не по умолчанию:
+- r01/r15/r09: OVERVIEW, static стыковка ещё впереди.
+- r20 Answer42: NOT_CHECKED / PENDING.
+- **r21 Vanessa: AVAILABLE / DEEP_STATIC**, commit `7db5c2bbbf91fd965613a6119121a098bf64cd9e`.
+- Главное новое наблюдение r21: Vanessa давно имеет batch CLI через
+  `1cv8 /Execute ... /C StartFeaturePlayer`; MCP не обязателен для
+  обычного `verify.scenario`.
+- CLI умеет выбрать один feature-файл и пишет машинный status 0..4.
+- MCP остаётся полезным интерактивным backend, но имеет 37 statically
+  active tools, поэтому raw surface агенту не показывать.
+- simultaneous two-target exchange остаётся UNKNOWN.
 
-- [GOAL-CHANGE.md](GOAL-CHANGE.md) — что изменилось относительно v1.
-- [history/goal-v1/](history/goal-v1/) — неизменяемый снимок обзора при
-  цели v1 (исходные 19 URL). Не копировать в контекст целиком.
-- [REPORT.md](REPORT.md), [CAPABILITY-MAP.md](CAPABILITY-MAP.md) —
-  синтез v2, если нужна общая картина, а не только план стыковки.
-
-## Прогресс и охват
-
-- А. Цель: v2 зафиксирована (C3/C8/C12 и решения). Снимок v1 в history,
-  по умолчанию не читать.
-- Б. Инвентаризация: r01–r19 AVAILABLE / OVERVIEW; **r20 Answer42 и
-  r21 Vanessa — NOT_CHECKED / PENDING**, commit не зафиксирован.
-- В. Обзор: карточки r01–r19 на месте, не перезапускались. r20/r21 —
-  заготовки, материалы не читались.
-- Г. Углубление / стыковка пяти: **план готов**, чтение продуктов не
-  начиналось. r20/r21 по-прежнему NOT_CHECKED / PENDING.
-- Д. Ревью обзора: самопроверка в снимке v1 (не загружать при CONTINUE).
-- Е. Синтез v2: DECISION + CAPABILITY-MAP + REPORT + VALIDATION;
-  план стыковки вынесен в INTEGRATION-PLAN.md.
-
-Разрешения: `permissions.* = false`. Все runs NOT_RUN.
-Активный вход: 21 URL. Снимок `history/goal-v1` остаётся на 19.
-
-## Блокировки, решения и разрешения
-
-Блокировок нет. Не утверждать «можно внедрять». План стыковки записан;
-чтение пяти репозиториев и код адаптера этим шагом **не начинались**.
-Добавление r20/r21 в реестр само по себе аудитом не является.
-DECISION/FACADE не пересматривать без существенной проблемы из плана.
+Разрешения: `permissions.* = false`. Все runtime runs r21 NOT_RUN.
+DECISION/FACADE не менялись.
 
 ## Следующий шаг
 
-Явная просьба CONTINUE-AUDIT: исполнить [INTEGRATION-PLAN.md](INTEGRATION-PLAN.md)
-(S1–S5), каталог `evaluations/main`. Сопоставить все пять с реестром:
-r01, r15, r09, r20, r21. Не новый запуск. Не V1–V8. Не писать код
-фасада. Не ставить пять MCP. Не читать `history/goal-v1/` целиком.
+CONTINUE-AUDIT по S1–S5 для одного или нескольких r01/r15/r09/r20.
+После static-стыковки всех пяти отдельно запросить execution.
 
-## Журнал продолжения
+## Журнал
 
-2026-09-20 → BRIEF C1–C14 (цель v1).
-2026-09-20 → карточки r01–r19, матрица, REPORT, VALIDATION → overview.
-2026-09-20 → пользователь снял обязательность Cursor и обычных форм;
-выбрал r01+r15+r09+Vanessa+Answer42+фасад.
-2026-09-20 → черновики DECISION/FACADE без снимка v1 (неполный REASSESS).
-2026-09-20 → REASSESS-GOAL: снимок history/goal-v1/, цель v2 в
-request/BRIEF, синхронизация активных файлов. Стыковка не начата.
-2026-09-20 → восстановление: progressive disclosure (history не по
-умолчанию). Активный вход: r20 Answer42, r21 Vanessa как NOT_CHECKED /
-PENDING. Снимок v1 не менялся. Аудит пяти не начинался.
-2026-09-20 → план стыковки: [INTEGRATION-PLAN.md](INTEGRATION-PLAN.md).
-Код не писался, продукты не читались сверх уже известных карточек
-r01/r09/r15. DECISION/FACADE не менялись.
+2026-09-20 → план стыковки подготовлен.
+2026-09-20 → по просьбе пользователя выполнен partial CONTINUE-AUDIT r21:
+инвентаризация + deep-static S1–S5. Обнаружен существующий batch CLI;
+создан INTEGRATION.md. Execution не выполнялся.
