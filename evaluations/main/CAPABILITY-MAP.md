@@ -1,8 +1,13 @@
 # Возможности относительно цели
 
-Версия критериев: 1; источник — [BRIEF.md](BRIEF.md).
-Основания — [EVIDENCE.json](EVIDENCE.json), кандидаты — [INVENTORY.json](INVENTORY.json).
-Глубина: overview. Покрытие — по прочитанному объёму, не по обещаниям README.
+Версия критериев: 2; источник — [BRIEF.md](BRIEF.md).
+Матрица при цели v1 — в снимке `history/goal-v1/CAPABILITY-MAP.md`
+(читать только если нужен старый критерий).
+Основания обзора — [EVIDENCE.json](EVIDENCE.json), кандидаты —
+[INVENTORY.json](INVENTORY.json).
+Глубина: r01–r19 overview; r20/r21 PENDING. Покрытие — по прочитанному
+объёму. Состав контура v2 — [DECISION.md](DECISION.md); стыковка не
+проверялась.
 
 Обозначения покрытия: **полное** (в роли кандидата), **частичное**,
 **не установлено**, **неприменимо**.
@@ -11,75 +16,69 @@
 
 | C* | Кто закрывает | Покрытие | Доказательство | Готовность | Недостаёт |
 |---|---|---|---|---|---|
-| C1 explore без дампа | r02 основной; r15 альтернатива (13 1С-tools + core); r01 частично (`search`/`view`); r19 RAG | r02 частичное→сильное; r15 частичное; r01 частичное; r19 слабое | c02-six-tools, c02-formats; c15-bsl-thirteen; c01-search-read | r02/r15 продуктовые | Точность графа; ordinary Form.bin |
-| C2 связи BSL | r02 (хелперы, код хелперов не трассирован); r15 (индекс callers + 1С-tools); r01 слабее (symbol/call graph на v0.13 не поддержаны) | частичное | c01-search-limits; c15-bsl-thirteen | заявлено сильно | deep-static helpers r02 |
-| C3 метаданные и оба типа форм | метаданные: r01, r02, r12, r15; управляемые формы: r01/r12 edit, r02/r15 read; **обычные формы как структура — не закрыты** (r17 явный отказ; r12 только правило) | частичное / пробел | c01-forms-managed, c02-forms-managed-xml, c12-managed-forms, c12-ordinary-rule, c15-forms-managed-src, c17-ordinary-refused | edit УФ готов; ОФ нет | Form.bin / ordinary DSL |
-| C4 справка API | r01 `unica.docs`; r04 core; r10 MCP; r18 ES; r11 корпус | r04/r10/r01 частичное→сильное | c04-*, c10-*, c01-docs | r10/r01 готовее как адаптер; r04 богаче как ядро | проверка на HBK 8.3.27 |
-| C5 edit | r01 основной facade; r12 скрипты/skills; r17 только EDT | частичное (УФ+метаданные) | c01-facade, c12-managed-forms | высокая для УФ XML | ordinary forms |
-| C6 static | r01 `unica.check`; r09 CheckConfig/EDT (8 tools); r12 validate-скилы | частичное | c01, c09-eight-tools | продуктовая заявка | компактность отчёта |
-| C7 build/run | r01 `unica.run`; r09 build/launch; r12 `1c-db-*`; r07 только CI install | частичное | tool-surface; c09-eight-tools; c07-ci-install | высокая заявка | execution |
-| C8 runtime/UI test | r09 YaXUnit (серверная логика); r06 REST/данные; r12 Vanessa-скил; r05 видео-DLL | частичное; UI ОФ не закрыт | c09-ordinary-flags; r06/r05 карточки | YaXUnit — лучший целевой контур | UI ordinary forms |
-| C9 compact results | r02 stdout+truncation; r01 typed data+limit/cursor; r15 index fragments; r04 JSON statuses | частичное | architecture/tool-surface | заложено в r01/r02 | замер токенов |
-| C10 min surface + disclosure | r02 (6 tools); r01 (11 tools + skills); r09 (8 tools); r12 router-скил; r15 широкая | частичное | c02-six-tools, c01-facade, c09-eight-tools | лучше у r01/r02 | 25 tools если склеить r02+r01+r09 без facade |
-| C11 знания вне окна | r02 SQLite; r15 SQLite; r04 SQLite; r01 кэш движков; r18 ES; r19 Qdrant | полное у индексных | c02-cli-core; c04; c15 | высокая | — |
-| C12 независимость от адаптера | r02 CLI+helpers; r04 resolver crates; r01 ядро vs plugin manifests; r12 скрипты vs skills | частичное | c02-cli-core; c04-resolver; c01-mcp-json | средняя | свой тонкий слой всё же нужен |
-| C13 feedback loop | ни один репозиторий не замыкает всё; контур r02→r01/r12→r01.check/r09→r09/r01.run | системное, не закрыто одним | синтез | собираемый | ordinary UI; свой оркестратор |
-| C14 без дубля | docs: r04/r10/r18/unica.docs; explore: r02/r15/r19; edit: r01/r12/r13; skills r12≡r13 | решение ниже | карточки | — | не подключать все |
+| C1 explore без дампа | **r15 выбран** (13 1С-tools + core); r02 сильный, но не в контуре; r01 частично (`search`/`view`); r19 RAG | r15 частичное; r02 частичное→сильное как наблюдение v1 | c15-bsl-thirteen; c02-six-tools, c02-formats; c01-search-read | r15 продуктовый | Точность графа r15; живой tools/list |
+| C2 связи BSL | r15 (индекс callers); r02 хелперы не трассированы; r01 call graph на v0.13 нет | частичное | c15-bsl-thirteen; c01-search-limits | заявлено у r15 | deep-static/стыковка r15 |
+| C3 метаданные и УФ | метаданные: r01, r15, r02, r12; УФ: r01 edit, r15 read. Обычные формы в v2 не обязательны; пробел Form.bin не блокер | частичное (достаточно для v2) | c01-forms-managed, c15-forms-managed-src, c02-forms-managed-xml | edit УФ заявлен | стыковка Unica; ОФ не ищем |
+| C4 справка API | r01 `unica.docs` выбран; r04 core; r10/r18 не в контуре | частичное→сильное у r01/r04 | c01-docs, c04-*, c10-* | r01 как адаптер контура | проверка на HBK 8.3.27 |
+| C5 edit | r01 основной; r12 дубль, не в контуре; r17 только EDT | частичное (УФ+метаданные) | c01-facade, c12-managed-forms | высокая заявка | стыковка Unica; ОФ не требуется |
+| C6 static | r01 `unica.check`; r09 CheckConfig/EDT | частичное | c01, c09-eight-tools | продуктовая заявка | компактность отчёта |
+| C7 build/run | r01 `unica.run`; r09 build/launch | частичное | c09-eight-tools | высокая заявка | стыковка / execution |
+| C8 runtime/UI test | r09 YaXUnit (сервер); UI: **r20 Answer42 и r21 Vanessa в реестре, не аудированы**; r12 Vanessa-скил — не движок | частичное | c09-eight-tools | YaXUnit заявлен; UI неизвестно | стыковка r09/r20/r21 |
+| C9 compact results | r01 typed data; r15 fragments; r02 truncation (не в контуре) | частичное | architecture/tool-surface | заложено | замер токенов; фасад |
+| C10 min surface | фасад обязателен; r01 11 tools, r15 широкая, r09 8 | частичное без фасада | c01-facade, c15, c09-eight-tools | лучше у r01 как образца | стыковка фасада |
+| C11 знания вне окна | r15 SQLite; r01 кэш; r04 | полное у индексных | c15; c01; c04 | высокая | — |
+| C12 независимость от адаптера | r01 ядро vs plugin; r15 бинарь; Cursor не критерий | частичное | c01-mcp-json | средняя | свой фасад |
+| C13 feedback loop | контур r15→r01→r01.check/r09→r09/r20/r21 | системное, не закрыто одним | синтез v2 | собираемый на бумаге | стыковка; оркестратор |
+| C14 без дубля | explore r15 не вместе с r02; edit r01 не вместе с r12/r13; docs unica.docs не вместе с r10/r18 | решение в DECISION | карточки | — | не подключать дубли |
 
 ## Альтернативы и сочетания
 
 ### Explore
 
-- **Основной:** r02 (facade 6 tools, CF/EDT, sandbox). Связь к агенту: MCP HTTP/stdio. `PROPOSED_INTEGRATION` с собственным router.
-- **Альтернатива/core:** r15 (персистентный граф, больше tools). Если нужен callers из индекса — брать бинарь, не сырой `tools/list`.
-- **Не основной:** r01 search (нет графа на v0.13), r19 RAG (EPF+Qdrant).
+- **Выбран (v2):** r15 как ядро/бинарь за фасадом, не сырой `tools/list`.
+- **Не в контуре:** r02 (наблюдение v1: узкий MCP из 6 tools).
+- **Не основной:** r01 search, r19 RAG.
 
 ### Docs
 
-- **Ядро:** r04 (HBK→SQLite/JSON, resolver). `PROPOSED_INTEGRATION`: один capability `docs` вызывает CLI/lib.
-- **Готовый адаптер:** r10 (5 tools, platform-path, Cursor-пример) или `unica.docs`.
-- **Не брать вместе:** r18, r11 как второй индекс.
+- **Выбран:** `unica.docs`.
+- **Запас/ядро:** r04. Не брать r10/r18 рядом.
 
 ### Edit
 
-- **Основной facade:** r01 (`unica.apply`/`view`/`check`), если MCP в Cursor заводится.
-- **Fallback/Cursor-native:** выбранные скрипты r12 (meta/form/db), не весь каталог. r13 не нужен.
-- Связь r01↔r12: `PROPOSED_INTEGRATION`, оба пишут платформенный XML; не звать оба на одну форму.
+- **Выбран:** r01 (`unica.apply`/`view`/`check`). Хост не обязан быть Cursor.
+- **Не в контуре:** r12/r13.
 
 ### Verify / loop
 
-- **Сборка+YaXUnit:** r09. `PROPOSED_INTEGRATION` после edit.
-- **Сборка/клиент без тестов:** r01 `unica.run`.
-- **CI install only:** r07.
-- **Данные в ИБ:** r06 спецслучай.
-- **EDT semantics:** r17 спецслучай, конфликт с обязательными обычными формами.
+- **Сборка+YaXUnit:** r09.
+- **Клиент без тестов:** r01 `unica.run`.
+- **UI формы / сценарий:** r20 Answer42 и r21 Vanessa — решение v2;
+  в реестре PENDING, не обзор 19.
+- **Спецслучаи:** r06, r07, r17 (EDT; конфликт с обязательными ОФ в v1 снят, роль EDT не выросла).
 
-### Предлагаемый минимальный контур
+### Предлагаемый минимальный контур (цель v2)
 
 ```
-агент ← тонкий facade (5 capability)
-         ├ explore → r02 (ядро; r15 fallback)
-         ├ docs    → unica.docs или r10; индекс r04 если нужна независимость
-         ├ edit    → r01; иначе скрипты r12
+агент ← тонкий facade
+         ├ explore → r15
+         ├ docs    → unica.docs
+         ├ edit    → r01
          ├ static  → unica.check и/или r09 Check*
-         └ verify  → r09 build+YaXUnit (+ unica.run при необходимости)
+         └ verify  → r09 YaXUnit; form → r20; scenario → r21
 ```
 
-Все связи `PROPOSED_INTEGRATION`, не `VERIFIED_INTEGRATION` и не
-`OBSERVED_DEPENDENCY` между этими репозиториями (взаимных зависимостей в
-коде не найдено).
-
-Собственный слой нужен не чтобы переписать 1С-логику, а чтобы (1) не
-показывать 20–30 MCP tools, (2) выбрать один docs и один edit, (3) писать
-компактные артефакты на диск.
+Все связи `PROPOSED_INTEGRATION`. Стыковка не проверялась
+(`VERIFIED_INTEGRATION` нет). Взаимных зависимостей в коде обзора 19
+между r01/r15/r09 не найдено; r20/r21 в том обзоре не входили и ещё
+не читались.
 
 ## Пробелы
 
-1. **Структура обычных форм** (Form.bin / ordinary XML) — ни у r01, ни у
-   r02, ни у r12, ни у r15 не доказана. Модули форм находятся.
-2. **Целевой UI-тест обычных форм** — нет современного агентского контура
-   (r05 устарел; Vanessa в r12 — скил, не движок).
-3. **Call graph на поверхности Unica v0.13** — не поддержан.
-4. **Официальный хост Unica ≠ Cursor** — подключение вероятно, не проверено.
-5. **Сборка r04** может требовать соседний репозиторий.
-6. Не подтверждены запуском качество индекса r02/r15 и отчёт r09.
+1. Стыковка пяти выбранных с фасадом — не исследована (главный пробел v2).
+2. r20 Answer42 и r21 Vanessa — заготовки, глубина не достигнута.
+3. Точность графа r15 и компактность отчёта r09 — не execution.
+4. Call graph на поверхности Unica v0.13 — не поддержан (explore закрывает r15).
+5. Структура обычных форм — по-прежнему отсутствует, **не блокер** цели v2.
+6. Признаки автоопределения 1С-проекта — не зафиксированы аудитом.
+

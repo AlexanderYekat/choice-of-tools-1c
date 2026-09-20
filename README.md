@@ -2,7 +2,7 @@
 
 Исследовательский репозиторий: какой минимальный контур из существующих
 open-source компонентов собрать для ежедневной разработки в 1С 8
-(управляемые и обычные формы) с coding-agent’ом.
+с coding-agent’ом.
 
 Репозиторий начат с шаблона repo-evaluation-kit. Методика осталась в
 `.agents/skills/repo-evaluation/`; сами результаты исследования
@@ -11,12 +11,21 @@ open-source компонентов собрать для ежедневной р
 ## Где читать результат
 
 Актуальное исследование: [`evaluations/main/`](evaluations/main/).
+Сначала [`evaluations/main/STATE.md`](evaluations/main/STATE.md) — обычное
+продолжение не требует каталога `history/goal-v1/`.
 
-- [`evaluations/main/REPORT.md`](evaluations/main/REPORT.md) — главный ответ: что использовать, ограничения и следующий шаг.
-- [`evaluations/main/reports/`](evaluations/main/reports/) — карточки кандидатов.
-- [`evaluations/main/CAPABILITY-MAP.md`](evaluations/main/CAPABILITY-MAP.md) — какие требования закрывает каждый кандидат.
-- [`evaluations/main/STATE.md`](evaluations/main/STATE.md) — что сделано и с чего продолжить.
-- [`request.json`](request.json) — цель, ограничения и список репозиториев.
+- [`evaluations/main/STATE.md`](evaluations/main/STATE.md) — порядок чтения и следующий шаг.
+- [`evaluations/main/request.json`](evaluations/main/request.json) / [`request.json`](request.json) — текущий вход (цель v2, 21 URL).
+- [`evaluations/main/DECISION.md`](evaluations/main/DECISION.md) — выбранный состав контура (стыковка ещё впереди).
+- [`evaluations/main/FACADE.md`](evaluations/main/FACADE.md) — методика обвязки.
+- [`evaluations/main/VALIDATION.md`](evaluations/main/VALIDATION.md) — план S1–S5.
+- [`evaluations/main/REPORT.md`](evaluations/main/REPORT.md) — синтез относительно текущей цели.
+- [`evaluations/main/reports/`](evaluations/main/reports/) — карточки: r01–r19 обзор, r20/r21 заготовки.
+
+По необходимости (происхождение v1, старый критерий, evidence обзора):
+
+- [`evaluations/main/GOAL-CHANGE.md`](evaluations/main/GOAL-CHANGE.md) — смена цели v1 → v2.
+- [`evaluations/main/history/goal-v1/`](evaluations/main/history/goal-v1/) — неизменяемый снимок цели v1 (исходные 19).
 
 ## Как продолжить исследование
 

@@ -1,0 +1,10 @@
+Excerpt from Desko77/ai-edt
+commit dd969b986ecfdb13798acce1ee541059b21ebdc0
+file skills/ai-edt/SKILL.md section «When not to use it»:
+
+- Ordinary (non-managed) forms. The form operations assume managed forms.
+
+Facades listed: code_search, edit_metadata, diagnostics, launch_debugger,
+project_admin, infobase_admin, config_io, insights, security_audit,
+docs_lookup, workspace_marks, yaxunit_tests.
+Canonical preset hides aliases from tools/list.
