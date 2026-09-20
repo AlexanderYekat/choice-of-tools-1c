@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "input_count": 19,
+  "input_count": 21,
   "repositories": [
     {
       "id": "r01",
@@ -477,6 +477,50 @@
       "scope": "OVERVIEW",
       "duplicate_of": null,
       "report": "reports/r19.md"
+    },
+    {
+      "id": "r20",
+      "input_index": 20,
+      "input_url": "https://gitlab.com/platform42/answer42-mcp",
+      "canonical_url": null,
+      "access": "NOT_CHECKED",
+      "access_reason": "Доступность ещё не проверялась.",
+      "default_branch": null,
+      "commit": null,
+      "commit_source": null,
+      "origin": {
+        "kind": "UNKNOWN",
+        "upstream_url": null,
+        "comparison": "NOT_CHECKED"
+      },
+      "project_type": null,
+      "roles": [],
+      "priority": null,
+      "scope": "PENDING",
+      "duplicate_of": null,
+      "report": "reports/r20.md"
+    },
+    {
+      "id": "r21",
+      "input_index": 21,
+      "input_url": "https://github.com/Pr-Mex/vanessa-automation",
+      "canonical_url": null,
+      "access": "NOT_CHECKED",
+      "access_reason": "Доступность ещё не проверялась.",
+      "default_branch": null,
+      "commit": null,
+      "commit_source": null,
+      "origin": {
+        "kind": "UNKNOWN",
+        "upstream_url": null,
+        "comparison": "NOT_CHECKED"
+      },
+      "project_type": null,
+      "roles": [],
+      "priority": null,
+      "scope": "PENDING",
+      "duplicate_of": null,
+      "report": "reports/r21.md"
     }
   ]
 }

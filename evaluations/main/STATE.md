@@ -1,9 +1,7 @@
 # Состояние main / 20260920T044856175227Z
 
-Версия цели: **2**. Переход: [GOAL-CHANGE.md](GOAL-CHANGE.md).
-Снимок v1: [history/goal-v1/](history/goal-v1/).
-Запрошенная глубина обзора 19: overview. Статус: GOAL_V2_ALIGNED.
-Последнее обновление: 2026-09-20T16:00+00:00.
+Версия цели: **2**. Статус: GOAL_V2_ALIGNED; вход расширен r20/r21 без аудита.
+Последнее обновление: 2026-09-20T16:45+00:00.
 
 Обзор 19 закрыт. Состав контура выбран ([DECISION.md](DECISION.md)).
 Методика фасада: [FACADE.md](FACADE.md). Стыковка пяти компонентов не
@@ -11,38 +9,54 @@
 
 ## Восстановление без чата
 
-1. [GOAL-CHANGE.md](GOAL-CHANGE.md) и [history/goal-v1/](history/goal-v1/)
-   — что было и что стало.
-2. [request.json](request.json), [BRIEF.md](BRIEF.md) — цель v2.
-3. [DECISION.md](DECISION.md), [FACADE.md](FACADE.md).
-4. [INVENTORY.json](INVENTORY.json), [EVIDENCE.json](EVIDENCE.json),
-   [reports/](reports/) — факты обзора 19 (те же commit).
-5. [CAPABILITY-MAP.md](CAPABILITY-MAP.md), [REPORT.md](REPORT.md),
-   [VALIDATION.md](VALIDATION.md).
+Обычное продолжение читает **только актуальные** файлы. Не открывать
+[GOAL-CHANGE.md](GOAL-CHANGE.md) и не загружать каталог
+[history/goal-v1/](history/goal-v1/) целиком, пока не нужно проверить
+происхождение решения, старый критерий или evidence v1.
+
+1. Этот файл — версия цели, прогресс, следующий шаг.
+2. [request.json](request.json), [BRIEF.md](BRIEF.md) — цель v2 и C*.
+3. [DECISION.md](DECISION.md), [FACADE.md](FACADE.md) — контур и обвязка.
+4. [VALIDATION.md](VALIDATION.md) — текущий план (S1–S5).
+5. [INVENTORY.json](INVENTORY.json) и карточки **нужных** кандидатов
+   (для стыковки пяти: r01, r09, r15, r20, r21). Не читать все 19 карточек
+   и весь [EVIDENCE.json](EVIDENCE.json) «на всякий случай».
+
+По запросу, не по умолчанию:
+
+- [GOAL-CHANGE.md](GOAL-CHANGE.md) — что изменилось относительно v1.
+- [history/goal-v1/](history/goal-v1/) — неизменяемый снимок обзора при
+  цели v1 (исходные 19 URL). Не копировать в контекст целиком.
+- [REPORT.md](REPORT.md), [CAPABILITY-MAP.md](CAPABILITY-MAP.md) —
+  синтез v2, если нужна общая картина, а не только план стыковки.
 
 ## Прогресс и охват
 
-- А. Цель: v2 зафиксирована (C3/C8/C12 и решения). v1 в history.
-- Б. Инвентаризация: 19/19 AVAILABLE, без новых URL.
-- В. Обзор: карточки r01–r19 на месте, не перезапускались.
+- А. Цель: v2 зафиксирована (C3/C8/C12 и решения). Снимок v1 в history,
+  по умолчанию не читать.
+- Б. Инвентаризация: r01–r19 AVAILABLE / OVERVIEW; **r20 Answer42 и
+  r21 Vanessa — NOT_CHECKED / PENDING**, commit не зафиксирован.
+- В. Обзор: карточки r01–r19 на месте, не перезапускались. r20/r21 —
+  заготовки, материалы не читались.
 - Г. Углубление / стыковка пяти: не начаты.
-- Д. Ревью обзора: самопроверка в history/goal-v1/REPORT.md.
+- Д. Ревью обзора: самопроверка в снимке v1 (не загружать при CONTINUE).
 - Е. Синтез v2: DECISION + CAPABILITY-MAP + REPORT + VALIDATION.
 
 Разрешения: `permissions.* = false`. Все runs NOT_RUN.
-Answer42 и Vanessa в реестре 19 нет.
+Активный вход: 21 URL. Снимок `history/goal-v1` остаётся на 19.
 
 ## Блокировки, решения и разрешения
 
 Блокировок нет. Не утверждать «можно внедрять». Не начинать аудит пяти
-репозиториев, пока этот шаг согласования не закрыт отдельно просьбой
-CONTINUE-AUDIT на стыковку.
+репозиториев, пока не будет явной просьбы CONTINUE-AUDIT на стыковку.
+Добавление r20/r21 в реестр само по себе аудитом не является.
 
 ## Следующий шаг
 
 Когда будет явная просьба: CONTINUE-AUDIT по [VALIDATION.md](VALIDATION.md)
-(S1–S5), каталог `evaluations/main`. Не новый запуск. Не V1–V8. Не
-глобальная установка пяти MCP.
+(S1–S5), каталог `evaluations/main`. Сопоставить все пять выбранных с
+реестром: r01, r15, r09, r20, r21. Не новый запуск. Не V1–V8. Не
+глобальная установка пяти MCP. Не читать `history/goal-v1/` целиком.
 
 ## Журнал продолжения
 
@@ -51,5 +65,8 @@ CONTINUE-AUDIT на стыковку.
 2026-09-20 → пользователь снял обязательность Cursor и обычных форм;
 выбрал r01+r15+r09+Vanessa+Answer42+фасад.
 2026-09-20 → черновики DECISION/FACADE без снимка v1 (неполный REASSESS).
-2026-09-20 → REASSESS-GOAL: снимок [history/goal-v1/](history/goal-v1/),
-цель v2 в request/BRIEF, синхронизация активных файлов. Стыковка не начата.
+2026-09-20 → REASSESS-GOAL: снимок history/goal-v1/, цель v2 в
+request/BRIEF, синхронизация активных файлов. Стыковка не начата.
+2026-09-20 → восстановление: progressive disclosure (history не по
+умолчанию). Активный вход: r20 Answer42, r21 Vanessa как NOT_CHECKED /
+PENDING. Снимок v1 не менялся. Аудит пяти не начинался.

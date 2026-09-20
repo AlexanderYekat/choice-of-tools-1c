@@ -1,11 +1,13 @@
 # Возможности относительно цели
 
-Версия критериев: 2; источник — [BRIEF.md](BRIEF.md);
-переход — [GOAL-CHANGE.md](GOAL-CHANGE.md).
-Снимок матрицы при цели v1: [history/goal-v1/CAPABILITY-MAP.md](history/goal-v1/CAPABILITY-MAP.md).
-Основания — [EVIDENCE.json](EVIDENCE.json), кандидаты — [INVENTORY.json](INVENTORY.json).
-Глубина обзора 19: overview. Покрытие — по прочитанному объёму.
-Состав контура v2 — [DECISION.md](DECISION.md); стыковка не проверялась.
+Версия критериев: 2; источник — [BRIEF.md](BRIEF.md).
+Матрица при цели v1 — в снимке `history/goal-v1/CAPABILITY-MAP.md`
+(читать только если нужен старый критерий).
+Основания обзора — [EVIDENCE.json](EVIDENCE.json), кандидаты —
+[INVENTORY.json](INVENTORY.json).
+Глубина: r01–r19 overview; r20/r21 PENDING. Покрытие — по прочитанному
+объёму. Состав контура v2 — [DECISION.md](DECISION.md); стыковка не
+проверялась.
 
 Обозначения покрытия: **полное** (в роли кандидата), **частичное**,
 **не установлено**, **неприменимо**.
@@ -21,12 +23,12 @@
 | C5 edit | r01 основной; r12 дубль, не в контуре; r17 только EDT | частичное (УФ+метаданные) | c01-facade, c12-managed-forms | высокая заявка | стыковка Unica; ОФ не требуется |
 | C6 static | r01 `unica.check`; r09 CheckConfig/EDT | частичное | c01, c09-eight-tools | продуктовая заявка | компактность отчёта |
 | C7 build/run | r01 `unica.run`; r09 build/launch | частичное | c09-eight-tools | высокая заявка | стыковка / execution |
-| C8 runtime/UI test | r09 YaXUnit (сервер); UI: **Answer42 и Vanessa предложены, не аудированы**; r12 Vanessa-скил — не движок | частичное | c09-eight-tools | YaXUnit заявлен; UI неизвестно | стыковка r09/Answer42/Vanessa |
+| C8 runtime/UI test | r09 YaXUnit (сервер); UI: **r20 Answer42 и r21 Vanessa в реестре, не аудированы**; r12 Vanessa-скил — не движок | частичное | c09-eight-tools | YaXUnit заявлен; UI неизвестно | стыковка r09/r20/r21 |
 | C9 compact results | r01 typed data; r15 fragments; r02 truncation (не в контуре) | частичное | architecture/tool-surface | заложено | замер токенов; фасад |
 | C10 min surface | фасад обязателен; r01 11 tools, r15 широкая, r09 8 | частичное без фасада | c01-facade, c15, c09-eight-tools | лучше у r01 как образца | стыковка фасада |
 | C11 знания вне окна | r15 SQLite; r01 кэш; r04 | полное у индексных | c15; c01; c04 | высокая | — |
 | C12 независимость от адаптера | r01 ядро vs plugin; r15 бинарь; Cursor не критерий | частичное | c01-mcp-json | средняя | свой фасад |
-| C13 feedback loop | контур r15→r01→r01.check/r09→r09/Answer42/Vanessa | системное, не закрыто одним | синтез v2 | собираемый на бумаге | стыковка; оркестратор |
+| C13 feedback loop | контур r15→r01→r01.check/r09→r09/r20/r21 | системное, не закрыто одним | синтез v2 | собираемый на бумаге | стыковка; оркестратор |
 | C14 без дубля | explore r15 не вместе с r02; edit r01 не вместе с r12/r13; docs unica.docs не вместе с r10/r18 | решение в DECISION | карточки | — | не подключать дубли |
 
 ## Альтернативы и сочетания
@@ -51,7 +53,8 @@
 
 - **Сборка+YaXUnit:** r09.
 - **Клиент без тестов:** r01 `unica.run`.
-- **UI формы / сценарий:** Answer42 и Vanessa — решение v2, не обзор 19.
+- **UI формы / сценарий:** r20 Answer42 и r21 Vanessa — решение v2;
+  в реестре PENDING, не обзор 19.
 - **Спецслучаи:** r06, r07, r17 (EDT; конфликт с обязательными ОФ в v1 снят, роль EDT не выросла).
 
 ### Предлагаемый минимальный контур (цель v2)
@@ -62,17 +65,18 @@
          ├ docs    → unica.docs
          ├ edit    → r01
          ├ static  → unica.check и/или r09 Check*
-         └ verify  → r09 YaXUnit; form → Answer42; scenario → Vanessa
+         └ verify  → r09 YaXUnit; form → r20; scenario → r21
 ```
 
 Все связи `PROPOSED_INTEGRATION`. Стыковка не проверялась
-(`VERIFIED_INTEGRATION` нет). Взаимных зависимостей в коде 19 входов
-между этими репозиториями не найдено; Answer42/Vanessa в 19 не входили.
+(`VERIFIED_INTEGRATION` нет). Взаимных зависимостей в коде обзора 19
+между r01/r15/r09 не найдено; r20/r21 в том обзоре не входили и ещё
+не читались.
 
 ## Пробелы
 
 1. Стыковка пяти выбранных с фасадом — не исследована (главный пробел v2).
-2. Answer42 и Vanessa — без карточек обзора.
+2. r20 Answer42 и r21 Vanessa — заготовки, глубина не достигнута.
 3. Точность графа r15 и компактность отчёта r09 — не execution.
 4. Call graph на поверхности Unica v0.13 — не поддержан (explore закрывает r15).
 5. Структура обычных форм — по-прежнему отсутствует, **не блокер** цели v2.

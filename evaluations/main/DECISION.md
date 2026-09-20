@@ -1,13 +1,14 @@
 # Выбранный контур агента для разработки 1С
 
-Дата: 2026-09-20. Версия цели: 2 ([GOAL-CHANGE.md](GOAL-CHANGE.md)).
+Дата: 2026-09-20. Версия цели: 2.
 Статус: **состав контура выбран**. Внедрение рано: стыковка пяти
 компонентов с фасадом не исследована.
 
-Это не рейтинг всех 19 кандидатов и не обещание, что продукты прогнали
-на вашей базе. Obзор 19 — [REPORT.md](REPORT.md) и снимок
-[history/goal-v1/](history/goal-v1/). Vanessa и Answer42 во входные 19
-не входили; карточек обзора у них нет.
+Это не рейтинг всех кандидатов и не обещание, что продукты прогнали
+на вашей базе. Обзор r01–r19 — [REPORT.md](REPORT.md). Answer42 и
+Vanessa — r20/r21 в активном [INVENTORY.json](INVENTORY.json):
+`NOT_CHECKED` / `PENDING`, карточки-заготовки, материалов не читали.
+Снимок обзора при цели v1 (`history/goal-v1/`) не читать по умолчанию.
 
 ## Что входит в состав
 
@@ -19,8 +20,8 @@
 | Поиск по конфигурации | [code-index-mcp](https://github.com/Regsorm/code-index-mcp) (`r15`, сборка `bsl-indexer`) | Найти объект, модуль, callers, обработчики, не загружая выгрузку в чат |
 | Правки, справка, проверка узла, запуск 1С | [Unica](https://github.com/IngvarConsulting/unica) (`r01`) | Читать/менять XML метаданных и управляемых форм, `unica.docs`, `unica.check`, `unica.run` |
 | Сборка и серверные тесты | [mcp-onec-test-runner](https://github.com/alkoleft/mcp-onec-test-runner) (`r09`) | Designer/IBCMD, YaXUnit, синтаксис конфигуратора/EDT |
-| Живая форма в цикле разработки | [Answer42](https://gitlab.com/platform42/answer42-mcp) ([PyPI](https://pypi.org/project/answer42/)) | Открыть форму, нажать, заполнить, скрин/evidence через Test Client |
-| Сценарий и регрессия | [Vanessa Automation](https://github.com/Pr-Mex/vanessa-automation) ([MCP](https://pr-mex.github.io/vanessa-automation/dev/AI/)) | `.feature`, цепочки документов, полноценный UI-сценарий |
+| Живая форма в цикле разработки | [Answer42](https://gitlab.com/platform42/answer42-mcp) (`r20`, [PyPI](https://pypi.org/project/answer42/)) | Открыть форму, нажать, заполнить, скрин/evidence через Test Client |
+| Сценарий и регрессия | [Vanessa Automation](https://github.com/Pr-Mex/vanessa-automation) (`r21`, [MCP](https://pr-mex.github.io/vanessa-automation/dev/AI/)) | `.feature`, цепочки документов, полноценный UI-сценарий |
 
 Обвязка — не шестой 1С-движок. Это маршрутизатор: агент видит **мало
 стабильных операций**, а внутри вызывается нужный продукт. Большие
@@ -86,8 +87,8 @@ Unica **не** основной поиск по большой конфигур�
   метаданных, C4 (`unica.docs`), C5–C7 (Unica / r09), часть C8 (YaXUnit),
   C11.
 - Только вместе с фасадом: C10, C13.
-- Остаток C8 (UI формы и сценария) — Answer42 и Vanessa, без карточек
-  обзора.
+- Остаток C8 (UI формы и сценария) — r20 Answer42 и r21 Vanessa,
+  глубина не достигнута.
 - Не закрывают и не блокируют: отладчик вне EDT; структура обычных форм.
 
 ## Следующий этап — не внедрение

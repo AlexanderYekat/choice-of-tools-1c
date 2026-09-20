@@ -11,16 +11,21 @@ open-source компонентов собрать для ежедневной р
 ## Где читать результат
 
 Актуальное исследование: [`evaluations/main/`](evaluations/main/).
-Сначала [`evaluations/main/STATE.md`](evaluations/main/STATE.md).
+Сначала [`evaluations/main/STATE.md`](evaluations/main/STATE.md) — обычное
+продолжение не требует каталога `history/goal-v1/`.
 
 - [`evaluations/main/STATE.md`](evaluations/main/STATE.md) — порядок чтения и следующий шаг.
-- [`evaluations/main/GOAL-CHANGE.md`](evaluations/main/GOAL-CHANGE.md) — смена цели v1 → v2.
+- [`evaluations/main/request.json`](evaluations/main/request.json) / [`request.json`](request.json) — текущий вход (цель v2, 21 URL).
 - [`evaluations/main/DECISION.md`](evaluations/main/DECISION.md) — выбранный состав контура (стыковка ещё впереди).
 - [`evaluations/main/FACADE.md`](evaluations/main/FACADE.md) — методика обвязки.
-- [`evaluations/main/history/goal-v1/`](evaluations/main/history/goal-v1/) — снимок цели v1.
+- [`evaluations/main/VALIDATION.md`](evaluations/main/VALIDATION.md) — план S1–S5.
 - [`evaluations/main/REPORT.md`](evaluations/main/REPORT.md) — синтез относительно текущей цели.
-- [`evaluations/main/reports/`](evaluations/main/reports/) — карточки обзора 19.
-- [`request.json`](request.json) — текущий вход (цель v2).
+- [`evaluations/main/reports/`](evaluations/main/reports/) — карточки: r01–r19 обзор, r20/r21 заготовки.
+
+По необходимости (происхождение v1, старый критерий, evidence обзора):
+
+- [`evaluations/main/GOAL-CHANGE.md`](evaluations/main/GOAL-CHANGE.md) — смена цели v1 → v2.
+- [`evaluations/main/history/goal-v1/`](evaluations/main/history/goal-v1/) — неизменяемый снимок цели v1 (исходные 19).
 
 ## Как продолжить исследование
 
