@@ -1,8 +1,8 @@
-# Local user materials and research results.
-/evaluations/
-/request.json
+# Full clones of evaluated repositories, not research artifacts.
 **/_sources/
 **/source-checkouts/
+
+# Local environments and caches.
 **/.venv/
 **/node_modules/
 **/__pycache__/
@@ -10,6 +10,8 @@
 .pytest_cache/
 /tests/.tmp/
 *.tmp
+
+# Secrets.
 .env
 .env.*
 *.key
