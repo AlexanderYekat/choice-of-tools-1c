@@ -884,7 +884,8 @@
         "s21-cli-doc",
         "s21-jsonparams",
         "s21-return-status",
-        "s21-tool-surface"
+        "s21-mcp-tools",
+        "s21-mcp-register"
       ],
       "run_ids": [],
       "limitations": "This is an architectural inference; performance and error detail require execution comparison."
