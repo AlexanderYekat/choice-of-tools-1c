@@ -73,6 +73,7 @@ r20, r21 (`NOT_CHECKED` / `PENDING`).
 
 ## Следующий эксперимент и состояние
 
-Не V1 (Unica в Cursor) и не внедрение. План стыковки —
+Не V1 (Unica в Cursor) и не внедрение. Подробный план стыковки —
+[INTEGRATION-PLAN.md](INTEGRATION-PLAN.md); статусы S1–S5 —
 [VALIDATION.md](VALIDATION.md). Этот отчёт его не запускает.
 Точка продолжения — [STATE.md](STATE.md).
