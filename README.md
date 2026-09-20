@@ -13,6 +13,7 @@ open-source компонентов собрать для ежедневной р
 Актуальное исследование: [`evaluations/main/`](evaluations/main/).
 
 - [`evaluations/main/DECISION.md`](evaluations/main/DECISION.md) — **выбранный контур**: Unica, code-index-mcp, тестовый раннер, Answer42, Vanessa и обвязка.
+- [`evaluations/main/FACADE.md`](evaluations/main/FACADE.md) — методика фасада: когда включается, несколько баз, мягкие требования к инструментам.
 - [`evaluations/main/GOAL-CHANGE.md`](evaluations/main/GOAL-CHANGE.md) — чем это решение отличается от вывода обзора.
 - [`evaluations/main/REPORT.md`](evaluations/main/REPORT.md) — обзор 19 кандидатов (исторический синтез).
 - [`evaluations/main/reports/`](evaluations/main/reports/) — карточки кандидатов.
