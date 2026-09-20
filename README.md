@@ -11,15 +11,16 @@ open-source компонентов собрать для ежедневной р
 ## Где читать результат
 
 Актуальное исследование: [`evaluations/main/`](evaluations/main/).
+Сначала [`evaluations/main/STATE.md`](evaluations/main/STATE.md).
 
-- [`evaluations/main/DECISION.md`](evaluations/main/DECISION.md) — **выбранный контур**: Unica, code-index-mcp, тестовый раннер, Answer42, Vanessa и обвязка.
-- [`evaluations/main/FACADE.md`](evaluations/main/FACADE.md) — методика фасада: когда включается, несколько баз, мягкие требования к инструментам.
-- [`evaluations/main/GOAL-CHANGE.md`](evaluations/main/GOAL-CHANGE.md) — чем это решение отличается от вывода обзора.
-- [`evaluations/main/REPORT.md`](evaluations/main/REPORT.md) — обзор 19 кандидатов (исторический синтез).
-- [`evaluations/main/reports/`](evaluations/main/reports/) — карточки кандидатов.
-- [`evaluations/main/CAPABILITY-MAP.md`](evaluations/main/CAPABILITY-MAP.md) — какие требования закрывает каждый кандидат.
-- [`evaluations/main/STATE.md`](evaluations/main/STATE.md) — что сделано и с чего продолжить.
-- [`request.json`](request.json) — исходная цель, ограничения и список репозиториев.
+- [`evaluations/main/STATE.md`](evaluations/main/STATE.md) — порядок чтения и следующий шаг.
+- [`evaluations/main/GOAL-CHANGE.md`](evaluations/main/GOAL-CHANGE.md) — смена цели v1 → v2.
+- [`evaluations/main/DECISION.md`](evaluations/main/DECISION.md) — выбранный состав контура (стыковка ещё впереди).
+- [`evaluations/main/FACADE.md`](evaluations/main/FACADE.md) — методика обвязки.
+- [`evaluations/main/history/goal-v1/`](evaluations/main/history/goal-v1/) — снимок цели v1.
+- [`evaluations/main/REPORT.md`](evaluations/main/REPORT.md) — синтез относительно текущей цели.
+- [`evaluations/main/reports/`](evaluations/main/reports/) — карточки обзора 19.
+- [`request.json`](request.json) — текущий вход (цель v2).
 
 ## Как продолжить исследование
 

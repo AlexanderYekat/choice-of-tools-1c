@@ -1,0 +1,482 @@
+{
+  "schema_version": "1.0",
+  "input_count": 19,
+  "repositories": [
+    {
+      "id": "r01",
+      "input_index": 1,
+      "input_url": "https://github.com/IngvarConsulting/unica",
+      "canonical_url": "https://github.com/IngvarConsulting/unica",
+      "access": "AVAILABLE",
+      "access_reason": "GitHub API repos/IngvarConsulting/unica отвечает 200, прочитано 2026-09-20.",
+      "default_branch": "main",
+      "commit": "56a67d4a460c97101b6b542b4fe940298ab0edd8",
+      "commit_source": "https://api.github.com/repos/IngvarConsulting/unica/commits/main",
+      "origin": {
+        "kind": "ORIGINAL",
+        "upstream_url": null,
+        "comparison": "NOT_APPLICABLE"
+      },
+      "project_type": "Rust CLI/плагин для Codex и Claude Code: локальный индекс конфигурации 1С, справка платформы, работа с ИБ",
+      "roles": [
+        "explore-index",
+        "platform-docs",
+        "runtime-access",
+        "agent-integration-layer"
+      ],
+      "priority": "Высокий: единственный кандидат, который сам заявляет целостный контур агента для 1С с локальным индексом и узкой поверхностью.",
+      "scope": "OVERVIEW",
+      "duplicate_of": null,
+      "report": "reports/r01.md"
+    },
+    {
+      "id": "r02",
+      "input_index": 2,
+      "input_url": "https://github.com/Dach-Coin/rlm-tools-bsl",
+      "canonical_url": "https://github.com/Dach-Coin/rlm-tools-bsl",
+      "access": "AVAILABLE",
+      "access_reason": "GitHub API repos/Dach-Coin/rlm-tools-bsl отвечает 200, прочитано 2026-09-20.",
+      "default_branch": "master",
+      "commit": "278f61fc4537220fba085132d5405ab808d3e190",
+      "commit_source": "https://api.github.com/repos/Dach-Coin/rlm-tools-bsl/commits/master",
+      "origin": {
+        "kind": "ORIGINAL",
+        "upstream_url": null,
+        "comparison": "NOT_APPLICABLE"
+      },
+      "project_type": "Python MCP-сервер: SQLite-индекс конфигураций 1С (CF/EDT/CFE), 60+ внутренних helper-операций за малым числом MCP-tools",
+      "roles": [
+        "explore-index",
+        "capability-facade",
+        "core-library"
+      ],
+      "priority": "Высокий: прямо реализует progressive disclosure и progressive narrowing — ключевые критерии C1–C3.",
+      "scope": "OVERVIEW",
+      "duplicate_of": null,
+      "report": "reports/r02.md"
+    },
+    {
+      "id": "r03",
+      "input_index": 3,
+      "input_url": "https://github.com/alkoleft/v8-context-research",
+      "canonical_url": "https://github.com/alkoleft/v8-context-research",
+      "access": "AVAILABLE",
+      "access_reason": "GitHub API repos/alkoleft/v8-context-research отвечает 200, прочитано 2026-09-20.",
+      "default_branch": "main",
+      "commit": "1e4ce5dac59d55e15136dced8a212dd0920aa7d5",
+      "commit_source": "https://api.github.com/repos/alkoleft/v8-context-research/commits/main",
+      "origin": {
+        "kind": "ORIGINAL",
+        "upstream_url": null,
+        "comparison": "NOT_APPLICABLE"
+      },
+      "project_type": "Исследовательский Python-репозиторий: анализ форматов контекста платформы 1С (syntax helper, HBK), не продукт",
+      "roles": [
+        "research-source",
+        "format-reference"
+      ],
+      "priority": "Низкий: вспомогательный источник знаний о форматах, не компонент архитектуры.",
+      "scope": "OVERVIEW",
+      "duplicate_of": null,
+      "report": "reports/r03.md"
+    },
+    {
+      "id": "r04",
+      "input_index": 4,
+      "input_url": "https://github.com/alkoleft/v8-context-hbk",
+      "canonical_url": "https://github.com/alkoleft/v8-context-hbk",
+      "access": "AVAILABLE",
+      "access_reason": "GitHub API repos/alkoleft/v8-context-hbk отвечает 200, прочитано 2026-09-20.",
+      "default_branch": "master",
+      "commit": "832a5bff810e368f34d005c471481c2091395455",
+      "commit_source": "https://api.github.com/repos/alkoleft/v8-context-hbk/commits/master",
+      "origin": {
+        "kind": "ORIGINAL",
+        "upstream_url": null,
+        "comparison": "NOT_APPLICABLE"
+      },
+      "project_type": "Rust библиотека/CLI чтения HBK-файлов справки 1С",
+      "roles": [
+        "core-library",
+        "docs-source-extractor"
+      ],
+      "priority": "Средний: низкоуровневый поставщик данных для capability docs; сам по себе агенту не нужен.",
+      "scope": "OVERVIEW",
+      "duplicate_of": null,
+      "report": "reports/r04.md"
+    },
+    {
+      "id": "r05",
+      "input_index": 5,
+      "input_url": "https://github.com/Pr-Mex/UItoolsFor1C",
+      "canonical_url": "https://github.com/Pr-Mex/UItoolsFor1C",
+      "access": "AVAILABLE",
+      "access_reason": "GitHub API repos/Pr-Mex/UItoolsFor1C отвечает 200, прочитано 2026-09-20.",
+      "default_branch": "master",
+      "commit": "3a3cf3c3f9541fad246e696f6ac6da83fd88ce8b",
+      "commit_source": "https://api.github.com/repos/Pr-Mex/UItoolsFor1C/commits/master",
+      "origin": {
+        "kind": "ORIGINAL",
+        "upstream_url": null,
+        "comparison": "NOT_APPLICABLE"
+      },
+      "project_type": "Delphi/Pascal внешние компоненты и утилиты для работы с UI платформы 1С (Windows), последняя активность 2019",
+      "roles": [
+        "ui-automation-primitive",
+        "special-case-tool"
+      ],
+      "priority": "Низкий: устаревший спецслучай для UI-автоматизации обычных форм; не основа контура.",
+      "scope": "OVERVIEW",
+      "duplicate_of": null,
+      "report": "reports/r05.md"
+    },
+    {
+      "id": "r06",
+      "input_index": 6,
+      "input_url": "https://github.com/bia-technologies/rat",
+      "canonical_url": "https://github.com/bia-technologies/rat",
+      "access": "AVAILABLE",
+      "access_reason": "GitHub API repos/bia-technologies/rat отвечает 200, прочитано 2026-09-20.",
+      "default_branch": "develop",
+      "commit": "4d256e3fbe34e5c6ea46fc8c0956271a6a8024c9",
+      "commit_source": "https://api.github.com/repos/bia-technologies/rat/commits/develop",
+      "origin": {
+        "kind": "ORIGINAL",
+        "upstream_url": null,
+        "comparison": "NOT_APPLICABLE"
+      },
+      "project_type": "Расширение конфигурации 1С (Remote API for Testing): HTTP/RPC-доступ внутрь работающей ИБ для тестов и автоматизации",
+      "roles": [
+        "runtime-verification",
+        "in-base-execution"
+      ],
+      "priority": "Высокий: закрывает runtime-проверку внутри ИБ без UI-драйвера, что критично для feedback loop.",
+      "scope": "OVERVIEW",
+      "duplicate_of": null,
+      "report": "reports/r06.md"
+    },
+    {
+      "id": "r07",
+      "input_index": 7,
+      "input_url": "https://github.com/IT-Medved/onec-setup-build-env-action",
+      "canonical_url": "https://github.com/IT-Medved/onec-setup-build-env-action",
+      "access": "AVAILABLE",
+      "access_reason": "GitHub API repos/IT-Medved/onec-setup-build-env-action отвечает 200, прочитано 2026-09-20.",
+      "default_branch": "develop",
+      "commit": "350d87cd9033e2c8be280513151adfc3c3529c47",
+      "commit_source": "https://api.github.com/repos/IT-Medved/onec-setup-build-env-action/commits/develop",
+      "origin": {
+        "kind": "ORIGINAL",
+        "upstream_url": null,
+        "comparison": "NOT_APPLICABLE"
+      },
+      "project_type": "GitHub Action (TypeScript) для установки платформы 1С, EDT, OneScript и сопутствующих инструментов в CI",
+      "roles": [
+        "ci-environment-provisioning"
+      ],
+      "priority": "Низкий для локального контура. README — шаблон typescript-action; сам action в src/index.ts ставит 1С/EDT через oneget.",
+      "scope": "OVERVIEW",
+      "duplicate_of": null,
+      "report": "reports/r07.md"
+    },
+    {
+      "id": "r08",
+      "input_index": 8,
+      "input_url": "https://github.com/ruslan-hut/onec-mcp",
+      "canonical_url": "https://github.com/ruslan-hut/onec-mcp",
+      "access": "AVAILABLE",
+      "access_reason": "GitHub API repos/ruslan-hut/onec-mcp отвечает 200, прочитано 2026-09-20.",
+      "default_branch": "main",
+      "commit": "245de611ff2acc46e7b8f6a55e50a169645c8e90",
+      "commit_source": "https://api.github.com/repos/ruslan-hut/onec-mcp/commits/main",
+      "origin": {
+        "kind": "ORIGINAL",
+        "upstream_url": null,
+        "comparison": "NOT_APPLICABLE"
+      },
+      "project_type": "Go MCP-шлюз между LLM-клиентом и работающей базой 1С через OData/HTTP-сервисы",
+      "roles": [
+        "runtime-data-access"
+      ],
+      "priority": "Низкий для цели разработки: ориентирован на бизнес-данные ERP, а не на исходники и разработку.",
+      "scope": "OVERVIEW",
+      "duplicate_of": null,
+      "report": "reports/r08.md"
+    },
+    {
+      "id": "r09",
+      "input_index": 9,
+      "input_url": "https://github.com/alkoleft/mcp-onec-test-runner",
+      "canonical_url": "https://github.com/alkoleft/mcp-onec-test-runner",
+      "access": "AVAILABLE",
+      "access_reason": "GitHub API repos/alkoleft/mcp-onec-test-runner отвечает 200, прочитано 2026-09-20.",
+      "default_branch": "develop",
+      "commit": "b765b358c39eee85669ddd3245ebfbdae423f73b",
+      "commit_source": "https://api.github.com/repos/alkoleft/mcp-onec-test-runner/commits/develop",
+      "origin": {
+        "kind": "ORIGINAL",
+        "upstream_url": null,
+        "comparison": "NOT_APPLICABLE"
+      },
+      "project_type": "Kotlin MCP-сервер: обновление/сборка ИБ из исходников (designer/ibcmd) и запуск тестов YaXUnit с компактным отчётом",
+      "roles": [
+        "build-and-update",
+        "test-execution",
+        "feedback-loop"
+      ],
+      "priority": "Высокий: единственный кандидат связки сборка → YaXUnit. README пишет 11 tools, код — 8.",
+      "scope": "OVERVIEW",
+      "duplicate_of": null,
+      "report": "reports/r09.md"
+    },
+    {
+      "id": "r10",
+      "input_index": 10,
+      "input_url": "https://github.com/alkoleft/mcp-bsl-platform-context",
+      "canonical_url": "https://github.com/alkoleft/mcp-bsl-platform-context",
+      "access": "AVAILABLE",
+      "access_reason": "GitHub API repos/alkoleft/mcp-bsl-platform-context отвечает 200, прочитано 2026-09-20.",
+      "default_branch": "develop",
+      "commit": "4ffa5550da78160d490b8d38d80fd6da4c4b1663",
+      "commit_source": "https://api.github.com/repos/alkoleft/mcp-bsl-platform-context/commits/develop",
+      "origin": {
+        "kind": "ORIGINAL",
+        "upstream_url": null,
+        "comparison": "NOT_APPLICABLE"
+      },
+      "project_type": "Kotlin MCP-сервер: поиск и точная справка по синтаксису BSL и объектной модели платформы 1С",
+      "roles": [
+        "platform-docs",
+        "capability-docs"
+      ],
+      "priority": "Высокий: основной кандидат на capability docs с малой tool surface.",
+      "scope": "OVERVIEW",
+      "duplicate_of": null,
+      "report": "reports/r10.md"
+    },
+    {
+      "id": "r11",
+      "input_index": 11,
+      "input_url": "https://github.com/1C-Migration-Lab/doc1cdirty",
+      "canonical_url": "https://github.com/1C-Migration-Lab/doc1cdirty",
+      "access": "AVAILABLE",
+      "access_reason": "GitHub API repos/1C-Migration-Lab/doc1cdirty отвечает 200, прочитано 2026-09-20.",
+      "default_branch": "main",
+      "commit": "95dc6864c205969bfd7b9f5cac663a5043b89a95",
+      "commit_source": "https://api.github.com/repos/1C-Migration-Lab/doc1cdirty/commits/main",
+      "origin": {
+        "kind": "ORIGINAL",
+        "upstream_url": null,
+        "comparison": "NOT_APPLICABLE"
+      },
+      "project_type": "Выгрузка документации платформы 1С в HTML (сырой дамп), без кода обработки",
+      "roles": [
+        "docs-corpus"
+      ],
+      "priority": "Низкий: сырой корпус документации; полезен только как альтернативный источник данных для docs.",
+      "scope": "OVERVIEW",
+      "duplicate_of": null,
+      "report": "reports/r11.md"
+    },
+    {
+      "id": "r12",
+      "input_index": 12,
+      "input_url": "https://github.com/Desko77/cursor-1c-skills",
+      "canonical_url": "https://github.com/Desko77/cursor-1c-skills",
+      "access": "AVAILABLE",
+      "access_reason": "GitHub API repos/Desko77/cursor-1c-skills отвечает 200, прочитано 2026-09-20.",
+      "default_branch": "master",
+      "commit": "8e9faca5bf516215c2a67a040c09288e2a31c16a",
+      "commit_source": "https://api.github.com/repos/Desko77/cursor-1c-skills/commits/master",
+      "origin": {
+        "kind": "ORIGINAL",
+        "upstream_url": null,
+        "comparison": "NOT_APPLICABLE"
+      },
+      "project_type": "Набор skills и rules для Cursor + Python-скрипты сборки/разбора исходников 1С (XML ↔ компактный JSON)",
+      "roles": [
+        "edit-toolkit",
+        "knowledge-skills",
+        "progressive-disclosure-pattern"
+      ],
+      "priority": "Высокий как Cursor-native fallback edit для метаданных и управляемых Form.xml; ordinary/Form.bin не доказаны.",
+      "scope": "OVERVIEW",
+      "duplicate_of": null,
+      "report": "reports/r12.md"
+    },
+    {
+      "id": "r13",
+      "input_index": 13,
+      "input_url": "https://github.com/Desko77/claude-code-skills-1c",
+      "canonical_url": "https://github.com/Desko77/claude-code-skills-1c",
+      "access": "AVAILABLE",
+      "access_reason": "GitHub API repos/Desko77/claude-code-skills-1c отвечает 200, прочитано 2026-09-20.",
+      "default_branch": "main",
+      "commit": "3accdd9a57aca1aabbe49a892a932df403ad5059",
+      "commit_source": "https://api.github.com/repos/Desko77/claude-code-skills-1c/commits/main",
+      "origin": {
+        "kind": "ORIGINAL",
+        "upstream_url": null,
+        "comparison": "NOT_APPLICABLE"
+      },
+      "project_type": "Порт того же набора skills/скриптов под формат Claude Code Skills",
+      "roles": [
+        "edit-toolkit",
+        "knowledge-skills"
+      ],
+      "priority": "Не включать отдельно: listing skills совпадает с r12, другая упаковка (Claude Code).",
+      "scope": "OVERVIEW",
+      "duplicate_of": null,
+      "report": "reports/r13.md"
+    },
+    {
+      "id": "r14",
+      "input_index": 14,
+      "input_url": "https://github.com/Desko77/1c-templates-mcp",
+      "canonical_url": "https://github.com/Desko77/1c-templates-mcp",
+      "access": "AVAILABLE",
+      "access_reason": "GitHub API repos/Desko77/1c-templates-mcp отвечает 200, прочитано 2026-09-20.",
+      "default_branch": "master",
+      "commit": "074ed305f9e7a5bade70ee2f3561bf30117915a0",
+      "commit_source": "https://api.github.com/repos/Desko77/1c-templates-mcp/commits/master",
+      "origin": {
+        "kind": "ORIGINAL",
+        "upstream_url": null,
+        "comparison": "NOT_APPLICABLE"
+      },
+      "project_type": "Python MCP-сервер: семантический поиск по корпусу шаблонов кода BSL (ChromaDB + embeddings)",
+      "roles": [
+        "code-recipes",
+        "special-case-tool"
+      ],
+      "priority": "Низкий-средний: дополняет docs примерами, но добавляет тяжёлую зависимость и пересекается с docs/explore.",
+      "scope": "OVERVIEW",
+      "duplicate_of": null,
+      "report": "reports/r14.md"
+    },
+    {
+      "id": "r15",
+      "input_index": 15,
+      "input_url": "https://github.com/Regsorm/code-index-mcp",
+      "canonical_url": "https://github.com/Regsorm/code-index-mcp",
+      "access": "AVAILABLE",
+      "access_reason": "GitHub API repos/Regsorm/code-index-mcp отвечает 200, прочитано 2026-09-20.",
+      "default_branch": "main",
+      "commit": "4bde72b60a09187c0667d451a02c7be5e0169835",
+      "commit_source": "https://api.github.com/repos/Regsorm/code-index-mcp/commits/main",
+      "origin": {
+        "kind": "ORIGINAL",
+        "upstream_url": null,
+        "comparison": "NOT_APPLICABLE"
+      },
+      "project_type": "Rust MCP-сервер: SQLite-индекс кода, tree-sitter AST, 20 универсальных + 12 специализированных 1С/BSL инструментов, один бинарник",
+      "roles": [
+        "explore-index",
+        "core-library"
+      ],
+      "priority": "Высокий: прямой конкурент r02 по capability explore; нужен для выбора основного индекса.",
+      "scope": "OVERVIEW",
+      "duplicate_of": null,
+      "report": "reports/r15.md"
+    },
+    {
+      "id": "r16",
+      "input_index": 16,
+      "input_url": "https://github.com/Megabonstr/1c-ai-development-methodology",
+      "canonical_url": "https://github.com/Megabonstr/1c-ai-development-methodology",
+      "access": "AVAILABLE",
+      "access_reason": "GitHub API repos/Megabonstr/1c-ai-development-methodology отвечает 200, прочитано 2026-09-20.",
+      "default_branch": "main",
+      "commit": "2a62b5ee80cdf6aacabd158eb01bb42e818f712d",
+      "commit_source": "https://api.github.com/repos/Megabonstr/1c-ai-development-methodology/commits/main",
+      "origin": {
+        "kind": "ORIGINAL",
+        "upstream_url": null,
+        "comparison": "NOT_APPLICABLE"
+      },
+      "project_type": "Методология и документация процесса AI-разработки для 1С с вспомогательными Python-скриптами",
+      "roles": [
+        "methodology",
+        "process-template"
+      ],
+      "priority": "Низкий: источник идей процесса, не исполняемый компонент.",
+      "scope": "OVERVIEW",
+      "duplicate_of": null,
+      "report": "reports/r16.md"
+    },
+    {
+      "id": "r17",
+      "input_index": 17,
+      "input_url": "https://github.com/Desko77/ai-edt",
+      "canonical_url": "https://github.com/Desko77/ai-edt",
+      "access": "AVAILABLE",
+      "access_reason": "GitHub API repos/Desko77/ai-edt отвечает 200, прочитано 2026-09-20.",
+      "default_branch": "main",
+      "commit": "dd969b986ecfdb13798acce1ee541059b21ebdc0",
+      "commit_source": "https://api.github.com/repos/Desko77/ai-edt/commits/main",
+      "origin": {
+        "kind": "ORIGINAL",
+        "upstream_url": null,
+        "comparison": "NOT_APPLICABLE"
+      },
+      "project_type": "Java-плагин 1C:EDT, поднимающий MCP-сервер внутри IDE: семантика BSL, метаданные, валидация, отладка",
+      "roles": [
+        "semantic-analysis",
+        "static-validation",
+        "debug"
+      ],
+      "priority": "Спецслучай EDT: skill явно отказывает ordinary forms; AGPL.",
+      "scope": "OVERVIEW",
+      "duplicate_of": null,
+      "report": "reports/r17.md"
+    },
+    {
+      "id": "r18",
+      "input_index": 18,
+      "input_url": "https://github.com/Antonio1C/1c-syntax-helper-mcp",
+      "canonical_url": "https://github.com/Antonio1C/1c-syntax-helper-mcp",
+      "access": "AVAILABLE",
+      "access_reason": "GitHub API repos/Antonio1C/1c-syntax-helper-mcp отвечает 200, прочитано 2026-09-20.",
+      "default_branch": "main",
+      "commit": "16b02fd97a0234af64415b4e77c51612e16df7b3",
+      "commit_source": "https://api.github.com/repos/Antonio1C/1c-syntax-helper-mcp/commits/main",
+      "origin": {
+        "kind": "ORIGINAL",
+        "upstream_url": null,
+        "comparison": "NOT_APPLICABLE"
+      },
+      "project_type": "Python MCP-сервер поиска по синтакс-помощнику 1С (HBK)",
+      "roles": [
+        "platform-docs"
+      ],
+      "priority": "Средний: прямая альтернатива r10, нужен для решения о дублировании capability docs.",
+      "scope": "OVERVIEW",
+      "duplicate_of": null,
+      "report": "reports/r18.md"
+    },
+    {
+      "id": "r19",
+      "input_index": 19,
+      "input_url": "https://github.com/fserg/mcp-1c-v1",
+      "canonical_url": "https://github.com/fserg/mcp-1c-v1",
+      "access": "AVAILABLE",
+      "access_reason": "GitHub API repos/fserg/mcp-1c-v1 отвечает 200, прочитано 2026-09-20.",
+      "default_branch": "main",
+      "commit": "2699aeca00bbec4901a6ad35593accf71fe96136",
+      "commit_source": "https://api.github.com/repos/fserg/mcp-1c-v1/commits/main",
+      "origin": {
+        "kind": "ORIGINAL",
+        "upstream_url": null,
+        "comparison": "NOT_APPLICABLE"
+      },
+      "project_type": "TypeScript MCP-сервер: RAG-описание структуры конфигурации 1С по выгрузке",
+      "roles": [
+        "explore-index"
+      ],
+      "priority": "Средний-низкий: альтернатива explore на RAG; проверяется на дублирование с r02/r15.",
+      "scope": "OVERVIEW",
+      "duplicate_of": null,
+      "report": "reports/r19.md"
+    }
+  ]
+}

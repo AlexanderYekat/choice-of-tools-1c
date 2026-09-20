@@ -1,0 +1,303 @@
+===== 2358-2487 =====
+2358|def _parse_form_edt(root) -> dict:
+2359|    """Parse EDT Form.form XML → handlers, commands, attributes.
+2360|
+2361|    Uses namespace-agnostic child lookup because EDT forms may declare
+2362|    the form namespace as default (no prefix) or as ``form:``.
+2363|    """
+2364|    handlers: list[dict] = []
+2365|    commands: list[dict] = []
+2366|    attributes: list[dict] = []
+2367|
+2368|    xsi_ns = "http://www.w3.org/2001/XMLSchema-instance"
+2369|
+2370|    # --- Form-level handlers ---
+2371|    for h_el in _find_children(root, "handlers"):
+2372|        event = _xml_direct_text(h_el, "event")
+2373|        handler = _xml_direct_text(h_el, "name")
+2374|        if event and handler:
+2375|            handlers.append(
+2376|                {
+2377|                    "element": "",
+2378|                    "event": event,
+2379|                    "handler": handler,
+2380|                    "element_type": "",
+2381|                    "data_path": "",
+2382|                    "scope": "form",
+2383|                }
+2384|            )
+2385|
+2386|    # --- ExtInfo handlers ---
+2387|    ext_info = _find_child(root, "extInfo")
+2388|    if ext_info is not None:
+2389|        for h_el in _find_children(ext_info, "handlers"):
+2390|            event = _xml_direct_text(h_el, "event")
+2391|            handler = _xml_direct_text(h_el, "name")
+2392|            if event and handler:
+2393|                handlers.append(
+2394|                    {
+2395|                        "element": "",
+2396|                        "event": event,
+2397|                        "handler": handler,
+2398|                        "element_type": "",
+2399|                        "data_path": "",
+2400|                        "scope": "ext_info",
+2401|                    }
+2402|                )
+2403|
+2404|    # --- Elements (stack-based) ---
+2405|    stack = list(_find_children(root, "items"))
+2406|    while stack:
+2407|        item = stack.pop()
+2408|        # Control type from <type> child (InputField, CheckBoxField, etc.)
+2409|        # Fallback to xsi:type minus namespace prefix (FormField, FormGroup, Table)
+2410|        elem_type = _xml_direct_text(item, "type")
+2411|        if not elem_type:
+2412|            xsi_type = item.get(f"{{{xsi_ns}}}type", "")
+2413|            elem_type = xsi_type.split(":")[-1] if ":" in xsi_type else xsi_type
+2414|        elem_name = _xml_direct_text(item, "name")
+2415|        # data_path
+2416|        dp_el = _find_child(item, "dataPath")
+2417|        data_path = ""
+2418|        if dp_el is not None:
+2419|            data_path = _xml_direct_text(dp_el, "segments")
+2420|
+2421|        # element handlers
+2422|        for h_el in _find_children(item, "handlers"):
+2423|            event = _xml_direct_text(h_el, "event")
+2424|            handler = _xml_direct_text(h_el, "name")
+2425|            if event and handler:
+2426|                handlers.append(
+2427|                    {
+2428|                        "element": elem_name,
+2429|                        "event": event,
+2430|                        "handler": handler,
+2431|                        "element_type": elem_type,
+2432|                        "data_path": data_path,
+2433|                        "scope": "element",
+2434|                    }
+2435|                )
+2436|
+2437|        # push nested items (groups, tables)
+2438|        stack.extend(_find_children(item, "items"))
+2439|
+2440|    # --- Commands (EDT: <formCommands>) ---
+2441|    for cmd_el in _find_children(root, "formCommands"):
+2442|        cmd_name = _xml_direct_text(cmd_el, "name")
+2443|        action_el = _find_child(cmd_el, "action")
+2444|        action = ""
+2445|        if action_el is not None:
+2446|            handler_el = _find_child(action_el, "handler")
+2447|            if handler_el is not None:
+2448|                action = _xml_direct_text(handler_el, "name")
+2449|        if cmd_name:
+2450|            commands.append({"name": cmd_name, "action": action})
+2451|
+2452|    # --- Attributes ---
+2453|    for attr_el in _find_children(root, "attributes"):
+2454|        attr_name = _xml_direct_text(attr_el, "name")
+2455|        if not attr_name:
+2456|            continue
+2457|        # main flag
+2458|        main_val = _xml_direct_text(attr_el, "main")
+2459|        is_main = main_val.lower() == "true" if main_val else False
+2460|        # types
+2461|        vt_el = _find_child(attr_el, "valueType")
+2462|        types: list[str] = []
+2463|        if vt_el is not None:
+2464|            for t_el in vt_el:
+2465|                local = t_el.tag.split("}")[-1] if "}" in t_el.tag else t_el.tag
+2466|                if local == "types" and t_el.text:
+2467|                    types.append(t_el.text.strip())
+2468|        # DynamicList extInfo
+2469|        main_table = ""
+2470|        query_text = ""
+2471|        ext = _find_child(attr_el, "extInfo")
+2472|        if ext is not None:
+2473|            main_table = _xml_direct_text(ext, "mainTable")
+2474|            qt = _xml_direct_text(ext, "queryText")
+2475|            if qt:
+2476|                query_text = qt[:512]
+2477|
+2478|        attr_dict: dict = {"name": attr_name, "types": types, "main": is_main}
+2479|        if main_table:
+2480|            attr_dict["main_table"] = main_table
+2481|        if query_text:
+2482|            attr_dict["query_text"] = query_text
+2483|        attributes.append(attr_dict)
+2484|
+2485|    return {"handlers": handlers, "commands": commands, "attributes": attributes}
+2486|
+2487|
+
+===== 2488-2637 =====
+2488|def _parse_form_cf(root) -> dict:
+2489|    """Parse CF Ext/Form.xml → handlers, commands, attributes."""
+2490|    handlers: list[dict] = []
+2491|    commands: list[dict] = []
+2492|    attributes: list[dict] = []
+2493|
+2494|    # --- Form-level and ext_info events ---
+2495|    # CF puts both form-level and ext_info events in the same root <Events>.
+2496|    # Classify by event name: object lifecycle events → ext_info, rest → form.
+2497|    _EXT_INFO_EVENTS = frozenset(
+2498|        {
+2499|            "AfterWrite",
+2500|            "AfterWriteAtServer",
+2501|            "BeforeWrite",
+2502|            "BeforeWriteAtServer",
+2503|            "OnReadAtServer",
+2504|            "BeforeClose",
+2505|            "OnClose",
+2506|            "AfterWriteError",
+2507|            "BeforeRecordBreak",
+2508|        }
+2509|    )
+2510|    events_el = root.find("{%s}Events" % _FORM_NS_CF)
+2511|    if events_el is not None:
+2512|        for ev in events_el:
+2513|            local = ev.tag.split("}")[-1] if "}" in ev.tag else ev.tag
+2514|            if local == "Event":
+2515|                event_name = ev.get("name", "")
+2516|                handler = ev.text.strip() if ev.text else ""
+2517|                if event_name and handler:
+2518|                    scope = "ext_info" if event_name in _EXT_INFO_EVENTS else "form"
+2519|                    handlers.append(
+2520|                        {
+2521|                            "element": "",
+2522|                            "event": event_name,
+2523|                            "handler": handler,
+2524|                            "element_type": "",
+2525|                            "data_path": "",
+2526|                            "scope": scope,
+2527|                        }
+2528|                    )
+2529|
+2530|    # --- Elements (stack-based via ChildItems) ---
+2531|    stack = list(root.findall("{%s}ChildItems" % _FORM_NS_CF))
+2532|    # Also check for ChildItems one level deeper (some CF forms have wrapper)
+2533|    while stack:
+2534|        container = stack.pop()
+2535|        for child in container:
+2536|            local_tag = child.tag.split("}")[-1] if "}" in child.tag else child.tag
+2537|            if local_tag == "ChildItems":
+2538|                stack.append(child)
+2539|                continue
+2540|            # This is an element
+2541|            elem_name = child.get("name", "")
+2542|            elem_type = local_tag  # InputField, Table, UsualGroup, etc.
+2543|            # data_path
+2544|            dp_el = child.find("{%s}DataPath" % _FORM_NS_CF)
+2545|            data_path = ""
+2546|            if dp_el is not None:
+2547|                data_path = dp_el.text.strip() if dp_el.text else ""
+2548|
+2549|            # element events
+2550|            ev_el = child.find("{%s}Events" % _FORM_NS_CF)
+2551|            if ev_el is not None:
+2552|                for ev in ev_el:
+2553|                    ev_local = ev.tag.split("}")[-1] if "}" in ev.tag else ev.tag
+2554|                    if ev_local == "Event":
+2555|                        event_name = ev.get("name", "")
+2556|                        handler = ev.text.strip() if ev.text else ""
+2557|                        if event_name and handler:
+2558|                            handlers.append(
+2559|                                {
+2560|                                    "element": elem_name,
+2561|                                    "event": event_name,
+2562|                                    "handler": handler,
+2563|                                    "element_type": elem_type,
+2564|                                    "data_path": data_path,
+2565|                                    "scope": "element",
+2566|                                }
+2567|                            )
+2568|
+2569|            # push nested ChildItems (groups, tables)
+2570|            for sub_ci in child.findall("{%s}ChildItems" % _FORM_NS_CF):
+2571|                stack.append(sub_ci)
+2572|
+2573|    # --- Commands ---
+2574|    cmds_el = root.find("{%s}Commands" % _FORM_NS_CF)
+2575|    if cmds_el is not None:
+2576|        for cmd in cmds_el:
+2577|            local_tag = cmd.tag.split("}")[-1] if "}" in cmd.tag else cmd.tag
+2578|            if local_tag == "Command":
+2579|                cmd_name = cmd.get("name", "")
+2580|                action_el = cmd.find("{%s}Action" % _FORM_NS_CF)
+2581|                action = action_el.text.strip() if action_el is not None and action_el.text else ""
+2582|                if cmd_name:
+2583|                    commands.append({"name": cmd_name, "action": action})
+2584|
+2585|    # --- Attributes ---
+2586|    attrs_el = root.find("{%s}Attributes" % _FORM_NS_CF)
+2587|    if attrs_el is not None:
+2588|        for attr in attrs_el:
+2589|            local_tag = attr.tag.split("}")[-1] if "}" in attr.tag else attr.tag
+2590|            if local_tag != "Attribute":
+2591|                continue
+2592|            attr_name = attr.get("name", "")
+2593|            if not attr_name:
+2594|                continue
+2595|            # main: реальные формы Конфигуратора пишут <MainAttribute>, не <Main>
+2596|            # (замер: 331 вхождение <MainAttribute> и НОЛЬ <Main> на 400 живых CF-формах,
+2597|            # из-за чего attribute_is_main=1 не встречался в индексе ни разу).
+2598|            # <Main> оставлен как запасной вариант — стоит один поиск.
+2599|            is_main = False
+2600|            for tag in ("MainAttribute", "Main"):
+2601|                el = attr.find("{%s}%s" % (_FORM_NS_CF, tag))
+2602|                if el is not None and el.text:
+2603|                    is_main = el.text.strip().lower() == "true"
+2604|                    break
+2605|            # type
+2606|            type_el = attr.find("{%s}Type" % _FORM_NS_CF)
+2607|            types: list[str] = []
+2608|            if type_el is not None:
+2609|                for t in type_el:
+2610|                    t_local = t.tag.split("}")[-1] if "}" in t.tag else t.tag
+2611|                    if t_local == "Type" and t.text:
+2612|                        types.append(t.text.strip())
+2613|            # DynamicList settings
+2614|            main_table = ""
+2615|            query_text = ""
+2616|            xsi_ns = "http://www.w3.org/2001/XMLSchema-instance"
+2617|            settings_el = attr.find("{%s}Settings" % _FORM_NS_CF)
+2618|            if settings_el is not None:
+2619|                xsi_type = settings_el.get(f"{{{xsi_ns}}}type", "")
+2620|                if "DynamicList" in xsi_type:
+2621|                    mt_el = settings_el.find("{%s}MainTable" % _FORM_NS_CF)
+2622|                    if mt_el is not None and mt_el.text:
+2623|                        main_table = mt_el.text.strip()
+2624|                    qt_el = settings_el.find("{%s}QueryText" % _FORM_NS_CF)
+2625|                    if qt_el is not None and qt_el.text:
+2626|                        query_text = qt_el.text.strip()[:512]
+2627|
+2628|            attr_dict: dict = {"name": attr_name, "types": types, "main": is_main}
+2629|            if main_table:
+2630|                attr_dict["main_table"] = main_table
+2631|            if query_text:
+2632|                attr_dict["query_text"] = query_text
+2633|            attributes.append(attr_dict)
+2634|
+2635|    return {"handlers": handlers, "commands": commands, "attributes": attributes}
+2636|
+2637|
+
+===== 2638-2656 =====
+2638|def parse_form_xml(xml_content: str) -> dict | None:
+2639|    """Parse a 1C form XML (CF or EDT) → handlers, commands, attributes.
+2640|
+2641|    Auto-detects format by namespace.
+2642|    Returns None on parse error.
+2643|    """
+2644|    if not xml_content or not xml_content.strip():
+2645|        return None
+2646|    try:
+2647|        root = ET.fromstring(xml_content)
+2648|    except ET.ParseError:
+2649|        return None
+2650|
+2651|    if _FORM_NS_EDT in xml_content:
+2652|        return _parse_form_edt(root)
+2653|    if _FORM_NS_CF in xml_content:
+2654|        return _parse_form_cf(root)
+2655|    return None

@@ -1,0 +1,12 @@
+Excerpt from Antonio1C/1c-syntax-helper-mcp
+commit 16b02fd97a0234af64415b4e77c51612e16df7b3
+file src/models/mcp_models.py class MCPToolType:
+
+find_1c_help
+get_syntax_info
+get_quick_reference
+search_by_context
+list_object_members
+
+README names search_1c_syntax / get_1c_function_details / get_1c_object_info
+do not match this enum.

@@ -1,0 +1,22 @@
+Excerpt from Regsorm/code-index-mcp
+commit 4bde72b60a09187c0667d451a02c7be5e0169835
+file crates/bsl-extension/src/processor.rs
+fn additional_tools() registers 13 tools; unit test additional_tools_registered asserts len==13:
+
+get_object_structure
+get_form_handlers
+get_event_subscriptions
+find_path_bsl
+get_data_links
+find_data_path
+get_register_writers
+get_role_rights
+search_terms
+bsl_sql
+get_object_profile
+find_references
+get_dcs_schema
+
+file crates/bsl-extension/src/xml/forms.rs header:
+«Парсер XML-описаний управляемых форм» Form.xml / Ext/Form.xml.
+Form.bin not present in this parser.
