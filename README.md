@@ -18,7 +18,8 @@ open-source компонентов собрать для ежедневной р
 - [`evaluations/main/request.json`](evaluations/main/request.json) / [`request.json`](request.json) — текущий вход (цель v2, 21 URL).
 - [`evaluations/main/DECISION.md`](evaluations/main/DECISION.md) — выбранный состав контура (стыковка ещё впереди).
 - [`evaluations/main/FACADE.md`](evaluations/main/FACADE.md) — методика обвязки.
-- [`evaluations/main/VALIDATION.md`](evaluations/main/VALIDATION.md) — план S1–S5.
+- [`evaluations/main/INTEGRATION-PLAN.md`](evaluations/main/INTEGRATION-PLAN.md) — как исследовать стыковку пяти (аудит ещё не начат).
+- [`evaluations/main/VALIDATION.md`](evaluations/main/VALIDATION.md) — реестр S1–S5.
 - [`evaluations/main/REPORT.md`](evaluations/main/REPORT.md) — синтез относительно текущей цели.
 - [`evaluations/main/reports/`](evaluations/main/reports/) — карточки: r01–r19 обзор, r20/r21 заготовки.
 
