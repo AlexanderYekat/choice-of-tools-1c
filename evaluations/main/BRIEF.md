@@ -1,12 +1,12 @@
 # Цель и критерии: main
 
 Запуск: 20260920T044856175227Z. Версия цели: 2.
-Глубина выполненного обзора r01–r19: overview, кроме **r01 Unica —
-DEEP_STATIC по S1–S5**. **r20 Answer42, r21 Vanessa и r22 v8-runner-rust
-— DEEP_STATIC по S1–S5**. Состояние: критерии v2 зафиксированы; состав
-контура выбран: r22 вместо r09; план стыковки записан
-([INTEGRATION-PLAN.md](INTEGRATION-PLAN.md)); static стыковка r15 и
-внедрение не начаты.
+Глубина выполненного обзора r01–r19: overview, кроме **r01 Unica и
+r15 code-index-mcp — DEEP_STATIC по S1–S5**. **r20 Answer42, r21 Vanessa
+и r22 v8-runner-rust — DEEP_STATIC по S1–S5**. Состояние: критерии v2
+зафиксированы; состав контура выбран: r22 вместо r09; план стыковки
+записан ([INTEGRATION-PLAN.md](INTEGRATION-PLAN.md)); static стыковка
+пяти закрыта; внедрение и execution не начаты.
 Снимок v1 и текст перехода — по необходимости, не для обычного CONTINUE:
 `history/goal-v1/`, `GOAL-CHANGE.md`.
 
@@ -209,9 +209,13 @@ Cursor не критерий успеха. Одна capability не реализ
 ## Объём и разрешения
 
 Кандидаты входа: 22 URL, реестр [INVENTORY.json](INVENTORY.json).
-r01–r19: overview (как в снимке v1). **r20 Answer42 достиг DEEP_STATIC
-по S1–S5** на commit `0406669a88144834bfdf6086c7040a25cb76d24c` (ветка
-`beta`, v0.5.3). **r21 Vanessa достиг DEEP_STATIC по S1–S5**
+r01–r19: overview (как в снимке v1), кроме **r01 и r15 — DEEP_STATIC**.
+**r15 code-index-mcp достиг DEEP_STATIC по S1–S5** на commit
+`4bde72b60a09187c0667d451a02c7be5e0169835` (ветка `main`, v1.4.0;
+HEAD 2026-09-21 был `309cddb…`, SHA не подменялся). **r20 Answer42
+достиг DEEP_STATIC по S1–S5** на commit
+`0406669a88144834bfdf6086c7040a25cb76d24c` (ветка `beta`, v0.5.3).
+**r21 Vanessa достиг DEEP_STATIC по S1–S5**
 на commit `7db5c2bbbf91fd965613a6119121a098bf64cd9e`. **r22 v8-runner-rust
 достиг DEEP_STATIC по S1–S5** на commit
 `7ce1b062843d86644fe55741dbe0ee79f7ca767d` (ветка `master`, v0.5.1);
@@ -219,8 +223,8 @@ execution не выполнялся. Снимок `history/goal-v1` остаёт
 19. `permissions.* = false`.
 
 `request.json.depth` остаётся `overview` — deep-static выполнен для
-r20/r21/r22 по явной просьбе, не для всех 22.
+r01/r15/r20/r21/r22 по явной просьбе, не для всех 22.
 
-Следующее исполнение плана (не этот файл): интерфейсные трассы r01/r15
-по S1–S5; r22 уже на DEEP_STATIC. Код фасада и запуск продуктов не входят.
+Следующее исполнение плана (не этот файл): ограниченный execution
+после отдельного разрешения. Код фасада и установка продуктов не входят.
 `permissions.* = false`.

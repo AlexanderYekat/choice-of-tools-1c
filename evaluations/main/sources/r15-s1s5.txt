@@ -1,0 +1,73 @@
+Excerpt from Regsorm/code-index-mcp
+commit 4bde72b60a09187c0667d451a02c7be5e0169835
+S1–S5 static read 2026-09-21. HEAD main that day = 309cddb66a98a68a602d539e266f1934ddc1f99b
+(v1.4.2: MCP unknown-method text + data_version after this SHA). Pinned SHA not replaced.
+
+=== crates/bsl-indexer/src/main.rs ===
+Binary bsl-indexer registers BslLanguageProcessor then cli::run(registry).
+Only extra subcommand intercepted before core CLI: "enrich".
+
+=== crates/code-index-core/src/cli.rs ===
+Commands:
+  Serve { path: Vec alias=dir or dir, transport stdio|http default stdio,
+          host, port default 8011, config daemon.toml, serve_config }
+  Index { path positional or --path, --force }
+  Stats/Query/Init/Clean
+  SearchFunction / SearchClass / GetFunction / GetClass /
+  GetCallers / GetCallees / GetImports / GetFileSummary /
+  SearchText / GrepBody  — JSON to stdout via Storage::open_file_readonly
+  Daemon { Run, Status, Reload, Stop }
+
+No CLI subcommands for get_object_structure / get_form_handlers / other 1C named tools.
+
+get_db_path = <project>/.code-index/index.db
+build_repo_entries:
+  1) --path list (alias=dir or dir→alias default)
+  2) else --config [[paths]] effective_alias
+  3) else cwd alias=default
+  unique aliases required; empty .code-index/index.db created if missing.
+cmd_index: incremental by default; --force deletes db first; schema_extensions + index_extras via registry.resolve(None, root) (auto-detect).
+
+=== crates/code-index-core/src/mcp/mod.rs (header) ===
+Read-only MCP over SQLite. One stdio process holds several DBs.
+Dispatch by tool-call param `repo`. Before each tool-call checks daemon
+folder status for that repo.
+
+=== crates/code-index-core/src/daemon_core/config.rs ===
+[[paths]] path, optional alias, language, debounce.
+[tools] enabled = whitelist of MCP tool short names; empty → all allowed.
+[mcp] mass_mode_tools default empty; dedup_enabled default true.
+[cap] max_response_bytes / max_function_body_chars / cap_tools.
+daemon.toml is $CODE_INDEX_HOME/daemon.toml for long-lived daemon, not a
+per-project required 1C manifest.
+
+=== crates/code-index-core/src/daemon_core/language_detect.rs ===
+detect_by_root_markers: root Configuration.xml → bsl; then Cargo.toml, pyproject, go.mod, …
+NO Configuration.mdo / EDT branch here.
+detect_language = markers OR extension majority (.bsl/.os).
+
+=== crates/code-index-core/src/daemon_core/client.rs ===
+daemon_unavailable_hint: missing CODE_INDEX_HOME or missing daemon.json runtime-info.
+Docs: MCP tools then answer daemon_offline even if index.db already exists.
+
+=== crates/bsl-extension/src/processor.rs ===
+detects():
+  1) root Configuration.xml
+  2) detect_edt_src (Configuration.mdo under …/Configuration/)
+  3) WalkDir max_depth 3 for nested Configuration.xml (base/, extensions/<name>/)
+additional_tools: 13 names (see sources/r15-bsl-tools.txt). Conditional MCP
+registration when language=bsl.
+
+=== crates/bsl-extension/src/xml/edt_mdo.rs ===
+detect_edt_src: WalkDir max_depth 4, file Configuration.mdo whose parent
+directory is named Configuration; returns src/ (parent of Configuration/).
+
+=== server.json ===
+stdio transport; positional serve; named --path required repeated
+(alias=dir or dir).
+
+=== README.md (docs) ===
+bsl-indexer = 33 tools (20 universal + 1C set). HTTP default 127.0.0.1:8011/mcp
+or stdio. serve is read-only; daemon run builds index; without daemon MCP
+answers daemon_offline. npm package is core flavor without 1C.
+docs/bsl-indexer.md still says four 1C tools (drift vs registrar).

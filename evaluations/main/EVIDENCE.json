@@ -1056,6 +1056,143 @@
       ],
       "captured_at": "2026-09-21",
       "note": "Closed autodetection: markers Configuration.xml / Configuration.mdo; base layouts ., src, src/cf; extensions src/cfe and src/extensions."
+    },
+    {
+      "id": "s15-cli",
+      "repository_id": "r15",
+      "kind": "SOURCE",
+      "commit": "4bde72b60a09187c0667d451a02c7be5e0169835",
+      "url": "https://github.com/Regsorm/code-index-mcp/blob/4bde72b60a09187c0667d451a02c7be5e0169835/crates/code-index-core/src/cli.rs",
+      "path": "sources/r15-s1s5.txt",
+      "lines": [
+        11,
+        29
+      ],
+      "captured_at": "2026-09-21",
+      "note": "CLI: Serve path alias=dir stdio/http; Index; SearchFunction/GetFunction/GetCallers JSON from .code-index/index.db. No CLI for 1C named tools."
+    },
+    {
+      "id": "s15-bsl-main",
+      "repository_id": "r15",
+      "kind": "SOURCE",
+      "commit": "4bde72b60a09187c0667d451a02c7be5e0169835",
+      "url": "https://github.com/Regsorm/code-index-mcp/blob/4bde72b60a09187c0667d451a02c7be5e0169835/crates/bsl-indexer/src/main.rs",
+      "path": "crates/bsl-indexer/src/main.rs",
+      "lines": [
+        1,
+        80
+      ],
+      "captured_at": "2026-09-21",
+      "note": "bsl-indexer registers BslLanguageProcessor then cli::run; extra subcommand enrich only."
+    },
+    {
+      "id": "s15-mcp-header",
+      "repository_id": "r15",
+      "kind": "SOURCE",
+      "commit": "4bde72b60a09187c0667d451a02c7be5e0169835",
+      "url": "https://github.com/Regsorm/code-index-mcp/blob/4bde72b60a09187c0667d451a02c7be5e0169835/crates/code-index-core/src/mcp/mod.rs#L1-L6",
+      "path": "crates/code-index-core/src/mcp/mod.rs",
+      "lines": [
+        1,
+        6
+      ],
+      "captured_at": "2026-09-21",
+      "note": "Read-only MCP; several SQLite DBs; dispatch by repo; checks daemon folder status before each tool-call."
+    },
+    {
+      "id": "s15-tools-whitelist",
+      "repository_id": "r15",
+      "kind": "SOURCE",
+      "commit": "4bde72b60a09187c0667d451a02c7be5e0169835",
+      "url": "https://github.com/Regsorm/code-index-mcp/blob/4bde72b60a09187c0667d451a02c7be5e0169835/crates/code-index-core/src/daemon_core/config.rs",
+      "path": "sources/r15-s1s5.txt",
+      "lines": [
+        36,
+        42
+      ],
+      "captured_at": "2026-09-21",
+      "note": "[tools].enabled whitelist of MCP short names; empty means all tools. [cap] response size. [[paths]] alias/language."
+    },
+    {
+      "id": "s15-lang-detect",
+      "repository_id": "r15",
+      "kind": "SOURCE",
+      "commit": "4bde72b60a09187c0667d451a02c7be5e0169835",
+      "url": "https://github.com/Regsorm/code-index-mcp/blob/4bde72b60a09187c0667d451a02c7be5e0169835/crates/code-index-core/src/daemon_core/language_detect.rs#L26-L32",
+      "path": "crates/code-index-core/src/daemon_core/language_detect.rs",
+      "lines": [
+        26,
+        32
+      ],
+      "captured_at": "2026-09-21",
+      "note": "detect_by_root_markers: only root Configuration.xml for bsl; no EDT Configuration.mdo branch."
+    },
+    {
+      "id": "s15-detects",
+      "repository_id": "r15",
+      "kind": "SOURCE",
+      "commit": "4bde72b60a09187c0667d451a02c7be5e0169835",
+      "url": "https://github.com/Regsorm/code-index-mcp/blob/4bde72b60a09187c0667d451a02c7be5e0169835/crates/bsl-extension/src/processor.rs",
+      "path": "sources/r15-s1s5.txt",
+      "lines": [
+        53,
+        59
+      ],
+      "captured_at": "2026-09-21",
+      "note": "BslLanguageProcessor.detects: root Configuration.xml, detect_edt_src, WalkDir nested Configuration.xml max_depth 3."
+    },
+    {
+      "id": "s15-edt-mdo",
+      "repository_id": "r15",
+      "kind": "SOURCE",
+      "commit": "4bde72b60a09187c0667d451a02c7be5e0169835",
+      "url": "https://github.com/Regsorm/code-index-mcp/blob/4bde72b60a09187c0667d451a02c7be5e0169835/crates/bsl-extension/src/xml/edt_mdo.rs#L1146-L1165",
+      "path": "crates/bsl-extension/src/xml/edt_mdo.rs",
+      "lines": [
+        1146,
+        1165
+      ],
+      "captured_at": "2026-09-21",
+      "note": "detect_edt_src: WalkDir max_depth 4, Configuration.mdo whose parent dir is named Configuration."
+    },
+    {
+      "id": "s15-daemon-hint",
+      "repository_id": "r15",
+      "kind": "SOURCE",
+      "commit": "4bde72b60a09187c0667d451a02c7be5e0169835",
+      "url": "https://github.com/Regsorm/code-index-mcp/blob/4bde72b60a09187c0667d451a02c7be5e0169835/crates/code-index-core/src/daemon_core/client.rs#L32-L64",
+      "path": "crates/code-index-core/src/daemon_core/client.rs",
+      "lines": [
+        32,
+        64
+      ],
+      "captured_at": "2026-09-21",
+      "note": "daemon_unavailable_hint if CODE_INDEX_HOME or daemon.json runtime-info missing."
+    },
+    {
+      "id": "s15-readme-s1",
+      "repository_id": "r15",
+      "kind": "DOCUMENTATION",
+      "commit": "4bde72b60a09187c0667d451a02c7be5e0169835",
+      "url": "https://github.com/Regsorm/code-index-mcp/blob/4bde72b60a09187c0667d451a02c7be5e0169835/README.md",
+      "path": "README.md",
+      "lines": null,
+      "captured_at": "2026-09-21",
+      "note": "33 tools for bsl-indexer; serve read-only; daemon_offline without daemon; --path multi; HTTP 127.0.0.1:8011/mcp or stdio."
+    },
+    {
+      "id": "s15-server-json",
+      "repository_id": "r15",
+      "kind": "SOURCE",
+      "commit": "4bde72b60a09187c0667d451a02c7be5e0169835",
+      "url": "https://github.com/Regsorm/code-index-mcp/blob/4bde72b60a09187c0667d451a02c7be5e0169835/server.json",
+      "path": "server.json",
+      "lines": [
+        1,
+        40
+      ],
+      "captured_at": "2026-09-21",
+      "note": "MCP registry: stdio, positional serve, --path required repeated alias=dir or dir. Version field 0.11.0 lags workspace 1.4.0."
     }
   ],
   "claims": [
@@ -1750,6 +1887,120 @@
       ],
       "run_ids": [],
       "limitations": "Simultaneous dual-IB/dual-workspace was not executed."
+    },
+    {
+      "id": "c15-entry",
+      "repository_id": "r15",
+      "status": "SOURCE",
+      "statement": "bsl-indexer exposes one-shot CLI (index/search_function/get_function/get_callers) and MCP serve stdio/http; 1C named tools have no CLI subcommands.",
+      "source_ids": [
+        "s15-cli",
+        "s15-bsl-main",
+        "s15-processor"
+      ],
+      "run_ids": [],
+      "limitations": "Live --help and tools/list were not run."
+    },
+    {
+      "id": "c15-cli-core",
+      "repository_id": "r15",
+      "status": "SOURCE",
+      "statement": "CLI search/get/callers open <root>/.code-index/index.db read-only and print JSON; they do not go through MCP serve.",
+      "source_ids": [
+        "s15-cli"
+      ],
+      "run_ids": [],
+      "limitations": "Actual JSON shape and empty-index errors were not executed."
+    },
+    {
+      "id": "c15-path-alias",
+      "repository_id": "r15",
+      "status": "SOURCE",
+      "statement": "serve --path accepts repeated alias=dir (bare dir → alias default) or --config [[paths]]; tool-call selects repo=alias. Infobase is not a parameter.",
+      "source_ids": [
+        "s15-cli",
+        "s15-mcp-header",
+        "s15-server-json"
+      ],
+      "run_ids": [],
+      "limitations": "Federation serve.toml remote repos were not traced for S2."
+    },
+    {
+      "id": "c15-mcp-whitelist",
+      "repository_id": "r15",
+      "status": "SOURCE",
+      "statement": "daemon.toml [tools].enabled whitelists MCP short names; empty list means all registered tools (about 20 core plus 13 BSL when language=bsl).",
+      "source_ids": [
+        "s15-tools-whitelist",
+        "s15-processor",
+        "s15-readme-s1"
+      ],
+      "run_ids": [],
+      "limitations": "Exact live tools/list count of core tools was not captured; 20 is documentation plus README inventory."
+    },
+    {
+      "id": "c15-multirepo",
+      "repository_id": "r15",
+      "status": "SOURCE",
+      "statement": "One serve process may open several SQLite indexes, one per root at <root>/.code-index/index.db, dispatched by unique aliases.",
+      "source_ids": [
+        "s15-cli",
+        "s15-mcp-header"
+      ],
+      "run_ids": [],
+      "limitations": "Simultaneous two-dump queries were not executed."
+    },
+    {
+      "id": "c15-autodetect",
+      "repository_id": "r15",
+      "status": "SOURCE",
+      "statement": "BslLanguageProcessor.detects accepts root Configuration.xml, nested Configuration.xml within depth 2, and EDT Configuration.mdo via detect_edt_src. daemon.toml is not required for index or serve --path.",
+      "source_ids": [
+        "s15-detects",
+        "s15-edt-mdo",
+        "s15-cli"
+      ],
+      "run_ids": [],
+      "limitations": "Autodetect was not run on a real dump tree."
+    },
+    {
+      "id": "c15-lang-detect-gap",
+      "repository_id": "r15",
+      "status": "SOURCE",
+      "statement": "Daemon detect_by_root_markers maps only root Configuration.xml to bsl and has no EDT Configuration.mdo branch.",
+      "source_ids": [
+        "s15-lang-detect",
+        "s15-detects"
+      ],
+      "run_ids": [],
+      "limitations": "Extension-majority fallback may still yield bsl if .bsl files dominate; not executed."
+    },
+    {
+      "id": "c15-daemon-offline",
+      "repository_id": "r15",
+      "status": "DOCUMENTATION",
+      "statement": "Authors document that MCP serve answers daemon_offline without a running daemon and CODE_INDEX_HOME, even if index.db already exists.",
+      "source_ids": [
+        "s15-readme-s1",
+        "s15-mcp-header",
+        "s15-daemon-hint"
+      ],
+      "run_ids": [],
+      "limitations": "The exact return path that emits status daemon_offline was not line-traced beyond the MCP header and runtime-info hint."
+    },
+    {
+      "id": "c15-adapter-choice",
+      "repository_id": "r15",
+      "status": "INFERENCE",
+      "statement": "Facade should call bsl-indexer with named source aliases, hide raw tools/list via CLI or [tools].enabled, and run daemon+serve for 1C named explore tools. Patch of r15 is not required.",
+      "source_ids": [
+        "s15-cli",
+        "s15-tools-whitelist",
+        "s15-mcp-header",
+        "s15-processor"
+      ],
+      "run_ids": [],
+      "limitations": "Architectural inference; index/MCP smoke is NOT_RUN."
     }
   ],
   "runs": [
@@ -1837,6 +2088,23 @@
       "skipped": 0,
       "mocks_only": false,
       "reason": "permissions.fetch_sources/install_dependencies/build/run_tests/start_services=false; unica binary, 1C and apply/run were not started."
+    },
+    {
+      "id": "run-r15-no-exec",
+      "repository_id": "r15",
+      "commit": "4bde72b60a09187c0667d451a02c7be5e0169835",
+      "status": "NOT_RUN",
+      "kind": "OTHER",
+      "command": null,
+      "environment": "Windows 10, Cursor Agent; static GitHub API/raw read only",
+      "expected": "Не применимо на этапе deep-static без permissions.run_tests",
+      "result": null,
+      "log": null,
+      "tests": 0,
+      "assertions": 0,
+      "skipped": 0,
+      "mocks_only": false,
+      "reason": "permissions.fetch_sources/install_dependencies/build/run_tests/start_services=false; bsl-indexer, daemon and MCP were not started."
     }
   ]
 }

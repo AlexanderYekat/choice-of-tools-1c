@@ -361,22 +361,22 @@
       "input_url": "https://github.com/Regsorm/code-index-mcp",
       "canonical_url": "https://github.com/Regsorm/code-index-mcp",
       "access": "AVAILABLE",
-      "access_reason": "GitHub API repos/Regsorm/code-index-mcp отвечает 200, прочитано 2026-09-20.",
+      "access_reason": "GitHub API repos/Regsorm/code-index-mcp отвечает 200; pinned SHA 4bde72b… и файлы CLI/MCP/detect прочитаны 2026-09-21. HEAD main в этот день 309cddb… (v1.4.2); SHA стыковки не подменялся.",
       "default_branch": "main",
       "commit": "4bde72b60a09187c0667d451a02c7be5e0169835",
-      "commit_source": "https://api.github.com/repos/Regsorm/code-index-mcp/commits/main",
+      "commit_source": "https://api.github.com/repos/Regsorm/code-index-mcp/commits/4bde72b60a09187c0667d451a02c7be5e0169835",
       "origin": {
         "kind": "ORIGINAL",
         "upstream_url": null,
         "comparison": "NOT_APPLICABLE"
       },
-      "project_type": "Rust MCP-сервер: SQLite-индекс кода, tree-sitter AST, 20 универсальных + 12 специализированных 1С/BSL инструментов, один бинарник",
+      "project_type": "Rust CLI+MCP: SQLite-индекс, бинарь bsl-indexer, 20 универсальных + 13 1С tools, alias=dir, индекс в .code-index/index.db",
       "roles": [
         "explore-index",
         "core-library"
       ],
-      "priority": "Высокий: прямой конкурент r02 по capability explore; нужен для выбора основного индекса.",
-      "scope": "OVERVIEW",
+      "priority": "Выбран в контур: explore за фасадом. Не сырой tools/list.",
+      "scope": "DEEP_STATIC",
       "duplicate_of": null,
       "report": "reports/r15.md"
     },

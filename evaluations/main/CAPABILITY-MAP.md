@@ -5,8 +5,8 @@
 (читать только если нужен старый критерий).
 Основания обзора — [EVIDENCE.json](EVIDENCE.json), кандидаты —
 [INVENTORY.json](INVENTORY.json).
-Глубина: r02–r19 overview; **r01, r20, r21 и r22 DEEP_STATIC по S1–S5**.
-Покрытие — по прочитанному объёму. Полная стыковка пяти ещё не закрыта.
+Глубина: r02–r14, r16–r19 overview; **r01, r15, r20, r21 и r22 DEEP_STATIC по S1–S5**.
+Покрытие — по прочитанному объёму. Static стыковка пяти закрыта.
 Слот сборки: **r22 выбран** (2026-09-21); r09 не в контуре.
 
 Обозначения покрытия: **полное** (в роли кандидата), **частичное**,
@@ -16,19 +16,19 @@
 
 | C* | Кто закрывает | Покрытие | Доказательство | Готовность | Недостаёт |
 |---|---|---|---|---|---|
-| C1 explore без дампа | **r15 выбран** (13 1С-tools + core); r02 сильный, но не в контуре; r01 частично (`search`/`view`); r19 RAG | r15 частичное; r02 частичное→сильное как наблюдение v1 | c15-bsl-thirteen; c02-six-tools, c02-formats; c01-search-read | r15 продуктовый | Точность графа r15; живой tools/list |
-| C2 связи BSL | r15 (индекс callers); r02 хелперы не трассированы; r01 call graph на v0.13 нет | частичное | c15-bsl-thirteen; c01-search-limits | заявлено у r15 | deep-static/стыковка r15 |
-| C3 метаданные и УФ | метаданные: r01, r15, r02, r12; УФ: r01 edit, r15 read. Обычные формы в v2 не обязательны; пробел Form.bin не блокер | частичное (достаточно для v2) | c01-forms-managed, c15-forms-managed-src, c02-forms-managed-xml | edit УФ заявлен | execution apply; ОФ не ищем |
+| C1 explore без дампа | **r15 выбран** (13 1С-tools + core); r02 сильный, но не в контуре; r01 частично (`search`/`view`); r19 RAG | r15 частичное→сильное как заявка | c15-bsl-thirteen; c15-entry; c15-cli-core; c02-six-tools, c02-formats; c01-search-read | r15 продуктовый | Точность графа r15; execution индекса |
+| C2 связи BSL | r15 (индекс callers + 1С-tools); r02 хелперы не трассированы; r01 call graph на v0.13 нет | частичное | c15-bsl-thirteen; c15-entry; c01-search-limits | заявлено у r15; handlers/подписки MCP-only | execution callers/handlers |
+| C3 метаданные и УФ | метаданные: r01, r15, r02, r12; УФ: r01 edit, r15 read. Обычные формы в v2 не обязательны; пробел Form.bin не блокер | частичное (достаточно для v2) | c01-forms-managed, c15-forms-managed-src, c15-autodetect, c02-forms-managed-xml | edit УФ заявлен | execution apply; ОФ не ищем |
 | C4 справка API | r01 `unica.docs` выбран; r04 core; r10/r18 не в контуре | частичное→сильное у r01/r04 | c01-docs, c04-*, c10-* | r01 как адаптер контура | проверка на HBK 8.3.27 |
 | C5 edit | r01 основной; r12 дубль, не в контуре; r17 только EDT | частичное (УФ+метаданные) | c01-facade, c01-apply-fence, c12-managed-forms | высокая заявка | execution apply; ОФ не требуется |
 | C6 static | r01 `unica.check`; **r22 syntax designer/edt** (r09 не в контуре) | частичное | c01, c22-eight-tools | продуктовая заявка | компактность отчёта; execution |
 | C7 build/run | r01 `unica.run`; **r22 CLI `build`/`launch` + `--json-message`** | частичное→сильное у r22 как заявка | c22-entry; c22-json-envelope; c01-entry | r22 static; r01 static | execution |
 | C8 runtime/UI test | **r22 YaXUnit CLI + `test va`**; **r20 Answer42**; **r21 Vanessa (движок)** | частичное | c22-entry; c20-entry; c20-target; c20-evidence-file; c21-cli-target; c21-cli-status | r20/r21/r22 static, runtime NOT_RUN | execution |
 | C9 compact results | r01 typed data; r15 fragments; **r22 Envelope + retained_paths**; r02 truncation (не в контуре) | частичное | architecture/tool-surface; c22-json-envelope | заложено | замер токенов; фасад |
-| C10 min surface | фасад обязателен; r01 11 tools прячутся; r15 широкая; **r22 CLI без tools/list**; **r20 122 tools default, режется `--tool-profile`**; r21 MCP 37, **но scenario идёт через r22 CLI** | частичное | c01-facade, c01-adapter-choice, c15, c22-eight-tools, c22-adapter-choice, c20-tool-surface, c20-tool-profile, c21-tool-surface, c21-adapter-choice | r01/r20/r21/r22 можно спрятать за facade без патча | стыковка r15 |
+| C10 min surface | фасад обязателен; r01 11 tools прячутся; **r15 ~33, режется CLI или `[tools].enabled`**; **r22 CLI без tools/list**; **r20 122 tools default, режется `--tool-profile`**; r21 MCP 37, **но scenario идёт через r22 CLI** | частичное | c01-facade, c01-adapter-choice, c15-mcp-whitelist, c15-adapter-choice, c22-eight-tools, c22-adapter-choice, c20-tool-surface, c20-tool-profile, c21-tool-surface, c21-adapter-choice | r01/r15/r20/r21/r22 можно спрятать за facade без патча | execution фасада |
 | C11 знания вне окна | r15 SQLite; r01 кэш; r04 | полное у индексных | c15; c01; c04 | высокая | — |
 | C12 независимость от адаптера | r01 ядро vs plugin; r15 бинарь; r22 CLI; Cursor не критерий | частичное | c01-mcp-json; c22-entry | средняя | свой фасад |
-| C13 feedback loop | контур r15→r01→r01.check/r22→r22/r20/r21 | системное, не закрыто одним | синтез v2; c22-adapter-choice; c01-adapter-choice | собираемый на бумаге | стыковка r15 |
+| C13 feedback loop | контур r15→r01→r01.check/r22→r22/r20/r21 | системное, не закрыто одним | синтез v2; c22-adapter-choice; c01-adapter-choice; c15-adapter-choice | собираемый на бумаге | execution |
 | C14 без дубля | explore r15 не вместе с r02; edit r01 не вместе с r12/r13; docs unica.docs не вместе с r10/r18; **r09 не вместе с r22** | решение в DECISION + c22-vs-r09 | карточки | — | не возвращать r09 |
 
 ## Альтернативы и сочетания
@@ -71,14 +71,13 @@
 ```
 
 Все связи `PROPOSED_INTEGRATION`. Стыковка не проверялась запуском
-(`VERIFIED_INTEGRATION` нет). r01/r20/r21/r22 прочитаны в объёме S1–S5;
-r15 — OVERVIEW.
+(`VERIFIED_INTEGRATION` нет). r01/r15/r20/r21/r22 прочитаны в объёме S1–S5.
 
 ## Пробелы
 
-1. Стыковка r15 с фасадом; r01/r22 static S1–S5 уже есть.
-2. r01/r20/r21/r22: execution не выполнялся.
-3. Call graph на поверхности Unica v0.13 — не поддержан (explore закрывает r15).
-4. Структура обычных форм — по-прежнему отсутствует, **не блокер** цели v2.
-5. Признаки автоопределения 1С-проекта — не зафиксированы аудитом.
+1. Execution пяти: индекс выгрузки r15, `unica.view`/`apply`, smoke r22/r20/r21.
+2. Call graph на поверхности Unica v0.13 — не поддержан (explore закрывает r15).
+3. Структура обычных форм — по-прежнему отсутствует, **не блокер** цели v2.
+4. Признаки автоопределения 1С-проекта фасадом: ориентиры есть у r01/r15/r22;
+   единый закрытый список всё ещё не утверждён запуском.
 

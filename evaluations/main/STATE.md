@@ -1,13 +1,13 @@
 # Состояние main / 20260920T044856175227Z
 
-Версия цели: **2**. Статус: COMPOSITION_R22_CHOSEN.
+Версия цели: **2**. Статус: COMPOSITION_R22_CHOSEN; STATIC_S1S5_FIVE_DONE.
 Последнее обновление: 2026-09-21.
 
 Состав контура выбран ([DECISION.md](DECISION.md)): Unica, code-index-mcp,
 **v8-runner (r22 вместо r09)**, Answer42, Vanessa, тонкий фасад.
 План: [INTEGRATION-PLAN.md](INTEGRATION-PLAN.md).
-Стыковка: **r01 Unica, r20 Answer42, r21 Vanessa и r22 v8-runner достигли
-DEEP_STATIC по S1–S5**. r15 — OVERVIEW. Внедрение и execution
+Стыковка: **r01 Unica, r15 code-index-mcp, r20 Answer42, r21 Vanessa
+и r22 v8-runner достигли DEEP_STATIC по S1–S5**. Внедрение и execution
 не начинались.
 
 ## Восстановление без чата
@@ -16,9 +16,10 @@ DEEP_STATIC по S1–S5**. r15 — OVERVIEW. Внедрение и execution
 2. [request.json](request.json), [BRIEF.md](BRIEF.md).
 3. [DECISION.md](DECISION.md), [FACADE.md](FACADE.md).
 4. [INTEGRATION-PLAN.md](INTEGRATION-PLAN.md).
-5. [INTEGRATION.md](INTEGRATION.md) — фактический частичный результат.
+5. [INTEGRATION.md](INTEGRATION.md) — фактический static-результат.
 6. [VALIDATION.md](VALIDATION.md).
-7. Для r01 — [reports/r01.md](reports/r01.md); для r22 —
+7. Для r01 — [reports/r01.md](reports/r01.md); для r15 —
+   [reports/r15.md](reports/r15.md); для r22 —
    [reports/r22.md](reports/r22.md); для r20 —
    [reports/r20.md](reports/r20.md); для r21 —
    [reports/r21.md](reports/r21.md); остальные карточки читать по необходимости.
@@ -28,7 +29,10 @@ DEEP_STATIC по S1–S5**. r15 — OVERVIEW. Внедрение и execution
 - **r01 Unica: AVAILABLE / DEEP_STATIC**, commit
   `56a67d4a460c97101b6b542b4fe940298ab0edd8` (ветка `main`, HEAD совпал).
   stdio MCP, cwd/`v8project.yaml`, 11 tools, apply `dryRun`/`ifRev`.
-- r15: OVERVIEW, static стыковка ещё впереди.
+- **r15 code-index-mcp: AVAILABLE / DEEP_STATIC**, commit
+  `4bde72b60a09187c0667d451a02c7be5e0169835` (ветка `main`, v1.4.0).
+  HEAD 2026-09-21 = `309cddb…` (v1.4.2); SHA не подменялся.
+  CLI ядра + stdio/HTTP MCP; 13 1С-tools; `--path alias=dir`.
 - r09: OVERVIEW, **не в контуре** (C14, решение 2026-09-21).
 - **r20 Answer42: AVAILABLE / DEEP_STATIC**, commit
   `0406669a88144834bfdf6086c7040a25cb76d24c` (ветка `beta`, v0.5.3).
@@ -39,15 +43,14 @@ DEEP_STATIC по S1–S5**. r15 — OVERVIEW. Внедрение и execution
   `7ce1b062843d86644fe55741dbe0ee79f7ca767d` (ветка `master`, v0.5.1).
   **Выбран** как сборка / YaXUnit / синтаксис / запуск Vanessa.
 
-Разрешения: `permissions.* = false`. Все runtime runs r01/r20/r21/r22 NOT_RUN.
+Разрешения: `permissions.* = false`. Все runtime runs r01/r15/r20/r21/r22 NOT_RUN.
 
 ## Следующий шаг
 
-CONTINUE-AUDIT по S1–S5 для r15 code-index-mcp.
-После static-стыковки всех выбранных отдельно запросить execution.
-Методическое ТЗ фасада уже в [FACADE.md](FACADE.md); набросок адаптера
-дописывается в [INTEGRATION.md](INTEGRATION.md) по мере S1–S5.
-Не писать код фасада и не внедрять.
+Ограниченный execution (индекс небольшой выгрузки r15 и/или smoke
+остальных) — только по отдельному разрешению. Методическое ТЗ фасада
+уже в [FACADE.md](FACADE.md); набросок адаптера — в
+[INTEGRATION.md](INTEGRATION.md). Не писать код фасада и не внедрять.
 
 ## Журнал
 
@@ -68,3 +71,6 @@ va` / download single EPF), не замена движка шагов r21; ад�
 DECISION/FACADE/BRIEF обновлён. Внедрение не начиналось.
 2026-09-21 → CONTINUE-AUDIT r01 Unica: SHA `56a67d4a…` совпал с HEAD
 `main`; deep-static S1–S5. Патч не нужен. Остаётся r15.
+2026-09-21 → CONTINUE-AUDIT r15 code-index-mcp: pinned `4bde72b…` (v1.4.0);
+HEAD `309cddb…` не подменялся. CLI ядра + MCP; 1С-tools за демоном;
+alias и EDT-detect есть; патч не нужен. Static пяти закрыт.

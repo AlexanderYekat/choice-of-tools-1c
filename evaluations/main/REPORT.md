@@ -1,8 +1,9 @@
 # Общая картина: main
 
-Версия цели: 2. r02–r19 остаются overview; **r01 Unica, r20 Answer42,
-r21 Vanessa и r22 v8-runner-rust углублены до DEEP_STATIC по S1–S5**.
-Запуски кода не выполнялись. Стыковка пяти начата частично. Состав:
+Версия цели: 2. r02–r14, r16–r19 остаются overview; **r01 Unica,
+r15 code-index-mcp, r20 Answer42, r21 Vanessa и r22 v8-runner-rust
+углублены до DEEP_STATIC по S1–S5**.
+Запуски кода не выполнялись. Static стыковка пяти закрыта. Состав:
 **r22 вместо r09** (решение пользователя 2026-09-21).
 
 Самопроверка координатора, не независимый аудит.
@@ -19,8 +20,9 @@ r09 METR выведен: тот же слой, что r22. Vanessa остаёт�
 Обычные формы и хост Cursor **не обязательны**. rlm и skills Cursor/Claude
 в контур не входят.
 
-Это не разрешение внедрять. Следующий этап — проверка интерфейсов
-r15 с фасадом ([FACADE.md](FACADE.md), [VALIDATION.md](VALIDATION.md)).
+Это не разрешение внедрять. Static S1–S5 пяти закрыт
+([FACADE.md](FACADE.md), [VALIDATION.md](VALIDATION.md)).
+Следующий этап — ограниченный execution по отдельному разрешению.
 
 Вывод обзора при цели v1 сохранён в снимке `history/goal-v1/REPORT.md`.
 Его не читать при обычном CONTINUE; как рекомендация v2 он не действует.
@@ -31,7 +33,8 @@ r15 с фасадом ([FACADE.md](FACADE.md), [VALIDATION.md](VALIDATION.md)).
 AVAILABLE. Недоступных среди обзора 19: 0. r12 и r13 — содержательно
 один toolkit в двух упаковках. Карточки обзора r01–r19: [reports/](reports/)
 — не переписывались; меняется оценка роли, не SHA. r01/r20/r21/r22 —
-DEEP_STATIC по S1–S5. Реестр: [INVENTORY.json](INVENTORY.json).
+DEEP_STATIC по S1–S5. **r15 — DEEP_STATIC по S1–S5** на том же pinned SHA
+обзора. Реестр: [INVENTORY.json](INVENTORY.json).
 
 Обзор, не deep-static: списки tools r09 (8 `@Tool`) и 1С-надстройка r15
 (13 tools) закреплены по исходникам; r10 и универсальные 20 tools r15
@@ -58,7 +61,7 @@ DEEP_STATIC по S1–S5. Реестр: [INVENTORY.json](INVENTORY.json).
 
 Наиболее существенные неизвестные цели v2:
 
-1. Стыковка r15 с фасадом. r01/r20/r21/r22 static уже есть.
+1. Execution (индекс r15, smoke остальных). Static S1–S5 пяти есть.
 2. Для Unica r01 остаются execution `view`/`apply`; для Answer42 r20 — dual live Test Client; для Vanessa r21 — execution; для r22 — smoke `test yaxunit` / `test va`.
 3. Точность индекса r15 и компактность JSON-отчёта r22.
 4. Лицензии Unica (LGPL) и r22 (AGPL-3.0) — не юридическое заключение.
@@ -78,10 +81,9 @@ DEEP_STATIC по S1–S5. Реестр: [INVENTORY.json](INVENTORY.json).
 
 ## Следующий эксперимент и состояние
 
-Не V1 (Unica в Cursor) и не внедрение. Подробный план стыковки —
-[INTEGRATION-PLAN.md](INTEGRATION-PLAN.md); статусы S1–S5 —
-[VALIDATION.md](VALIDATION.md). Этот отчёт его не запускает.
-Точка продолжения — [STATE.md](STATE.md).
+Не V1 (Unica в Cursor) и не внедрение. Static S1–S5 пяти закрыт —
+[INTEGRATION.md](INTEGRATION.md); статусы — [VALIDATION.md](VALIDATION.md).
+Этот отчёт не запускает execution. Точка продолжения — [STATE.md](STATE.md).
 
 
 ## Частичный CONTINUE-AUDIT r20
@@ -112,3 +114,16 @@ MCP разумно оставить для интерактивной отлад
 на публикацию отвергается. Автодетект выгрузки без yaml есть
 (`Configuration.xml` / EDT `.mdo`). Две ИБ обмена — два корня, как у
 r22. Патч не нужен. Состав не менялся. Execution NOT_RUN.
+
+## Частичный CONTINUE-AUDIT r15
+
+[code-index-mcp](reports/r15.md) — explore-ядро. Бинарь `bsl-indexer`:
+one-shot CLI ядра (`index`, `search_function`, `get_callers`) и stdio/HTTP
+MCP `serve` (только чтение). Именованные 1С-tools (13) только в MCP и
+требуют `daemon run` (`daemon_offline` без него). Выгрузка задаётся
+`--path alias=dir` или `[[paths]]`; две выгрузки — два alias и два
+`index.db`. Автодетект: `Configuration.xml` и EDT `Configuration.mdo`.
+Широкий `tools/list` режется `[tools].enabled`. Патч не нужен. HEAD
+`309cddb…` не подменял pinned `4bde72b…`. Состав не менялся.
+Execution NOT_RUN.
+
