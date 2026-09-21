@@ -1,0 +1,75 @@
+{
+  "binary": "C:\\MyPtojects\\choice-of-tools-1c\\.v8\\work\\r01\\target\\debug\\unica.exe",
+  "dump": "C:\\MyPtojects\\choice-of-tools-1c\\source-checkouts\\simple1CAiConf",
+  "state": "C:\\MyPtojects\\choice-of-tools-1c\\.v8\\work\\r01\\provider-state",
+  "checks": [
+    {
+      "name": "initialize",
+      "expected": "serverInfo.name=unica",
+      "actual": "name=unica version=0.12.0",
+      "pass": true,
+      "extra": {
+        "protocolVersion": "2025-06-18"
+      }
+    },
+    {
+      "name": "tools/list",
+      "expected": "exactly 11 compatibility tools",
+      "actual": "count=11 missing=[] unexpected=[]",
+      "pass": true,
+      "extra": {
+        "names": [
+          "unica.view",
+          "unica.apply",
+          "unica.resolve",
+          "unica.search",
+          "unica.check",
+          "unica.diff",
+          "unica.run",
+          "unica.docs",
+          "unica.task.get",
+          "unica.task.result",
+          "unica.task.cancel"
+        ]
+      }
+    },
+    {
+      "name": "unica.view {}",
+      "expected": "ok workspace bootstrap; config.state autodetected|configured",
+      "actual": "ok=True configState=autodetected summary=source sets autodetected; v8project.yaml is not present",
+      "pass": true,
+      "extra": {
+        "envelope_keys": [
+          "ok",
+          "summary",
+          "data",
+          "next"
+        ]
+      }
+    },
+    {
+      "name": "unica.view at=main:Document.ЗаказПокупателя",
+      "expected": "readable document with СуммаДокумента and/or Товары",
+      "actual": "ok=True summary=logical node resolved",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "unica.check at=main:Document.ЗаказПокупателя",
+      "expected": "node readable / validated (ok or diagnostics)",
+      "actual": "ok=False summary=metadata object is outside the supported 2.20 export format rpc_error=None",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "unica.view at=main:Document.НесуществующийОбъектXYZ",
+      "expected": "refusal for missing object",
+      "actual": "ok=False rpc_error=False summary=metadata owner `Document.НесуществующийОбъектXYZ` is not registered",
+      "pass": true,
+      "extra": null
+    }
+  ],
+  "failed": 0,
+  "killed_daemon_pids": [],
+  "stderr_log": "C:\\MyPtojects\\choice-of-tools-1c\\.v8\\work\\r01\\unica.stderr.log"
+}

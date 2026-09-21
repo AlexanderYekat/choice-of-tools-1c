@@ -7,7 +7,8 @@ r15 code-index-mcp — DEEP_STATIC по S1–S5**. **r20 Answer42, r21 Vanessa
 зафиксированы; состав контура выбран: r22 вместо r09; план стыковки
 записан ([INTEGRATION-PLAN.md](INTEGRATION-PLAN.md)); static стыковка
 пяти закрыта; стенд `simple` с ИБ; **r15 CLI+MCP PASS**; **r22
-init/build/syntax PASS**; Unica/Answer42/Vanessa не начаты.
+init/build/syntax PASS**; **r01 `view`/`check` PASS**; Answer42/Vanessa
+не начаты.
 Снимок v1 и текст перехода — по необходимости, не для обычного CONTINUE:
 `history/goal-v1/`, `GOAL-CHANGE.md`.
 

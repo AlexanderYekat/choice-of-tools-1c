@@ -1,0 +1,328 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "tools": [
+      {
+        "name": "unica.view",
+        "description": "Inspect the workspace with no arguments, or read one logical 1C node by address.",
+        "inputSchema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "at": {
+              "type": "string",
+              "description": "Qualified logical address: <sourceSet>:<Kind>[.<Name>...]. Omit only for workspace bootstrap where allowed."
+            },
+            "filter": {
+              "type": "object",
+              "description": "Optional projection such as sections; valid only with at."
+            },
+            "limit": {
+              "type": "integer",
+              "description": "Maximum child items to return; valid only with at.",
+              "minimum": 1
+            },
+            "cursor": {
+              "type": "string",
+              "description": "Continuation cursor from an earlier addressed view."
+            }
+          },
+          "required": []
+        }
+      },
+      {
+        "name": "unica.apply",
+        "description": "Preview or atomically apply typed edits to one logically addressed 1C node.",
+        "inputSchema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "at": {
+              "type": "string",
+              "description": "Qualified logical address: <sourceSet>:<Kind>[.<Name>...]. Omit only for workspace bootstrap where allowed."
+            },
+            "ops": {
+              "type": "array",
+              "description": "Ordered operations advertised by the target node's can data.",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "op": {
+                    "type": "string",
+                    "description": "Operation name from the target node's can data."
+                  },
+                  "args": {
+                    "type": "object",
+                    "description": "Arguments for this typed operation."
+                  }
+                },
+                "required": [
+                  "op"
+                ]
+              }
+            },
+            "dryRun": {
+              "type": "boolean",
+              "description": "Validate and return the plan without publishing when true.",
+              "default": false
+            },
+            "ifRev": {
+              "type": "string",
+              "description": "Revision returned by a prior dryRun preview; required when dryRun is false."
+            }
+          },
+          "required": [
+            "at",
+            "ops"
+          ],
+          "if": {
+            "properties": {
+              "dryRun": {
+                "const": false
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "ifRev"
+            ]
+          }
+        }
+      },
+      {
+        "name": "unica.resolve",
+        "description": "Emergency bridge between a logical address and the source layout, in both directions. Use it only when a path arrived from outside Unica - a diff, a build log, a stack trace - or when a file has to be opened outside Unica. To find an object by name use search; to read it use view.",
+        "inputSchema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "at": {
+              "type": "string",
+              "description": "Qualified logical address whose source location is needed."
+            },
+            "path": {
+              "type": "string",
+              "description": "Path to a source file or object directory, absolute or relative to the workspace root."
+            }
+          },
+          "required": []
+        }
+      },
+      {
+        "name": "unica.search",
+        "description": "Search one corpus for a query: BSL module text, or the names and synonyms of metadata objects. Optionally under one logical subtree.",
+        "inputSchema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "Literal BSL text, symbol, or metadata name to search for."
+            },
+            "corpus": {
+              "type": "string",
+              "enum": [
+                "text",
+                "names"
+              ],
+              "description": "Where to search: `text` matches BSL module content and answers scope, line, column and snippet; `names` matches metadata names and synonyms and answers at, kind and title. Defaults to `text`.",
+              "default": "text"
+            },
+            "kind": {
+              "type": "string",
+              "description": "`names` corpus only: narrow the search to one logical node kind."
+            },
+            "role": {
+              "type": "string",
+              "enum": [
+                "lexical",
+                "symbol",
+                "semantic"
+              ],
+              "description": "`text` corpus only: which provider answers. `lexical` matches literally, `symbol` uses the symbol index, `semantic` matches by meaning. Omit for the literal search Unica performs itself."
+            },
+            "scope": {
+              "type": "string",
+              "description": "logical subtree address"
+            },
+            "regex": {
+              "type": "boolean",
+              "description": "Request regex matching; currently only false is implemented.",
+              "default": false
+            },
+            "limit": {
+              "type": "integer",
+              "description": "Maximum matches to return.",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "unica.check",
+        "description": "Confirm workspace source-set admission, or validate one logical node: readability plus every validator its kind owns.",
+        "inputSchema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "at": {
+              "type": "string",
+              "description": "Qualified logical address: <sourceSet>:<Kind>[.<Name>...]. Omit only for workspace bootstrap where allowed."
+            }
+          },
+          "required": []
+        }
+      },
+      {
+        "name": "unica.diff",
+        "description": "Compare two readable logical nodes of the same kind without changing files.",
+        "inputSchema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "left": {
+              "type": "string",
+              "description": "Qualified logical address of the left node."
+            },
+            "right": {
+              "type": "string",
+              "description": "Qualified logical address of the right node."
+            },
+            "filter": {
+              "type": "object",
+              "description": "Optional projection applied before comparison."
+            },
+            "limit": {
+              "type": "integer",
+              "description": "Maximum differences to return.",
+              "minimum": 1
+            },
+            "cursor": {
+              "type": "string",
+              "description": "Continuation cursor from an earlier diff."
+            }
+          },
+          "required": [
+            "left",
+            "right"
+          ]
+        }
+      },
+      {
+        "name": "unica.run",
+        "description": "List canonical runtime operations and their invocation contract, or preview/execute one implemented operation.",
+        "inputSchema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "op": {
+              "type": "string",
+              "description": "Canonical operation name; omit to list operation status."
+            },
+            "args": {
+              "type": "object",
+              "description": "Typed arguments for the selected operation."
+            },
+            "dryRun": {
+              "type": "boolean",
+              "description": "Required by previewApply operations: true returns a non-mutating plan and revision; false requires ifRev and applies that plan."
+            },
+            "ifRev": {
+              "type": "string",
+              "description": "Revision returned by a prior preview of the same previewApply operation; required when dryRun is false."
+            }
+          },
+          "required": []
+        }
+      },
+      {
+        "name": "unica.docs",
+        "description": "Search bundled Unica and safe 1C documentation by topic.",
+        "inputSchema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "Documentation question or search phrase."
+            },
+            "source": {
+              "type": "string",
+              "description": "Optional documented source kind, not a provider identity."
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "unica.task.get",
+        "description": "Read the current durable Task state immediately without waiting or re-running the subject tool.",
+        "inputSchema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "taskId": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+              "description": "Opaque Task identifier returned by Unica"
+            }
+          },
+          "required": [
+            "taskId"
+          ]
+        }
+      },
+      {
+        "name": "unica.task.result",
+        "description": "Wait for a Task result for a bounded interval; returns the canonical result or a new working receipt without re-running the subject tool.",
+        "inputSchema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "taskId": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+              "description": "Opaque Task identifier returned by Unica"
+            },
+            "waitMs": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 7000,
+              "default": 7000,
+              "description": "Bounded wait in milliseconds; defaults to 7000"
+            }
+          },
+          "required": [
+            "taskId"
+          ]
+        }
+      },
+      {
+        "name": "unica.task.cancel",
+        "description": "Idempotently request cancellation and return the current durable Task state without re-running the subject tool.",
+        "inputSchema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "taskId": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+              "description": "Opaque Task identifier returned by Unica"
+            }
+          },
+          "required": [
+            "taskId"
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -6,13 +6,14 @@ v8-runner**. r09 из контура выведен, S1–S5 для него н�
 
 Шкала: [FACADE.md](FACADE.md). План:
 [INTEGRATION-PLAN.md](INTEGRATION-PLAN.md).
-Все связи — `PROPOSED_INTEGRATION`, execution отсутствует.
+Все связи — `PROPOSED_INTEGRATION`. r01 `view`/`check` на simple1CAiConf
+выполнен; `apply` нет.
 
 ## S1–S5
 
 | Кандидат | S1 вызов | S2 source / target | S3 surface | S4 две цели | S5 проект |
 |---|---|---|---|---|---|
-| **r01 Unica** | **терпимо** — stdio MCP `unica`, не one-shot CLI | **терпимо** — cwd / `v8project.yaml`, аргумента config нет | **удобно** — ровно 11 tools; фасад зовёт subset | **терпимо** — несколько source-set; одна ИБ на yaml; два процесса | **удобно** — автодетект XML/EDT, yaml не обязателен |
+| **r01 Unica** | **терпимо** — stdio MCP `unica`, не one-shot CLI; живой initialize PASS | **терпимо** — cwd / `v8project.yaml`; `view {}` autodetected `main` без yaml | **удобно** — живой `tools/list` = 11; фасад зовёт subset | **терпимо** — несколько source-set; одна ИБ на yaml; два процесса | **удобно** — `view {}` без yaml, `Configuration.xml` на `.` |
 | **r15 code-index-mcp** | **терпимо** — CLI ядра + stdio/HTTP MCP `serve`; 1С-tools только MCP+демон | **удобно** — `--path alias=dir` / `[[paths]]` / `repo=`; ИБ нет | **удобно CLI / терпимо MCP** — живой `tools/list` = 33; `[tools].enabled` режет list (whitelist NOT_RUN) | **удобно** — несколько alias, отдельный `index.db` | **удобно** на корне выгрузки; `daemon.toml` не обязателен для one-shot |
 | r09 mcp-onec-test-runner | OUT OF CONTOUR | — | — | — | — |
 | **r22 v8-runner** (конкурент r09) | **удобно** — CLI `v8-runner`; MCP optional stdio/HTTP | **терпимо** — `--config` / один `infobase` на yaml | **удобно** — CLI без tools; MCP ровно 8 | **терпимо** — два yaml / два процесса; dual-IB NOT_RUN | **удобно** — родной `v8project.yaml` |
@@ -140,5 +141,7 @@ explore(source, op, args)
 
 Static S1–S5 пяти закрыты. **r15 CLI ядра PASS**. **r15 daemon+HTTP MCP
 PASS** на simple1CAiConf (`tools/list` = 33, handlers/structure/writers).
-**r22 init/build/syntax PASS** на ИБ `.v8/ib/simple`. Runtime r01/r20/r21
-NOT_RUN. Внедрение и код фасада не начинались.
+**r22 init/build/syntax PASS** на ИБ `.v8/ib/simple`. **r01 stdio MCP
+`view`/`check` PASS** (`tools/list` = 11, autodetect `main`; `check`
+отказал этой фикстуре по формату 2.20). Runtime r20/r21 NOT_RUN.
+`unica.apply` не вызывался. Внедрение и код фасада не начинались.

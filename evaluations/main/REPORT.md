@@ -3,7 +3,8 @@
 Версия цели: 2. r02–r14, r16–r19 остаются overview; **r01 Unica,
 r15 code-index-mcp, r20 Answer42, r21 Vanessa и r22 v8-runner-rust
 углублены до DEEP_STATIC по S1–S5**.
-**r15 CLI ядра PASS**; **r15 daemon+MCP PASS**; **r22 init/build/syntax PASS** на ИБ simple.
+**r15 CLI ядра PASS**; **r15 daemon+MCP PASS**; **r22 init/build/syntax PASS**;
+**r01 `view`/`check` PASS** на стенде `simple`.
 Static стыковка пяти закрыта. Состав:
 **r22 вместо r09** (решение пользователя 2026-09-21).
 
@@ -23,8 +24,9 @@ r09 METR выведен: тот же слой, что r22. Vanessa остаёт�
 
 Это не разрешение внедрять. Static S1–S5 пяти закрыт
 ([FACADE.md](FACADE.md), [VALIDATION.md](VALIDATION.md)).
-r15 CLI, r15 daemon+MCP и r22 init/build/syntax прогнаны на стенде
-`simple`. Следующий этап — Unica `view`/`check` по отдельной просьбе.
+r15 CLI, r15 daemon+MCP, r22 init/build/syntax и r01 `view`/`check`
+прогнаны на стенде `simple`. Следующий этап — `unica.apply` dryRun /
+`unica.docs` / Answer42 по отдельной просьбе.
 
 Вывод обзора при цели v1 сохранён в снимке `history/goal-v1/REPORT.md`.
 Его не читать при обычном CONTINUE; как рекомендация v2 он не действует.
@@ -116,8 +118,11 @@ MCP разумно оставить для интерактивной отлад
 `v8project.yaml`, аргумента `config` нет. Поверхность ровно 11 tools;
 фасад зовёт subset `docs`/`view`/`apply`/`check`. `apply` без `ifRev`
 на публикацию отвергается. Автодетект выгрузки без yaml есть
-(`Configuration.xml` / EDT `.mdo`). Две ИБ обмена — два корня, как у
-r22. Патч не нужен. Состав не менялся. Execution NOT_RUN.
+(`Configuration.xml` / EDT `.mdo`) и **подтверждён** `unica.view {}` на
+simple1CAiConf (`config.state=autodetected`, source-set `main`). Живой
+`tools/list` = 11. `unica.check` на этом дампе ответил
+`source_unreadable` (формат 2.20). Две ИБ обмена — два корня, как у
+r22. Патч не нужен. Состав не менялся. `apply` NOT_RUN.
 
 ## Частичный CONTINUE-AUDIT r15
 

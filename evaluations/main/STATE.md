@@ -2,15 +2,16 @@
 
 Версия цели: **2**. Статус: COMPOSITION_R22_CHOSEN; STATIC_S1S5_FIVE_DONE;
 FIXTURE_HARNESS_ATTACHED; R15_CLI_SMOKE_PASS; R15_MCP_SMOKE_PASS;
-R22_IB_SMOKE_PASS.
+R22_IB_SMOKE_PASS; R01_MCP_SMOKE_PASS.
 Последнее обновление: 2026-09-21.
 
 Состав контура выбран ([DECISION.md](DECISION.md)): Unica, code-index-mcp,
 **v8-runner (r22 вместо r09)**, Answer42, Vanessa, тонкий фасад.
 План: [INTEGRATION-PLAN.md](INTEGRATION-PLAN.md).
 Стыковка: **r01 Unica, r15 code-index-mcp, r20 Answer42, r21 Vanessa
-и r22 v8-runner достигли DEEP_STATIC по S1–S5**. r15 CLI, r15 daemon+MCP
-и r22 init/build/syntax на стенде `simple` — PASS. Фасад не писался.
+и r22 v8-runner достигли DEEP_STATIC по S1–S5**. r15 CLI, r15 daemon+MCP,
+r22 init/build/syntax и r01 `view`/`check` на стенде `simple` — PASS.
+Фасад не писался.
 
 ## Восстановление без чата
 
@@ -30,7 +31,8 @@ R22_IB_SMOKE_PASS.
 
 - **r01 Unica: AVAILABLE / DEEP_STATIC**, commit
   `56a67d4a460c97101b6b542b4fe940298ab0edd8` (ветка `main`, HEAD совпал).
-  stdio MCP, cwd/`v8project.yaml`, 11 tools, apply `dryRun`/`ifRev`.
+  stdio MCP dump-only PASS; живой `tools/list` = 11; `view {}`
+  autodetected `main`; `check` отказал фикстуре по формату 2.20.
 - **r15 code-index-mcp: AVAILABLE / DEEP_STATIC**, commit
   `4bde72b60a09187c0667d451a02c7be5e0169835` (ветка `main`, v1.4.0).
   HEAD 2026-09-21 = `309cddb…` (v1.4.2); SHA не подменялся.
@@ -51,7 +53,7 @@ R22_IB_SMOKE_PASS.
 тестовую ИБ `.v8/ib/simple` из выгрузки и прогнать smoke r22.
 «что там дальше по плану — выполняй» (2026-09-21) — dump-only MCP r15.
 ИБ создана. Vanessa/YaXUnit (`tools.* = false`) не запускались.
-Runtime r01/r20/r21 остаются NOT_RUN.
+Runtime r20/r21 остаются NOT_RUN. `unica.apply` / `unica.docs` NOT_RUN.
 
 Фикстура: opt-in v8-harness @ `322398ae…`, стенд `simple`, `from: file`.
 Выгрузка `source-checkouts/simple1CAiConf` @ `1dbc395d…`.
@@ -67,12 +69,16 @@ Runtime r01/r20/r21 остаются NOT_RUN.
 **r22 IB smoke PASS** (`run-r22-ib-simple`): `init` + `build` +
 `syntax designer-modules --server --thin-client` (`status=clean`).
 Лог: [logs/r22-ib-simple.md](logs/r22-ib-simple.md).
+**r01 MCP smoke PASS** (`run-r01-mcp-simple`): изолированный
+`UNICA_PROVIDER_STATE_DIR`, stdio `unica` с cwd выгрузки. 6/6.
+Лог: [logs/r01-mcp-simple.md](logs/r01-mcp-simple.md).
 
 ## Следующий шаг
 
-Smoke Unica `view`/`check` на этой же выгрузке/ИБ — по отдельной
-просьбе. Не писать код фасада. Vanessa/YaXUnit не гонять: в выгрузке
-нет тестов, `tools.* = false`. `[tools].enabled` r15 не гоняли.
+`unica.apply` (сначала `dryRun`), `unica.docs` или Answer42 — по
+отдельной просьбе. Не писать код фасада. Vanessa/YaXUnit не гонять:
+в выгрузке нет тестов, `tools.* = false`. `[tools].enabled` r15 не
+гоняли. Dual-workspace Unica NOT_RUN.
 
 ## Журнал
 
@@ -110,3 +116,12 @@ path sources поправлен на абсолютный.
 Изолированный `CODE_INDEX_HOME` `.v8/work/r15-mcp/home`; HTTP serve
 на свободном порту. 7/7 PASS (`run-r15-mcp-simple`). Живой
 `tools/list` = 33. Фасад и Unica не запускались.
+2026-09-21 → «давай дальше по плану»: smoke Unica `view`/`check`.
+Бинарь собран из pinned SHA (релиз v0.12.3 не подменялся). Первый
+запуск — timeout 5 с spawn lock debug-бинаря; повтор — 6/6 PASS
+(`run-r01-mcp-simple`). `check` на `Document.ЗаказПокупателя`
+ответил `source_unreadable` (формат 2.20). `apply` не вызывался.
+2026-09-21 → рабочая копия перенесена `C:\MyPtojects\choice-of-tools-1c` →
+`C:\MyProjects\choice-of-tools-1c`. Утренний снимок сохранён как
+`C:\MyProjects\choice-of-tools-1c.old-20260921`. Абсолютные пути стенда
+и smoke поправлены. Журналы прошлых прогонов оставлены как снято.

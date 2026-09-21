@@ -1205,8 +1205,10 @@
         "s01-verification",
         "s01-plugin-readme"
       ],
-      "run_ids": [],
-      "limitations": "Проверено наличие списка и сверки tools/list в bootstrap; обработчики каждого tool в application/v13 не трассировались."
+      "run_ids": [
+        "run-r01-mcp-simple"
+      ],
+      "limitations": "Live stdio tools/list on 0.12.0 from pinned SHA was exactly the 11 compatibility names."
     },
     {
       "id": "c01-search-read",
@@ -1809,8 +1811,10 @@
         "s01-coder-cargo-bin",
         "s01-mcp-stdio"
       ],
-      "run_ids": [],
-      "limitations": "The binary was not started; live initialize handshake not observed."
+      "run_ids": [
+        "run-r01-mcp-simple"
+      ],
+      "limitations": "Live initialize 2025-06-18 returned serverInfo.name=unica version=0.12.0. Default remains stdio MCP; no one-shot CLI."
     },
     {
       "id": "c01-workspace-cwd",
@@ -1822,8 +1826,10 @@
         "s01-workspace-discover",
         "s01-v8project-contract"
       ],
-      "run_ids": [],
-      "limitations": "MCP roots/workspaceFolders from the host were not found in the sampled mcp.rs path; unknown whether a host can override cwd."
+      "run_ids": [
+        "run-r01-mcp-simple"
+      ],
+      "limitations": "Dump-only cwd of simple1CAiConf became workspaceRoot; infobase.configured=false. Host workspaceFolders override still unknown."
     },
     {
       "id": "c01-apply-fence",
@@ -1858,8 +1864,10 @@
         "s01-autodetect-layouts",
         "s01-v8project-contract"
       ],
-      "run_ids": [],
-      "limitations": "Autodetect on a real configuration tree was not run."
+      "run_ids": [
+        "run-r01-mcp-simple"
+      ],
+      "limitations": "Live view {} on simple1CAiConf: config.state=autodetected, source-set main, path ., evidence Configuration.xml. yaml recipe was returned in data.setup and not written."
     },
     {
       "id": "c01-user-daemon",
@@ -1871,8 +1879,10 @@
         "s01-daemon-router",
         "s01-mcp-stdio"
       ],
-      "run_ids": [],
-      "limitations": "Whether two live workspaces isolate infobase/runtime sessions inside one daemon is NOT_RUN."
+      "run_ids": [
+        "run-r01-mcp-simple"
+      ],
+      "limitations": "Isolated UNICA_PROVIDER_STATE_DIR was used. Cold debug spawn missed the 5s CONNECT_TIMEOUT once; warmed retry connected. Dual-workspace isolation still NOT_RUN."
     },
     {
       "id": "c01-adapter-choice",
@@ -1885,8 +1895,10 @@
         "s01-verification",
         "s01-apply-dryrun"
       ],
-      "run_ids": [],
-      "limitations": "Architectural inference; smoke unica.view is NOT_RUN."
+      "run_ids": [
+        "run-r01-mcp-simple"
+      ],
+      "limitations": "Architectural inference. Live view/check on simple1CAiConf succeeded as stdio MCP with cwd=dump; apply still NOT_RUN."
     },
     {
       "id": "c01-multitarget",
@@ -1900,6 +1912,39 @@
       ],
       "run_ids": [],
       "limitations": "Simultaneous dual-IB/dual-workspace was not executed."
+    },
+    {
+      "id": "c01-mcp-simple",
+      "repository_id": "r01",
+      "status": "RUN",
+      "statement": "Live stdio MCP unica 0.12.0 from pinned 56a67d4a… on simple1CAiConf advertised exactly 11 tools and completed initialize as server name unica.",
+      "source_ids": [],
+      "run_ids": [
+        "run-r01-mcp-simple"
+      ],
+      "limitations": "Debug binary built with rustc 1.98.1; release v0.12.3 was not substituted. First cold spawn timed out at 5s."
+    },
+    {
+      "id": "c01-view-simple",
+      "repository_id": "r01",
+      "status": "RUN",
+      "statement": "unica.view {} autodetected source-set main from Configuration.xml without v8project.yaml; unica.view at=main:Document.ЗаказПокупателя returned ok with title Заказ покупателя and branches Attribute=2, TabularSection=1, Form=2.",
+      "source_ids": [],
+      "run_ids": [
+        "run-r01-mcp-simple"
+      ],
+      "limitations": "Default addressed view is a summary; attribute names such as СуммаДокумента are not expanded until a child at. Missing object returned not_found."
+    },
+    {
+      "id": "c01-check-format-simple",
+      "repository_id": "r01",
+      "status": "RUN",
+      "statement": "unica.check at=main:Document.ЗаказПокупателя returned structured ok=false with provider_unavailable/source_unreadable: metadata object is outside the supported 2.20 export format.",
+      "source_ids": [],
+      "run_ids": [
+        "run-r01-mcp-simple"
+      ],
+      "limitations": "ConfigDumpInfo.xml header is version 2.20; Unica still refused this hand-written dump. Does not prove check fails on a Designer 2.20 export. r22 syntax on the same dump was clean."
     },
     {
       "id": "c15-entry",
@@ -2213,6 +2258,23 @@
       "log": "logs/r15-mcp-simple.md",
       "tests": 7,
       "assertions": 7,
+      "skipped": 0,
+      "mocks_only": false,
+      "reason": null
+    },
+    {
+      "id": "run-r01-mcp-simple",
+      "repository_id": "r01",
+      "commit": "56a67d4a460c97101b6b542b4fe940298ab0edd8",
+      "status": "PASS",
+      "kind": "INTEGRATION",
+      "command": "UNICA_PROVIDER_STATE_DIR=.v8/work/r01/provider-state unica.exe (stdio MCP cwd=simple1CAiConf); initialize; tools/list; unica.view {}; unica.view at=main:Document.ЗаказПокупателя; unica.check at=...; unica.view missing object",
+      "environment": "Windows 10.0.26200; unica.exe 0.12.0 debug built from pinned SHA 56a67d4a… with rustc 1.98.1 (not release v0.12.3); isolated provider-state; dump simple1CAiConf @ 1dbc395d; no apply/run/1C client",
+      "expected": "initialize name=unica; tools/list exactly 11; view {} autodetected main; view document ok; check answers; missing object refused",
+      "result": "All six passed. tools/list=11. view {} config.state=autodetected source-set main. view document title Заказ покупателя. check structured source_unreadable (outside supported 2.20 format). missing not_found. First cold spawn missed 5s CONNECT_TIMEOUT; retry after warmup succeeded.",
+      "log": "logs/r01-mcp-simple.md",
+      "tests": 6,
+      "assertions": 6,
       "skipped": 0,
       "mocks_only": false,
       "reason": null

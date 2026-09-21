@@ -18,14 +18,14 @@
 |---|---|---|---|---|---|
 | C1 explore без дампа | **r15 выбран** (13 1С-tools + core); r02 сильный, но не в контуре; r01 частично (`search`/`view`); r19 RAG | r15 частичное→сильное как заявка | c15-bsl-thirteen; c15-entry; c15-cli-core; c15-index-simple; c15-search-callers-simple; c15-mcp-simple | r15 продуктовый; CLI и MCP RUN на sample | точность на большой выгрузке; `[tools].enabled` NOT_RUN |
 | C2 связи BSL | r15 (индекс callers + 1С-tools); r02 хелперы не трассированы; r01 call graph на v0.13 нет | частичное | c15-bsl-thirteen; c15-entry; c15-search-callers-simple; c15-mcp-simple; c01-search-limits | CLI callers + MCP handlers/writers RUN на sample | подписки: dump пуст; большая конф. |
-| C3 метаданные и УФ | метаданные: r01, r15, r02, r12; УФ: r01 edit, r15 read. Обычные формы в v2 не обязательны; пробел Form.bin не блокер | частичное (достаточно для v2) | c01-forms-managed, c15-forms-managed-src, c15-autodetect, c02-forms-managed-xml | edit УФ заявлен | execution apply; ОФ не ищем |
+| C3 метаданные и УФ | метаданные: r01, r15, r02, r12; УФ: r01 edit, r15 read. Обычные формы в v2 не обязательны; пробел Form.bin не блокер | частичное (достаточно для v2) | c01-forms-managed, c01-view-simple, c15-forms-managed-src, c15-autodetect, c02-forms-managed-xml | edit УФ заявлен; r01 view RUN | execution apply; ОФ не ищем |
 | C4 справка API | r01 `unica.docs` выбран; r04 core; r10/r18 не в контуре | частичное→сильное у r01/r04 | c01-docs, c04-*, c10-* | r01 как адаптер контура | проверка на HBK 8.3.27 |
 | C5 edit | r01 основной; r12 дубль, не в контуре; r17 только EDT | частичное (УФ+метаданные) | c01-facade, c01-apply-fence, c12-managed-forms | высокая заявка | execution apply; ОФ не требуется |
-| C6 static | r01 `unica.check`; **r22 syntax designer/edt** (r09 не в контуре) | частичное | c01, c22-eight-tools; c22-ib-simple | продуктовая; r22 modules RUN clean | Unica.check NOT_RUN |
+| C6 static | r01 `unica.check`; **r22 syntax designer/edt** (r09 не в контуре) | частичное | c01, c01-check-format-simple, c22-eight-tools; c22-ib-simple | продуктовая; r22 modules RUN clean; Unica.check ответил на фикстуре `source_unreadable` | check на выгрузке 2.20, которую Unica принимает |
 | C7 build/run | r01 `unica.run`; **r22 CLI `build`/`launch` + `--json-message`** | частичное→сильное у r22 | c22-entry; c22-json-envelope; c22-ib-simple; c01-entry | r22 init/build RUN; r01 static | launch/apply; dual-IB |
 | C8 runtime/UI test | **r22 YaXUnit CLI + `test va`**; **r20 Answer42**; **r21 Vanessa (движок)** | частичное | c22-entry; c20-entry; c20-target; c20-evidence-file; c21-cli-target; c21-cli-status | r20/r21/r22 static, runtime NOT_RUN | execution |
 | C9 compact results | r01 typed data; r15 fragments; **r22 Envelope + retained_paths**; r02 truncation (не в контуре) | частичное | architecture/tool-surface; c22-json-envelope | заложено | замер токенов; фасад |
-| C10 min surface | фасад обязателен; r01 11 tools прячутся; **r15 живой `tools/list` = 33, режется CLI или `[tools].enabled`**; **r22 CLI без tools/list**; **r20 122 tools default, режется `--tool-profile`**; r21 MCP 37, **но scenario идёт через r22 CLI** | частичное | c01-facade, c01-adapter-choice, c15-mcp-whitelist, c15-adapter-choice, c15-mcp-simple, c22-eight-tools, c22-adapter-choice, c20-tool-surface, c20-tool-profile, c21-tool-surface, c21-adapter-choice | r01/r15/r20/r21/r22 можно спрятать за facade без патча | execution фасада; whitelist r15 NOT_RUN |
+| C10 min surface | фасад обязателен; **r01 живой `tools/list` = 11, прячутся**; **r15 живой `tools/list` = 33, режется CLI или `[tools].enabled`**; **r22 CLI без tools/list**; **r20 122 tools default, режется `--tool-profile`**; r21 MCP 37, **но scenario идёт через r22 CLI** | частичное | c01-facade, c01-mcp-simple, c01-adapter-choice, c15-mcp-whitelist, c15-adapter-choice, c15-mcp-simple, c22-eight-tools, c22-adapter-choice, c20-tool-surface, c20-tool-profile, c21-tool-surface, c21-adapter-choice | r01/r15/r20/r21/r22 можно спрятать за facade без патча | execution фасада; whitelist r15 NOT_RUN |
 | C11 знания вне окна | r15 SQLite; r01 кэш; r04 | полное у индексных | c15; c01; c04 | высокая | — |
 | C12 независимость от адаптера | r01 ядро vs plugin; r15 бинарь; r22 CLI; Cursor не критерий | частичное | c01-mcp-json; c22-entry | средняя | свой фасад |
 | C13 feedback loop | контур r15→r01→r01.check/r22→r22/r20/r21 | системное, не закрыто одним | синтез v2; c22-adapter-choice; c01-adapter-choice; c15-adapter-choice | собираемый на бумаге | execution |
@@ -70,12 +70,14 @@
          └ verify  → r22 YaXUnit; form → r20; scenario → r21 через r22
 ```
 
-Все связи `PROPOSED_INTEGRATION`. Стыковка не проверялась запуском
-(`VERIFIED_INTEGRATION` нет). r01/r15/r20/r21/r22 прочитаны в объёме S1–S5.
+Все связи `PROPOSED_INTEGRATION`. Фасад не запускался
+(`VERIFIED_INTEGRATION` нет). Dump-only: r15 CLI+MCP, r22 IB, r01
+`view`/`check`. r01/r15/r20/r21/r22 прочитаны в объёме S1–S5.
 
 ## Пробелы
 
-1. Execution пяти: индекс выгрузки r15, `unica.view`/`apply`, smoke r22/r20/r21.
+1. Execution пяти: индекс выгрузки r15 и Unica `view` на sample есть;
+   `unica.apply`, Answer42, Vanessa ещё нет.
 2. Call graph на поверхности Unica v0.13 — не поддержан (explore закрывает r15).
 3. Структура обычных форм — по-прежнему отсутствует, **не блокер** цели v2.
 4. Признаки автоопределения 1С-проекта фасадом: ориентиры есть у r01/r15/r22;
