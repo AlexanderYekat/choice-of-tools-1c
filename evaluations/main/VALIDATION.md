@@ -20,7 +20,7 @@ static стыковка для него не требуется.
 | S1 | Чем звать | SOURCE+RUN: бинарь `unica` = stdio MCP; one-shot CLI предметных операций нет; живой initialize 0.12.0 | SOURCE+RUN: CLI ядра + HTTP `serve`; 1С-tools только MCP; живой демон нужен | SOURCE+RUN: CLI `answer42` = stdio MCP; initialize name=Answer42; one-shot form CLI нет | DOCUMENTATION+SOURCE: batch CLI через 1С; дополнительно Streamable HTTP MCP | SOURCE: CLI `v8-runner` first-class; MCP `mcp serve stdio\|http` optional |
 | S2 | Как передать feature/ИБ | SOURCE+RUN: cwd выгрузки; `view {}` autodetected `main`; yaml не обязателен; ИБ в yaml (здесь `infobase.configured=false`) | SOURCE: `--path alias=dir` / `--config` `[[paths]]` / `repo=`; ИБ не участвует | SOURCE+RUN: `start_session(base_url=путь файловой ИБ, session_id)`; креды не нужны на simple | DOCUMENTATION+SOURCE: один feature через featurepath, scenariofilter, Test Client definitions/profiles | DOCUMENTATION+SOURCE: `--config` / `V8TR_CONFIG` / cwd → один `infobase` в yaml |
 | S3 | Узкая surface | SOURCE+RUN: живой `tools/list` = 11; фасад зовёт subset docs/view/apply/check | SOURCE+RUN: без секции list = 33; с `[tools].enabled` list = 9 и `tools/call` вне списка = `-32602`; CLI без tools/list | SOURCE+RUN: статический `full` 122; живой `ui`+`--disable-rag` = 103 | SOURCE+INFERENCE: CLI без MCP tools; MCP 37 statically active, скрывать фасадом | SOURCE: CLI без tools/list; MCP ровно 8 `#[tool]` |
-| S4 | Две цели | SOURCE+RUN: два cwd, один демон, два requestScopeHash; несколько source-set в одном yaml NOT_RUN; одна ИБ на yaml; dual-IB NOT_RUN | SOURCE: несколько alias, отдельный `.code-index/index.db`; dual live serve NOT_RUN | SOURCE+RUN: повтор того же `session_id` отказал; dual live Test Client NOT_RUN | SOURCE+INFERENCE: несколько definitions/profiles; simultaneous two-target UNKNOWN | INFERENCE: два yaml / два процесса; dual-IB NOT_RUN |
+| S4 | Две цели | SOURCE+RUN: два cwd, один демон, два requestScopeHash; несколько source-set в одном yaml NOT_RUN; одна ИБ на yaml; dual-IB NOT_RUN | SOURCE: несколько alias, отдельный `.code-index/index.db`; dual live serve NOT_RUN | SOURCE+RUN: повтор того же `session_id` отказал; dual live Test Client на двух файловых ИБ PASS (заголовки окон совпали) | SOURCE+INFERENCE: несколько definitions/profiles; simultaneous two-target UNKNOWN | INFERENCE: два yaml / два процесса; dual-IB NOT_RUN |
 | S5 | Project detection | SOURCE+RUN: `view {}` без yaml, source-set `main` из `Configuration.xml` на `.` | SOURCE: processor — `Configuration.xml` (≤2) и EDT `Configuration.mdo`; `daemon.toml` не обязателен для one-shot; детектор демона слабее | INFERENCE: явный `base_url`; RAG-scan EDT/XML не детектор фасада | INFERENCE: explicit WorkspaceRoot/projectpath; generic 1C detection facade-side | DOCUMENTATION: родной `v8project.yaml` + `config init` |
 
 Шкала r01: S1 терпимо; S2 терпимо; S3 удобно; S4 терпимо; S5 удобно.
@@ -29,7 +29,7 @@ static стыковка для него не требуется.
 `[tools].enabled`); S4 удобно; S5 удобно на корне выгрузки.
 
 Шкала r20: S1 терпимо; S2 удобно; S3 терпимо (живой `ui` = 103, фасад всё равно нужен);
-S4 удобно по контракту (дубль id RUN), simultaneous NOT_RUN; S5 терпимо.
+S4 удобно (дубль id RUN; два живых Test Client RUN); S5 терпимо.
 
 Шкала r21: S1 удобно; S2 удобно; S3 удобно через CLI / терпимо через MCP;
 S4 терпимо с неизвестной одновременностью; S5 терпимо.
@@ -55,5 +55,8 @@ YaXUnit/Vanessa на simple **сначала отказали** без сцен�
 `tools/list` = 9; опечатка в логе; `grep_code` и `get_object_structure` — `-32602`.
 **r01 dual-workspace PASS** ([logs/r01-mcp-dual-simple.md](logs/r01-mcp-dual-simple.md)):
 два stdio, один `--daemon`; `view` не смешал корни и Comment.
+**r20 dual live Test Client PASS** ([logs/r20-mcp-dual-simple.md](logs/r20-mcp-dual-simple.md)):
+один stdio, две файловые ИБ, file-ibsrv 8424 и 10104; останов A оставил B.
+Скрипт exit 1 на сравнении слэшей; критерий подтверждён сохранённым JSON.
 
-Следующее — dual live Test Client Answer42, не код фасада.
+Следующее — stdio-whitelist r15 и связка `--path`+`--config`, не код фасада.

@@ -18,7 +18,7 @@ PASS (`run-r01-apply-publish`).
 | **r15 code-index-mcp** | **терпимо** — CLI ядра + stdio/HTTP MCP `serve`; 1С-tools только MCP+демон | **удобно** — `--path alias=dir` / `[[paths]]` / `repo=`; ИБ нет | **удобно** — CLI без tools/list; MCP с `[tools].enabled` list = 9 и `-32602` вне списка (без секции list = 33) | **удобно** — несколько alias, отдельный `index.db` | **удобно** на корне выгрузки; `daemon.toml` не обязателен для one-shot |
 | r09 mcp-onec-test-runner | OUT OF CONTOUR | — | — | — | — |
 | **r22 v8-runner** (конкурент r09) | **удобно** — CLI `v8-runner`; MCP optional stdio/HTTP | **терпимо** — `--config` / один `infobase` на yaml | **удобно** — CLI без tools; MCP ровно 8 | **терпимо** — два yaml / два процесса; dual-IB NOT_RUN | **удобно** — родной `v8project.yaml` |
-| **r20 Answer42** | **терпимо** — CLI поднимает stdio/HTTP MCP, не one-shot form CLI; живой initialize PASS | **удобно** — `base_url` путь файловой ИБ + `session_id`; креды на simple не нужны | **терпимо** — живой `ui` = 103; дефолт `full` 122 static; `--tool-profile` / `--disable-rag` | **удобно по контракту / simultaneous NOT_RUN**; дубль id отказал RUN | **терпимо** — явный `base_url`; RAG-scan не детектор фасада |
+| **r20 Answer42** | **терпимо** — CLI поднимает stdio/HTTP MCP, не one-shot form CLI; живой initialize PASS | **удобно** — `base_url` путь файловой ИБ + `session_id`; креды на simple не нужны | **терпимо** — живой `ui` = 103; дефолт `full` 122 static; `--tool-profile` / `--disable-rag` | **удобно** — дубль id отказал; два живых Test Client на разных file IB RUN | **терпимо** — явный `base_url`; RAG-scan не детектор фасада |
 | **r21 Vanessa** | **удобно** — batch CLI через 1С; дополнительно HTTP MCP | **удобно** — один feature, scenario filter, Test Client data/profiles | **удобно CLI / терпимо MCP** — CLI без tools; MCP 37 active static | **терпимо / simultaneous UNKNOWN** | **терпимо** — explicit workspace/projectpath, generic detection facade-side |
 
 Подробности: [reports/r01.md](reports/r01.md), [reports/r15.md](reports/r15.md),
@@ -80,8 +80,9 @@ facade пока `target -> profile/connection`.
 **Answer42:** именованные сессии в `_SESSIONS`; UI-tools принимают
 `session_id`; повтор того же id отклоняется. Фасад обязан всегда
 передавать `session_id` (иначе `default-{pid}` смешает цели).
-Одновременность двух живых Test Client на разных `base_url` кодом
-допускается, runtime NOT_RUN.
+Одновременность двух живых Test Client на разных `base_url` проверена
+(`run-r20-mcp-dual`): один stdio, file-ibsrv 8424 и 10104, останов A
+оставил B. Заголовки окон совпали — ИБ B файловая копия simple.
 
 ## Предпочтительный адаптер r22 (конкурент r09)
 
@@ -155,4 +156,5 @@ path). **Публикация `apply` PASS** (`run-r01-apply-publish`: `mode=pub
 stale `ifRev`). **r15 whitelist PASS** (`run-r15-mcp-whitelist`:
 `tools/list` = 9). **r01 dual-workspace PASS** (`run-r01-dual-simple`:
 один `--daemon`, два cwd, Comment не смешался). Внедрение и код фасада
-не начинались. Dual live Test Client r20 NOT_RUN. Dual-IB Unica NOT_RUN.
+не начинались. **r20 dual live Test Client PASS**
+(`run-r20-mcp-dual`). Dual-IB Unica NOT_RUN.

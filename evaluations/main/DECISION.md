@@ -94,7 +94,7 @@ r22 **не** библиотека шагов Vanessa.
 - r01/r15/r20/r21/r22 static S1–S5 есть; r15/r22/r01 dump-only RUN
   (включая apply dryRun, docs, публикацию ifRev и r15 `[tools].enabled`);
   r21 Vanessa engine smoke RUN; r20 Answer42 smoke RUN; dual live Test
-  Client r20 NOT_RUN.
+  Client r20 RUN (`run-r20-mcp-dual`).
 - Не закрывают и не блокируют: отладчик вне EDT; структура обычных форм.
 
 ## Следующий этап — не внедрение

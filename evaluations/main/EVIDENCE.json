@@ -1642,9 +1642,10 @@
         "s20-server-entry"
       ],
       "run_ids": [
-        "run-r20-mcp-simple"
+        "run-r20-mcp-simple",
+        "run-r20-mcp-dual"
       ],
-      "limitations": "A second start_session with the same id returned isError (FastMCP UnexpectedToolError, original 'already exists' text hidden). Two live Test Clients against two infobases were not started. click_button was not called."
+      "limitations": "A second start_session with the same id returned isError (FastMCP UnexpectedToolError, original 'already exists' text hidden). Two live Test Clients are run-r20-mcp-dual. click_button was not called."
     },
     {
       "id": "c20-evidence-file",
@@ -1682,9 +1683,10 @@
         "s20-tool-profile"
       ],
       "run_ids": [
-        "run-r20-mcp-simple"
+        "run-r20-mcp-simple",
+        "run-r20-mcp-dual"
       ],
-      "limitations": "Architectural inference. Live ui tools/list is still 103 names, so C10 still requires a facade. Dual live Test Client remains NOT_RUN."
+      "limitations": "Architectural inference. Live ui tools/list is still 103 names, so C10 still requires a facade. Dual live Test Client is run-r20-mcp-dual. click_button was not called."
     },
     {
       "id": "c20-mcp-simple",
@@ -1700,6 +1702,20 @@
         "run-r20-mcp-simple"
       ],
       "limitations": "click_button and document form were not opened. Screenshot used full_display fallback. Packaged MCPTestManager.cf was loaded via ibcmd (~46s). Live full tools/list was not captured."
+    },
+    {
+      "id": "c20-dual-live",
+      "repository_id": "r20",
+      "status": "RUN",
+      "statement": "One Answer42 stdio MCP process kept two live Test Clients on two file infobases at once; stopping the first left the second answering active_window on its own path.",
+      "source_ids": [
+        "s20-server-sessions",
+        "s20-start-session"
+      ],
+      "run_ids": [
+        "run-r20-mcp-dual"
+      ],
+      "limitations": "IB B is a file copy of simple, so both window titles were Простая конфигурация. Discrimination is base_url, shared_file_key and distinct file-ibsrv ports (8424 and 10104), not the title. The script exited 1 because it searched a POSIX path inside a backslash key; the saved session_status JSON meets the criterion. click_button was not called. The 1C run was not repeated after the comparator fix."
     },
     {
       "id": "c22-entry",
@@ -2551,6 +2567,23 @@
       "log": "logs/r20-mcp-simple.md",
       "tests": 7,
       "assertions": 7,
+      "skipped": 0,
+      "mocks_only": false,
+      "reason": null
+    },
+    {
+      "id": "run-r20-mcp-dual",
+      "repository_id": "r20",
+      "commit": "0406669a88144834bfdf6086c7040a25cb76d24c",
+      "status": "PASS",
+      "kind": "INTEGRATION",
+      "command": "ONEC_MCP_DATA_DIR=.v8/work/r20-dual/data answer42 --disable-rag --disable-credential-store --tool-profile ui; start_session dual-a base_url=.v8/ib/simple; start_session dual-b base_url=.v8/work/r20-dual/ib-b; sessions_list; session_status; active_window; stop dual-a; active_window dual-b",
+      "environment": "Windows 10.0.26200; Python isolated venv .v8/work/r20-mcp/venv; answer42==0.5.3; platform 8.3.27.1936; IB simple and a file copy ib-b; interactive desktop; no users",
+      "expected": "two live Test Clients in one stdio MCP, each bound to its file IB, distinct file-ibsrv ports; stop of A leaves B",
+      "result": "12 criteria met on saved JSON. tools/list=103. file-ibsrv 8424 and 10104. sessions_list count=2. Both active_window titles Простая конфигурация. stop A left B. Script exit 1: as_posix() compared with a backslash shared_file_key. No leftover 1cv8c/ibsrv. ~314s. click_button not called.",
+      "log": "logs/r20-mcp-dual-simple.md",
+      "tests": 12,
+      "assertions": 12,
       "skipped": 0,
       "mocks_only": false,
       "reason": null

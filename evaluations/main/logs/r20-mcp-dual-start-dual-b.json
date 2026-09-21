@@ -1,0 +1,192 @@
+{
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"session_id\": \"dual-b\",\n  \"version\": \"8.3.27.1936\",\n  \"platform_dir\": \"C:\\\\Program Files\\\\1cv8\\\\8.3.27.1936\\\\bin\",\n  \"display\": \"\",\n  \"client_display\": \"\",\n  \"ws_port\": 10325,\n  \"ibsrv_port\": 9874,\n  \"testclient_port\": 3098,\n  \"data_dir\": \"C:\\\\MyProjects\\\\choice-of-tools-1c\\\\.v8\\\\work\\\\r20-dual\\\\data\\\\sessions\\\\dual-b\",\n  \"bridge_url\": \"ws://127.0.0.1:10325/bridge\",\n  \"rag_snapshot\": \"\",\n  \"rag_enabled\": false,\n  \"server_rag_enabled\": false,\n  \"rag_notice\": {\n    \"enabled\": false,\n    \"auto\": true,\n    \"backend\": \"\",\n    \"summary_backend\": {\n      \"enabled\": true,\n      \"backend\": \"gitlab-stream\",\n      \"project\": \"platform42/configurations/summary\",\n      \"ref\": \"beta\"\n    },\n    \"snapshot\": \"\",\n    \"config_code\": \"\",\n    \"identifier\": \"\",\n    \"version\": \"\",\n    \"layers\": [],\n    \"warnings\": [],\n    \"reason\": \"rag_not_requested_or_no_web_base_url\",\n    \"message\": \"rag_not_requested_or_no_web_base_url\"\n  },\n  \"configuration_name\": \"\",\n  \"configuration_version\": \"\",\n  \"extension_names\": [],\n  \"web_runtime_probe\": {\n    \"attempted\": false,\n    \"status\": \"not_applicable\"\n  },\n  \"idle_timeout_seconds\": 1200,\n  \"test_client\": {\n    \"connected\": true,\n    \"base_url\": \"C:\\\\MyProjects\\\\choice-of-tools-1c\\\\.v8\\\\work\\\\r20-dual\\\\ib-b\",\n    \"connection_mode\": \"ws\",\n    \"connection_value\": \"http://127.0.0.1:10104\",\n    \"port\": 3098,\n    \"client_pid\": 26428,\n    \"client_log\": \"C:\\\\MyProjects\\\\choice-of-tools-1c\\\\.v8\\\\work\\\\r20-dual\\\\data\\\\sessions\\\\dual-b\\\\logs-client\\\\test_client_1c_out.log\",\n    \"auto_maximize\": {\n      \"method\": \"winapi\",\n      \"ok\": false,\n      \"error\": \"window not found\"\n    },\n    \"maximized\": {\n      \"maximized\": true,\n      \"method\": \"activate_only\",\n      \"window\": {\n        \"type\": \"Тестируемое окно клиентского приложения\",\n        \"title\": \"Простая конфигурация\",\n        \"visible\": true,\n        \"available\": true,\n        \"read_only\": false,\n        \"main\": true\n      }\n    },\n    \"_timings\": {\n      \"verify_manager_protocol_seconds\": 0.357,\n      \"spawn_test_client_process_seconds\": 1.869,\n      \"wait_test_client_port_seconds\": 7.446,\n      \"attach_test_client_seconds\": 29.851,\n      \"total_seconds\": 39.522\n    }\n  },\n  \"manager_pid\": 4912,\n  \"ws_url\": \"http://127.0.0.1:9874\",\n  \"log_dir\": \"C:\\\\MyProjects\\\\choice-of-tools-1c\\\\.v8\\\\work\\\\r20-dual\\\\data\\\\sessions\\\\dual-b\\\\logs\",\n  \"_timings\": {\n    \"resolve_credentials_version_platform_seconds\": 0.001,\n    \"allocate_ports_start_xvfb_bridge_seconds\": 5.039,\n    \"prepare_manager_infobase_seconds\": 26.752,\n    \"start_manager_and_wait_bridge_seconds\": 32.724,\n    \"prepare_demo_client_if_needed_seconds\": 0.021,\n    \"connect_test_client_seconds\": 39.522,\n    \"auto_maximize_test_client_seconds\": 0.003,\n    \"configure_rag_seconds\": 0.0,\n    \"persist_session_seconds\": 0.005,\n    \"total_seconds\": 104.066\n  }\n}"
+      }
+    ],
+    "structured_content": {
+      "session_id": "dual-b",
+      "version": "8.3.27.1936",
+      "platform_dir": "C:\\Program Files\\1cv8\\8.3.27.1936\\bin",
+      "display": "",
+      "client_display": "",
+      "ws_port": 10325,
+      "ibsrv_port": 9874,
+      "testclient_port": 3098,
+      "data_dir": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-dual\\data\\sessions\\dual-b",
+      "bridge_url": "ws://127.0.0.1:10325/bridge",
+      "rag_snapshot": "",
+      "rag_enabled": false,
+      "server_rag_enabled": false,
+      "rag_notice": {
+        "enabled": false,
+        "auto": true,
+        "backend": "",
+        "summary_backend": {
+          "enabled": true,
+          "backend": "gitlab-stream",
+          "project": "platform42/configurations/summary",
+          "ref": "beta"
+        },
+        "snapshot": "",
+        "config_code": "",
+        "identifier": "",
+        "version": "",
+        "layers": [],
+        "warnings": [],
+        "reason": "rag_not_requested_or_no_web_base_url",
+        "message": "rag_not_requested_or_no_web_base_url"
+      },
+      "configuration_name": "",
+      "configuration_version": "",
+      "extension_names": [],
+      "web_runtime_probe": {
+        "attempted": false,
+        "status": "not_applicable"
+      },
+      "idle_timeout_seconds": 1200,
+      "test_client": {
+        "connected": true,
+        "base_url": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-dual\\ib-b",
+        "connection_mode": "ws",
+        "connection_value": "http://127.0.0.1:10104",
+        "port": 3098,
+        "client_pid": 26428,
+        "client_log": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-dual\\data\\sessions\\dual-b\\logs-client\\test_client_1c_out.log",
+        "auto_maximize": {
+          "method": "winapi",
+          "ok": false,
+          "error": "window not found"
+        },
+        "maximized": {
+          "maximized": true,
+          "method": "activate_only",
+          "window": {
+            "type": "Тестируемое окно клиентского приложения",
+            "title": "Простая конфигурация",
+            "visible": true,
+            "available": true,
+            "read_only": false,
+            "main": true
+          }
+        },
+        "_timings": {
+          "verify_manager_protocol_seconds": 0.357,
+          "spawn_test_client_process_seconds": 1.869,
+          "wait_test_client_port_seconds": 7.446,
+          "attach_test_client_seconds": 29.851,
+          "total_seconds": 39.522
+        }
+      },
+      "manager_pid": 4912,
+      "ws_url": "http://127.0.0.1:9874",
+      "log_dir": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-dual\\data\\sessions\\dual-b\\logs",
+      "_timings": {
+        "resolve_credentials_version_platform_seconds": 0.001,
+        "allocate_ports_start_xvfb_bridge_seconds": 5.039,
+        "prepare_manager_infobase_seconds": 26.752,
+        "start_manager_and_wait_bridge_seconds": 32.724,
+        "prepare_demo_client_if_needed_seconds": 0.021,
+        "connect_test_client_seconds": 39.522,
+        "auto_maximize_test_client_seconds": 0.003,
+        "configure_rag_seconds": 0.0,
+        "persist_session_seconds": 0.005,
+        "total_seconds": 104.066
+      }
+    },
+    "is_error": false,
+    "result_type": "complete"
+  },
+  "payload": {
+    "session_id": "dual-b",
+    "version": "8.3.27.1936",
+    "platform_dir": "C:\\Program Files\\1cv8\\8.3.27.1936\\bin",
+    "display": "",
+    "client_display": "",
+    "ws_port": 10325,
+    "ibsrv_port": 9874,
+    "testclient_port": 3098,
+    "data_dir": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-dual\\data\\sessions\\dual-b",
+    "bridge_url": "ws://127.0.0.1:10325/bridge",
+    "rag_snapshot": "",
+    "rag_enabled": false,
+    "server_rag_enabled": false,
+    "rag_notice": {
+      "enabled": false,
+      "auto": true,
+      "backend": "",
+      "summary_backend": {
+        "enabled": true,
+        "backend": "gitlab-stream",
+        "project": "platform42/configurations/summary",
+        "ref": "beta"
+      },
+      "snapshot": "",
+      "config_code": "",
+      "identifier": "",
+      "version": "",
+      "layers": [],
+      "warnings": [],
+      "reason": "rag_not_requested_or_no_web_base_url",
+      "message": "rag_not_requested_or_no_web_base_url"
+    },
+    "configuration_name": "",
+    "configuration_version": "",
+    "extension_names": [],
+    "web_runtime_probe": {
+      "attempted": false,
+      "status": "not_applicable"
+    },
+    "idle_timeout_seconds": 1200,
+    "test_client": {
+      "connected": true,
+      "base_url": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-dual\\ib-b",
+      "connection_mode": "ws",
+      "connection_value": "http://127.0.0.1:10104",
+      "port": 3098,
+      "client_pid": 26428,
+      "client_log": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-dual\\data\\sessions\\dual-b\\logs-client\\test_client_1c_out.log",
+      "auto_maximize": {
+        "method": "winapi",
+        "ok": false,
+        "error": "window not found"
+      },
+      "maximized": {
+        "maximized": true,
+        "method": "activate_only",
+        "window": {
+          "type": "Тестируемое окно клиентского приложения",
+          "title": "Простая конфигурация",
+          "visible": true,
+          "available": true,
+          "read_only": false,
+          "main": true
+        }
+      },
+      "_timings": {
+        "verify_manager_protocol_seconds": 0.357,
+        "spawn_test_client_process_seconds": 1.869,
+        "wait_test_client_port_seconds": 7.446,
+        "attach_test_client_seconds": 29.851,
+        "total_seconds": 39.522
+      }
+    },
+    "manager_pid": 4912,
+    "ws_url": "http://127.0.0.1:9874",
+    "log_dir": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-dual\\data\\sessions\\dual-b\\logs",
+    "_timings": {
+      "resolve_credentials_version_platform_seconds": 0.001,
+      "allocate_ports_start_xvfb_bridge_seconds": 5.039,
+      "prepare_manager_infobase_seconds": 26.752,
+      "start_manager_and_wait_bridge_seconds": 32.724,
+      "prepare_demo_client_if_needed_seconds": 0.021,
+      "connect_test_client_seconds": 39.522,
+      "auto_maximize_test_client_seconds": 0.003,
+      "configure_rag_seconds": 0.0,
+      "persist_session_seconds": 0.005,
+      "total_seconds": 104.066
+    }
+  }
+}

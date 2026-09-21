@@ -228,8 +228,9 @@ execution не выполнялся. Снимок `history/goal-v1` остаёт
 `request.json.depth` остаётся `overview` — deep-static выполнен для
 r01/r15/r20/r21/r22 по явной просьбе, не для всех 22.
 
-Следующее исполнение плана (не этот файл): dual live Test Client Answer42.
-Dual-workspace Unica уже PASS (`run-r01-dual-simple`). `[tools].enabled`
-r15 уже PASS (`tools/list` = 9). Код фасада не входит.
-Dual live Test Client r20 — NOT_RUN. YaXUnit — когда появятся модули.
+Следующее исполнение плана (не этот файл): stdio-whitelist r15 и связка
+`--path`+`--config`. Dual-workspace Unica уже PASS (`run-r01-dual-simple`).
+`[tools].enabled` r15 уже PASS (`tools/list` = 9). Dual live Test Client
+r20 уже PASS (`run-r20-mcp-dual`). Код фасада не входит.
+YaXUnit — когда появятся модули.
 `permissions.* = false`.

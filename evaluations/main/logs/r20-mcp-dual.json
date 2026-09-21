@@ -1,0 +1,97 @@
+{
+  "binary": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-mcp\\venv\\Scripts\\answer42.exe",
+  "package": "answer42==0.5.3",
+  "ib_a": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\ib\\simple",
+  "ib_b": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-dual\\ib-b",
+  "data": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-dual\\data",
+  "platform": "C:\\Program Files\\1cv8\\8.3.27.1936\\bin",
+  "checks": [
+    {
+      "name": "initialize",
+      "expected": "Answer42",
+      "actual": "name=Answer42 protocol=2025-11-25",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "tools/list",
+      "expected": "session tools present",
+      "actual": "count=103 missing=[]",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "start_session dual-a",
+      "expected": "connected Test Client, base_url=C:\\MyProjects\\choice-of-tools-1c\\.v8\\ib\\simple",
+      "actual": "isError=False base=C:\\MyProjects\\choice-of-tools-1c\\.v8\\ib\\simple conn=http://127.0.0.1:8424 port=3058",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "start_session dual-b",
+      "expected": "connected Test Client, base_url=C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-dual\\ib-b",
+      "actual": "isError=False base=C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-dual\\ib-b conn=http://127.0.0.1:10104 port=3098",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "distinct ibsrv urls",
+      "expected": "two different http connection_value values",
+      "actual": "A=http://127.0.0.1:8424 B=http://127.0.0.1:10104",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "sessions_list both live",
+      "expected": "two running sessions bound to their own file IB",
+      "actual": "count=2 A=C:\\MyProjects\\choice-of-tools-1c\\.v8\\ib\\simple B=C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-dual\\ib-b",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "session_status paths stay apart",
+      "expected": "each session keeps its file path, shared key and ibsrv port",
+      "actual": "A=C:\\MyProjects\\choice-of-tools-1c\\.v8\\ib\\simple port=8424; B=C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-dual\\ib-b port=10104",
+      "pass": false,
+      "extra": null
+    },
+    {
+      "name": "active_window dual-a",
+      "expected": "non-empty window while the other session is up",
+      "actual": "isError=False title='Простая конфигурация'",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "active_window dual-b",
+      "expected": "non-empty window while the other session is up",
+      "actual": "isError=False title='Простая конфигурация'",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "standalone.yaml both db paths",
+      "expected": "isolated data dir contains both file IB paths at once",
+      "actual": "yaml=4 hasA=True hasB=True",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "stop_session dual-a",
+      "expected": "stopped=true",
+      "actual": "{\"stopped\": true, \"session_id\": \"dual-a\", \"components\": [\"test-client\", \"test-client-process\", \"pipeline\", \"shared-file-ibsrv\", \"bridge\", \"client-xvfb\", \"xvfb\", \"stale-processes\", \"data_dir\"]}",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "stop A leaves B",
+      "expected": "A is gone; B still answers active_window on its own IB",
+      "actual": "A.running=False A.windowError=True B.running=True B.path=C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-dual\\ib-b B.title='Простая конфигурация' titles_while_both={'dual-a': 'Простая конфигурация', 'dual-b': 'Простая конфигурация'}",
+      "pass": true,
+      "extra": null
+    }
+  ],
+  "failed": 1,
+  "killed_leftovers": [],
+  "stderr_log": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-dual\\answer42.stderr.log"
+}

@@ -1,0 +1,42 @@
+{
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"stopped\": true,\n  \"session_id\": \"dual-a\",\n  \"components\": [\n    \"test-client\",\n    \"test-client-process\",\n    \"pipeline\",\n    \"shared-file-ibsrv\",\n    \"bridge\",\n    \"client-xvfb\",\n    \"xvfb\",\n    \"stale-processes\",\n    \"data_dir\"\n  ]\n}"
+      }
+    ],
+    "structured_content": {
+      "stopped": true,
+      "session_id": "dual-a",
+      "components": [
+        "test-client",
+        "test-client-process",
+        "pipeline",
+        "shared-file-ibsrv",
+        "bridge",
+        "client-xvfb",
+        "xvfb",
+        "stale-processes",
+        "data_dir"
+      ]
+    },
+    "is_error": false,
+    "result_type": "complete"
+  },
+  "payload": {
+    "stopped": true,
+    "session_id": "dual-a",
+    "components": [
+      "test-client",
+      "test-client-process",
+      "pipeline",
+      "shared-file-ibsrv",
+      "bridge",
+      "client-xvfb",
+      "xvfb",
+      "stale-processes",
+      "data_dir"
+    ]
+  }
+}

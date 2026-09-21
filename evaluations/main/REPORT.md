@@ -31,8 +31,8 @@ r15 CLI, r15 daemon+MCP, r22 init/build/syntax, r01 `view`/`check`
 и r01 `apply` dryRun + `docs` прогнаны на стенде `simple`. Публикация
 `apply` с `ifRev` на Designer dump 2.20 — PASS. `[tools].enabled` r15
 — PASS (`tools/list` = 9). Dual-workspace Unica — PASS (один демон,
-два cwd). Следующий этап — dual live Test Client Answer42,
-не код фасада.
+два cwd). **r20 dual live Test Client PASS**. Следующий этап —
+stdio-whitelist r15 и связка `--path`+`--config`, не код фасада.
 
 Вывод обзора при цели v1 сохранён в снимке `history/goal-v1/REPORT.md`.
 Его не читать при обычном CONTINUE; как рекомендация v2 он не действует.
@@ -72,7 +72,7 @@ DEEP_STATIC по S1–S5. **r15 — DEEP_STATIC по S1–S5** на том же 
 Наиболее существенные неизвестные цели v2:
 
 1. Execution (индекс r15, smoke остальных). Static S1–S5 пяти есть.
-2. Для Answer42 r20 остаётся dual live Test Client; для r22 — фикстура YaXUnit с модулями. Dual-workspace Unica закрыт (`run-r01-dual-simple`); dual-IB и два source-set в одном yaml ещё NOT_RUN.
+2. Dual live Test Client r20 закрыт (`run-r20-mcp-dual`); для r22 остаётся фикстура YaXUnit с модулями. Dual-workspace Unica закрыт (`run-r01-dual-simple`); dual-IB и два source-set в одном yaml ещё NOT_RUN.
 3. Точность индекса r15 и компактность JSON-отчёта r22.
 4. Лицензии Unica (LGPL) и r22 (AGPL-3.0) — не юридическое заключение.
 5. Сборка r04, если `unica.docs` не хватит.
@@ -95,7 +95,7 @@ DEEP_STATIC по S1–S5. **r15 — DEEP_STATIC по S1–S5** на том же 
 [INTEGRATION.md](INTEGRATION.md); статусы — [VALIDATION.md](VALIDATION.md).
 Этот отчёт не запускает остальные продукты. **r15 CLI**, **r22
 init/build/syntax**, **r01 view/check**, **r01 apply dryRun + docs** и
-**r01 apply publish** PASS на стенде `simple` (ИБ создана). **r20 Answer42 smoke PASS**.
+**r01 apply publish** PASS на стенде `simple` (ИБ создана). **r20 Answer42 smoke PASS**. **r20 dual live Test Client PASS**.
 **r01 dual-workspace PASS**. Точка продолжения — [STATE.md](STATE.md).
 
 
@@ -108,7 +108,8 @@ init/build/syntax**, **r01 view/check**, **r01 apply dryRun + docs** и
 поверхность через `--tool-profile ui|core` и `--disable-rag`. Живой
 `tools/list` при `ui` = **103**. RAG не брать как explore. Состав не
 менялся. Execution smoke `start_session`/`active_window`/`screenshot`/
-`stop_session` на simple — PASS.
+`stop_session` на simple — PASS. Dual live Test Client на simple и
+файловой копии — PASS (`run-r20-mcp-dual`).
 
 ## Частичный CONTINUE-AUDIT r21
 

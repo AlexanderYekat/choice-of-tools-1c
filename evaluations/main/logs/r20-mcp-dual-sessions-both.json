@@ -1,0 +1,122 @@
+{
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"count\": 2,\n  \"sessions\": [\n    {\n      \"session_id\": \"dual-a\",\n      \"running\": true,\n      \"base_url\": \"C:\\\\MyProjects\\\\choice-of-tools-1c\\\\.v8\\\\ib\\\\simple\",\n      \"version\": \"8.3.27.1936\",\n      \"display\": \"\",\n      \"client_display\": \"\",\n      \"ws_port\": 10285,\n      \"bridge_connected\": true,\n      \"blocked_action\": null,\n      \"manager_alive\": true,\n      \"ibsrv_alive\": true,\n      \"testclient_port\": 3058,\n      \"testclient_alive\": true,\n      \"client_ibsrv_port\": 0,\n      \"client_ibsrv_alive\": false,\n      \"file_client_ibsrv_port\": 8424,\n      \"file_client_ibsrv_alive\": true,\n      \"rag_snapshot\": \"\",\n      \"rag_enabled\": false,\n      \"configuration_name\": \"\",\n      \"configuration_version\": \"\",\n      \"extension_names\": [],\n      \"idle_timeout_seconds\": 1200\n    },\n    {\n      \"session_id\": \"dual-b\",\n      \"running\": true,\n      \"base_url\": \"C:\\\\MyProjects\\\\choice-of-tools-1c\\\\.v8\\\\work\\\\r20-dual\\\\ib-b\",\n      \"version\": \"8.3.27.1936\",\n      \"display\": \"\",\n      \"client_display\": \"\",\n      \"ws_port\": 10325,\n      \"bridge_connected\": true,\n      \"blocked_action\": null,\n      \"manager_alive\": true,\n      \"ibsrv_alive\": true,\n      \"testclient_port\": 3098,\n      \"testclient_alive\": true,\n      \"client_ibsrv_port\": 0,\n      \"client_ibsrv_alive\": false,\n      \"file_client_ibsrv_port\": 10104,\n      \"file_client_ibsrv_alive\": true,\n      \"rag_snapshot\": \"\",\n      \"rag_enabled\": false,\n      \"configuration_name\": \"\",\n      \"configuration_version\": \"\",\n      \"extension_names\": [],\n      \"idle_timeout_seconds\": 1200\n    }\n  ]\n}"
+      }
+    ],
+    "structured_content": {
+      "count": 2,
+      "sessions": [
+        {
+          "session_id": "dual-a",
+          "running": true,
+          "base_url": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\ib\\simple",
+          "version": "8.3.27.1936",
+          "display": "",
+          "client_display": "",
+          "ws_port": 10285,
+          "bridge_connected": true,
+          "blocked_action": null,
+          "manager_alive": true,
+          "ibsrv_alive": true,
+          "testclient_port": 3058,
+          "testclient_alive": true,
+          "client_ibsrv_port": 0,
+          "client_ibsrv_alive": false,
+          "file_client_ibsrv_port": 8424,
+          "file_client_ibsrv_alive": true,
+          "rag_snapshot": "",
+          "rag_enabled": false,
+          "configuration_name": "",
+          "configuration_version": "",
+          "extension_names": [],
+          "idle_timeout_seconds": 1200
+        },
+        {
+          "session_id": "dual-b",
+          "running": true,
+          "base_url": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-dual\\ib-b",
+          "version": "8.3.27.1936",
+          "display": "",
+          "client_display": "",
+          "ws_port": 10325,
+          "bridge_connected": true,
+          "blocked_action": null,
+          "manager_alive": true,
+          "ibsrv_alive": true,
+          "testclient_port": 3098,
+          "testclient_alive": true,
+          "client_ibsrv_port": 0,
+          "client_ibsrv_alive": false,
+          "file_client_ibsrv_port": 10104,
+          "file_client_ibsrv_alive": true,
+          "rag_snapshot": "",
+          "rag_enabled": false,
+          "configuration_name": "",
+          "configuration_version": "",
+          "extension_names": [],
+          "idle_timeout_seconds": 1200
+        }
+      ]
+    },
+    "is_error": false,
+    "result_type": "complete"
+  },
+  "payload": {
+    "count": 2,
+    "sessions": [
+      {
+        "session_id": "dual-a",
+        "running": true,
+        "base_url": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\ib\\simple",
+        "version": "8.3.27.1936",
+        "display": "",
+        "client_display": "",
+        "ws_port": 10285,
+        "bridge_connected": true,
+        "blocked_action": null,
+        "manager_alive": true,
+        "ibsrv_alive": true,
+        "testclient_port": 3058,
+        "testclient_alive": true,
+        "client_ibsrv_port": 0,
+        "client_ibsrv_alive": false,
+        "file_client_ibsrv_port": 8424,
+        "file_client_ibsrv_alive": true,
+        "rag_snapshot": "",
+        "rag_enabled": false,
+        "configuration_name": "",
+        "configuration_version": "",
+        "extension_names": [],
+        "idle_timeout_seconds": 1200
+      },
+      {
+        "session_id": "dual-b",
+        "running": true,
+        "base_url": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-dual\\ib-b",
+        "version": "8.3.27.1936",
+        "display": "",
+        "client_display": "",
+        "ws_port": 10325,
+        "bridge_connected": true,
+        "blocked_action": null,
+        "manager_alive": true,
+        "ibsrv_alive": true,
+        "testclient_port": 3098,
+        "testclient_alive": true,
+        "client_ibsrv_port": 0,
+        "client_ibsrv_alive": false,
+        "file_client_ibsrv_port": 10104,
+        "file_client_ibsrv_alive": true,
+        "rag_snapshot": "",
+        "rag_enabled": false,
+        "configuration_name": "",
+        "configuration_version": "",
+        "extension_names": [],
+        "idle_timeout_seconds": 1200
+      }
+    ]
+  }
+}

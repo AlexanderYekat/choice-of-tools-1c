@@ -1,0 +1,18 @@
+[
+  {
+    "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-dual\\data\\shared-file-servers\\file\\16a12ce544c3\\ibsrv-data\\standalone.yaml",
+    "text": "server:\n  address: 127.0.0.1\n  port: 10104\ndatabase:\n  path: C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-dual\\ib-b\ninfobase:\n  name: mcpfileclient\nhttp:\n  base: /\n"
+  },
+  {
+    "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-dual\\data\\shared-file-servers\\file\\0776e1b0eccd\\ibsrv-data\\standalone.yaml",
+    "text": "server:\n  address: 127.0.0.1\n  port: 8424\ndatabase:\n  path: C:\\MyProjects\\choice-of-tools-1c\\.v8\\ib\\simple\ninfobase:\n  name: mcpfileclient\nhttp:\n  base: /\n"
+  },
+  {
+    "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-dual\\data\\sessions\\dual-b\\ibsrv-data\\standalone.yaml",
+    "text": "server:\n  address: 127.0.0.1\n  port: 9874\ndatabase:\n  path: C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-dual\\data\\sessions\\dual-b\\ib\ninfobase:\n  name: mcp\nhttp:\n  base: /\n"
+  },
+  {
+    "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-dual\\data\\sessions\\dual-a\\ibsrv-data\\standalone.yaml",
+    "text": "server:\n  address: 127.0.0.1\n  port: 9834\ndatabase:\n  path: C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-dual\\data\\sessions\\dual-a\\ib\ninfobase:\n  name: mcp\nhttp:\n  base: /\n"
+  }
+]

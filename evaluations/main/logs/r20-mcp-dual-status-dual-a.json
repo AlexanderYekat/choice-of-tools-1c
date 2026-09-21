@@ -1,0 +1,172 @@
+{
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"running\": true,\n  \"session_id\": \"dual-a\",\n  \"base_url\": \"C:\\\\MyProjects\\\\choice-of-tools-1c\\\\.v8\\\\ib\\\\simple\",\n  \"target_connection_mode\": \"file\",\n  \"target_connection_value\": \"C:\\\\MyProjects\\\\choice-of-tools-1c\\\\.v8\\\\ib\\\\simple\",\n  \"version\": \"8.3.27.1936\",\n  \"display\": \"\",\n  \"client_display\": \"\",\n  \"bridge\": {\n    \"websocket_url\": \"ws://127.0.0.1:10285/bridge\",\n    \"connected\": true,\n    \"peer\": \"('127.0.0.1', 64085)\",\n    \"pending\": 0\n  },\n  \"blocked_action\": null,\n  \"manager\": {\n    \"pid\": 25580,\n    \"alive\": true,\n    \"server_pid\": 664,\n    \"server_alive\": true,\n    \"port\": 9834,\n    \"log_dir\": \"C:\\\\MyProjects\\\\choice-of-tools-1c\\\\.v8\\\\work\\\\r20-dual\\\\data\\\\sessions\\\\dual-a\\\\logs\"\n  },\n  \"test_client\": {\n    \"port\": 3058,\n    \"pid\": 35268,\n    \"alive\": true,\n    \"base_url\": \"C:\\\\MyProjects\\\\choice-of-tools-1c\\\\.v8\\\\ib\\\\simple\",\n    \"target_connection_mode\": \"file\",\n    \"target_connection_value\": \"C:\\\\MyProjects\\\\choice-of-tools-1c\\\\.v8\\\\ib\\\\simple\",\n    \"client_ibsrv_port\": 0,\n    \"server_alive\": false,\n    \"shared_client_key\": \"\",\n    \"file_client_ibsrv_port\": 8424,\n    \"file_client_server_alive\": true,\n    \"shared_file_key\": \"file:C:\\\\Program Files\\\\1cv8\\\\8.3.27.1936\\\\bin:C:\\\\MyProjects\\\\choice-of-tools-1c\\\\.v8\\\\ib\\\\simple\"\n  },\n  \"rag_snapshot\": \"\",\n  \"rag_enabled\": false,\n  \"server_rag_enabled\": false,\n  \"rag_notice\": {\n    \"enabled\": false,\n    \"auto\": true,\n    \"backend\": \"\",\n    \"summary_backend\": {\n      \"enabled\": true,\n      \"backend\": \"gitlab-stream\",\n      \"project\": \"platform42/configurations/summary\",\n      \"ref\": \"beta\"\n    },\n    \"snapshot\": \"\",\n    \"config_code\": \"\",\n    \"identifier\": \"\",\n    \"version\": \"\",\n    \"layers\": [],\n    \"warnings\": [],\n    \"reason\": \"rag_not_requested_or_no_web_base_url\",\n    \"message\": \"rag_not_requested_or_no_web_base_url\"\n  },\n  \"rag_diagnostic\": {\n    \"rag_enabled\": false,\n    \"snapshot\": null,\n    \"session_snapshot\": \"\",\n    \"diagnostics\": [\n      {\n        \"available\": false,\n        \"rag_enabled\": false,\n        \"server_rag_enabled\": false,\n        \"session_rag_enabled\": false,\n        \"reason\": \"rag_disabled\",\n        \"message\": \"Built-in Answer42 RAG is disabled for this MCP server. Start without --disable-rag / ONEC_MCP_DISABLE_RAG to use RAG tools.\"\n      }\n    ]\n  },\n  \"configuration_name\": \"\",\n  \"configuration_version\": \"\",\n  \"extension_names\": [],\n  \"idle_timeout_seconds\": 1200\n}"
+      }
+    ],
+    "structured_content": {
+      "running": true,
+      "session_id": "dual-a",
+      "base_url": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\ib\\simple",
+      "target_connection_mode": "file",
+      "target_connection_value": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\ib\\simple",
+      "version": "8.3.27.1936",
+      "display": "",
+      "client_display": "",
+      "bridge": {
+        "websocket_url": "ws://127.0.0.1:10285/bridge",
+        "connected": true,
+        "peer": "('127.0.0.1', 64085)",
+        "pending": 0
+      },
+      "blocked_action": null,
+      "manager": {
+        "pid": 25580,
+        "alive": true,
+        "server_pid": 664,
+        "server_alive": true,
+        "port": 9834,
+        "log_dir": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-dual\\data\\sessions\\dual-a\\logs"
+      },
+      "test_client": {
+        "port": 3058,
+        "pid": 35268,
+        "alive": true,
+        "base_url": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\ib\\simple",
+        "target_connection_mode": "file",
+        "target_connection_value": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\ib\\simple",
+        "client_ibsrv_port": 0,
+        "server_alive": false,
+        "shared_client_key": "",
+        "file_client_ibsrv_port": 8424,
+        "file_client_server_alive": true,
+        "shared_file_key": "file:C:\\Program Files\\1cv8\\8.3.27.1936\\bin:C:\\MyProjects\\choice-of-tools-1c\\.v8\\ib\\simple"
+      },
+      "rag_snapshot": "",
+      "rag_enabled": false,
+      "server_rag_enabled": false,
+      "rag_notice": {
+        "enabled": false,
+        "auto": true,
+        "backend": "",
+        "summary_backend": {
+          "enabled": true,
+          "backend": "gitlab-stream",
+          "project": "platform42/configurations/summary",
+          "ref": "beta"
+        },
+        "snapshot": "",
+        "config_code": "",
+        "identifier": "",
+        "version": "",
+        "layers": [],
+        "warnings": [],
+        "reason": "rag_not_requested_or_no_web_base_url",
+        "message": "rag_not_requested_or_no_web_base_url"
+      },
+      "rag_diagnostic": {
+        "rag_enabled": false,
+        "snapshot": null,
+        "session_snapshot": "",
+        "diagnostics": [
+          {
+            "available": false,
+            "rag_enabled": false,
+            "server_rag_enabled": false,
+            "session_rag_enabled": false,
+            "reason": "rag_disabled",
+            "message": "Built-in Answer42 RAG is disabled for this MCP server. Start without --disable-rag / ONEC_MCP_DISABLE_RAG to use RAG tools."
+          }
+        ]
+      },
+      "configuration_name": "",
+      "configuration_version": "",
+      "extension_names": [],
+      "idle_timeout_seconds": 1200
+    },
+    "is_error": false,
+    "result_type": "complete"
+  },
+  "payload": {
+    "running": true,
+    "session_id": "dual-a",
+    "base_url": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\ib\\simple",
+    "target_connection_mode": "file",
+    "target_connection_value": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\ib\\simple",
+    "version": "8.3.27.1936",
+    "display": "",
+    "client_display": "",
+    "bridge": {
+      "websocket_url": "ws://127.0.0.1:10285/bridge",
+      "connected": true,
+      "peer": "('127.0.0.1', 64085)",
+      "pending": 0
+    },
+    "blocked_action": null,
+    "manager": {
+      "pid": 25580,
+      "alive": true,
+      "server_pid": 664,
+      "server_alive": true,
+      "port": 9834,
+      "log_dir": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-dual\\data\\sessions\\dual-a\\logs"
+    },
+    "test_client": {
+      "port": 3058,
+      "pid": 35268,
+      "alive": true,
+      "base_url": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\ib\\simple",
+      "target_connection_mode": "file",
+      "target_connection_value": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\ib\\simple",
+      "client_ibsrv_port": 0,
+      "server_alive": false,
+      "shared_client_key": "",
+      "file_client_ibsrv_port": 8424,
+      "file_client_server_alive": true,
+      "shared_file_key": "file:C:\\Program Files\\1cv8\\8.3.27.1936\\bin:C:\\MyProjects\\choice-of-tools-1c\\.v8\\ib\\simple"
+    },
+    "rag_snapshot": "",
+    "rag_enabled": false,
+    "server_rag_enabled": false,
+    "rag_notice": {
+      "enabled": false,
+      "auto": true,
+      "backend": "",
+      "summary_backend": {
+        "enabled": true,
+        "backend": "gitlab-stream",
+        "project": "platform42/configurations/summary",
+        "ref": "beta"
+      },
+      "snapshot": "",
+      "config_code": "",
+      "identifier": "",
+      "version": "",
+      "layers": [],
+      "warnings": [],
+      "reason": "rag_not_requested_or_no_web_base_url",
+      "message": "rag_not_requested_or_no_web_base_url"
+    },
+    "rag_diagnostic": {
+      "rag_enabled": false,
+      "snapshot": null,
+      "session_snapshot": "",
+      "diagnostics": [
+        {
+          "available": false,
+          "rag_enabled": false,
+          "server_rag_enabled": false,
+          "session_rag_enabled": false,
+          "reason": "rag_disabled",
+          "message": "Built-in Answer42 RAG is disabled for this MCP server. Start without --disable-rag / ONEC_MCP_DISABLE_RAG to use RAG tools."
+        }
+      ]
+    },
+    "configuration_name": "",
+    "configuration_version": "",
+    "extension_names": [],
+    "idle_timeout_seconds": 1200
+  }
+}

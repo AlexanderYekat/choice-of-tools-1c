@@ -5,7 +5,7 @@ FIXTURE_HARNESS_ATTACHED; R15_CLI_SMOKE_PASS; R15_MCP_SMOKE_PASS;
 R22_IB_SMOKE_PASS; R01_MCP_SMOKE_PASS; R01_APPLY_DOCS_SMOKE_PASS;
 R22_DUMP_CF220_PASS; R01_APPLY_CF220_PASS; R22_YAXUNIT_VA_EMPTY_FAIL; R22_VA_SMOKE_PASS;
 R20_MCP_SMOKE_PASS; R01_APPLY_PUBLISH_PASS; R15_MCP_WHITELIST_PASS;
-R01_DUAL_WORKSPACE_PASS.
+R01_DUAL_WORKSPACE_PASS; R20_DUAL_LIVE_PASS.
 Последнее обновление: 2026-09-21.
 
 Состав контура выбран ([DECISION.md](DECISION.md)): Unica, code-index-mcp,
@@ -19,7 +19,8 @@ r22 init/build/syntax, r01 `view`/`check`, r01 `apply` dryRun + `docs`
 Vanessa smoke-engine.feature 1/1 PASS. **r20 Answer42 smoke PASS**.
 **r01 `apply` публикация на cf220 PASS**. **r15 `[tools].enabled`
 PASS** (живой `tools/list` = 9). **r01 dual-workspace PASS**
-(две выгрузки, один демон). Фасад не писался.
+(две выгрузки, один демон). **r20 dual live Test Client PASS**
+(два `base_url`, один stdio MCP). Фасад не писался.
 
 ## Восстановление без чата
 
@@ -76,7 +77,8 @@ PASS** (живой `tools/list` = 9). **r01 dual-workspace PASS**
 Vanessa: сначала `tests.va.profile is not configured`; после feature +
 EPF — **1/1 PASS** (`run-r22-va-smoke-simple`). **Runtime r20 PASS**
 (`run-r20-mcp-simple`). Публикация `apply` (`dryRun:false` + `ifRev`
-с cf220) **PASS**. Dual live Test Client r20 NOT_RUN.
+с cf220) **PASS**. Dual live Test Client r20 PASS
+(`run-r20-mcp-dual`).
 
 Фикстура: opt-in v8-harness @ `322398ae…`, стенд `simple`, `from: file`.
 Выгрузка `source-checkouts/simple1CAiConf` @ `1dbc395d…`.
@@ -131,15 +133,23 @@ stdio `--tool-profile ui --disable-rag`; `tools/list` = 103; сессия к
 смешался. Квитанции: один `coreIdentityDigest`, два `requestScopeHash`.
 XML документов не изменились. Лог:
 [logs/r01-mcp-dual-simple.md](logs/r01-mcp-dual-simple.md).
+**r20 dual live Test Client PASS** (`run-r20-mcp-dual`): один stdio,
+`dual-a` на `.v8/ib/simple` и `dual-b` на копии
+`.v8/work/r20-dual/ib-b`. File-ibsrv `8424` и `10104`;
+`sessions_list` count=2; `stop` A оставил B. Заголовки окон совпали
+(копия той же конфигурации). Скрипт exit 1 из-за сравнения
+`as_posix()` с ключом на `\`; разбор JSON — критерий выполнен,
+повтор 1С не запускался. Лог:
+[logs/r20-mcp-dual-simple.md](logs/r20-mcp-dual-simple.md).
 
 ## Следующий шаг
 
-Не писать код фасада. Dual live Test Client Answer42 — следующий
-эксперимент. stdio-whitelist r15 и связка `--path`+`--config` NOT_RUN
-(`serve --help`: `--path` игнорирует конфиг). YaXUnit на simple
-по-прежнему без расширения/модулей. Две ИБ Unica и два source-set
-в одном yaml NOT_RUN. Рабочий дамп `.v8/work/simple-cf-220` несёт
-smoke-Comment; повторный Designer dump затрёт его.
+Не писать код фасада. stdio-whitelist r15 и связка `--path`+`--config`
+— следующий эксперимент (`serve --help`: `--path` игнорирует конфиг).
+YaXUnit на simple по-прежнему без расширения/модулей. Две ИБ Unica и
+два source-set в одном yaml NOT_RUN. Рабочий дамп
+`.v8/work/simple-cf-220` несёт smoke-Comment; повторный Designer dump
+затрёт его.
 
 ## Журнал
 
@@ -214,3 +224,7 @@ r01 `view`/`check`; выполнен `unica.apply` dryRun + `unica.docs`
 `UNICA_PROVIDER_STATE_DIR`. 11/11 PASS (`run-r01-dual-simple`).
 `view` не смешал корни и Comment; sha256 XML не изменился.
 `apply` не вызывался. Фасад не писался.
+2026-09-21 → «давай дальше по плану»: dual live Test Client Answer42.
+Один stdio MCP, две файловые ИБ (`simple` и копия `ib-b`). 12/12 по
+разбору JSON (`run-r20-mcp-dual`); скрипт exit 1 на сравнении слэшей
+в `shared_file_key`. `click_button` не вызывался. Фасад не писался.

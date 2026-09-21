@@ -23,7 +23,7 @@
 | C5 edit | r01 основной; r12 дубль, не в контуре; r17 только EDT | частичное (УФ+метаданные) | c01-facade, c01-apply-fence, c01-apply-dryrun-simple, c01-apply-cf220-simple, c01-apply-publish-cf220-simple, c12-managed-forms | dryRun preview + публикация ifRev RUN на Designer 2.20; рукописный дамп `invalid_source` | загрузка опубликованного дампа в ИБ; ОФ не требуется |
 | C6 static | r01 `unica.check`; **r22 syntax designer/edt** (r09 не в контуре) | частичное | c01, c01-check-format-simple, c22-eight-tools; c22-ib-simple | продуктовая; r22 modules RUN clean; Unica.check ответил на фикстуре `source_unreadable` | check на выгрузке 2.20, которую Unica принимает |
 | C7 build/run | r01 `unica.run`; **r22 CLI `build`/`launch` + `--json-message`** | частичное→сильное у r22 | c22-entry; c22-json-envelope; c22-ib-simple; c01-entry | r22 init/build RUN; r01 static | launch/apply; dual-IB |
-| C8 runtime/UI test | **r22 YaXUnit CLI + `test va`**; **r20 Answer42**; **r21 Vanessa (движок)** | частичное | c22-entry; c22-yaxunit-empty-simple; c22-va-unconfigured-simple; c22-va-smoke-simple; c20-entry; c20-mcp-simple; c21-cli-target | Vanessa engine smoke RUN 1/1; Answer42 smoke RUN; YaXUnit на simple без расширения | фикстура с модулями YaXUnit; dual live r20 |
+| C8 runtime/UI test | **r22 YaXUnit CLI + `test va`**; **r20 Answer42**; **r21 Vanessa (движок)** | частичное | c22-entry; c22-yaxunit-empty-simple; c22-va-unconfigured-simple; c22-va-smoke-simple; c20-entry; c20-mcp-simple; c20-dual-live; c21-cli-target | Vanessa engine smoke RUN 1/1; Answer42 smoke RUN; dual live r20 RUN; YaXUnit на simple без расширения | фикстура с модулями YaXUnit; click_button r20 |
 | C9 compact results | r01 typed data; r15 fragments; **r22 Envelope + retained_paths**; r02 truncation (не в контуре) | частичное | architecture/tool-surface; c22-json-envelope | заложено | замер токенов; фасад |
 | C10 min surface | фасад обязателен; **r01 живой `tools/list` = 11, прячутся**; **r15 без секции list = 33, с `[tools].enabled` list = 9**; **r22 CLI без tools/list**; **r20 живой `ui` = 103 (static `full` 122), режется `--tool-profile`**; r21 MCP 37, **но scenario идёт через r22 CLI** | частичное | c01-facade, c01-mcp-simple, c01-adapter-choice, c15-mcp-whitelist, c15-adapter-choice, c15-mcp-simple, c22-eight-tools, c22-adapter-choice, c20-tool-surface, c20-tool-profile, c20-mcp-simple, c21-tool-surface, c21-adapter-choice | r01/r15/r20/r21/r22 можно спрятать за facade без патча; whitelist r15 RUN | execution фасада |
 | C11 знания вне окна | r15 SQLite; r01 кэш; r04 | полное у индексных | c15; c01; c04 | высокая | — |
@@ -54,7 +54,8 @@
 - **Сборка+YaXUnit: выбран r22** (2026-09-21). r09 METR не в контуре.
 - **Клиент без тестов:** r01 `unica.run`; r22 `launch`.
 - **UI формы:** r20 Answer42 — stdio MCP, `--tool-profile ui --disable-rag`,
-  `session_id`; smoke на simple PASS (`tools/list` = 103).
+  `session_id`; smoke на simple PASS (`tools/list` = 103); dual live
+  Test Client PASS (`run-r20-mcp-dual`).
 - **Сценарий:** движок r21 Vanessa; запуск через r22 `test va` (не сырой
   `1cv8 /Execute` фасада). MCP Vanessa — интерактивная отладка.
 - **Спецслучаи:** r06, r07, r17 (EDT не основа контура).
@@ -73,6 +74,7 @@
 Все связи `PROPOSED_INTEGRATION`. Фасад не запускался
 (`VERIFIED_INTEGRATION` нет). Dump-only: r15 CLI+MCP, r22 IB, r01
 `view`/`check`/`apply` dryRun/`docs`/публикация ifRev. **r20 Answer42 smoke RUN**.
+**r20 dual live Test Client RUN**.
 r01/r15/r20/r21/r22 прочитаны в объёме S1–S5.
 
 ## Пробелы

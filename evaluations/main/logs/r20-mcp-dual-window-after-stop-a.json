@@ -1,0 +1,70 @@
+{
+  "A": {
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Error executing tool active_window"
+        }
+      ],
+      "is_error": true,
+      "result_type": "complete"
+    },
+    "payload": {
+      "text": "Error executing tool active_window"
+    }
+  },
+  "B": {
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"type\": \"Тестируемое окно клиентского приложения\",\n  \"name\": \"\",\n  \"title\": \"Простая конфигурация\",\n  \"form_name\": \"\",\n  \"navigation_url\": \"\",\n  \"main\": true,\n  \"home\": false,\n  \"visible\": true,\n  \"available\": true,\n  \"enabled\": true,\n  \"read_only\": false,\n  \"current_visible\": true,\n  \"current_available\": true,\n  \"current_read_only\": false,\n  \"data\": \"\",\n  \"children\": [],\n  \"source\": \"tested_application_active_window\",\n  \"client_diagnostics\": {\n    \"user_messages\": [],\n    \"error_info\": \"\",\n    \"modal_closed\": false,\n    \"modal_opened\": false,\n    \"modal_title\": \"Простая конфигурация\",\n    \"modal_buttons\": [],\n    \"modal_texts\": [],\n    \"modal_text\": \"\",\n    \"modal_is_error_window\": false,\n    \"modal_looks_like_dialog\": false,\n    \"validation_messages\": [],\n    \"events\": [],\n    \"has_user_messages\": false,\n    \"has_validation_messages\": false,\n    \"has_error_info\": false,\n    \"has_dialog\": false,\n    \"active_window_title\": \"Простая конфигурация\",\n    \"active_form_name\": \"\",\n    \"active_window_changed\": false,\n    \"modal_form_name\": \"\"\n  }\n}"
+        }
+      ],
+      "is_error": false,
+      "result_type": "complete"
+    },
+    "payload": {
+      "type": "Тестируемое окно клиентского приложения",
+      "name": "",
+      "title": "Простая конфигурация",
+      "form_name": "",
+      "navigation_url": "",
+      "main": true,
+      "home": false,
+      "visible": true,
+      "available": true,
+      "enabled": true,
+      "read_only": false,
+      "current_visible": true,
+      "current_available": true,
+      "current_read_only": false,
+      "data": "",
+      "children": [],
+      "source": "tested_application_active_window",
+      "client_diagnostics": {
+        "user_messages": [],
+        "error_info": "",
+        "modal_closed": false,
+        "modal_opened": false,
+        "modal_title": "Простая конфигурация",
+        "modal_buttons": [],
+        "modal_texts": [],
+        "modal_text": "",
+        "modal_is_error_window": false,
+        "modal_looks_like_dialog": false,
+        "validation_messages": [],
+        "events": [],
+        "has_user_messages": false,
+        "has_validation_messages": false,
+        "has_error_info": false,
+        "has_dialog": false,
+        "active_window_title": "Простая конфигурация",
+        "active_form_name": "",
+        "active_window_changed": false,
+        "modal_form_name": ""
+      }
+    }
+  }
+}
