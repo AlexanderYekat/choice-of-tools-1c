@@ -1771,8 +1771,10 @@
         "s22-capabilities-nobuild",
         "s22-mcp-tools"
       ],
-      "run_ids": [],
-      "limitations": "Architectural inference; smoke test yaxunit is NOT_RUN."
+      "run_ids": [
+        "run-r22-ib-simple"
+      ],
+      "limitations": "init/build/syntax PASS on simple1CAiConf; YaXUnit and Vanessa were not run."
     },
     {
       "id": "c22-multitarget",
@@ -1785,6 +1787,17 @@
       ],
       "run_ids": [],
       "limitations": "Simultaneous dual-IB was not executed."
+    },
+    {
+      "id": "c22-ib-simple",
+      "repository_id": "r22",
+      "status": "RUN",
+      "statement": "v8-runner 0.5.1 created File IB .v8/ib/simple, loaded Designer dump simple1CAiConf, and syntax designer-modules --server --thin-client returned status clean with zero issues.",
+      "source_ids": [],
+      "run_ids": [
+        "run-r22-ib-simple"
+      ],
+      "limitations": "No YaXUnit/Vanessa tests in the dump. First build failed until IB user was removed and source path was made absolute relative to stand YAML."
     },
     {
       "id": "c01-entry",
@@ -2149,6 +2162,23 @@
       "log": "logs/r15-cli-simple.md",
       "tests": 6,
       "assertions": 6,
+      "skipped": 0,
+      "mocks_only": false,
+      "reason": null
+    },
+    {
+      "id": "run-r22-ib-simple",
+      "repository_id": "r22",
+      "commit": "7ce1b062843d86644fe55741dbe0ee79f7ca767d",
+      "status": "PASS",
+      "kind": "INTEGRATION",
+      "command": "v8-harness run --stand simple -- --no-color --json-message init|build|syntax designer-modules --server --thin-client",
+      "environment": "Windows 10.0.26200; v8-runner 0.5.1; 1C 8.3.27.1936 strict; dump simple1CAiConf @ 1dbc395d; IB File=.v8/ib/simple; no YaXUnit/Vanessa",
+      "expected": "init creates 1Cv8.1CD; build loads XML dump ok=true; syntax designer-modules status=clean, errors=0",
+      "result": "All three passed. init 40826 ms; build 10622 ms; syntax 2194 ms, issues []. Empty IB has no user Админ; relative source-checkouts path was resolved from stand YAML and had to be absolute.",
+      "log": "logs/r22-ib-simple.md",
+      "tests": 3,
+      "assertions": 3,
       "skipped": 0,
       "mocks_only": false,
       "reason": null

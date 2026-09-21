@@ -138,6 +138,6 @@ explore(source, op, args)
 
 ## Что остаётся
 
-Static S1–S5 пяти закрыты. **r15 CLI ядра PASS** на выгрузке
-`simple1CAiConf` (без ИБ). Daemon/MCP r15 и runtime остальных NOT_RUN.
-Внедрение и код фасада не начинались.
+Static S1–S5 пяти закрыты. **r15 CLI ядра PASS**. **r22 init/build/syntax
+PASS** на ИБ `.v8/ib/simple`. Daemon/MCP r15 и runtime r01/r20/r21
+NOT_RUN. Внедрение и код фасада не начинались.

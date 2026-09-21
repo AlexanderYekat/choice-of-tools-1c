@@ -1,0 +1,24 @@
+{
+  "name": "r22-syntax-modules-simple",
+  "argv": [
+    "python",
+    "C:\\Users\\Enduro\\Documents\\1c\\Tools\\v8-harness\\v8_harness.py",
+    "run",
+    "--project",
+    "C:\\MyPtojects\\choice-of-tools-1c",
+    "--stand",
+    "simple",
+    "--",
+    "--no-color",
+    "--json-message",
+    "syntax",
+    "designer-modules",
+    "--server",
+    "--thin-client"
+  ],
+  "cwd": "C:\\MyPtojects\\choice-of-tools-1c",
+  "exit": 0,
+  "elapsed_ms": 2482,
+  "stdout": "{\n  \"ok\": true,\n  \"command\": \"syntax\",\n  \"duration_ms\": 2194,\n  \"data\": {\n    \"status\": \"clean\",\n    \"exit_code\": 0,\n    \"check_name\": \"designer-modules\",\n    \"issues\": [],\n    \"summary\": {\n      \"errors\": 0,\n      \"warnings\": 0,\n      \"info\": 0\n    },\n    \"duration_ms\": 2194,\n    \"platform_log_path\": \"C:\\\\MyPtojects\\\\choice-of-tools-1c\\\\.v8\\\\stands\\\\simple\\\\.v8/work/simple\\\\logs\\\\platform\\\\syntax_designer-modules_1789985009996_37824_0.log\"\n  },\n  \"warnings\": [],\n  \"steps\": []\n}\n",
+  "stderr": ""
+}

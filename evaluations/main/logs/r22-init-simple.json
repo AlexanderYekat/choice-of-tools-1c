@@ -1,0 +1,21 @@
+{
+  "name": "r22-init-simple",
+  "argv": [
+    "python",
+    "C:\\Users\\Enduro\\Documents\\1c\\Tools\\v8-harness\\v8_harness.py",
+    "run",
+    "--project",
+    "C:\\MyPtojects\\choice-of-tools-1c",
+    "--stand",
+    "simple",
+    "--",
+    "--no-color",
+    "--json-message",
+    "init"
+  ],
+  "cwd": "C:\\MyPtojects\\choice-of-tools-1c",
+  "exit": 0,
+  "elapsed_ms": 41525,
+  "stdout": "{\n  \"ok\": true,\n  \"command\": \"init\",\n  \"duration_ms\": 40826,\n  \"data\": {\n    \"ok\": true,\n    \"steps\": [\n      {\n        \"target\": \"infobase\",\n        \"action\": \"create\",\n        \"status\": \"ok\",\n        \"message\": \"infobase created: C:\\\\MyPtojects\\\\choice-of-tools-1c\\\\.v8\\\\ib\\\\simple\\\\1Cv8.1CD\",\n        \"duration_ms\": 40825\n      },\n      {\n        \"target\": \"edt_workspace\",\n        \"action\": \"import\",\n        \"status\": \"skipped\",\n        \"message\": \"EDT workspace initialization is not applicable for format=DESIGNER\",\n        \"duration_ms\": 0\n      }\n    ],\n    \"duration_ms\": 40826\n  },\n  \"warnings\": [],\n  \"steps\": []\n}\n",
+  "stderr": ""
+}

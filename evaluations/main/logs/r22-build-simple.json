@@ -1,0 +1,21 @@
+{
+  "name": "r22-build-simple",
+  "argv": [
+    "python",
+    "C:\\Users\\Enduro\\Documents\\1c\\Tools\\v8-harness\\v8_harness.py",
+    "run",
+    "--project",
+    "C:\\MyPtojects\\choice-of-tools-1c",
+    "--stand",
+    "simple",
+    "--",
+    "--no-color",
+    "--json-message",
+    "build"
+  ],
+  "cwd": "C:\\MyPtojects\\choice-of-tools-1c",
+  "exit": 0,
+  "elapsed_ms": 11066,
+  "stdout": "{\n  \"ok\": true,\n  \"command\": \"build\",\n  \"duration_ms\": 10639,\n  \"data\": {\n    \"ok\": true,\n    \"steps\": [\n      {\n        \"source_set\": \"main\",\n        \"mode\": \"full\",\n        \"ok\": true,\n        \"message\": \"full load selected by partial-load rules\",\n        \"duration_ms\": 10622\n      }\n    ],\n    \"duration_ms\": 10639\n  },\n  \"warnings\": [],\n  \"steps\": []\n}\n",
+  "stderr": ""
+}

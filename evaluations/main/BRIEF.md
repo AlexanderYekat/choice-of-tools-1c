@@ -6,8 +6,8 @@ r15 code-index-mcp — DEEP_STATIC по S1–S5**. **r20 Answer42, r21 Vanessa
 и r22 v8-runner-rust — DEEP_STATIC по S1–S5**. Состояние: критерии v2
 зафиксированы; состав контура выбран: r22 вместо r09; план стыковки
 записан ([INTEGRATION-PLAN.md](INTEGRATION-PLAN.md)); static стыковка
-пяти закрыта; стенд `simple` dump-only; **r15 CLI ядра PASS**; внедрение
-и runtime остальных не начаты.
+пяти закрыта; стенд `simple` с ИБ; **r15 CLI PASS**; **r22 init/build/syntax
+PASS**; Unica/Answer42/Vanessa/MCP r15 не начаты.
 Снимок v1 и текст перехода — по необходимости, не для обычного CONTINUE:
 `history/goal-v1/`, `GOAL-CHANGE.md`.
 
@@ -227,5 +227,5 @@ execution не выполнялся. Снимок `history/goal-v1` остаёт
 r01/r15/r20/r21/r22 по явной просьбе, не для всех 22.
 
 Следующее исполнение плана (не этот файл): daemon+MCP r15 или smoke
-остальных на стенде `simple` после отдельного разрешения. Код фасада,
-создание ИБ и установка продуктов не входят. `permissions.* = false`.
+Unica на стенде `simple`. Код фасада не входит. YaXUnit/Vanessa — когда
+появятся тесты. `permissions.* = false`.

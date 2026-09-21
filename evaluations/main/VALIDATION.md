@@ -33,10 +33,9 @@ S4 терпимо с неизвестной одновременностью; S5
 
 Шкала r22: S1 удобно; S2 терпимо; S3 удобно; S4 терпимо; S5 удобно.
 
-Execution: **r15 CLI ядра PASS** на выгрузке стенда `simple`
-([logs/r15-cli-simple.md](logs/r15-cli-simple.md),
-`run-r15-cli-simple`). Daemon/MCP r15, r01, r20, r21, r22 остаются
-NOT_RUN. ИБ не создана.
+Execution: **r15 CLI ядра PASS**; **r22 init/build/syntax PASS** на ИБ
+стенда `simple` ([logs/r22-ib-simple.md](logs/r22-ib-simple.md)).
+Daemon/MCP r15, r01, r20, r21 остаются NOT_RUN. YaXUnit/Vanessa не
+запускались (в выгрузке нет тестов).
 
-1С-named tools и smoke остальных — по отдельному разрешению, не код
-фасада и не `init`/`load`/`build` без просьбы.
+Следующее — MCP r15 или Unica, не код фасада.

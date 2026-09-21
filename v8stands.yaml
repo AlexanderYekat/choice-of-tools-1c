@@ -8,5 +8,8 @@ stands:
   simple:
     from: file
     path: 'C:\MyPtojects\choice-of-tools-1c\.v8\ib\simple'
-    sources: source-checkouts/simple1CAiConf
-    user: Админ
+    sources: 'C:\MyPtojects\choice-of-tools-1c\source-checkouts\simple1CAiConf'
+platform:
+  version: '8.3.27.1936'
+  path: 'C:\Program Files\1cv8\8.3.27.1936'
+  strict: true

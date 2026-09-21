@@ -1,15 +1,15 @@
 # Состояние main / 20260920T044856175227Z
 
 Версия цели: **2**. Статус: COMPOSITION_R22_CHOSEN; STATIC_S1S5_FIVE_DONE;
-FIXTURE_HARNESS_ATTACHED; R15_CLI_SMOKE_PASS.
+FIXTURE_HARNESS_ATTACHED; R15_CLI_SMOKE_PASS; R22_IB_SMOKE_PASS.
 Последнее обновление: 2026-09-21.
 
 Состав контура выбран ([DECISION.md](DECISION.md)): Unica, code-index-mcp,
 **v8-runner (r22 вместо r09)**, Answer42, Vanessa, тонкий фасад.
 План: [INTEGRATION-PLAN.md](INTEGRATION-PLAN.md).
 Стыковка: **r01 Unica, r15 code-index-mcp, r20 Answer42, r21 Vanessa
-и r22 v8-runner достигли DEEP_STATIC по S1–S5**. Внедрение и execution
-не начинались.
+и r22 v8-runner достигли DEEP_STATIC по S1–S5**. r15 CLI и r22 init/build/syntax
+на стенде `simple` — PASS. Фасад не писался.
 
 ## Восстановление без чата
 
@@ -45,32 +45,27 @@ FIXTURE_HARNESS_ATTACHED; R15_CLI_SMOKE_PASS.
   **Выбран** как сборка / YaXUnit / синтаксис / запуск Vanessa.
 
 Разрешения: `permissions.*` в request.json по-прежнему false. Пользователь
-«давай дальше» после подключения стенда принят как **ограниченный
-dump-only CLI r15**: индекс и запросы без ИБ, без daemon/MCP, без
-init/load/build. Runtime r01/r20/r21/r22 и 1С-tools r15 остаются NOT_RUN.
+«хорошо, тогда вперёд» (2026-09-21) принят как разрешение создать
+тестовую ИБ `.v8/ib/simple` из выгрузки и прогнать smoke r22.
+ИБ создана. Vanessa/YaXUnit (`tools.* = false`) не запускались.
+Runtime r01/r20/r21 и daemon/MCP r15 остаются NOT_RUN.
 
-Фикстура экспериментов (не кандидат контура): opt-in
-[v8-harness](https://github.com/AlexanderYekat/v8-harness) @
-`322398ae9bfe1d746dba92619282b25e9c4d156c` (CLI вне репозитория,
-`C:\Users\Enduro\Documents\1c\Tools\v8-harness\v8_harness.py`).
-Маркер: корневой `v8stands.yaml`, стенд `simple`, `from: file`.
-Выгрузка: `source-checkouts/simple1CAiConf` @
-`1dbc395d764773927684acd9ff75bf8f8e58cd56`
-(Designer XML, `DefaultRunMode=ManagedApplication`, имя «Простая
-конфигурация»). ИБ `.v8/ib/simple` **не создана**. Vanessa/YaXUnit
-(`tools.* = false`) не запускались.
+Фикстура: opt-in v8-harness @ `322398ae…`, стенд `simple`, `from: file`.
+Выгрузка `source-checkouts/simple1CAiConf` @ `1dbc395d…`.
+Платформа `8.3.27.1936` strict. В выгрузке нет пользователей ИБ —
+поле `user: Админ` снято. Путь sources в маркере абсолютный: относительный
+`source-checkouts/...` резолвится от `.v8/stands/simple/`, не от корня.
 
-**r15 CLI smoke PASS** (`run-r15-cli-simple`): бинарь
-`bsl-indexer.exe` 1.4.0 (release v1.4.0 = SHA `4bde72b…`) проиндексировал
-выгрузку (21 файл, 7 процедур, processor `bsl`), `search-function` /
-`get-function` / `get-callers` совпали с модулем формы документа,
-отрицательный поиск вернул `[]`. Лог: [logs/r15-cli-simple.md](logs/r15-cli-simple.md).
+**r15 CLI smoke PASS** — [logs/r15-cli-simple.md](logs/r15-cli-simple.md).
+**r22 IB smoke PASS** (`run-r22-ib-simple`): `init` + `build` +
+`syntax designer-modules --server --thin-client` (`status=clean`).
+Лог: [logs/r22-ib-simple.md](logs/r22-ib-simple.md).
 
 ## Следующий шаг
 
-1С-named tools r15 (daemon + MCP) и smoke r01/r20/r21/r22 — только по
-отдельному разрешению. Не создавать ИБ и не писать код фасада без
-просьбы.
+Dump-only MCP r15 (daemon + named 1С-tools) или smoke Unica `view`/`check`
+на этой же выгрузке/ИБ — по отдельной просьбе. Не писать код фасада.
+Vanessa/YaXUnit не гонять: в выгрузке нет тестов, `tools.* = false`.
 
 ## Журнал
 
@@ -100,3 +95,7 @@ v8-harness и выгрузка simple1CAiConf как стенд `simple`. ИБ �
 2026-09-21 → «давай дальше»: dump-only CLI r15 на стенде `simple`.
 `bsl-indexer` 1.4.0: index + search/get/callers PASS. Daemon/MCP и
 остальные продукты не запускались; ИБ не создавалась.
+2026-09-21 → пользователь разрешил создать ИБ из выгрузки. `init` +
+`build` + `syntax designer-modules` PASS (`run-r22-ib-simple`).
+Пользователь `Админ` в пустой ИБ отвергнут платформой; относительный
+path sources поправлен на абсолютный.
