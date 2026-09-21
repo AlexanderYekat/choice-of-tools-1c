@@ -7,7 +7,8 @@ v8-runner**. r09 из контура выведен, S1–S5 для него н�
 Шкала: [FACADE.md](FACADE.md). План:
 [INTEGRATION-PLAN.md](INTEGRATION-PLAN.md).
 Все связи — `PROPOSED_INTEGRATION`. r01 `view`/`check`, `apply` dryRun
-и `docs` на simple1CAiConf выполнены; публикация `apply` нет.
+и `docs` на simple1CAiConf выполнены; публикация `apply` на cf220 —
+PASS (`run-r01-apply-publish`).
 
 ## S1–S5
 
@@ -150,4 +151,5 @@ PASS** (dryRun `invalid_source` format 1.0 vs writable 2.20; забор
 2.20 PASS** (preview + `rev`). YaXUnit на simple — клиент без движка.
 **Vanessa smoke 1/1 PASS**. **Runtime r20 PASS**
 (`run-r20-mcp-simple`: `tools/list` = 103, сессия к simple, screenshot
-path). Публикация `apply` не вызывалась. Внедрение и код фасада не начинались.
+path). **Публикация `apply` PASS** (`run-r01-apply-publish`: `mode=published`,
+stale `ifRev`). Внедрение и код фасада не начинались.

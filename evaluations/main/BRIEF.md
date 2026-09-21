@@ -8,8 +8,8 @@ r15 code-index-mcp — DEEP_STATIC по S1–S5**. **r20 Answer42, r21 Vanessa
 записан ([INTEGRATION-PLAN.md](INTEGRATION-PLAN.md)); static стыковка
 пяти закрыта; стенд `simple` с ИБ; **r15 CLI+MCP PASS**; **r22
 init/build/syntax PASS**; **r01 `view`/`check` PASS**; **r01 `apply`
-dryRun + `docs` PASS**; **Vanessa smoke 1/1 PASS**; **Answer42 smoke
-PASS**.
+dryRun + `docs` PASS**; **r01 `apply` публикация ifRev PASS**;
+**Vanessa smoke 1/1 PASS**; **Answer42 smoke PASS**.
 Снимок v1 и текст перехода — по необходимости, не для обычного CONTINUE:
 `history/goal-v1/`, `GOAL-CHANGE.md`.
 
@@ -228,6 +228,6 @@ execution не выполнялся. Снимок `history/goal-v1` остаёт
 `request.json.depth` остаётся `overview` — deep-static выполнен для
 r01/r15/r20/r21/r22 по явной просьбе, не для всех 22.
 
-Следующее исполнение плана (не этот файл): Answer42 на живом Test
-Client. Код фасада не входит. YaXUnit/Vanessa — когда появятся тесты.
-Публикация Unica apply — после перевыгрузки 2.20. `permissions.* = false`.
+Следующее исполнение плана (не этот файл): dump-only `[tools].enabled`
+r15. Код фасада не входит. Dual-workspace Unica и dual live Test Client
+r20 — NOT_RUN. YaXUnit — когда появятся модули. `permissions.* = false`.

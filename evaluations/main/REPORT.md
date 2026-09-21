@@ -5,6 +5,7 @@ r15 code-index-mcp, r20 Answer42, r21 Vanessa и r22 v8-runner-rust
 углублены до DEEP_STATIC по S1–S5**.
 **r15 CLI ядра PASS**; **r15 daemon+MCP PASS**; **r22 init/build/syntax PASS**;
 **r01 `view`/`check` PASS**; **r01 `apply` dryRun + `docs` PASS**;
+**r01 `apply` публикация ifRev PASS**;
 **Vanessa smoke PASS**; **Answer42 smoke PASS** на стенде
 `simple`.
 Static стыковка пяти закрыта. Состав:
@@ -27,8 +28,9 @@ r09 METR выведен: тот же слой, что r22. Vanessa остаёт�
 Это не разрешение внедрять. Static S1–S5 пяти закрыт
 ([FACADE.md](FACADE.md), [VALIDATION.md](VALIDATION.md)).
 r15 CLI, r15 daemon+MCP, r22 init/build/syntax, r01 `view`/`check`
-и r01 `apply` dryRun + `docs` прогнаны на стенде `simple`. Следующий
-этап — Answer42 (живой Test Client) по отдельной просьбе.
+и r01 `apply` dryRun + `docs` прогнаны на стенде `simple`. Публикация
+`apply` с `ifRev` на Designer dump 2.20 — PASS. Следующий этап —
+dump-only `[tools].enabled` r15 по отдельной просьбе.
 
 Вывод обзора при цели v1 сохранён в снимке `history/goal-v1/REPORT.md`.
 Его не читать при обычном CONTINUE; как рекомендация v2 он не действует.
@@ -68,7 +70,7 @@ DEEP_STATIC по S1–S5. **r15 — DEEP_STATIC по S1–S5** на том же 
 Наиболее существенные неизвестные цели v2:
 
 1. Execution (индекс r15, smoke остальных). Static S1–S5 пяти есть.
-2. Для Unica r01 остаются публикация `apply` на выгрузке 2.20 и dual-workspace; для Answer42 r20 — dual live Test Client; для r22 — фикстура YaXUnit с модулями.
+2. Для Unica r01 остаётся dual-workspace; для Answer42 r20 — dual live Test Client; для r22 — фикстура YaXUnit с модулями.
 3. Точность индекса r15 и компактность JSON-отчёта r22.
 4. Лицензии Unica (LGPL) и r22 (AGPL-3.0) — не юридическое заключение.
 5. Сборка r04, если `unica.docs` не хватит.
@@ -90,8 +92,8 @@ DEEP_STATIC по S1–S5. **r15 — DEEP_STATIC по S1–S5** на том же 
 Не V1 (Unica в Cursor) и не внедрение. Static S1–S5 пяти закрыт —
 [INTEGRATION.md](INTEGRATION.md); статусы — [VALIDATION.md](VALIDATION.md).
 Этот отчёт не запускает остальные продукты. **r15 CLI**, **r22
-init/build/syntax**, **r01 view/check** и **r01 apply dryRun + docs**
-PASS на стенде `simple` (ИБ создана). **r20 Answer42 smoke PASS**.
+init/build/syntax**, **r01 view/check**, **r01 apply dryRun + docs** и
+**r01 apply publish** PASS на стенде `simple` (ИБ создана). **r20 Answer42 smoke PASS**.
 Точка продолжения — [STATE.md](STATE.md).
 
 
@@ -131,7 +133,8 @@ simple1CAiConf (`config.state=autodetected`, source-set `main`). Живой
 отвергается живьём. `unica.docs` «НаборЗаписей» сначала отдаёт Task
 `working`; фасад должен poll `unica.task.result` (здесь 5 раз) — 5 секций,
 80 hits. Две ИБ обмена — два корня, как у r22. Патч не нужен. Состав не
-менялся. Публикация `apply` NOT_RUN.
+менялся. Публикация `apply` на cf220 — PASS (`mode=published`; stale
+`ifRev`).
 
 ## Частичный CONTINUE-AUDIT r15
 

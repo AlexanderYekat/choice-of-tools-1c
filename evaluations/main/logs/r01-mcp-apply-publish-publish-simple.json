@@ -1,0 +1,59 @@
+{
+  "jsonrpc": "2.0",
+  "id": 3,
+  "result": {
+    "content": [],
+    "structuredContent": {
+      "ok": true,
+      "at": "main:Document.ЗаказПокупателя",
+      "summary": "metadata apply published atomically",
+      "data": {
+        "validated": true,
+        "mode": "published",
+        "executable": true,
+        "operations": [
+          {
+            "index": 0,
+            "op": "props.set",
+            "at": "main:Document.ЗаказПокупателя"
+          }
+        ],
+        "planHash": "sha256:d82a71fe3ca699f30060caf0125d117d2fa183e418191d3c1231bc3c556158a5",
+        "effects": 1,
+        "cache": {
+          "mode": "applied",
+          "root": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\simple-cf-220\\.build\\unica",
+          "workspace_epoch": 8295811768959543171,
+          "events": [
+            "MetadataChanged"
+          ],
+          "invalidated": [
+            "bsl_diagnostics",
+            "metadata_graph",
+            "workspace_graph"
+          ],
+          "refreshed": [
+            "metadata_graph",
+            "workspace_graph"
+          ],
+          "lazy_rebuilt": [],
+          "stale": [
+            "bsl_diagnostics"
+          ],
+          "fresh": [
+            "metadata_graph",
+            "workspace_graph"
+          ]
+        }
+      },
+      "changed": [
+        {
+          "at": "main:Document.ЗаказПокупателя",
+          "event": "MetadataChanged"
+        }
+      ],
+      "rev": "unica-source-sha256-v1:1:032c15427cf9d501360f2ef5c7e144ebfa8a3821b4bb521f664a21c23c87190e"
+    },
+    "isError": false
+  }
+}

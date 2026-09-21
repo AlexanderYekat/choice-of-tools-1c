@@ -2,8 +2,8 @@
 
 Ограниченные dump-only прогоны r15 (CLI + daemon/MCP), r22
 (init/build/syntax) и r01 Unica (`view`/`check`, `apply` dryRun,
-`docs`) выполнены. **Answer42 smoke PASS**. Vanessa engine smoke PASS.
-Основания: [EVIDENCE.json](EVIDENCE.json).
+`docs`, **публикация `ifRev`**) выполнены. **Answer42 smoke PASS**.
+Vanessa engine smoke PASS. Основания: [EVIDENCE.json](EVIDENCE.json).
 Версия цели: 2.
 
 ## Стыковка (цель v2)
@@ -46,7 +46,10 @@ init/build/syntax PASS** на ИБ стенда `simple`
 **r22 dump 2.20 PASS**; **r01 apply dryRun на 2.20 PASS** (preview).
 YaXUnit/Vanessa на simple **сначала отказали** без сценария; после
 написанного `smoke-engine.feature` Vanessa **1/1 PASS**. `unica.check` на рукописном дампе — `source_unreadable`.
-`unica.apply` dryRun там же — `invalid_source`; на cf220 — план.
+`unica.apply` dryRun там же — `invalid_source`; на cf220 — план, затем
+публикация `dryRun:false` + `ifRev` — `mode=published`.
 **r20 Answer42 smoke PASS** ([logs/r20-mcp-simple.md](logs/r20-mcp-simple.md)).
+**r01 apply publish PASS** ([logs/r01-mcp-apply-publish-simple.md](logs/r01-mcp-apply-publish-simple.md)):
+`mode=published`; XML Comment записан; stale `ifRev` — `stale_revision`.
 
-Следующее — публикация apply с ifRev, не код фасада.
+Следующее — dump-only `[tools].enabled` r15, не код фасада.

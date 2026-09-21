@@ -1868,9 +1868,10 @@
         "s01-tool-catalog-v13"
       ],
       "run_ids": [
-        "run-r01-apply-simple"
+        "run-r01-apply-simple",
+        "run-r01-apply-publish"
       ],
-      "limitations": "Live apply without ifRev on simple1CAiConf returned bad_value at ifRev. Publication with a real ifRev was not executed. Cross-source-set ops.at remains static-only."
+      "limitations": "Live apply without ifRev on simple1CAiConf returned bad_value at ifRev. Publication with a matching ifRev on Designer dump 2.20 succeeded (run-r01-apply-publish); reuse of that ifRev after publish returned stale_revision. Cross-source-set ops.at remains static-only."
     },
     {
       "id": "c01-single-ib",
@@ -1926,9 +1927,10 @@
       ],
       "run_ids": [
         "run-r01-mcp-simple",
-        "run-r01-apply-simple"
+        "run-r01-apply-simple",
+        "run-r01-apply-publish"
       ],
-      "limitations": "Architectural inference. Live view/check/apply dryRun/docs on simple1CAiConf succeeded as stdio MCP with cwd=dump. Facade must poll unica.task.result after docs working receipts and must not show task.* to the agent. Publication apply still NOT_RUN."
+      "limitations": "Architectural inference. Live view/check/apply dryRun/docs on simple1CAiConf and apply publish on Designer dump 2.20 succeeded as stdio MCP with cwd=dump. Facade must poll unica.task.result after docs working receipts and must not show task.* to the agent."
     },
     {
       "id": "c01-multitarget",
@@ -2007,7 +2009,20 @@
       "run_ids": [
         "run-r01-apply-cf220"
       ],
-      "limitations": "Publication dryRun:false with that ifRev was not executed. Cache wrote under dump/.build/unica which is excluded from the fingerprint."
+      "limitations": "Publication dryRun:false with a fresh ifRev from this dump is run-r01-apply-publish. Cache wrote under dump/.build/unica which is excluded from the fingerprint."
+    },
+    {
+      "id": "c01-apply-publish-cf220-simple",
+      "repository_id": "r01",
+      "status": "RUN",
+      "statement": "On Designer dump .v8/work/simple-cf-220 unica.apply dryRun:false with ifRev from the immediately prior preview published atomically (mode=published): Documents/ЗаказПокупателя.xml gained Comment r01-publish-ifRev-20260921; the same ifRev after publish was refused as stale_revision. Handwritten simple1CAiConf and IB simple were not written.",
+      "source_ids": [
+        "s01-apply-dryrun"
+      ],
+      "run_ids": [
+        "run-r01-apply-publish"
+      ],
+      "limitations": "Only props.set Comment on one document node. Load of the published dump back into the IB was not executed. The work dump now carries the smoke Comment until a new Designer dump."
     },
     {
       "id": "c22-yaxunit-empty-simple",
@@ -2501,6 +2516,23 @@
       "log": "logs/r20-mcp-simple.md",
       "tests": 7,
       "assertions": 7,
+      "skipped": 0,
+      "mocks_only": false,
+      "reason": null
+    },
+    {
+      "id": "run-r01-apply-publish",
+      "repository_id": "r01",
+      "commit": "56a67d4a460c97101b6b542b4fe940298ab0edd8",
+      "status": "PASS",
+      "kind": "INTEGRATION",
+      "command": "UNICA_PROVIDER_STATE_DIR=.v8/work/r01-apply-publish/provider-state unica.exe stdio MCP cwd=.v8/work/simple-cf-220; initialize; unica.apply dryRun props.set Comment; unica.apply dryRun:false + ifRev; stale ifRev; fingerprint",
+      "environment": "Windows 10.0.26200; unica.exe 0.12.0 debug 56a67d4a…; isolated provider-state .v8/work/r01-apply-publish; Designer dump 2.20; handwritten simple1CAiConf and IB simple not written",
+      "expected": "dryRun preview with rev; publish mode=published writes Comment; stale ifRev refused; only the document XML changes",
+      "result": "All six passed. preview rev f83d6c98…; published atomically mode=published new rev 032c1542…; Documents/ЗаказПокупателя.xml Comment=r01-publish-ifRev-20260921; stale_revision expected f83d6c98 admitted 032c1542.",
+      "log": "logs/r01-mcp-apply-publish-simple.md",
+      "tests": 6,
+      "assertions": 6,
       "skipped": 0,
       "mocks_only": false,
       "reason": null

@@ -1,0 +1,74 @@
+{
+  "binary": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r01\\target\\debug\\unica.exe",
+  "dump": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\simple-cf-220",
+  "state": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r01-apply-publish\\provider-state",
+  "comment": "r01-publish-ifRev-20260921",
+  "preview_rev": "unica-source-sha256-v1:1:f83d6c9805bef457166b4aacb4bdbb9d0021955609de02ac4e615962fcc9aee9",
+  "checks": [
+    {
+      "name": "initialize",
+      "expected": "serverInfo.name=unica",
+      "actual": "name=unica version=0.12.0",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "unica.apply dryRun props.set Comment",
+      "expected": "preview plan with rev",
+      "actual": "ok=True mode=preview executable=True rev=unica-source-sha256-v1:1:f83d6c9805bef457166b4aacb4bdbb9d0021955609de02ac4e615962fcc9aee9 summary=metadata apply plan prepared without publication",
+      "pass": true,
+      "extra": {
+        "envelope_keys": [
+          "ok",
+          "at",
+          "summary",
+          "data",
+          "changed",
+          "rev"
+        ],
+        "rev": "unica-source-sha256-v1:1:f83d6c9805bef457166b4aacb4bdbb9d0021955609de02ac4e615962fcc9aee9"
+      }
+    },
+    {
+      "name": "dump unchanged after dryRun",
+      "expected": "no dump files changed before publication",
+      "actual": "changed=[] count=0",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "unica.apply publish dryRun:false + ifRev",
+      "expected": "ok publication, not preview",
+      "actual": "ok=True mode=published summary=metadata apply published atomically rpc_error=False blob={\"ok\": true, \"at\": \"main:document.заказпокупателя\", \"summary\": \"metadata apply published atomically\", \"data\": {\"validated\": true, \"mode\": \"published\", \"executable\": true, \"operations\": [{\"index\": 0, \"op\": \"props.set\", \"at\": \"main:document.з",
+      "pass": true,
+      "extra": {
+        "envelope_keys": [
+          "ok",
+          "at",
+          "summary",
+          "data",
+          "changed",
+          "rev"
+        ],
+        "rev": "unica-source-sha256-v1:1:032c15427cf9d501360f2ef5c7e144ebfa8a3821b4bb521f664a21c23c87190e"
+      }
+    },
+    {
+      "name": "dump Comment published",
+      "expected": "Document XML contains marker; fingerprint changed",
+      "actual": "changed=['Documents/ЗаказПокупателя.xml'] count=1 comment_files=['Documents/ЗаказПокупателя.xml'] before_hits=[]",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "unica.apply stale ifRev after publish",
+      "expected": "refusal naming ifRev / rev",
+      "actual": "ok=False summary=apply ifRev is stale: expected unica-source-sha256-v1:1:f83d6c9805bef457166b4aacb4bdbb9d0021955609de02ac4e615962fcc9aee9, admitted unica-source-sha256-v1:1:032c15427cf9d501360f2ef5c7e144ebfa8a3821b4bb521f664a21c23c87190e rpc_error=False blob={\"ok\": false, \"at\": \"main:document.заказпокупателя\", \"summary\": \"apply ifrev is stale: expected unica-source-sha256-v1:1:f83d6c9805bef457166b4aacb4bdbb9d0021955609de02ac4e615962fcc9aee9, admitted unica-source-sha256-v1:1:032c15427cf9d501360",
+      "pass": true,
+      "extra": null
+    }
+  ],
+  "failed": 0,
+  "killed_daemon_pids": [],
+  "stderr_log": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r01-apply-publish\\unica.stderr.log"
+}

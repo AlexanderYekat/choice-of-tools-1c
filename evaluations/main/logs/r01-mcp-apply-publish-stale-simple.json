@@ -1,0 +1,20 @@
+{
+  "jsonrpc": "2.0",
+  "id": 4,
+  "result": {
+    "content": [],
+    "structuredContent": {
+      "ok": false,
+      "at": "main:Document.ЗаказПокупателя",
+      "summary": "apply ifRev is stale: expected unica-source-sha256-v1:1:f83d6c9805bef457166b4aacb4bdbb9d0021955609de02ac4e615962fcc9aee9, admitted unica-source-sha256-v1:1:032c15427cf9d501360f2ef5c7e144ebfa8a3821b4bb521f664a21c23c87190e",
+      "diagnostics": [
+        {
+          "code": "stale_revision",
+          "outcome": "fixCall",
+          "message": "apply ifRev is stale: expected unica-source-sha256-v1:1:f83d6c9805bef457166b4aacb4bdbb9d0021955609de02ac4e615962fcc9aee9, admitted unica-source-sha256-v1:1:032c15427cf9d501360f2ef5c7e144ebfa8a3821b4bb521f664a21c23c87190e"
+        }
+      ]
+    },
+    "isError": true
+  }
+}
