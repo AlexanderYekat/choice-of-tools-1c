@@ -1,0 +1,69 @@
+{
+  "result": {
+    "attributes": {
+      "attributes": [
+        {
+          "name": "Контрагент",
+          "required": true,
+          "type": "СправочникСсылка.Контрагенты"
+        },
+        {
+          "name": "СуммаДокумента",
+          "synonym": "Сумма документа",
+          "type": "Число"
+        }
+      ],
+      "dimensions": [],
+      "posting": {
+        "Posting": "Allow",
+        "RegisterRecordsDeletion": "AutoDelete",
+        "RegisterRecordsWritingOnPost": "WriteModified"
+      },
+      "properties": {
+        "Autonumbering": "true",
+        "CheckUnique": "true",
+        "NumberLength": "9",
+        "NumberPeriodicity": "Nonperiodical",
+        "NumberType": "String"
+      },
+      "resources": [],
+      "tabular_sections": [
+        {
+          "attributes": [
+            {
+              "name": "Номенклатура",
+              "required": true,
+              "type": "СправочникСсылка.Номенклатура"
+            },
+            {
+              "name": "Количество",
+              "required": true,
+              "type": "Число"
+            },
+            {
+              "name": "Цена",
+              "required": true,
+              "type": "Число"
+            },
+            {
+              "name": "СуммаСтроки",
+              "synonym": "Сумма строки",
+              "type": "Число"
+            }
+          ],
+          "name": "Товары"
+        }
+      ]
+    },
+    "counts": {
+      "attributes": 2,
+      "dimensions": 0,
+      "resources": 0,
+      "tabular_sections": 1
+    },
+    "full_name": "Document.ЗаказПокупателя",
+    "meta_type": "Document",
+    "name": "ЗаказПокупателя",
+    "synonym": "Заказ покупателя"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "config_reload": null,
+  "daemon": {
+    "status": "online"
+  },
+  "mcp": {
+    "repos": [
+      "simple"
+    ],
+    "status": "ok",
+    "version": "1.4.0"
+  },
+  "repos": [
+    {
+      "path_status": {
+        "path": "\\\\?\\C:\\MyPtojects\\choice-of-tools-1c\\source-checkouts\\simple1CAiConf",
+        "status": "ready"
+      },
+      "repo": "simple",
+      "root_path": "\\\\?\\C:\\MyPtojects\\choice-of-tools-1c\\source-checkouts\\simple1CAiConf"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "result": [
+    {
+      "args": "()",
+      "docstring": "procedure &НаКлиенте",
+      "file_path": "Documents/ЗаказПокупателя/Forms/ФормаДокумента/Ext/Form/Module.bsl",
+      "line_end": 36,
+      "line_start": 30,
+      "name": "РассчитатьСуммуДокумента",
+      "override_target": null,
+      "override_type": null,
+      "qualified_name": null,
+      "return_type": null
+    },
+    {
+      "args": "(Элемент)",
+      "docstring": "procedure &НаКлиенте",
+      "file_path": "Documents/ЗаказПокупателя/Forms/ФормаДокумента/Ext/Form/Module.bsl",
+      "line_end": 15,
+      "line_start": 11,
+      "name": "ТоварыКоличествоПриИзменении",
+      "override_target": null,
+      "override_type": null,
+      "qualified_name": null,
+      "return_type": null
+    },
+    {
+      "args": "(Элемент)",
+      "docstring": "procedure &НаКлиенте",
+      "file_path": "Documents/ЗаказПокупателя/Forms/ФормаДокумента/Ext/Form/Module.bsl",
+      "line_end": 22,
+      "line_start": 18,
+      "name": "ТоварыЦенаПриИзменении",
+      "override_target": null,
+      "override_type": null,
+      "qualified_name": null,
+      "return_type": null
+    }
+  ]
+}

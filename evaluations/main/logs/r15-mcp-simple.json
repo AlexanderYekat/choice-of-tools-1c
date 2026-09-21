@@ -1,0 +1,53 @@
+{
+  "binary": "C:\\Users\\Enduro\\Documents\\1c\\Tools\\bsl-indexer\\bsl-indexer.exe",
+  "version": "1.4.0",
+  "commit": "4bde72b60a09187c0667d451a02c7be5e0169835",
+  "dump": "C:\\MyPtojects\\choice-of-tools-1c\\source-checkouts\\simple1CAiConf",
+  "home": "C:\\MyPtojects\\choice-of-tools-1c\\.v8\\work\\r15-mcp\\home",
+  "checks": [
+    {
+      "name": "health ready",
+      "expected": "daemon online, alias simple ready",
+      "actual": "ready",
+      "pass": true
+    },
+    {
+      "name": "tools/list 1C-13",
+      "expected": "all 13 BSL tools advertised",
+      "actual": "count=33 missing=[]",
+      "pass": true
+    },
+    {
+      "name": "get_object_structure",
+      "expected": "Document.ЗаказПокупателя has СуммаДокумента and Товары",
+      "actual": "anchors present",
+      "pass": true
+    },
+    {
+      "name": "get_form_handlers",
+      "expected": "ФормаДокумента binds both OnChange handlers",
+      "actual": "handlers present",
+      "pass": true
+    },
+    {
+      "name": "get_register_writers",
+      "expected": "register writers include Document.ЗаказПокупателя",
+      "actual": "writer present",
+      "pass": true
+    },
+    {
+      "name": "get_event_subscriptions empty",
+      "expected": "no subscriptions in dump → empty list, not RPC error",
+      "actual": "{\"count\": 0, \"limit\": 10, \"subscriptions\": [], \"total\": 0, \"truncated\": false}",
+      "pass": true
+    },
+    {
+      "name": "search_function via MCP",
+      "expected": "MCP finds РассчитатьСуммуДокумента on same dump",
+      "actual": "hit",
+      "pass": true
+    }
+  ],
+  "passed": 7,
+  "failed": 0
+}

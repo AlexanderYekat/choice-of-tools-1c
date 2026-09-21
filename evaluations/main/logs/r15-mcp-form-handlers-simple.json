@@ -1,0 +1,20 @@
+{
+  "result": {
+    "form_name": "ФормаДокумента",
+    "handlers": [
+      {
+        "element": "ТоварыКоличество",
+        "event": "ПриИзменении",
+        "handler": "ТоварыКоличествоПриИзменении"
+      },
+      {
+        "element": "ТоварыЦена",
+        "event": "ПриИзменении",
+        "handler": "ТоварыЦенаПриИзменении"
+      }
+    ],
+    "handlers_included": true,
+    "handlers_total": 2,
+    "owner_full_name": "Documents.ЗаказПокупателя"
+  }
+}

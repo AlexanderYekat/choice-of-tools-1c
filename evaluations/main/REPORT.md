@@ -3,7 +3,7 @@
 Версия цели: 2. r02–r14, r16–r19 остаются overview; **r01 Unica,
 r15 code-index-mcp, r20 Answer42, r21 Vanessa и r22 v8-runner-rust
 углублены до DEEP_STATIC по S1–S5**.
-**r15 CLI ядра PASS**; **r22 init/build/syntax PASS** на ИБ simple.
+**r15 CLI ядра PASS**; **r15 daemon+MCP PASS**; **r22 init/build/syntax PASS** на ИБ simple.
 Static стыковка пяти закрыта. Состав:
 **r22 вместо r09** (решение пользователя 2026-09-21).
 
@@ -23,8 +23,8 @@ r09 METR выведен: тот же слой, что r22. Vanessa остаёт�
 
 Это не разрешение внедрять. Static S1–S5 пяти закрыт
 ([FACADE.md](FACADE.md), [VALIDATION.md](VALIDATION.md)).
-r15 CLI и r22 init/build/syntax прогнаны на стенде `simple`. Следующий
-этап — daemon/MCP r15 или Unica по отдельной просьбе.
+r15 CLI, r15 daemon+MCP и r22 init/build/syntax прогнаны на стенде
+`simple`. Следующий этап — Unica `view`/`check` по отдельной просьбе.
 
 Вывод обзора при цели v1 сохранён в снимке `history/goal-v1/REPORT.md`.
 Его не читать при обычном CONTINUE; как рекомендация v2 он не действует.
@@ -129,5 +129,6 @@ MCP `serve` (только чтение). Именованные 1С-tools (13) �
 `index.db`. Автодетект: `Configuration.xml` и EDT `Configuration.mdo`.
 Широкий `tools/list` режется `[tools].enabled`. Патч не нужен. HEAD
 `309cddb…` не подменял pinned `4bde72b…`. Состав не менялся.
-Execution NOT_RUN.
+Dump-only MCP на simple1CAiConf: живой `tools/list` = 33; handlers,
+structure и register writers PASS.
 

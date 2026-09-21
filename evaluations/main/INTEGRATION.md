@@ -13,7 +13,7 @@ v8-runner**. r09 из контура выведен, S1–S5 для него н�
 | Кандидат | S1 вызов | S2 source / target | S3 surface | S4 две цели | S5 проект |
 |---|---|---|---|---|---|
 | **r01 Unica** | **терпимо** — stdio MCP `unica`, не one-shot CLI | **терпимо** — cwd / `v8project.yaml`, аргумента config нет | **удобно** — ровно 11 tools; фасад зовёт subset | **терпимо** — несколько source-set; одна ИБ на yaml; два процесса | **удобно** — автодетект XML/EDT, yaml не обязателен |
-| **r15 code-index-mcp** | **терпимо** — CLI ядра + stdio/HTTP MCP `serve`; 1С-tools только MCP+демон | **удобно** — `--path alias=dir` / `[[paths]]` / `repo=`; ИБ нет | **удобно CLI / терпимо MCP** — ~20+13; `[tools].enabled` режет list | **удобно** — несколько alias, отдельный `index.db` | **удобно** на корне выгрузки; `daemon.toml` не обязателен для one-shot |
+| **r15 code-index-mcp** | **терпимо** — CLI ядра + stdio/HTTP MCP `serve`; 1С-tools только MCP+демон | **удобно** — `--path alias=dir` / `[[paths]]` / `repo=`; ИБ нет | **удобно CLI / терпимо MCP** — живой `tools/list` = 33; `[tools].enabled` режет list (whitelist NOT_RUN) | **удобно** — несколько alias, отдельный `index.db` | **удобно** на корне выгрузки; `daemon.toml` не обязателен для one-shot |
 | r09 mcp-onec-test-runner | OUT OF CONTOUR | — | — | — | — |
 | **r22 v8-runner** (конкурент r09) | **удобно** — CLI `v8-runner`; MCP optional stdio/HTTP | **терпимо** — `--config` / один `infobase` на yaml | **удобно** — CLI без tools; MCP ровно 8 | **терпимо** — два yaml / два процесса; dual-IB NOT_RUN | **удобно** — родной `v8project.yaml` |
 | **r20 Answer42** | **терпимо** — CLI поднимает stdio/HTTP MCP, не one-shot form CLI | **удобно** — `base_url` + `session_id`; креды из файла | **терпимо** — 122 tools default `full`; есть `--tool-profile` / `--disable-rag` | **удобно по контракту / simultaneous NOT_RUN** | **терпимо** — явный `base_url`; RAG-scan не детектор фасада |
@@ -138,6 +138,7 @@ explore(source, op, args)
 
 ## Что остаётся
 
-Static S1–S5 пяти закрыты. **r15 CLI ядра PASS**. **r22 init/build/syntax
-PASS** на ИБ `.v8/ib/simple`. Daemon/MCP r15 и runtime r01/r20/r21
+Static S1–S5 пяти закрыты. **r15 CLI ядра PASS**. **r15 daemon+HTTP MCP
+PASS** на simple1CAiConf (`tools/list` = 33, handlers/structure/writers).
+**r22 init/build/syntax PASS** на ИБ `.v8/ib/simple`. Runtime r01/r20/r21
 NOT_RUN. Внедрение и код фасада не начинались.

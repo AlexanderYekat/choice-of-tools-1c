@@ -1,15 +1,16 @@
 # Состояние main / 20260920T044856175227Z
 
 Версия цели: **2**. Статус: COMPOSITION_R22_CHOSEN; STATIC_S1S5_FIVE_DONE;
-FIXTURE_HARNESS_ATTACHED; R15_CLI_SMOKE_PASS; R22_IB_SMOKE_PASS.
+FIXTURE_HARNESS_ATTACHED; R15_CLI_SMOKE_PASS; R15_MCP_SMOKE_PASS;
+R22_IB_SMOKE_PASS.
 Последнее обновление: 2026-09-21.
 
 Состав контура выбран ([DECISION.md](DECISION.md)): Unica, code-index-mcp,
 **v8-runner (r22 вместо r09)**, Answer42, Vanessa, тонкий фасад.
 План: [INTEGRATION-PLAN.md](INTEGRATION-PLAN.md).
 Стыковка: **r01 Unica, r15 code-index-mcp, r20 Answer42, r21 Vanessa
-и r22 v8-runner достигли DEEP_STATIC по S1–S5**. r15 CLI и r22 init/build/syntax
-на стенде `simple` — PASS. Фасад не писался.
+и r22 v8-runner достигли DEEP_STATIC по S1–S5**. r15 CLI, r15 daemon+MCP
+и r22 init/build/syntax на стенде `simple` — PASS. Фасад не писался.
 
 ## Восстановление без чата
 
@@ -33,7 +34,8 @@ FIXTURE_HARNESS_ATTACHED; R15_CLI_SMOKE_PASS; R22_IB_SMOKE_PASS.
 - **r15 code-index-mcp: AVAILABLE / DEEP_STATIC**, commit
   `4bde72b60a09187c0667d451a02c7be5e0169835` (ветка `main`, v1.4.0).
   HEAD 2026-09-21 = `309cddb…` (v1.4.2); SHA не подменялся.
-  CLI ядра + stdio/HTTP MCP; 13 1С-tools; `--path alias=dir`.
+  CLI ядра + HTTP MCP dump-only PASS; живой `tools/list` = 33
+  (13 1С-tools); alias `simple`.
 - r09: OVERVIEW, **не в контуре** (C14, решение 2026-09-21).
 - **r20 Answer42: AVAILABLE / DEEP_STATIC**, commit
   `0406669a88144834bfdf6086c7040a25cb76d24c` (ветка `beta`, v0.5.3).
@@ -47,8 +49,9 @@ FIXTURE_HARNESS_ATTACHED; R15_CLI_SMOKE_PASS; R22_IB_SMOKE_PASS.
 Разрешения: `permissions.*` в request.json по-прежнему false. Пользователь
 «хорошо, тогда вперёд» (2026-09-21) принят как разрешение создать
 тестовую ИБ `.v8/ib/simple` из выгрузки и прогнать smoke r22.
+«что там дальше по плану — выполняй» (2026-09-21) — dump-only MCP r15.
 ИБ создана. Vanessa/YaXUnit (`tools.* = false`) не запускались.
-Runtime r01/r20/r21 и daemon/MCP r15 остаются NOT_RUN.
+Runtime r01/r20/r21 остаются NOT_RUN.
 
 Фикстура: opt-in v8-harness @ `322398ae…`, стенд `simple`, `from: file`.
 Выгрузка `source-checkouts/simple1CAiConf` @ `1dbc395d…`.
@@ -57,15 +60,19 @@ Runtime r01/r20/r21 и daemon/MCP r15 остаются NOT_RUN.
 `source-checkouts/...` резолвится от `.v8/stands/simple/`, не от корня.
 
 **r15 CLI smoke PASS** — [logs/r15-cli-simple.md](logs/r15-cli-simple.md).
+**r15 MCP smoke PASS** (`run-r15-mcp-simple`): изолированный
+`CODE_INDEX_HOME`, `daemon run` + HTTP `serve`, `tools/list` = 33
+(13 1С-tools), handlers/structure/register writers. Лог:
+[logs/r15-mcp-simple.md](logs/r15-mcp-simple.md).
 **r22 IB smoke PASS** (`run-r22-ib-simple`): `init` + `build` +
 `syntax designer-modules --server --thin-client` (`status=clean`).
 Лог: [logs/r22-ib-simple.md](logs/r22-ib-simple.md).
 
 ## Следующий шаг
 
-Dump-only MCP r15 (daemon + named 1С-tools) или smoke Unica `view`/`check`
-на этой же выгрузке/ИБ — по отдельной просьбе. Не писать код фасада.
-Vanessa/YaXUnit не гонять: в выгрузке нет тестов, `tools.* = false`.
+Smoke Unica `view`/`check` на этой же выгрузке/ИБ — по отдельной
+просьбе. Не писать код фасада. Vanessa/YaXUnit не гонять: в выгрузке
+нет тестов, `tools.* = false`. `[tools].enabled` r15 не гоняли.
 
 ## Журнал
 
@@ -99,3 +106,7 @@ v8-harness и выгрузка simple1CAiConf как стенд `simple`. ИБ �
 `build` + `syntax designer-modules` PASS (`run-r22-ib-simple`).
 Пользователь `Админ` в пустой ИБ отвергнут платформой; относительный
 path sources поправлен на абсолютный.
+2026-09-21 → «что там дальше по плану — выполняй»: dump-only MCP r15.
+Изолированный `CODE_INDEX_HOME` `.v8/work/r15-mcp/home`; HTTP serve
+на свободном порту. 7/7 PASS (`run-r15-mcp-simple`). Живой
+`tools/list` = 33. Фасад и Unica не запускались.

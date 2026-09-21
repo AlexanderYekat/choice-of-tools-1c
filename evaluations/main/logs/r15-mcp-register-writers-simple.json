@@ -1,0 +1,17 @@
+{
+  "result": {
+    "object": "AccumulationRegister.ЗаказыПоКонтрагентам",
+    "writers": [
+      "Document.ЗаказПокупателя"
+    ],
+    "writers_count": 1,
+    "writers_count_by_type": {
+      "Document": 1
+    },
+    "writers_truncated": false,
+    "writes_to": [],
+    "writes_to_count": 0,
+    "writes_to_count_by_type": {},
+    "writes_to_truncated": false
+  }
+}

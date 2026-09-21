@@ -1912,9 +1912,10 @@
         "s15-processor"
       ],
       "run_ids": [
-        "run-r15-cli-simple"
+        "run-r15-cli-simple",
+        "run-r15-mcp-simple"
       ],
-      "limitations": "Live --help of the v1.4.0 Windows binary was captured; MCP tools/list was not run."
+      "limitations": "Live --help of the v1.4.0 Windows binary and live HTTP tools/list (33 names) were captured."
     },
     {
       "id": "c15-cli-core",
@@ -1939,8 +1940,10 @@
         "s15-mcp-header",
         "s15-server-json"
       ],
-      "run_ids": [],
-      "limitations": "Federation serve.toml remote repos were not traced for S2."
+      "run_ids": [
+        "run-r15-mcp-simple"
+      ],
+      "limitations": "One dump via daemon.toml [[paths]] alias=simple; federation serve.toml remote repos were not traced for S2."
     },
     {
       "id": "c15-mcp-whitelist",
@@ -1952,8 +1955,10 @@
         "s15-processor",
         "s15-readme-s1"
       ],
-      "run_ids": [],
-      "limitations": "Exact live tools/list count of core tools was not captured; 20 is documentation plus README inventory."
+      "run_ids": [
+        "run-r15-mcp-simple"
+      ],
+      "limitations": "Live HTTP tools/list without whitelist was 33 names (20 core + 13 BSL). [tools].enabled cutting that list was not executed."
     },
     {
       "id": "c15-multirepo",
@@ -2019,9 +2024,10 @@
         "s15-processor"
       ],
       "run_ids": [
-        "run-r15-cli-simple"
+        "run-r15-cli-simple",
+        "run-r15-mcp-simple"
       ],
-      "limitations": "CLI core smoke PASS on simple1CAiConf; daemon+MCP 1C named tools remain NOT_RUN."
+      "limitations": "CLI core and daemon+MCP named tools PASS on simple1CAiConf. [tools].enabled whitelist and dual live serve remain NOT_RUN."
     },
     {
       "id": "c15-index-simple",
@@ -2032,7 +2038,7 @@
       "run_ids": [
         "run-r15-cli-simple"
       ],
-      "limitations": "Small managed-application sample; not a large typical configuration. Named 1C MCP tools were not called."
+      "limitations": "Small managed-application sample; not a large typical configuration."
     },
     {
       "id": "c15-search-callers-simple",
@@ -2044,6 +2050,17 @@
         "run-r15-cli-simple"
       ],
       "limitations": "FTS matches name and body, so search is not exact-name-only. Call graph checked only inside one form module."
+    },
+    {
+      "id": "c15-mcp-simple",
+      "repository_id": "r15",
+      "status": "RUN",
+      "statement": "Isolated CODE_INDEX_HOME plus daemon run and HTTP serve on bsl-indexer 1.4.0 advertised 33 MCP tools (all 13 BSL names). get_object_structure returned Document.ЗаказПокупателя attributes СуммаДокумента and TCH Товары; get_form_handlers returned the two OnChange bindings as ПриИзменении; get_register_writers returned Document.ЗаказПокупателя; get_event_subscriptions was empty; search_function via MCP found РассчитатьСуммуДокумента.",
+      "source_ids": [],
+      "run_ids": [
+        "run-r15-mcp-simple"
+      ],
+      "limitations": "Small Designer dump without EventSubscriptions. HTTP transport on an ephemeral port, not stdio. [tools].enabled was not applied. Dual-repo serve was not run."
     }
   ],
   "runs": [
@@ -2179,6 +2196,23 @@
       "log": "logs/r22-ib-simple.md",
       "tests": 3,
       "assertions": 3,
+      "skipped": 0,
+      "mocks_only": false,
+      "reason": null
+    },
+    {
+      "id": "run-r15-mcp-simple",
+      "repository_id": "r15",
+      "commit": "4bde72b60a09187c0667d451a02c7be5e0169835",
+      "status": "PASS",
+      "kind": "INTEGRATION",
+      "command": "CODE_INDEX_HOME=.v8/work/r15-mcp/home bsl-indexer.exe daemon run; bsl-indexer.exe serve --transport http --host 127.0.0.1 --port <ephemeral> --config daemon.toml; MCP tools/list and tools/call alias=simple",
+      "environment": "Windows 10.0.26200; bsl-indexer.exe 1.4.0 from GitHub release v1.4.0 (SHA 4bde72b…); dump simple1CAiConf @ 1dbc395d; isolated CODE_INDEX_HOME; reused dump/.code-index/index.db; no 1C platform",
+      "expected": "health daemon online and alias simple ready; tools/list includes all 13 BSL tools; structure has СуммаДокумента and Товары; form handlers bind both OnChange procedures; register writers include Document.ЗаказПокупателя; subscriptions empty; MCP search_function hits РассчитатьСуммуДокумента",
+      "result": "All seven checks passed. tools/list count=33 missing=[]. Form XML OnChange localized to ПриИзменении. daemon run spawned a child and parent exited 0. Processes stopped with daemon stop.",
+      "log": "logs/r15-mcp-simple.md",
+      "tests": 7,
+      "assertions": 7,
       "skipped": 0,
       "mocks_only": false,
       "reason": null
