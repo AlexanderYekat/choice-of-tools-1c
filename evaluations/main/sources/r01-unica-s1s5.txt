@@ -1,0 +1,23 @@
+# r01 Unica — static evidence receipt (S1–S5)
+
+Date: 2026-09-21
+Commit: 56a67d4a460c97101b6b542b4fe940298ab0edd8 (branch main; HEAD still this SHA)
+Execution: NOT_RUN
+
+Read coordinates (line numbers from fetched files at this commit):
+
+- crates/unica-coder/Cargo.toml L8–10: [[bin]] name = "unica"
+- crates/unica-coder/src/main.rs L1–38: default path run_stdio(); --help «stdio MCP orchestrator»; --daemon / --workspace-service / --runtime-job-worker
+- crates/unica-coder/src/interfaces/mcp.rs L75–116: run_stdio connects user daemon + cwd as workspace_hint; rmcp stdio
+- crates/unica-coder/src/interfaces/daemon.rs L36–67, L80–96: UNICA_PROVIDER_STATE_DIR / ~/.unica/provider-state; connect_or_spawn
+- crates/unica-coder/src/interfaces/daemon_router.rs L156–176, L241–270, L291–307: each call carries workspace_hint; receipt scope = hash(hint)
+- crates/unica-coder/src/infrastructure/workspace.rs L8–47, tests L107–148: root = ancestor v8project.yaml or .git-file; else cwd; parent .git dir is not a stop
+- crates/unica-coder/src/domain/apply.rs L19–25, L89–121: args at/ops/dryRun/ifRev; omitted dryRun=false; apply without ifRev rejected
+- crates/unica-coder/src/application/v13/tool_catalog.rs: 8 domain tools view/apply/resolve/search/check/diff/run/docs; apply fence ifRev when dryRun false
+- crates/unica-bootstrap/src/verification.rs L13–25: EXPECTED_COMPATIBILITY_TOOLS 11 names including task.get/result/cancel
+- crates/unica-coder/src/infrastructure/project_sources.rs L54–86: markers Configuration.xml / Configuration.mdo; layouts ., src, src/cf; extensions src/cfe, src/extensions
+- plugins/unica/references/tooling/v8project.md: yaml only at workspace root; no call argument for another file; one infobase.connection; source-set[]
+- plugins/unica/.mcp.json: cargo run --bin unica (stdio)
+- README.md: official hosts Codex/Claude; 1C only for ops that need it; LGPL
+
+Not started: cargo build, unica process, tools/list live, 1C, apply/run on a dump.

@@ -1,11 +1,12 @@
 # Цель и критерии: main
 
 Запуск: 20260920T044856175227Z. Версия цели: 2.
-Глубина выполненного обзора r01–r19: overview. **r20 Answer42, r21
-Vanessa и r22 v8-runner-rust — DEEP_STATIC по S1–S5**. Состояние:
-критерии v2 зафиксированы; состав контура выбран: r22 вместо r09;
-план стыковки записан ([INTEGRATION-PLAN.md](INTEGRATION-PLAN.md));
-static стыковка r01/r15 и внедрение не начаты.
+Глубина выполненного обзора r01–r19: overview, кроме **r01 Unica —
+DEEP_STATIC по S1–S5**. **r20 Answer42, r21 Vanessa и r22 v8-runner-rust
+— DEEP_STATIC по S1–S5**. Состояние: критерии v2 зафиксированы; состав
+контура выбран: r22 вместо r09; план стыковки записан
+([INTEGRATION-PLAN.md](INTEGRATION-PLAN.md)); static стыковка r15 и
+внедрение не начаты.
 Снимок v1 и текст перехода — по необходимости, не для обычного CONTINUE:
 `history/goal-v1/`, `GOAL-CHANGE.md`.
 

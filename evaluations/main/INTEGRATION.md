@@ -1,9 +1,8 @@
 # Стыковка выбранных компонентов — частичный результат
 
 Дата: 2026-09-21. Статус: **CONTINUE-AUDIT; deep-static выполнен для
-r21 Vanessa, r20 Answer42 и r22 v8-runner**. Остальные три кандидата
-плана (r01/r15/r09) этим изменением не углублялись. r22 — вне исходной
-пятёрки, конкурент слота r09.
+r01 Unica, r20 Answer42, r21 Vanessa и r22 v8-runner**. Остаётся
+r15 code-index-mcp. r09 из контура выведен, S1–S5 для него не делаем.
 
 Шкала: [FACADE.md](FACADE.md). План:
 [INTEGRATION-PLAN.md](INTEGRATION-PLAN.md).
@@ -13,15 +12,15 @@ r21 Vanessa, r20 Answer42 и r22 v8-runner**. Остальные три канд
 
 | Кандидат | S1 вызов | S2 source / target | S3 surface | S4 две цели | S5 проект |
 |---|---|---|---|---|---|
-| r01 Unica | PENDING | PENDING | PENDING | PENDING | PENDING |
+| **r01 Unica** | **терпимо** — stdio MCP `unica`, не one-shot CLI | **терпимо** — cwd / `v8project.yaml`, аргумента config нет | **удобно** — ровно 11 tools; фасад зовёт subset | **терпимо** — несколько source-set; одна ИБ на yaml; два процесса | **удобно** — автодетект XML/EDT, yaml не обязателен |
 | r15 code-index-mcp | PENDING | PENDING | PENDING | PENDING | PENDING |
-| r09 mcp-onec-test-runner | PENDING | PENDING | PENDING | PENDING | PENDING |
+| r09 mcp-onec-test-runner | OUT OF CONTOUR | — | — | — | — |
 | **r22 v8-runner** (конкурент r09) | **удобно** — CLI `v8-runner`; MCP optional stdio/HTTP | **терпимо** — `--config` / один `infobase` на yaml | **удобно** — CLI без tools; MCP ровно 8 | **терпимо** — два yaml / два процесса; dual-IB NOT_RUN | **удобно** — родной `v8project.yaml` |
 | **r20 Answer42** | **терпимо** — CLI поднимает stdio/HTTP MCP, не one-shot form CLI | **удобно** — `base_url` + `session_id`; креды из файла | **терпимо** — 122 tools default `full`; есть `--tool-profile` / `--disable-rag` | **удобно по контракту / simultaneous NOT_RUN** | **терпимо** — явный `base_url`; RAG-scan не детектор фасада |
 | **r21 Vanessa** | **удобно** — batch CLI через 1С; дополнительно HTTP MCP | **удобно** — один feature, scenario filter, Test Client data/profiles | **удобно CLI / терпимо MCP** — CLI без tools; MCP 37 active static | **терпимо / simultaneous UNKNOWN** | **терпимо** — explicit workspace/projectpath, generic detection facade-side |
 
-Подробности: [reports/r20.md](reports/r20.md), [reports/r21.md](reports/r21.md),
-[reports/r22.md](reports/r22.md).
+Подробности: [reports/r01.md](reports/r01.md), [reports/r20.md](reports/r20.md),
+[reports/r21.md](reports/r21.md), [reports/r22.md](reports/r22.md).
 
 ## Предпочтительный адаптер r21
 
@@ -95,6 +94,28 @@ verify.unit(target, module?)
 `--no-build` есть только в CLI. Две ИБ обмена = два `--config`.
 r09 в контур не входит (решение 2026-09-21).
 
+## Предпочтительный адаптер r01
+
+Для `docs` / `edit` / `static.check` пакетного CLI нет: `unica` — stdio MCP.
+Фасад держит процесс с `cwd` = корень 1С-проекта и **не** проксирует
+сырой `tools/list`:
+
+```text
+docs / edit.view / edit.apply / static.check
+  -> cwd=<корень с v8project.yaml или выгрузкой>
+  -> stdio MCP: unica
+  -> subset: unica.docs / unica.view / unica.apply / unica.check
+  -> apply: сначала dryRun true, публикация только с ifRev
+  -> compact summary агенту; search/run/task.* не светить
+```
+
+Официальный хост Codex/Claude не нужен, если есть бинарь. `unica.search`
+не explore-слой (это r15). `unica.run` не основной build (это r22).
+Патч Unica не нужен.
+
+Две выгрузки в одном корне — два `source-set` и префикс `at`. Две ИБ
+обмена — два yaml / два cwd, как у r22.
+
 ## Что остаётся
 
-r01/r15 требуют S1–S5. По r20, r21 и r22 execution NOT_RUN.
+r15 требует S1–S5. По r01/r20/r21/r22 execution NOT_RUN.

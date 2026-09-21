@@ -8,7 +8,7 @@
       "input_url": "https://github.com/IngvarConsulting/unica",
       "canonical_url": "https://github.com/IngvarConsulting/unica",
       "access": "AVAILABLE",
-      "access_reason": "GitHub API repos/IngvarConsulting/unica отвечает 200, прочитано 2026-09-20.",
+      "access_reason": "GitHub API repos/IngvarConsulting/unica отвечает 200; main HEAD и файлы raw прочитаны 2026-09-21, SHA совпал с обзором 2026-09-20.",
       "default_branch": "main",
       "commit": "56a67d4a460c97101b6b542b4fe940298ab0edd8",
       "commit_source": "https://api.github.com/repos/IngvarConsulting/unica/commits/main",
@@ -17,15 +17,16 @@
         "upstream_url": null,
         "comparison": "NOT_APPLICABLE"
       },
-      "project_type": "Rust CLI/плагин для Codex и Claude Code: локальный индекс конфигурации 1С, справка платформы, работа с ИБ",
+      "project_type": "Rust stdio MCP unica (плагин Codex/Claude): логические view/apply/check/docs/run по выгрузке 1С и v8project.yaml",
       "roles": [
-        "explore-index",
+        "edit-metadata",
         "platform-docs",
+        "static-check",
         "runtime-access",
         "agent-integration-layer"
       ],
-      "priority": "Высокий: единственный кандидат, который сам заявляет целостный контур агента для 1С с локальным индексом и узкой поверхностью.",
-      "scope": "OVERVIEW",
+      "priority": "Выбран в контур: docs/edit/static за фасадом. Не основной explore (r15) и не основной build (r22).",
+      "scope": "DEEP_STATIC",
       "duplicate_of": null,
       "report": "reports/r01.md"
     },

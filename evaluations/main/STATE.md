@@ -6,8 +6,8 @@
 Состав контура выбран ([DECISION.md](DECISION.md)): Unica, code-index-mcp,
 **v8-runner (r22 вместо r09)**, Answer42, Vanessa, тонкий фасад.
 План: [INTEGRATION-PLAN.md](INTEGRATION-PLAN.md).
-Стыковка: **r20 Answer42, r21 Vanessa и r22 v8-runner достигли
-DEEP_STATIC по S1–S5**. r01/r15 — OVERVIEW. Внедрение и execution
+Стыковка: **r01 Unica, r20 Answer42, r21 Vanessa и r22 v8-runner достигли
+DEEP_STATIC по S1–S5**. r15 — OVERVIEW. Внедрение и execution
 не начинались.
 
 ## Восстановление без чата
@@ -18,13 +18,17 @@ DEEP_STATIC по S1–S5**. r01/r15 — OVERVIEW. Внедрение и executio
 4. [INTEGRATION-PLAN.md](INTEGRATION-PLAN.md).
 5. [INTEGRATION.md](INTEGRATION.md) — фактический частичный результат.
 6. [VALIDATION.md](VALIDATION.md).
-7. Для r22 — [reports/r22.md](reports/r22.md); для r20 —
+7. Для r01 — [reports/r01.md](reports/r01.md); для r22 —
+   [reports/r22.md](reports/r22.md); для r20 —
    [reports/r20.md](reports/r20.md); для r21 —
    [reports/r21.md](reports/r21.md); остальные карточки читать по необходимости.
 
 ## Прогресс
 
-- r01/r15: OVERVIEW, static стыковка ещё впереди.
+- **r01 Unica: AVAILABLE / DEEP_STATIC**, commit
+  `56a67d4a460c97101b6b542b4fe940298ab0edd8` (ветка `main`, HEAD совпал).
+  stdio MCP, cwd/`v8project.yaml`, 11 tools, apply `dryRun`/`ifRev`.
+- r15: OVERVIEW, static стыковка ещё впереди.
 - r09: OVERVIEW, **не в контуре** (C14, решение 2026-09-21).
 - **r20 Answer42: AVAILABLE / DEEP_STATIC**, commit
   `0406669a88144834bfdf6086c7040a25cb76d24c` (ветка `beta`, v0.5.3).
@@ -35,12 +39,15 @@ DEEP_STATIC по S1–S5**. r01/r15 — OVERVIEW. Внедрение и executio
   `7ce1b062843d86644fe55741dbe0ee79f7ca767d` (ветка `master`, v0.5.1).
   **Выбран** как сборка / YaXUnit / синтаксис / запуск Vanessa.
 
-Разрешения: `permissions.* = false`. Все runtime runs r20/r21/r22 NOT_RUN.
+Разрешения: `permissions.* = false`. Все runtime runs r01/r20/r21/r22 NOT_RUN.
 
 ## Следующий шаг
 
-CONTINUE-AUDIT по S1–S5 для r01 Unica и r15 code-index-mcp.
+CONTINUE-AUDIT по S1–S5 для r15 code-index-mcp.
 После static-стыковки всех выбранных отдельно запросить execution.
+Методическое ТЗ фасада уже в [FACADE.md](FACADE.md); набросок адаптера
+дописывается в [INTEGRATION.md](INTEGRATION.md) по мере S1–S5.
+Не писать код фасада и не внедрять.
 
 ## Журнал
 
@@ -59,3 +66,5 @@ va` / download single EPF), не замена движка шагов r21; ад�
 при выборе r22 может идти через runner, а не через сырой 1cv8.
 2026-09-21 → пользователь подтвердил замену r09 на r22. Состав в
 DECISION/FACADE/BRIEF обновлён. Внедрение не начиналось.
+2026-09-21 → CONTINUE-AUDIT r01 Unica: SHA `56a67d4a…` совпал с HEAD
+`main`; deep-static S1–S5. Патч не нужен. Остаётся r15.

@@ -1,7 +1,7 @@
 # План стыковки пяти выбранных компонентов
 
 Дата: 2026-09-20, состав уточнён 2026-09-21 (r22 вместо r09).
-Статус: **план в силе; r20/r21/r22 S1–S5 закрыты; r01/r15 ждут**.
+Статус: **план в силе; r01/r20/r21/r22 S1–S5 закрыты; r15 ждёт**.
 CONTINUE-AUDIT в `evaluations/main`, не новый запуск и не внедрение.
 
 Состав и роли: [DECISION.md](DECISION.md). Обвязка и шкала
@@ -32,7 +32,7 @@ CONTINUE-AUDIT в `evaluations/main`, не новый запуск и не вн�
 
 | ID | Продукт | Слой | Сейчас | Версия для стыковки |
 |---|---|---|---|---|
-| r01 | Unica | docs / edit / static / run | OVERVIEW, `56a67d4a460c97101b6b542b4fe940298ab0edd8` | та же, пока HEAD не сменился |
+| r01 | Unica | docs / edit / static / run | DEEP_STATIC, `56a67d4a460c97101b6b542b4fe940298ab0edd8` | та же |
 | r15 | code-index-mcp / `bsl-indexer` | explore | OVERVIEW, `4bde72b60a09187c0667d451a02c7be5e0169835` | та же, пока HEAD не сменился |
 | r22 | v8-runner | verify.unit / build / syntax / запуск Vanessa | DEEP_STATIC, `7ce1b062843d86644fe55741dbe0ee79f7ca767d` | та же |
 | r20 | Answer42 | verify.form | DEEP_STATIC, `0406669a88144834bfdf6086c7040a25cb76d24c` | та же |

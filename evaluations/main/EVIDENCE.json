@@ -919,6 +919,143 @@
       "lines": null,
       "captured_at": "2026-09-21",
       "note": "master HEAD = 7ce1b062843d86644fe55741dbe0ee79f7ca767d; default_branch master; не fork."
+    },
+    {
+      "id": "s01-main-rs",
+      "repository_id": "r01",
+      "kind": "SOURCE",
+      "commit": "56a67d4a460c97101b6b542b4fe940298ab0edd8",
+      "url": "https://github.com/IngvarConsulting/unica/blob/56a67d4a460c97101b6b542b4fe940298ab0edd8/crates/unica-coder/src/main.rs#L1-L38",
+      "path": "crates/unica-coder/src/main.rs",
+      "lines": [
+        1,
+        38
+      ],
+      "captured_at": "2026-09-21",
+      "note": "Default path is MCP stdio; --help names initialize/tools/list/tools/call; --daemon/--workspace-service/--runtime-job-worker are internal."
+    },
+    {
+      "id": "s01-coder-cargo-bin",
+      "repository_id": "r01",
+      "kind": "SOURCE",
+      "commit": "56a67d4a460c97101b6b542b4fe940298ab0edd8",
+      "url": "https://github.com/IngvarConsulting/unica/blob/56a67d4a460c97101b6b542b4fe940298ab0edd8/crates/unica-coder/Cargo.toml#L8-L10",
+      "path": "crates/unica-coder/Cargo.toml",
+      "lines": [
+        8,
+        10
+      ],
+      "captured_at": "2026-09-21",
+      "note": "[[bin]] name unica, path src/main.rs."
+    },
+    {
+      "id": "s01-mcp-stdio",
+      "repository_id": "r01",
+      "kind": "SOURCE",
+      "commit": "56a67d4a460c97101b6b542b4fe940298ab0edd8",
+      "url": "https://github.com/IngvarConsulting/unica/blob/56a67d4a460c97101b6b542b4fe940298ab0edd8/crates/unica-coder/src/interfaces/mcp.rs#L75-L116",
+      "path": "crates/unica-coder/src/interfaces/mcp.rs",
+      "lines": [
+        75,
+        116
+      ],
+      "captured_at": "2026-09-21",
+      "note": "run_stdio connects user daemon, takes cwd as workspace_hint, serves rmcp stdio. Live 1C not started here."
+    },
+    {
+      "id": "s01-daemon-state",
+      "repository_id": "r01",
+      "kind": "SOURCE",
+      "commit": "56a67d4a460c97101b6b542b4fe940298ab0edd8",
+      "url": "https://github.com/IngvarConsulting/unica/blob/56a67d4a460c97101b6b542b4fe940298ab0edd8/crates/unica-coder/src/interfaces/daemon.rs#L36-L96",
+      "path": "crates/unica-coder/src/interfaces/daemon.rs",
+      "lines": [
+        36,
+        96
+      ],
+      "captured_at": "2026-09-21",
+      "note": "User daemon state: UNICA_PROVIDER_STATE_DIR or ~/.unica/provider-state; connect_or_spawn."
+    },
+    {
+      "id": "s01-daemon-router",
+      "repository_id": "r01",
+      "kind": "SOURCE",
+      "commit": "56a67d4a460c97101b6b542b4fe940298ab0edd8",
+      "url": "https://github.com/IngvarConsulting/unica/blob/56a67d4a460c97101b6b542b4fe940298ab0edd8/crates/unica-coder/src/interfaces/daemon_router.rs#L241-L307",
+      "path": "crates/unica-coder/src/interfaces/daemon_router.rs",
+      "lines": [
+        241,
+        307
+      ],
+      "captured_at": "2026-09-21",
+      "note": "Each tools/call submits workspace_hint; receipt RequestIdentity includes request_scope_hash(hint)."
+    },
+    {
+      "id": "s01-workspace-discover",
+      "repository_id": "r01",
+      "kind": "SOURCE",
+      "commit": "56a67d4a460c97101b6b542b4fe940298ab0edd8",
+      "url": "https://github.com/IngvarConsulting/unica/blob/56a67d4a460c97101b6b542b4fe940298ab0edd8/crates/unica-coder/src/infrastructure/workspace.rs#L8-L47",
+      "path": "crates/unica-coder/src/infrastructure/workspace.rs",
+      "lines": [
+        8,
+        47
+      ],
+      "captured_at": "2026-09-21",
+      "note": "discover_workspace: ancestor v8project.yaml or .git file; else cwd. Parent .git directory is not a stop (tests). UNICA_CACHE_DIR optional."
+    },
+    {
+      "id": "s01-v8project-contract",
+      "repository_id": "r01",
+      "kind": "DOCUMENTATION",
+      "commit": "56a67d4a460c97101b6b542b4fe940298ab0edd8",
+      "url": "https://github.com/IngvarConsulting/unica/blob/56a67d4a460c97101b6b542b4fe940298ab0edd8/plugins/unica/references/tooling/v8project.md",
+      "path": "plugins/unica/references/tooling/v8project.md",
+      "lines": null,
+      "captured_at": "2026-09-21",
+      "note": "v8project.yaml only at workspace root; no call argument for another file; one infobase.connection; source-set list; yaml is handwritten."
+    },
+    {
+      "id": "s01-apply-dryrun",
+      "repository_id": "r01",
+      "kind": "SOURCE",
+      "commit": "56a67d4a460c97101b6b542b4fe940298ab0edd8",
+      "url": "https://github.com/IngvarConsulting/unica/blob/56a67d4a460c97101b6b542b4fe940298ab0edd8/crates/unica-coder/src/domain/apply.rs#L89-L121",
+      "path": "crates/unica-coder/src/domain/apply.rs",
+      "lines": [
+        89,
+        121
+      ],
+      "captured_at": "2026-09-21",
+      "note": "Omitted dryRun is false; apply without ifRev is rejected. Cross-source-set ops.at is rejected earlier in the same parser."
+    },
+    {
+      "id": "s01-tool-catalog-v13",
+      "repository_id": "r01",
+      "kind": "SOURCE",
+      "commit": "56a67d4a460c97101b6b542b4fe940298ab0edd8",
+      "url": "https://github.com/IngvarConsulting/unica/blob/56a67d4a460c97101b6b542b4fe940298ab0edd8/crates/unica-coder/src/application/v13/tool_catalog.rs",
+      "path": "crates/unica-coder/src/application/v13/tool_catalog.rs",
+      "lines": [
+        1,
+        80
+      ],
+      "captured_at": "2026-09-21",
+      "note": "V13 domain catalog: view, apply, resolve, search, check, diff, run, docs. apply schema fence: ifRev required when dryRun is false. Run dictionary 9 ops including infobase.create with no args."
+    },
+    {
+      "id": "s01-autodetect-layouts",
+      "repository_id": "r01",
+      "kind": "SOURCE",
+      "commit": "56a67d4a460c97101b6b542b4fe940298ab0edd8",
+      "url": "https://github.com/IngvarConsulting/unica/blob/56a67d4a460c97101b6b542b4fe940298ab0edd8/crates/unica-coder/src/infrastructure/project_sources.rs#L54-L86",
+      "path": "crates/unica-coder/src/infrastructure/project_sources.rs",
+      "lines": [
+        54,
+        86
+      ],
+      "captured_at": "2026-09-21",
+      "note": "Closed autodetection: markers Configuration.xml / Configuration.mdo; base layouts ., src, src/cf; extensions src/cfe and src/extensions."
     }
   ],
   "claims": [
@@ -1511,6 +1648,108 @@
       ],
       "run_ids": [],
       "limitations": "Simultaneous dual-IB was not executed."
+    },
+    {
+      "id": "c01-entry",
+      "repository_id": "r01",
+      "status": "SOURCE",
+      "statement": "The unica binary default is stdio MCP (run_stdio); there is no one-shot CLI for view/apply/check. --daemon and related flags are internal.",
+      "source_ids": [
+        "s01-main-rs",
+        "s01-coder-cargo-bin",
+        "s01-mcp-stdio"
+      ],
+      "run_ids": [],
+      "limitations": "The binary was not started; live initialize handshake not observed."
+    },
+    {
+      "id": "c01-workspace-cwd",
+      "repository_id": "r01",
+      "status": "SOURCE",
+      "statement": "MCP stdio takes process cwd as workspace_hint and discovers workspace root from ancestor v8project.yaml (else cwd). No tool argument selects another yaml.",
+      "source_ids": [
+        "s01-mcp-stdio",
+        "s01-workspace-discover",
+        "s01-v8project-contract"
+      ],
+      "run_ids": [],
+      "limitations": "MCP roots/workspaceFolders from the host were not found in the sampled mcp.rs path; unknown whether a host can override cwd."
+    },
+    {
+      "id": "c01-apply-fence",
+      "repository_id": "r01",
+      "status": "SOURCE",
+      "statement": "unica.apply omitted dryRun equals false; publishing requires ifRev from a prior dryRun preview. One apply batch cannot target a different source-set than at.",
+      "source_ids": [
+        "s01-apply-dryrun",
+        "s01-tool-catalog-v13"
+      ],
+      "run_ids": [],
+      "limitations": "Publication on a real dump was not executed."
+    },
+    {
+      "id": "c01-single-ib",
+      "repository_id": "r01",
+      "status": "DOCUMENTATION",
+      "statement": "One v8project.yaml binds a single infobase.connection; credentials overlay is v8project.local.yaml; infobase.create has no connection argument.",
+      "source_ids": [
+        "s01-v8project-contract",
+        "s01-tool-catalog-v13"
+      ],
+      "run_ids": [],
+      "limitations": "Parser of yaml infobase uniqueness in workspace_config.rs was not line-traced beyond the contract and run dictionary."
+    },
+    {
+      "id": "c01-autodetect",
+      "repository_id": "r01",
+      "status": "SOURCE",
+      "statement": "Without v8project.yaml, Unica autodetects source sets from a closed layout catalog: Configuration.xml or EDT Configuration.mdo under ., src, src/cf; extensions under src/cfe and src/extensions.",
+      "source_ids": [
+        "s01-autodetect-layouts",
+        "s01-v8project-contract"
+      ],
+      "run_ids": [],
+      "limitations": "Autodetect on a real configuration tree was not run."
+    },
+    {
+      "id": "c01-user-daemon",
+      "repository_id": "r01",
+      "status": "SOURCE",
+      "statement": "Stdio MCP connects or spawns a per-user daemon under UNICA_PROVIDER_STATE_DIR or ~/.unica/provider-state; each call includes workspace_hint in the receipt scope hash.",
+      "source_ids": [
+        "s01-daemon-state",
+        "s01-daemon-router",
+        "s01-mcp-stdio"
+      ],
+      "run_ids": [],
+      "limitations": "Whether two live workspaces isolate infobase/runtime sessions inside one daemon is NOT_RUN."
+    },
+    {
+      "id": "c01-adapter-choice",
+      "repository_id": "r01",
+      "status": "INFERENCE",
+      "statement": "Facade should call Unica stdio MCP with cwd set to the 1C project root and expose only docs/view/apply/check; do not proxy search/run/task.* to the agent. Patch of Unica is not required.",
+      "source_ids": [
+        "s01-main-rs",
+        "s01-tool-catalog-v13",
+        "s01-verification",
+        "s01-apply-dryrun"
+      ],
+      "run_ids": [],
+      "limitations": "Architectural inference; smoke unica.view is NOT_RUN."
+    },
+    {
+      "id": "c01-multitarget",
+      "repository_id": "r01",
+      "status": "INFERENCE",
+      "statement": "Two dump trees can be two source-set entries in one yaml; two infobases require two workspace roots/processes. The product is not a machine-wide IB singleton; the user daemon is shared but scoped by workspace_hint.",
+      "source_ids": [
+        "s01-v8project-contract",
+        "s01-apply-dryrun",
+        "s01-daemon-router"
+      ],
+      "run_ids": [],
+      "limitations": "Simultaneous dual-IB/dual-workspace was not executed."
     }
   ],
   "runs": [
@@ -1581,6 +1820,23 @@
       "skipped": 0,
       "mocks_only": false,
       "reason": "permissions.fetch_sources/install_dependencies/build/run_tests/start_services=false; v8-runner, 1C and YaXUnit were not started in this evaluation."
+    },
+    {
+      "id": "run-r01-no-exec",
+      "repository_id": "r01",
+      "commit": "56a67d4a460c97101b6b542b4fe940298ab0edd8",
+      "status": "NOT_RUN",
+      "kind": "OTHER",
+      "command": null,
+      "environment": "Windows 10, Cursor Agent; static GitHub API/raw read only",
+      "expected": "Не применимо на этапе deep-static без permissions.run_tests",
+      "result": null,
+      "log": null,
+      "tests": 0,
+      "assertions": 0,
+      "skipped": 0,
+      "mocks_only": false,
+      "reason": "permissions.fetch_sources/install_dependencies/build/run_tests/start_services=false; unica binary, 1C and apply/run were not started."
     }
   ]
 }
