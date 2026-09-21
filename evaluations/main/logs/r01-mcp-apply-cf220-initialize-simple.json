@@ -1,0 +1,15 @@
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "protocolVersion": "2025-06-18",
+    "capabilities": {
+      "tools": {}
+    },
+    "serverInfo": {
+      "name": "unica",
+      "version": "0.12.0"
+    },
+    "instructions": "Start with unica.view using an empty object when the workspace or logical address is unknown. Use returned addresses instead of guessing at. A qualified logical address has the form <sourceSet>:<Kind>[.<Name>...]. Use unica.check to confirm source-set admission or logical-node readability."
+  }
+}

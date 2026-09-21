@@ -1,0 +1,15 @@
+{
+  "ok": false,
+  "command": "test",
+  "duration_ms": 0,
+  "data": {
+    "message": "tests.va.profile is not configured"
+  },
+  "warnings": [],
+  "steps": [],
+  "error": {
+    "code": "invalid_argument",
+    "kind": "validation",
+    "message": "tests.va.profile is not configured"
+  }
+}

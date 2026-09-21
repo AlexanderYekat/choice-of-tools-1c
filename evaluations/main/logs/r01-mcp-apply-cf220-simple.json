@@ -1,0 +1,49 @@
+{
+  "binary": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r01\\target\\debug\\unica.exe",
+  "dump": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\simple-cf-220",
+  "state": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r01-apply-cf220\\provider-state",
+  "checks": [
+    {
+      "name": "initialize",
+      "expected": "serverInfo.name=unica",
+      "actual": "name=unica version=0.12.0",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "unica.apply dryRun props.set Comment",
+      "expected": "structured preview or named refusal; no publish",
+      "actual": "ok=True summary=metadata apply plan prepared without publication rpc_error=False",
+      "pass": true,
+      "extra": {
+        "envelope_keys": [
+          "ok",
+          "at",
+          "summary",
+          "data",
+          "changed",
+          "rev"
+        ],
+        "diagnostics": null
+      }
+    },
+    {
+      "name": "unica.apply without ifRev (publish fence)",
+      "expected": "refusal naming ifRev / dryRun",
+      "actual": "ok=False summary=ifRev: apply requires ifRev from a prior dryRun preview rpc_error=False blob={\"ok\": false, \"at\": \"ifrev\", \"summary\": \"ifrev: apply requires ifrev from a prior dryrun preview\", \"diagnostics\": [{\"code\": \"bad_value\", \"outcome\": \"fixcall\", \"message\": \"ifrev: apply requires ifrev from a prior dryrun preview\"}]}",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "dump fingerprint unchanged",
+      "expected": "no files added/removed/modified under dump (excluding .build/.code-index)",
+      "actual": "changed=[] count=0 files_before=17",
+      "pass": true,
+      "extra": null
+    }
+  ],
+  "failed": 0,
+  "killed_daemon_pids": [],
+  "stderr_log": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r01-apply-cf220\\unica.stderr.log",
+  "changed_files": []
+}

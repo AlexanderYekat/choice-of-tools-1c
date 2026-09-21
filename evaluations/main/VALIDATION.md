@@ -42,11 +42,10 @@ init/build/syntax PASS** на ИБ стенда `simple`
 ([logs/r22-ib-simple.md](logs/r22-ib-simple.md)); **r01
 `view`/`check` PASS** ([logs/r01-mcp-simple.md](logs/r01-mcp-simple.md));
 **r01 `apply` dryRun + `docs` PASS**
-([logs/r01-mcp-apply-simple.md](logs/r01-mcp-apply-simple.md)).
-r20, r21 остаются NOT_RUN. YaXUnit/Vanessa не запускались (в выгрузке
-нет тестов). `unica.check` на этом дампе ответил `source_unreadable`
-(формат 2.20). `unica.apply` dryRun на том же дампе — `invalid_source`
-(format 1.0 vs writable 2.20); забор `ifRev` подтверждён живьём.
-`unica.docs` «НаборЗаписей» — 5 секций / 80 hits через `task.result`.
+([logs/r01-mcp-apply-simple.md](logs/r01-mcp-apply-simple.md));
+**r22 dump 2.20 PASS**; **r01 apply dryRun на 2.20 PASS** (preview).
+YaXUnit/Vanessa на simple **сначала отказали** без сценария; после
+написанного `smoke-engine.feature` Vanessa **1/1 PASS**. `unica.check` на рукописном дампе — `source_unreadable`.
+`unica.apply` dryRun там же — `invalid_source`; на cf220 — план.
 
-Следующее — Answer42 (живой Test Client), не код фасада.
+Следующее — публикация apply с ifRev или Answer42, не код фасада.

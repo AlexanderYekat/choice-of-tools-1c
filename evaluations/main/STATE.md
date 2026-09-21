@@ -2,7 +2,8 @@
 
 Версия цели: **2**. Статус: COMPOSITION_R22_CHOSEN; STATIC_S1S5_FIVE_DONE;
 FIXTURE_HARNESS_ATTACHED; R15_CLI_SMOKE_PASS; R15_MCP_SMOKE_PASS;
-R22_IB_SMOKE_PASS; R01_MCP_SMOKE_PASS; R01_APPLY_DOCS_SMOKE_PASS.
+R22_IB_SMOKE_PASS; R01_MCP_SMOKE_PASS; R01_APPLY_DOCS_SMOKE_PASS;
+R22_DUMP_CF220_PASS; R01_APPLY_CF220_PASS; R22_YAXUNIT_VA_EMPTY_FAIL; R22_VA_SMOKE_PASS.
 Последнее обновление: 2026-09-21.
 
 Состав контура выбран ([DECISION.md](DECISION.md)): Unica, code-index-mcp,
@@ -10,8 +11,10 @@ R22_IB_SMOKE_PASS; R01_MCP_SMOKE_PASS; R01_APPLY_DOCS_SMOKE_PASS.
 План: [INTEGRATION-PLAN.md](INTEGRATION-PLAN.md).
 Стыковка: **r01 Unica, r15 code-index-mcp, r20 Answer42, r21 Vanessa
 и r22 v8-runner достигли DEEP_STATIC по S1–S5**. r15 CLI, r15 daemon+MCP,
-r22 init/build/syntax, r01 `view`/`check` и r01 `apply` dryRun + `docs`
-на стенде `simple` — PASS. Фасад не писался.
+r22 init/build/syntax, r01 `view`/`check`, r01 `apply` dryRun + `docs`
+на рукописном дампе, r22 `dump` 2.20 и r01 `apply` dryRun на этой
+выгрузке — PASS. YaXUnit/Vanessa на simple — отказ (нет тестов/профиля).
+Фасад не писался.
 
 ## Восстановление без чата
 
@@ -33,7 +36,8 @@ r22 init/build/syntax, r01 `view`/`check` и r01 `apply` dryRun + `docs`
   `56a67d4a460c97101b6b542b4fe940298ab0edd8` (ветка `main`, HEAD совпал).
   stdio MCP dump-only PASS; живой `tools/list` = 11; `view {}`
   autodetected `main`; `check` отказал фикстуре по формату 2.20;
-  `apply` dryRun — `invalid_source` (format 1.0 vs writable 2.20);
+  `apply` dryRun на рукописном дампе — `invalid_source` (1.0 vs 2.20);
+  на Designer dump `.v8/work/simple-cf-220` — план `preview` + `rev`;
   забор `ifRev` живой; `docs` НаборЗаписей — 5 секций / 80 hits.
 - **r15 code-index-mcp: AVAILABLE / DEEP_STATIC**, commit
   `4bde72b60a09187c0667d451a02c7be5e0169835` (ветка `main`, v1.4.0).
@@ -54,9 +58,12 @@ r22 init/build/syntax, r01 `view`/`check` и r01 `apply` dryRun + `docs`
 «хорошо, тогда вперёд» (2026-09-21) принят как разрешение создать
 тестовую ИБ `.v8/ib/simple` из выгрузки и прогнать smoke r22.
 «что там дальше по плану — выполняй» (2026-09-21) — dump-only MCP r15.
-ИБ создана. Vanessa/YaXUnit (`tools.* = false`) не запускались.
-Runtime r20/r21 остаются NOT_RUN. Публикация `apply` (`dryRun:false`
-+ живой `ifRev`) NOT_RUN.
+ИБ создана. Designer dump 2.20 снят в `.v8/work/simple-cf-220` (исходный
+`source-checkouts/simple1CAiConf` не затирался). YaXUnit на simple:
+клиент стартовал, JUnit не появился (нет движка/сценариев в ИБ).
+Vanessa: сначала `tests.va.profile is not configured`; после feature +
+EPF — **1/1 PASS** (`run-r22-va-smoke-simple`). Runtime r20 NOT_RUN.
+Публикация `apply` (`dryRun:false` + `ifRev` с cf220) NOT_RUN.
 
 Фикстура: opt-in v8-harness @ `322398ae…`, стенд `simple`, `from: file`.
 Выгрузка `source-checkouts/simple1CAiConf` @ `1dbc395d…`.
@@ -79,14 +86,23 @@ Runtime r20/r21 остаются NOT_RUN. Публикация `apply` (`dryRun:
 отказал `invalid_source`; забор без `ifRev` — `bad_value`; `docs`
 через Task (5 poll) — 80 hits; дамп не изменился. 6/6.
 Лог: [logs/r01-mcp-apply-simple.md](logs/r01-mcp-apply-simple.md).
+**r22 Designer dump 2.20 PASS** (`run-r22-dump-cf220`): `dump --mode full`
+в `.v8/work/simple-cf-220`; корни `version="2.20"`.
+Лог: [logs/r22-dump-cf220-simple.md](logs/r22-dump-cf220-simple.md).
+**r01 apply dryRun на 2.20 PASS** (`run-r01-apply-cf220`): план preview,
+файлы не изменились. Лог:
+[logs/r01-mcp-apply-cf220-simple.md](logs/r01-mcp-apply-cf220-simple.md).
+**r22 YaXUnit на simple FAIL** (`run-r22-yaxunit-simple`): нет движка в ИБ.
+**r22 Vanessa smoke PASS** (`run-r22-va-smoke-simple`): написан
+`tests/features/smoke-engine.feature`, EPF 1.2.043.1, 1/1 за 122 с.
+Лог: [logs/r22-va-smoke-simple.md](logs/r22-va-smoke-simple.md).
 
 ## Следующий шаг
 
-Answer42 (живой Test Client) — по отдельной просьбе. Не писать код
-фасада. Vanessa/YaXUnit не гонять: в выгрузке нет тестов,
-`tools.* = false`. `[tools].enabled` r15 не гоняли. Dual-workspace
-Unica NOT_RUN. Публикация `apply` на этой фикстуре не делать: Unica
-требует перевыгрузку 2.20.
+Публикация `apply` (`dryRun:false` + `ifRev` с cf220) или Answer42 —
+по отдельной просьбе. Не писать код фасада. YaXUnit на simple по-прежнему
+без расширения/модулей. `[tools].enabled` r15 не гоняли. Dual-workspace
+Unica NOT_RUN.
 
 ## Журнал
 
@@ -137,3 +153,10 @@ path sources поправлен на абсолютный.
 r01 `view`/`check`; выполнен `unica.apply` dryRun + `unica.docs`
 (`run-r01-apply-simple`, 6/6 PASS). Публикация не вызывалась. Answer42
 не запускался.
+2026-09-21 → по просьбе: Designer `dump --mode full` из ИБ simple в
+`.v8/work/simple-cf-220` (`version="2.20"`). `unica.apply` dryRun на
+этой выгрузке — preview PASS. YaXUnit all — клиент без движка, JUnit
+нет (клиент убит после ожидания). Vanessa — нет `tests.va.profile`.
+2026-09-21 → пользователь указал ошибку: тесты надо написать, а не ждать
+их в дампе. Добавлен `tests/features/smoke-engine.feature`, Vanessa EPF
+1.2.043.1, `test --no-build va` — 1/1 PASS (`run-r22-va-smoke-simple`).

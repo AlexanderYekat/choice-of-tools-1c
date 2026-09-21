@@ -1958,7 +1958,7 @@
       "run_ids": [
         "run-r01-apply-simple"
       ],
-      "limitations": "Hand-written simple1CAiConf: ConfigDumpInfo.xml says version 2.20, Unica writable profile still reads format 1.0 from Configuration.xml. Does not prove apply preview fails on a Designer 2.20 export. Publication was not attempted."
+      "limitations": "Hand-written simple1CAiConf: ConfigDumpInfo.xml says version 2.20, Unica writable profile still reads format 1.0 from Configuration.xml. Designer re-export of the same IB succeeded as run-r01-apply-cf220."
     },
     {
       "id": "c01-docs-simple",
@@ -1970,6 +1970,61 @@
         "run-r01-apply-simple"
       ],
       "limitations": "Full page body was not fetched. One vendor admin-guide section was unavailable. Network providers (kb-1ci, v8std) answered in this environment; offline behavior unknown."
+    },
+    {
+      "id": "c01-apply-cf220-simple",
+      "repository_id": "r01",
+      "status": "RUN",
+      "statement": "On Designer dump .v8/work/simple-cf-220 (MetaDataObject version=2.20 from IB simple) unica.apply dryRun:true props.set Comment returned ok=true mode=preview executable=true with rev; files were unchanged. The same op on handwritten simple1CAiConf was invalid_source.",
+      "source_ids": [],
+      "run_ids": [
+        "run-r01-apply-cf220"
+      ],
+      "limitations": "Publication dryRun:false with that ifRev was not executed. Cache wrote under dump/.build/unica which is excluded from the fingerprint."
+    },
+    {
+      "id": "c22-yaxunit-empty-simple",
+      "repository_id": "r22",
+      "status": "RUN",
+      "statement": "test --no-build yaxunit all on stand simple launched 1cv8c with RunUnitTests=config.json; the IB has no YaXUnit and produced no JUnit; the client stayed open until killed.",
+      "source_ids": [],
+      "run_ids": [
+        "run-r22-yaxunit-simple"
+      ],
+      "limitations": "Does not prove YaXUnit runner is broken. The configuration has no test modules. Client was killed after ~3 minutes."
+    },
+    {
+      "id": "c22-va-unconfigured-simple",
+      "repository_id": "r22",
+      "status": "RUN",
+      "statement": "test --no-build va on stand simple returned invalid_argument tests.va.profile is not configured without starting 1C. Dump has zero .feature files.",
+      "source_ids": [],
+      "run_ids": [
+        "run-r22-va-simple"
+      ],
+      "limitations": "v8stands.yaml vanessa=false; no features path. Does not exercise Vanessa EPF. Superseded for the smoke loop by c22-va-smoke-simple after a feature was added."
+    },
+    {
+      "id": "c22-dump-cf220",
+      "repository_id": "r22",
+      "status": "RUN",
+      "statement": "v8-runner dump --mode full from IB simple wrote Designer XML to .v8/work/simple-cf-220 with MetaDataObject version=2.20 on Configuration.xml.",
+      "source_ids": [],
+      "run_ids": [
+        "run-r22-dump-cf220"
+      ],
+      "limitations": "Did not overwrite source-checkouts/simple1CAiConf. 17 files; no test modules appeared."
+    },
+    {
+      "id": "c22-va-smoke-simple",
+      "repository_id": "r22",
+      "status": "RUN",
+      "statement": "After adding tests/features/smoke-engine.feature and Vanessa single EPF 1.2.043.1, test --no-build va on stand simple returned ok=true with 1 passed scenario (Строка(1+1)='2').",
+      "source_ids": [],
+      "run_ids": [
+        "run-r22-va-smoke-simple"
+      ],
+      "limitations": "Technical engine smoke, not business coverage of ЗаказПокупателя. Relative epf_path from stand yaml resolved under .v8/stands/simple/; absolute paths were used for this run."
     },
     {
       "id": "c15-entry",
@@ -2317,6 +2372,91 @@
       "log": "logs/r01-mcp-apply-simple.md",
       "tests": 6,
       "assertions": 6,
+      "skipped": 0,
+      "mocks_only": false,
+      "reason": null
+    },
+    {
+      "id": "run-r22-dump-cf220",
+      "repository_id": "r22",
+      "commit": "7ce1b062843d86644fe55741dbe0ee79f7ca767d",
+      "status": "PASS",
+      "kind": "BUILD",
+      "command": "v8-runner --config .v8/work/simple-cf220/v8project.yaml --json-message dump --mode full",
+      "environment": "Windows 10.0.26200; v8-runner 0.5.1; platform 8.3.27.1936; IB .v8/ib/simple; target .v8/work/simple-cf-220 (not source-checkouts/simple1CAiConf)",
+      "expected": "ok dump; MetaDataObject roots carry version 2.20",
+      "result": "ok=true in 52885 ms; 17 files; Configuration.xml and Document XML have version=2.20. Original handwritten dump left intact.",
+      "log": "logs/r22-dump-cf220-simple.md",
+      "tests": 1,
+      "assertions": 1,
+      "skipped": 0,
+      "mocks_only": false,
+      "reason": null
+    },
+    {
+      "id": "run-r01-apply-cf220",
+      "repository_id": "r01",
+      "commit": "56a67d4a460c97101b6b542b4fe940298ab0edd8",
+      "status": "PASS",
+      "kind": "INTEGRATION",
+      "command": "UNICA_SMOKE_DUMP=.v8/work/simple-cf-220 UNICA_SMOKE_SKIP_DOCS=1 unica.exe stdio MCP; initialize; unica.apply dryRun props.set Comment; unica.apply without ifRev; fingerprint",
+      "environment": "Windows 10.0.26200; unica.exe 0.12.0 debug 56a67d4a…; isolated provider-state .v8/work/r01-apply-cf220; Designer dump 2.20; no publish",
+      "expected": "dryRun returns preview plan with rev; fence without ifRev; dump files unchanged",
+      "result": "All four passed. dryRun ok=true mode=preview executable=true rev unica-source-sha256-v1:1:f83d6c98…. Fence bad_value ifRev. Fingerprint 17 files unchanged.",
+      "log": "logs/r01-mcp-apply-cf220-simple.md",
+      "tests": 4,
+      "assertions": 4,
+      "skipped": 0,
+      "mocks_only": false,
+      "reason": null
+    },
+    {
+      "id": "run-r22-yaxunit-simple",
+      "repository_id": "r22",
+      "commit": "7ce1b062843d86644fe55741dbe0ee79f7ca767d",
+      "status": "FAIL",
+      "kind": "OTHER",
+      "command": "v8-harness run --stand simple -- --json-message test --no-build yaxunit all",
+      "environment": "Windows 10.0.26200; v8-runner 0.5.1; IB simple; no YaXUnit extension or test modules in configuration; thin client 1cv8c",
+      "expected": "structured no-tests result or JUnit report without hanging the client",
+      "result": "1cv8c launched with /C RunUnitTests=config.json closeAfterTests=true; no report.xml; client idle until killed; runner ok=false junit_not_produced enterprise exit -1 after ~295s",
+      "log": "logs/r22-tests-simple.md",
+      "tests": 0,
+      "assertions": 1,
+      "skipped": 0,
+      "mocks_only": false,
+      "reason": null
+    },
+    {
+      "id": "run-r22-va-simple",
+      "repository_id": "r22",
+      "commit": "7ce1b062843d86644fe55741dbe0ee79f7ca767d",
+      "status": "FAIL",
+      "kind": "OTHER",
+      "command": "v8-harness run --stand simple -- --json-message test --no-build va",
+      "environment": "Windows 10.0.26200; v8-runner 0.5.1; stand yaml without tests.va.profile; dump has no .feature",
+      "expected": "validation naming missing features/profile without starting 1C",
+      "result": "ok=false invalid_argument tests.va.profile is not configured; duration_ms=0; 1C not started; exit 2",
+      "log": "logs/r22-tests-simple.md",
+      "tests": 0,
+      "assertions": 1,
+      "skipped": 0,
+      "mocks_only": false,
+      "reason": null
+    },
+    {
+      "id": "run-r22-va-smoke-simple",
+      "repository_id": "r22",
+      "commit": "7ce1b062843d86644fe55741dbe0ee79f7ca767d",
+      "status": "PASS",
+      "kind": "TEST",
+      "command": "v8-harness run --stand simple -- --json-message test --no-build va",
+      "environment": "Windows 10.0.26200; v8-runner 0.5.1; Vanessa 1.2.043.1 single EPF; feature tests/features/smoke-engine.feature; IB .v8/ib/simple; absolute epf_path and feature_path in stand yaml",
+      "expected": "ok=true; one scenario passed; no failed/errors",
+      "result": "ok=true in 122168 ms; report total=1 passed=1 failed=0 errors=0; log: сценарии закончены, ошибок не было. Close-profile warning for TestClient Этот клиент only.",
+      "log": "logs/r22-va-smoke-simple.md",
+      "tests": 1,
+      "assertions": 1,
       "skipped": 0,
       "mocks_only": false,
       "reason": null

@@ -146,5 +146,7 @@ PASS** на simple1CAiConf (`tools/list` = 33, handlers/structure/writers).
 `view`/`check` PASS** (`tools/list` = 11, autodetect `main`; `check`
 отказал этой фикстуре по формату 2.20). **r01 `apply` dryRun + `docs`
 PASS** (dryRun `invalid_source` format 1.0 vs writable 2.20; забор
-`ifRev` живой; `docs` 80 hits через Task). Runtime r20/r21 NOT_RUN.
+`ifRev` живой; `docs` 80 hits через Task). **r22 dump 2.20 PASS** в `.v8/work/simple-cf-220`. **r01 apply dryRun на
+2.20 PASS** (preview + `rev`). YaXUnit/Vanessa на simple запускались:
+JUnit не появился / нет `tests.va.profile`. Runtime r20 NOT_RUN.
 Публикация `apply` не вызывалась. Внедрение и код фасада не начинались.

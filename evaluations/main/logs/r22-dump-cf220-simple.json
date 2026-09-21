@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "command": "dump",
+  "duration_ms": 52885,
+  "data": {
+    "ok": true,
+    "source_set": "main",
+    "mode": "FULL",
+    "target_path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\simple-cf-220",
+    "platform_log_path": "C:\\MyProjects\\choice-of-tools-1c\\logs\\platform\\dump-main-full.log",
+    "duration_ms": 52885,
+    "message": "dump completed successfully"
+  },
+  "warnings": [],
+  "steps": []
+}

@@ -1,0 +1,134 @@
+{
+  "ok": false,
+  "command": "test",
+  "duration_ms": 295042,
+  "data": {
+    "ok": false,
+    "target": "all",
+    "mode": "compact",
+    "error_kind": "junit_not_produced",
+    "diagnostics": [
+      "JUnit report was not produced"
+    ],
+    "retained_paths": {
+      "run_dir": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134",
+      "config_json": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134\\config.json",
+      "junit_xml": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134\\report.xml",
+      "yaxunit_log": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134\\runner.log",
+      "platform_log": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134\\enterprise.out.log",
+      "sentinel": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134\\run.inprogress"
+    },
+    "report": null,
+    "execution": {
+      "status": "invalid_output",
+      "diagnostics": [
+        "JUnit report was not produced"
+      ],
+      "errors": [
+        {
+          "code": "junit_not_produced",
+          "message": "JUnit report was not produced"
+        }
+      ],
+      "artifacts": {
+        "root_dir": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134",
+        "items": [
+          {
+            "kind": "run_directory",
+            "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134",
+            "role": "run_dir"
+          },
+          {
+            "kind": "config",
+            "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134\\config.json",
+            "role": "config"
+          },
+          {
+            "kind": "report",
+            "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134\\report.xml",
+            "role": "report"
+          },
+          {
+            "kind": "runner_log",
+            "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134\\runner.log",
+            "role": "runner_log"
+          },
+          {
+            "kind": "platform_log",
+            "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134\\enterprise.out.log",
+            "role": "platform_log"
+          },
+          {
+            "kind": "sentinel",
+            "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134\\run.inprogress",
+            "role": "sentinel"
+          }
+        ]
+      }
+    }
+  },
+  "warnings": [],
+  "steps": [
+    {
+      "name": "build",
+      "ok": true,
+      "status": "skipped",
+      "kind": "platform_command",
+      "duration_ms": 0,
+      "message": "build prerequisite explicitly skipped by --no-build"
+    },
+    {
+      "name": "prepare_artifacts",
+      "ok": true,
+      "status": "succeeded",
+      "kind": "prepare_workspace",
+      "duration_ms": 1,
+      "target": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134",
+      "message": "created C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134"
+    },
+    {
+      "name": "prepare_runner",
+      "ok": true,
+      "status": "succeeded",
+      "kind": "prepare_workspace",
+      "duration_ms": 0,
+      "target": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134\\config.json",
+      "message": "YaXUnit config written"
+    },
+    {
+      "name": "run",
+      "ok": false,
+      "status": "failed",
+      "kind": "platform_command",
+      "duration_ms": 295039,
+      "target": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134\\enterprise.out.log",
+      "message": "enterprise exit code -1",
+      "diagnostics": [
+        "enterprise exit code -1"
+      ]
+    },
+    {
+      "name": "parse_junit",
+      "ok": false,
+      "status": "failed",
+      "kind": "parse_output",
+      "duration_ms": 0,
+      "target": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134\\report.xml",
+      "message": "JUnit report was not produced",
+      "diagnostics": [
+        "JUnit report was not produced"
+      ],
+      "errors": [
+        {
+          "code": "junit_not_produced",
+          "message": "JUnit report was not produced"
+        }
+      ]
+    }
+  ],
+  "error": {
+    "code": "runtime_failure",
+    "kind": "runtime",
+    "message": "JUnit report was not produced"
+  }
+}

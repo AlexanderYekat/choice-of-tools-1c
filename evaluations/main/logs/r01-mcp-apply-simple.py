@@ -22,11 +22,12 @@ except Exception:
     pass
 
 BINARY = Path(r"C:\MyProjects\choice-of-tools-1c\.v8\work\r01\target\debug\unica.exe")
-DUMP = Path(r"C:\MyProjects\choice-of-tools-1c\source-checkouts\simple1CAiConf")
-WORK = Path(r"C:\MyProjects\choice-of-tools-1c\.v8\work\r01-apply")
+DUMP = Path(os.environ.get("UNICA_SMOKE_DUMP", r"C:\MyProjects\choice-of-tools-1c\source-checkouts\simple1CAiConf"))
+WORK = Path(os.environ.get("UNICA_SMOKE_WORK", r"C:\MyProjects\choice-of-tools-1c\.v8\work\r01-apply"))
 STATE = WORK / "provider-state"
 LOGS_OUT = Path(r"C:\MyProjects\choice-of-tools-1c\evaluations\main\logs")
 PLUGIN_ROOT = Path(r"C:\MyProjects\choice-of-tools-1c\.v8\work\r01\unica-src\plugins\unica")
+LOG_PREFIX = os.environ.get("UNICA_SMOKE_LOG_PREFIX", "r01-mcp-apply")
 
 DOCUMENT_AT = "main:Document.ЗаказПокупателя"
 COMMENT_PREVIEW = "r01-dryrun-preview-do-not-publish"
@@ -212,7 +213,7 @@ def main() -> int:
             },
             timeout=60,
         )
-        dump_json("r01-mcp-apply-initialize-simple.json", init)
+        dump_json(f"{LOG_PREFIX}-initialize-simple.json", init)
         server = ((init.get("result") or {}).get("serverInfo") or {})
         record(
             "initialize",
@@ -233,7 +234,7 @@ def main() -> int:
             ],
         }
         apply_dry = call_tool(client, "unica.apply", dry_args, timeout=180)
-        dump_json("r01-mcp-apply-dryrun-simple.json", apply_dry)
+        dump_json(f"{LOG_PREFIX}-dryrun-simple.json", apply_dry)
         env_dry = extract_envelope(apply_dry)
         blob_dry = envelope_blob(env_dry)
         # Tool must answer: preview plan, or a named structured refusal.
@@ -264,7 +265,7 @@ def main() -> int:
             ],
         }
         apply_fence = call_tool(client, "unica.apply", fence_args, timeout=60)
-        dump_json("r01-mcp-apply-fence-simple.json", apply_fence)
+        dump_json(f"{LOG_PREFIX}-fence-simple.json", apply_fence)
         env_fence = extract_envelope(apply_fence)
         blob_fence = envelope_blob(env_fence).lower()
         fence_ok = (
@@ -278,70 +279,72 @@ def main() -> int:
             fence_ok,
         )
 
-        docs = call_tool(client, "unica.docs", {"query": "НаборЗаписей"}, timeout=120)
-        dump_json("r01-mcp-docs-working-simple.json", docs)
-        env_docs = extract_envelope(docs)
-        data_docs = env_docs.get("data") if isinstance(env_docs.get("data"), dict) else {}
-        task = data_docs.get("task") if isinstance(data_docs.get("task"), dict) else {}
-        task_id = task.get("taskId")
-        if isinstance(task_id, str) and task.get("status") == "working":
-            deadline = time.time() + 35
-            poll = 0
-            while time.time() < deadline:
-                poll += 1
-                wait_ms = min(7000, max(100, int((deadline - time.time()) * 1000)))
-                docs = call_tool(
-                    client,
-                    "unica.task.result",
-                    {"taskId": task_id, "waitMs": wait_ms},
-                    timeout=max(15, wait_ms / 1000 + 5),
-                )
-                env_docs = extract_envelope(docs)
-                data_docs = env_docs.get("data") if isinstance(env_docs.get("data"), dict) else {}
-                task = data_docs.get("task") if isinstance(data_docs.get("task"), dict) else {}
-                if task.get("status") != "working":
-                    break
-                if env_docs.get("summary") != "Task is still working" and "sections" in envelope_blob(env_docs):
-                    break
-            dump_json("r01-mcp-docs-simple.json", {"polls": poll, "rpc": docs})
-        else:
-            dump_json("r01-mcp-docs-simple.json", docs)
+        skip_docs = os.environ.get("UNICA_SMOKE_SKIP_DOCS") == "1"
+        if not skip_docs:
+            docs = call_tool(client, "unica.docs", {"query": "НаборЗаписей"}, timeout=120)
+            dump_json("r01-mcp-docs-working-simple.json", docs)
+            env_docs = extract_envelope(docs)
+            data_docs = env_docs.get("data") if isinstance(env_docs.get("data"), dict) else {}
+            task = data_docs.get("task") if isinstance(data_docs.get("task"), dict) else {}
+            task_id = task.get("taskId")
+            if isinstance(task_id, str) and task.get("status") == "working":
+                deadline = time.time() + 35
+                poll = 0
+                while time.time() < deadline:
+                    poll += 1
+                    wait_ms = min(7000, max(100, int((deadline - time.time()) * 1000)))
+                    docs = call_tool(
+                        client,
+                        "unica.task.result",
+                        {"taskId": task_id, "waitMs": wait_ms},
+                        timeout=max(15, wait_ms / 1000 + 5),
+                    )
+                    env_docs = extract_envelope(docs)
+                    data_docs = env_docs.get("data") if isinstance(env_docs.get("data"), dict) else {}
+                    task = data_docs.get("task") if isinstance(data_docs.get("task"), dict) else {}
+                    if task.get("status") != "working":
+                        break
+                    if env_docs.get("summary") != "Task is still working" and "sections" in envelope_blob(env_docs):
+                        break
+                dump_json("r01-mcp-docs-simple.json", {"polls": poll, "rpc": docs})
+            else:
+                dump_json("r01-mcp-docs-simple.json", docs)
 
-        sections = data_docs.get("sections") or env_docs.get("sections") or []
-        n_hits = 0
-        statuses: list[str] = []
-        if isinstance(sections, list):
-            for section in sections:
-                if isinstance(section, dict):
-                    statuses.append(str(section.get("status")))
-                    hits = section.get("hits") or []
-                    if isinstance(hits, list):
-                        n_hits += len(hits)
-        docs_ok = docs.get("error") is None and (
-            (isinstance(sections, list) and len(sections) > 0)
-            or (bool(env_docs.get("ok")) and n_hits > 0)
-        )
-        record(
-            "unica.docs query=НаборЗаписей",
-            "completed docs result with sections (poll task.result if working)",
-            f"ok={env_docs.get('ok')} task={task.get('status')} sections={len(sections) if isinstance(sections, list) else type(sections).__name__} statuses={statuses} hits={n_hits} summary={env_docs.get('summary')}",
-            docs_ok,
-            {"taskId": task_id, "task_status": task.get("status")},
-        )
+            sections = data_docs.get("sections") or env_docs.get("sections") or []
+            n_hits = 0
+            statuses: list[str] = []
+            if isinstance(sections, list):
+                for section in sections:
+                    if isinstance(section, dict):
+                        statuses.append(str(section.get("status")))
+                        hits = section.get("hits") or []
+                        if isinstance(hits, list):
+                            n_hits += len(hits)
+            docs_ok = docs.get("error") is None and (
+                (isinstance(sections, list) and len(sections) > 0)
+                or (bool(env_docs.get("ok")) and n_hits > 0)
+            )
+            record(
+                "unica.docs query=НаборЗаписей",
+                "completed docs result with sections (poll task.result if working)",
+                f"ok={env_docs.get('ok')} task={task.get('status')} sections={len(sections) if isinstance(sections, list) else type(sections).__name__} statuses={statuses} hits={n_hits} summary={env_docs.get('summary')}",
+                docs_ok,
+                {"taskId": task_id, "task_status": task.get("status")},
+            )
 
-        docs_blank = call_tool(client, "unica.docs", {"query": "   "}, timeout=30)
-        dump_json("r01-mcp-docs-blank-simple.json", docs_blank)
-        env_blank = extract_envelope(docs_blank)
-        blob_blank = envelope_blob(env_blank).lower()
-        blank_ok = env_blank.get("ok") is not True and (
-            "blank" in blob_blank or "non-blank" in blob_blank or "empty" in blob_blank or "query" in blob_blank
-        )
-        record(
-            "unica.docs blank query",
-            "refusal for blank query",
-            f"ok={env_blank.get('ok')} summary={env_blank.get('summary')} rpc_error={docs_blank.get('error') is not None}",
-            blank_ok,
-        )
+            docs_blank = call_tool(client, "unica.docs", {"query": "   "}, timeout=30)
+            dump_json("r01-mcp-docs-blank-simple.json", docs_blank)
+            env_blank = extract_envelope(docs_blank)
+            blob_blank = envelope_blob(env_blank).lower()
+            blank_ok = env_blank.get("ok") is not True and (
+                "blank" in blob_blank or "non-blank" in blob_blank or "empty" in blob_blank or "query" in blob_blank
+            )
+            record(
+                "unica.docs blank query",
+                "refusal for blank query",
+                f"ok={env_blank.get('ok')} summary={env_blank.get('summary')} rpc_error={docs_blank.get('error') is not None}",
+                blank_ok,
+            )
     except Exception as exc:
         record("smoke-exception", "no exception", repr(exc), False)
     finally:
@@ -366,7 +369,7 @@ def main() -> int:
             unchanged,
         )
         dump_json(
-            "r01-mcp-apply-simple.json",
+            f"{LOG_PREFIX}-simple.json",
             {
                 "binary": str(BINARY),
                 "dump": str(DUMP),
