@@ -83,7 +83,9 @@ DEEP_STATIC по S1–S5. **r15 — DEEP_STATIC по S1–S5** на том же 
 
 Не V1 (Unica в Cursor) и не внедрение. Static S1–S5 пяти закрыт —
 [INTEGRATION.md](INTEGRATION.md); статусы — [VALIDATION.md](VALIDATION.md).
-Этот отчёт не запускает execution. Точка продолжения — [STATE.md](STATE.md).
+Этот отчёт не запускает execution. Стенд `simple` (v8-harness + выгрузка
+simple1CAiConf) подключён dump-only, ИБ нет. Точка продолжения —
+[STATE.md](STATE.md).
 
 
 ## Частичный CONTINUE-AUDIT r20

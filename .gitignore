@@ -2,6 +2,9 @@
 **/_sources/
 **/source-checkouts/
 
+# Local v8-harness overlay (IB placeholder, work, generated yaml, Vanessa EPF).
+.v8/
+
 # Local environments and caches.
 **/.venv/
 **/node_modules/

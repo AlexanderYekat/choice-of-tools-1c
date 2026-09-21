@@ -1,0 +1,12 @@
+# Opt-in marker for v8-harness. Delete this file to detach.
+# Passwords stay in .v8/stands/<id>/v8project.local.yaml
+
+tools:
+  vanessa: false
+  yaxunit: false
+stands:
+  simple:
+    from: file
+    path: 'C:\MyPtojects\choice-of-tools-1c\.v8\ib\simple'
+    sources: source-checkouts/simple1CAiConf
+    user: Админ

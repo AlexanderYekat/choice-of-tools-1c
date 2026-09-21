@@ -1,6 +1,7 @@
 # Состояние main / 20260920T044856175227Z
 
-Версия цели: **2**. Статус: COMPOSITION_R22_CHOSEN; STATIC_S1S5_FIVE_DONE.
+Версия цели: **2**. Статус: COMPOSITION_R22_CHOSEN; STATIC_S1S5_FIVE_DONE;
+FIXTURE_HARNESS_ATTACHED.
 Последнее обновление: 2026-09-21.
 
 Состав контура выбран ([DECISION.md](DECISION.md)): Unica, code-index-mcp,
@@ -45,12 +46,23 @@
 
 Разрешения: `permissions.* = false`. Все runtime runs r01/r15/r20/r21/r22 NOT_RUN.
 
+Фикстура экспериментов (не кандидат контура): opt-in
+[v8-harness](https://github.com/AlexanderYekat/v8-harness) @
+`322398ae9bfe1d746dba92619282b25e9c4d156c` (CLI вне репозитория,
+`C:\Users\Enduro\Documents\1c\Tools\v8-harness\v8_harness.py`).
+Маркер: корневой `v8stands.yaml`, стенд `simple`, `from: file`.
+Выгрузка: `source-checkouts/simple1CAiConf` @
+`1dbc395d764773927684acd9ff75bf8f8e58cd56`
+(Designer XML, `DefaultRunMode=ManagedApplication`, имя «Простая
+конфигурация»). ИБ `.v8/ib/simple` **не создана**. `init`/`load`/`build`
+и Vanessa/YaXUnit (`tools.* = false`) не запускались.
+
 ## Следующий шаг
 
-Ограниченный execution (индекс небольшой выгрузки r15 и/или smoke
-остальных) — только по отдельному разрешению. Методическое ТЗ фасада
-уже в [FACADE.md](FACADE.md); набросок адаптера — в
-[INTEGRATION.md](INTEGRATION.md). Не писать код фасада и не внедрять.
+Ограниченный execution на стенде `simple` (индекс выгрузки r15 и/или
+smoke остальных) — только по отдельному разрешению. Не создавать ИБ и
+не писать код фасада. Методическое ТЗ — [FACADE.md](FACADE.md);
+набросок адаптера — [INTEGRATION.md](INTEGRATION.md).
 
 ## Журнал
 
@@ -74,3 +86,6 @@ DECISION/FACADE/BRIEF обновлён. Внедрение не начинало
 2026-09-21 → CONTINUE-AUDIT r15 code-index-mcp: pinned `4bde72b…` (v1.4.0);
 HEAD `309cddb…` не подменялся. CLI ядра + MCP; 1С-tools за демоном;
 alias и EDT-detect есть; патч не нужен. Static пяти закрыт.
+2026-09-21 → по просьбе пользователя подключена opt-in обвязка
+v8-harness и выгрузка simple1CAiConf как стенд `simple`. ИБ не
+создавалась; execution по-прежнему запрещён.

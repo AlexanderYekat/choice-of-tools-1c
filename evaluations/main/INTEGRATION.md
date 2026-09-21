@@ -140,3 +140,6 @@ explore(source, op, args)
 
 Static S1–S5 пяти закрыты. По всем пяти execution NOT_RUN.
 Внедрение и код фасада не начинались.
+
+Подготовлена dump-only фикстура стенда `simple` (v8-harness +
+simple1CAiConf). ИБ не создана; это не `VERIFIED_INTEGRATION`.
