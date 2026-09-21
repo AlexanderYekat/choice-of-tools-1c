@@ -1,0 +1,12 @@
+﻿╨Я╨╛╨╗╨╜╨╛╤В╨╡╨║╤Б╤В╨╛╨▓╤Л╨╣ ╨┐╨╛╨╕╤Б╨║ ╤Д╤Г╨╜╨║╤Ж╨╕╨╣ ╨┐╨╛ ╨╕╨╝╨╡╨╜╨╕/╤В╨╡╨╗╤Г (FTS)
+
+Usage: bsl-indexer.exe search-function [OPTIONS] <QUERY>
+
+Arguments:
+  <QUERY>  ╨Я╨╛╨╕╤Б╨║╨╛╨▓╤Л╨╣ ╨╖╨░╨┐╤А╨╛╤Б
+
+Options:
+  -p, --path <PATH>          ╨Я╤Г╤В╤М ╨║ ╨┐╤А╨╛╨╡╨║╤В╤Г [default: .]
+  -l, --language <LANGUAGE>  ╨д╨╕╨╗╤М╤В╤А ╨┐╨╛ ╤П╨╖╤Л╨║╤Г
+      --limit <LIMIT>        ╨Ь╨░╨║╤Б╨╕╨╝╤Г╨╝ ╤А╨╡╨╖╤Г╨╗╤М╤В╨░╤В╨╛╨▓ [default: 20]
+  -h, --help                 Print help

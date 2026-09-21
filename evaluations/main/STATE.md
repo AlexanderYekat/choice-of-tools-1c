@@ -1,7 +1,7 @@
 # Состояние main / 20260920T044856175227Z
 
 Версия цели: **2**. Статус: COMPOSITION_R22_CHOSEN; STATIC_S1S5_FIVE_DONE;
-FIXTURE_HARNESS_ATTACHED.
+FIXTURE_HARNESS_ATTACHED; R15_CLI_SMOKE_PASS.
 Последнее обновление: 2026-09-21.
 
 Состав контура выбран ([DECISION.md](DECISION.md)): Unica, code-index-mcp,
@@ -44,7 +44,10 @@ FIXTURE_HARNESS_ATTACHED.
   `7ce1b062843d86644fe55741dbe0ee79f7ca767d` (ветка `master`, v0.5.1).
   **Выбран** как сборка / YaXUnit / синтаксис / запуск Vanessa.
 
-Разрешения: `permissions.* = false`. Все runtime runs r01/r15/r20/r21/r22 NOT_RUN.
+Разрешения: `permissions.*` в request.json по-прежнему false. Пользователь
+«давай дальше» после подключения стенда принят как **ограниченный
+dump-only CLI r15**: индекс и запросы без ИБ, без daemon/MCP, без
+init/load/build. Runtime r01/r20/r21/r22 и 1С-tools r15 остаются NOT_RUN.
 
 Фикстура экспериментов (не кандидат контура): opt-in
 [v8-harness](https://github.com/AlexanderYekat/v8-harness) @
@@ -54,15 +57,20 @@ FIXTURE_HARNESS_ATTACHED.
 Выгрузка: `source-checkouts/simple1CAiConf` @
 `1dbc395d764773927684acd9ff75bf8f8e58cd56`
 (Designer XML, `DefaultRunMode=ManagedApplication`, имя «Простая
-конфигурация»). ИБ `.v8/ib/simple` **не создана**. `init`/`load`/`build`
-и Vanessa/YaXUnit (`tools.* = false`) не запускались.
+конфигурация»). ИБ `.v8/ib/simple` **не создана**. Vanessa/YaXUnit
+(`tools.* = false`) не запускались.
+
+**r15 CLI smoke PASS** (`run-r15-cli-simple`): бинарь
+`bsl-indexer.exe` 1.4.0 (release v1.4.0 = SHA `4bde72b…`) проиндексировал
+выгрузку (21 файл, 7 процедур, processor `bsl`), `search-function` /
+`get-function` / `get-callers` совпали с модулем формы документа,
+отрицательный поиск вернул `[]`. Лог: [logs/r15-cli-simple.md](logs/r15-cli-simple.md).
 
 ## Следующий шаг
 
-Ограниченный execution на стенде `simple` (индекс выгрузки r15 и/или
-smoke остальных) — только по отдельному разрешению. Не создавать ИБ и
-не писать код фасада. Методическое ТЗ — [FACADE.md](FACADE.md);
-набросок адаптера — [INTEGRATION.md](INTEGRATION.md).
+1С-named tools r15 (daemon + MCP) и smoke r01/r20/r21/r22 — только по
+отдельному разрешению. Не создавать ИБ и не писать код фасада без
+просьбы.
 
 ## Журнал
 
@@ -89,3 +97,6 @@ alias и EDT-detect есть; патч не нужен. Static пяти закр
 2026-09-21 → по просьбе пользователя подключена opt-in обвязка
 v8-harness и выгрузка simple1CAiConf как стенд `simple`. ИБ не
 создавалась; execution по-прежнему запрещён.
+2026-09-21 → «давай дальше»: dump-only CLI r15 на стенде `simple`.
+`bsl-indexer` 1.4.0: index + search/get/callers PASS. Daemon/MCP и
+остальные продукты не запускались; ИБ не создавалась.

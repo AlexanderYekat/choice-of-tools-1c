@@ -1,0 +1,11 @@
+﻿╨Ъ╤В╨╛ ╨▓╤Л╨╖╤Л╨▓╨░╨╡╤В ╨┤╨░╨╜╨╜╤Г╤О ╤Д╤Г╨╜╨║╤Ж╨╕╤О (callers)
+
+Usage: bsl-indexer.exe get-callers [OPTIONS] <FUNCTION_NAME>
+
+Arguments:
+  <FUNCTION_NAME>  ╨Ш╨╝╤П ╤Д╤Г╨╜╨║╤Ж╨╕╨╕
+
+Options:
+  -p, --path <PATH>          ╨Я╤Г╤В╤М ╨║ ╨┐╤А╨╛╨╡╨║╤В╤Г [default: .]
+  -l, --language <LANGUAGE>  ╨д╨╕╨╗╤М╤В╤А ╨┐╨╛ ╤П╨╖╤Л╨║╤Г
+  -h, --help                 Print help

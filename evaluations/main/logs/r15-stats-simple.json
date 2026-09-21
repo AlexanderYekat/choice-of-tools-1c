@@ -1,0 +1,14 @@
+{
+  "name": "r15-stats-simple",
+  "argv": [
+    "C:\\Users\\Enduro\\Documents\\1c\\Tools\\bsl-indexer\\bsl-indexer.exe",
+    "stats",
+    "--path",
+    "C:\\MyPtojects\\choice-of-tools-1c\\source-checkouts\\simple1CAiConf"
+  ],
+  "cwd": "C:\\MyPtojects\\choice-of-tools-1c",
+  "exit": 0,
+  "elapsed_ms": 66,
+  "stdout": "Статистика индекса: \\\\?\\C:\\MyPtojects\\choice-of-tools-1c\\source-checkouts\\simple1CAiConf\\.code-index\\index.db\n─────────────────────────────────────\n  Файлов:        21\n  Функций:       7\n  Классов:       6\n  Импортов:      0\n  Вызовов:       8\n  Переменных:    13\n  Текст. файлов: 8\n",
+  "stderr": "2026-09-21 13:49:31.954+05:00  INFO Статистика: path=C:\\MyPtojects\\choice-of-tools-1c\\source-checkouts\\simple1CAiConf\n"
+}

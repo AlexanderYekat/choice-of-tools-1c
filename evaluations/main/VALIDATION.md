@@ -33,13 +33,10 @@ S4 терпимо с неизвестной одновременностью; S5
 
 Шкала r22: S1 удобно; S2 терпимо; S3 удобно; S4 терпимо; S5 удобно.
 
-Execution запрещён текущими permissions и остаётся NOT_RUN.
-Static пяти закрыт.
+Execution: **r15 CLI ядра PASS** на выгрузке стенда `simple`
+([logs/r15-cli-simple.md](logs/r15-cli-simple.md),
+`run-r15-cli-simple`). Daemon/MCP r15, r01, r20, r21, r22 остаются
+NOT_RUN. ИБ не создана.
 
-Локальная фикстура (не продукт контура и не run): стенд `simple` в
-корневом `v8stands.yaml`, источники `source-checkouts/simple1CAiConf`
-@ `1dbc395d…`. Файловая ИБ `.v8/ib/simple` отсутствует. `v8-harness
-status` подтвердил connection-строку без запуска платформы.
-
-Следующий шаг — ограниченный execution на этом стенде по отдельному
-разрешению, не код фасада и не `init`/`load`/`build` без просьбы.
+1С-named tools и smoke остальных — по отдельному разрешению, не код
+фасада и не `init`/`load`/`build` без просьбы.

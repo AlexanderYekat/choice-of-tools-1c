@@ -3,7 +3,8 @@
 Версия цели: 2. r02–r14, r16–r19 остаются overview; **r01 Unica,
 r15 code-index-mcp, r20 Answer42, r21 Vanessa и r22 v8-runner-rust
 углублены до DEEP_STATIC по S1–S5**.
-Запуски кода не выполнялись. Static стыковка пяти закрыта. Состав:
+**r15 CLI ядра PASS** на выгрузке simple1CAiConf; runtime остальных не
+выполнялся. Static стыковка пяти закрыта. Состав:
 **r22 вместо r09** (решение пользователя 2026-09-21).
 
 Самопроверка координатора, не независимый аудит.
@@ -22,7 +23,8 @@ r09 METR выведен: тот же слой, что r22. Vanessa остаёт�
 
 Это не разрешение внедрять. Static S1–S5 пяти закрыт
 ([FACADE.md](FACADE.md), [VALIDATION.md](VALIDATION.md)).
-Следующий этап — ограниченный execution по отдельному разрешению.
+r15 CLI ядра прогнан на стенде `simple`. Следующий этап — daemon/MCP
+r15 или smoke остальных по отдельному разрешению.
 
 Вывод обзора при цели v1 сохранён в снимке `history/goal-v1/REPORT.md`.
 Его не читать при обычном CONTINUE; как рекомендация v2 он не действует.
@@ -83,8 +85,9 @@ DEEP_STATIC по S1–S5. **r15 — DEEP_STATIC по S1–S5** на том же 
 
 Не V1 (Unica в Cursor) и не внедрение. Static S1–S5 пяти закрыт —
 [INTEGRATION.md](INTEGRATION.md); статусы — [VALIDATION.md](VALIDATION.md).
-Этот отчёт не запускает execution. Стенд `simple` (v8-harness + выгрузка
-simple1CAiConf) подключён dump-only, ИБ нет. Точка продолжения —
+Этот отчёт не запускает остальные продукты. **r15 CLI ядра PASS** на
+выгрузке simple1CAiConf ([logs/r15-cli-simple.md](logs/r15-cli-simple.md)).
+Стенд `simple` dump-only, ИБ нет. Точка продолжения —
 [STATE.md](STATE.md).
 
 

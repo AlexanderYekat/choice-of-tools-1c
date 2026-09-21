@@ -1,0 +1,17 @@
+{
+  "name": "r15-search-function-simple",
+  "argv": [
+    "C:\\Users\\Enduro\\Documents\\1c\\Tools\\bsl-indexer\\bsl-indexer.exe",
+    "search-function",
+    "--path",
+    "C:\\MyPtojects\\choice-of-tools-1c\\source-checkouts\\simple1CAiConf",
+    "--limit",
+    "20",
+    "РассчитатьСумму"
+  ],
+  "cwd": "C:\\MyPtojects\\choice-of-tools-1c",
+  "exit": 0,
+  "elapsed_ms": 53,
+  "stdout": "[\n  {\n    \"id\": 6,\n    \"file_id\": 15,\n    \"name\": \"РассчитатьСуммуСтроки\",\n    \"qualified_name\": null,\n    \"line_start\": 25,\n    \"line_end\": 27,\n    \"args\": \"(ТекущиеДанные)\",\n    \"return_type\": null,\n    \"docstring\": \"procedure &НаКлиенте\",\n    \"body\": \"Процедура РассчитатьСуммуСтроки(ТекущиеДанные)\\r\\n\\tТекущиеДанные.СуммаСтроки = ТекущиеДанные.Количество * ТекущиеДанные.Цена;\\r\\nКонецПроцедуры\",\n    \"is_async\": false,\n    \"node_hash\": \"d683607444892c036791bb9b136f7d9aea598c7eaef6103e3ecfafbbd7ab68db\",\n    \"override_type\": null,\n    \"override_target\": null\n  },\n  {\n    \"id\": 7,\n    \"file_id\": 15,\n    \"name\": \"РассчитатьСуммуДокумента\",\n    \"qualified_name\": null,\n    \"line_start\": 30,\n    \"line_end\": 36,\n    \"args\": \"()\",\n    \"return_type\": null,\n    \"docstring\": \"procedure &НаКлиенте\",\n    \"body\": \"Процедура РассчитатьСуммуДокумента()\\r\\n\\tСуммаИтого = 0;\\r\\n\\tДля Каждого СтрокаТЧ Из Объект.Товары Цикл\\r\\n\\t\\tСуммаИтого = СуммаИтого + СтрокаТЧ.СуммаСтроки;\\r\\n\\tКонецЦикла;\\r\\n\\tОбъект.СуммаДокумента = СуммаИтого;\\r\\nКонецПроцедуры\",\n    \"is_async\": false,\n    \"node_hash\": \"ab55f9c562391d2991cec2c3d214b24fff656a8a3ff8ff1037c1547344313651\",\n    \"override_type\": null,\n    \"override_target\": null\n  },\n  {\n    \"id\": 4,\n    \"file_id\": 15,\n    \"name\": \"ТоварыКоличествоПриИзменении\",\n    \"qualified_name\": null,\n    \"line_start\": 11,\n    \"line_end\": 15,\n    \"args\": \"(Элемент)\",\n    \"return_type\": null,\n    \"docstring\": \"procedure &НаКлиенте\",\n    \"body\": \"Процедура ТоварыКоличествоПриИзменении(Элемент)\\r\\n\\tТекущиеДанные = Элементы.Товары.ТекущиеДанные;\\r\\n\\tРассчитатьСуммуСтроки(ТекущиеДанные);\\r\\n\\tРассчитатьСуммуДокумента();\\r\\nКонецПроцедуры\",\n    \"is_async\": false,\n    \"node_hash\": \"ace493525cd2b4936ca8d3130252d498078aa36848e494a52dea6b85bc7f271d\",\n    \"override_type\": null,\n    \"override_target\": null\n  },\n  {\n    \"id\": 5,\n    \"file_id\": 15,\n    \"name\": \"ТоварыЦенаПриИзменении\",\n    \"qualified_name\": null,\n    \"line_start\": 18,\n    \"line_end\": 22,\n    \"args\": \"(Элемент)\",\n    \"return_type\": null,\n    \"docstring\": \"procedure &НаКлиенте\",\n    \"body\": \"Процедура ТоварыЦенаПриИзменении(Элемент)\\r\\n\\tТекущиеДанные = Элементы.Товары.ТекущиеДанные;\\r\\n\\tРассчитатьСуммуСтроки(ТекущиеДанные);\\r\\n\\tРассчитатьСуммуДокумента();\\r\\nКонецПроцедуры\",\n    \"is_async\": false,\n    \"node_hash\": \"ca6072022ced3bc3a6d3efe327e7069a55071984d2f1d97612fa3bc611176305\",\n    \"override_type\": null,\n    \"override_target\": null\n  }\n]\n",
+  "stderr": ""
+}

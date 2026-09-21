@@ -1,0 +1,15 @@
+{
+  "name": "r15-get-function-simple",
+  "argv": [
+    "C:\\Users\\Enduro\\Documents\\1c\\Tools\\bsl-indexer\\bsl-indexer.exe",
+    "get-function",
+    "--path",
+    "C:\\MyPtojects\\choice-of-tools-1c\\source-checkouts\\simple1CAiConf",
+    "РассчитатьСуммуДокумента"
+  ],
+  "cwd": "C:\\MyPtojects\\choice-of-tools-1c",
+  "exit": 0,
+  "elapsed_ms": 73,
+  "stdout": "[\n  {\n    \"id\": 7,\n    \"file_id\": 15,\n    \"name\": \"РассчитатьСуммуДокумента\",\n    \"qualified_name\": null,\n    \"line_start\": 30,\n    \"line_end\": 36,\n    \"args\": \"()\",\n    \"return_type\": null,\n    \"docstring\": \"procedure &НаКлиенте\",\n    \"body\": \"Процедура РассчитатьСуммуДокумента()\\r\\n\\tСуммаИтого = 0;\\r\\n\\tДля Каждого СтрокаТЧ Из Объект.Товары Цикл\\r\\n\\t\\tСуммаИтого = СуммаИтого + СтрокаТЧ.СуммаСтроки;\\r\\n\\tКонецЦикла;\\r\\n\\tОбъект.СуммаДокумента = СуммаИтого;\\r\\nКонецПроцедуры\",\n    \"is_async\": false,\n    \"node_hash\": \"ab55f9c562391d2991cec2c3d214b24fff656a8a3ff8ff1037c1547344313651\",\n    \"override_type\": null,\n    \"override_target\": null\n  }\n]\n",
+  "stderr": ""
+}

@@ -6,8 +6,8 @@ r15 code-index-mcp — DEEP_STATIC по S1–S5**. **r20 Answer42, r21 Vanessa
 и r22 v8-runner-rust — DEEP_STATIC по S1–S5**. Состояние: критерии v2
 зафиксированы; состав контура выбран: r22 вместо r09; план стыковки
 записан ([INTEGRATION-PLAN.md](INTEGRATION-PLAN.md)); static стыковка
-пяти закрыта; стенд `simple` подключён dump-only; внедрение и execution
-не начаты.
+пяти закрыта; стенд `simple` dump-only; **r15 CLI ядра PASS**; внедрение
+и runtime остальных не начаты.
 Снимок v1 и текст перехода — по необходимости, не для обычного CONTINUE:
 `history/goal-v1/`, `GOAL-CHANGE.md`.
 
@@ -226,6 +226,6 @@ execution не выполнялся. Снимок `history/goal-v1` остаёт
 `request.json.depth` остаётся `overview` — deep-static выполнен для
 r01/r15/r20/r21/r22 по явной просьбе, не для всех 22.
 
-Следующее исполнение плана (не этот файл): ограниченный execution
-на стенде `simple` после отдельного разрешения. Код фасада, создание ИБ
-и установка продуктов не входят. `permissions.* = false`.
+Следующее исполнение плана (не этот файл): daemon+MCP r15 или smoke
+остальных на стенде `simple` после отдельного разрешения. Код фасада,
+создание ИБ и установка продуктов не входят. `permissions.* = false`.

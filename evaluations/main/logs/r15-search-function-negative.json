@@ -1,0 +1,15 @@
+{
+  "name": "r15-search-function-negative",
+  "argv": [
+    "C:\\Users\\Enduro\\Documents\\1c\\Tools\\bsl-indexer\\bsl-indexer.exe",
+    "search-function",
+    "--path",
+    "C:\\MyPtojects\\choice-of-tools-1c\\source-checkouts\\simple1CAiConf",
+    "НесуществующаяФункцияXYZ123"
+  ],
+  "cwd": "C:\\MyPtojects\\choice-of-tools-1c",
+  "exit": 0,
+  "elapsed_ms": 67,
+  "stdout": "[]\n",
+  "stderr": ""
+}

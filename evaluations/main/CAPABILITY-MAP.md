@@ -16,8 +16,8 @@
 
 | C* | Кто закрывает | Покрытие | Доказательство | Готовность | Недостаёт |
 |---|---|---|---|---|---|
-| C1 explore без дампа | **r15 выбран** (13 1С-tools + core); r02 сильный, но не в контуре; r01 частично (`search`/`view`); r19 RAG | r15 частичное→сильное как заявка | c15-bsl-thirteen; c15-entry; c15-cli-core; c02-six-tools, c02-formats; c01-search-read | r15 продуктовый | Точность графа r15; execution индекса |
-| C2 связи BSL | r15 (индекс callers + 1С-tools); r02 хелперы не трассированы; r01 call graph на v0.13 нет | частичное | c15-bsl-thirteen; c15-entry; c01-search-limits | заявлено у r15; handlers/подписки MCP-only | execution callers/handlers |
+| C1 explore без дампа | **r15 выбран** (13 1С-tools + core); r02 сильный, но не в контуре; r01 частично (`search`/`view`); r19 RAG | r15 частичное→сильное как заявка | c15-bsl-thirteen; c15-entry; c15-cli-core; c15-index-simple; c15-search-callers-simple | r15 продуктовый; CLI ядра RUN | 1С-tools MCP; точность на большой выгрузке |
+| C2 связи BSL | r15 (индекс callers + 1С-tools); r02 хелперы не трассированы; r01 call graph на v0.13 нет | частичное | c15-bsl-thirteen; c15-entry; c15-search-callers-simple; c01-search-limits | CLI callers RUN на одном модуле формы; handlers/подписки MCP-only | execution handlers MCP |
 | C3 метаданные и УФ | метаданные: r01, r15, r02, r12; УФ: r01 edit, r15 read. Обычные формы в v2 не обязательны; пробел Form.bin не блокер | частичное (достаточно для v2) | c01-forms-managed, c15-forms-managed-src, c15-autodetect, c02-forms-managed-xml | edit УФ заявлен | execution apply; ОФ не ищем |
 | C4 справка API | r01 `unica.docs` выбран; r04 core; r10/r18 не в контуре | частичное→сильное у r01/r04 | c01-docs, c04-*, c10-* | r01 как адаптер контура | проверка на HBK 8.3.27 |
 | C5 edit | r01 основной; r12 дубль, не в контуре; r17 только EDT | частичное (УФ+метаданные) | c01-facade, c01-apply-fence, c12-managed-forms | высокая заявка | execution apply; ОФ не требуется |

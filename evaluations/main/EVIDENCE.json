@@ -1898,8 +1898,10 @@
         "s15-bsl-main",
         "s15-processor"
       ],
-      "run_ids": [],
-      "limitations": "Live --help and tools/list were not run."
+      "run_ids": [
+        "run-r15-cli-simple"
+      ],
+      "limitations": "Live --help of the v1.4.0 Windows binary was captured; MCP tools/list was not run."
     },
     {
       "id": "c15-cli-core",
@@ -1909,8 +1911,10 @@
       "source_ids": [
         "s15-cli"
       ],
-      "run_ids": [],
-      "limitations": "Actual JSON shape and empty-index errors were not executed."
+      "run_ids": [
+        "run-r15-cli-simple"
+      ],
+      "limitations": "JSON shape was captured on simple1CAiConf; empty-index errors were not executed."
     },
     {
       "id": "c15-path-alias",
@@ -1960,8 +1964,10 @@
         "s15-edt-mdo",
         "s15-cli"
       ],
-      "run_ids": [],
-      "limitations": "Autodetect was not run on a real dump tree."
+      "run_ids": [
+        "run-r15-cli-simple"
+      ],
+      "limitations": "Designer XML dump with root Configuration.xml was indexed as processor bsl. EDT Configuration.mdo autodetect was not executed."
     },
     {
       "id": "c15-lang-detect-gap",
@@ -1999,8 +2005,32 @@
         "s15-mcp-header",
         "s15-processor"
       ],
-      "run_ids": [],
-      "limitations": "Architectural inference; index/MCP smoke is NOT_RUN."
+      "run_ids": [
+        "run-r15-cli-simple"
+      ],
+      "limitations": "CLI core smoke PASS on simple1CAiConf; daemon+MCP 1C named tools remain NOT_RUN."
+    },
+    {
+      "id": "c15-index-simple",
+      "repository_id": "r15",
+      "status": "RUN",
+      "statement": "bsl-indexer 1.4.0 indexed Designer dump simple1CAiConf without an infobase: 21 files, processor bsl, 7 procedures, SQLite at <dump>/.code-index/index.db.",
+      "source_ids": [],
+      "run_ids": [
+        "run-r15-cli-simple"
+      ],
+      "limitations": "Small managed-application sample; not a large typical configuration. Named 1C MCP tools were not called."
+    },
+    {
+      "id": "c15-search-callers-simple",
+      "repository_id": "r15",
+      "status": "RUN",
+      "statement": "On that index, search-function РассчитатьСумму returned both calculator procedures (and FTS body hits), get-function РассчитатьСуммуДокумента returned one body, get-callers РассчитатьСуммуСтроки returned the two form handlers, and a nonsense name returned [].",
+      "source_ids": [],
+      "run_ids": [
+        "run-r15-cli-simple"
+      ],
+      "limitations": "FTS matches name and body, so search is not exact-name-only. Call graph checked only inside one form module."
     }
   ],
   "runs": [
@@ -2105,6 +2135,23 @@
       "skipped": 0,
       "mocks_only": false,
       "reason": "permissions.fetch_sources/install_dependencies/build/run_tests/start_services=false; bsl-indexer, daemon and MCP were not started."
+    },
+    {
+      "id": "run-r15-cli-simple",
+      "repository_id": "r15",
+      "commit": "4bde72b60a09187c0667d451a02c7be5e0169835",
+      "status": "PASS",
+      "kind": "INTEGRATION",
+      "command": "bsl-indexer.exe index|search-function|get-function|get-callers|stats --path source-checkouts/simple1CAiConf",
+      "environment": "Windows 10.0.26200; bsl-indexer.exe 1.4.0 from GitHub release v1.4.0 (SHA 4bde72b…); dump simple1CAiConf @ 1dbc395d; no 1C platform, no daemon, no MCP",
+      "expected": "index writes index.db with 21 files and 7 procedures; search РассчитатьСумму finds both calculators; get-function returns РассчитатьСуммуДокумента; get-callers of РассчитатьСуммуСтроки returns ТоварыКоличествоПриИзменении and ТоварыЦенаПриИзменении; nonsense name returns []",
+      "result": "All six checks passed. Index 80 ms, db 598016 bytes, processor bsl, 7 procedures, 6 call-graph edges. FTS also returned the two form handlers that mention the query in their bodies.",
+      "log": "logs/r15-cli-simple.md",
+      "tests": 6,
+      "assertions": 6,
+      "skipped": 0,
+      "mocks_only": false,
+      "reason": null
     }
   ]
 }

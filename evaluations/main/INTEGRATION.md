@@ -138,8 +138,6 @@ explore(source, op, args)
 
 ## Что остаётся
 
-Static S1–S5 пяти закрыты. По всем пяти execution NOT_RUN.
+Static S1–S5 пяти закрыты. **r15 CLI ядра PASS** на выгрузке
+`simple1CAiConf` (без ИБ). Daemon/MCP r15 и runtime остальных NOT_RUN.
 Внедрение и код фасада не начинались.
-
-Подготовлена dump-only фикстура стенда `simple` (v8-harness +
-simple1CAiConf). ИБ не создана; это не `VERIFIED_INTEGRATION`.
