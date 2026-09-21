@@ -1,0 +1,801 @@
+{
+  "polls": 5,
+  "rpc": {
+    "jsonrpc": "2.0",
+    "id": 9,
+    "result": {
+      "content": [],
+      "structuredContent": {
+        "ok": true,
+        "summary": "unica.docs completed",
+        "data": {
+          "sections": [
+            {
+              "provider": "platform-syntax-help",
+              "corpus": "syntax-context",
+              "sourceKind": "platform-help",
+              "authority": "vendor",
+              "language": "ru",
+              "status": "ok",
+              "diagnostic": null,
+              "warnings": [],
+              "hits": [
+                {
+                  "rank": 1,
+                  "providerScore": 12.981308937072754,
+                  "documentId": "platform-syntax-help:syntax-context:objects/catalog125/catalog486/catalog494/object496/methods/CreateRecordSet1259.html",
+                  "title": "ПерерасчетМенеджер.&lt;Имя перерасчета&gt;.СоздатьНаборЗаписей (RecalculationManager.&lt;Recalculation name&gt;.CreateRecordSet)",
+                  "signature": "СоздатьНаборЗаписей()",
+                  "snippet": "﻿ ПерерасчетМенеджер.&lt;Имя перерасчета&gt;.СоздатьНаборЗаписей (RecalculationManager.&lt;Recalculation name&gt;.CreateRecordSet) ПерерасчетМенеджер.&lt;Имя перерасчета&gt; (RecalculationManager.&lt;Recalculation name&gt;) СоздатьНаборЗаписей (CreateRecordSet) Доступен, начиная с версии 8.0. Синтаксис: СоздатьНаборЗаписей() Возвращаемое значение: Тип: ПерерасчетНаборЗаписей.&lt;Имя перерасчета&gt",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 2,
+                  "providerScore": 12.809184074401855,
+                  "documentId": "platform-syntax-help:syntax-context:objects/catalog125/catalog486/object488/methods/CreateRecordSet1225.html",
+                  "title": "РегистрРасчетаМенеджер.&lt;Имя регистра расчета&gt;.СоздатьНаборЗаписей (CalculationRegisterManager.&lt;Calculation register name&gt;.CreateRecordSet)",
+                  "signature": "СоздатьНаборЗаписей()",
+                  "snippet": "﻿ РегистрРасчетаМенеджер.&lt;Имя регистра расчета&gt;.СоздатьНаборЗаписей (CalculationRegisterManager.&lt;Calculation register name&gt;.CreateRecordSet) РегистрРасчетаМенеджер.&lt;Имя регистра расчета&gt; (CalculationRegisterManager.&lt;Calculation register name&gt;) СоздатьНаборЗаписей (CreateRecordSet) Доступен, начиная с версии 8.0. Синтаксис: СоздатьНаборЗаписей() Возвращаемое значение: Тип: Р",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 3,
+                  "providerScore": 12.722519874572754,
+                  "documentId": "platform-syntax-help:syntax-context:objects/catalog125/catalog161/object181/methods/Write347.html",
+                  "title": "РегистрСведенийНаборЗаписей.&lt;Имя регистра сведений&gt;.Записать (InformationRegisterRecordSet.&lt;Information register name&gt;.Write)",
+                  "signature": "Записать(<?>);",
+                  "snippet": "﻿ РегистрСведенийНаборЗаписей.&lt;Имя регистра сведений&gt;.Записать (InformationRegisterRecordSet.&lt;Information register name&gt;.Write) РегистрСведенийНаборЗаписей.&lt;Имя регистра сведений&gt; (InformationRegisterRecordSet.&lt;Information register name&gt;) Записать (Write) Доступен, начиная с версии 8.0. Синтаксис: Записать(&lt;Замещать&gt;) Параметры: &lt;Замещать&gt; (необязательный) Тип: ",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 4,
+                  "providerScore": 12.714326858520508,
+                  "documentId": "platform-syntax-help:syntax-context:objects/catalog125/catalog345/object347/methods/CreateRecordSet1631.html",
+                  "title": "ПоследовательностьМенеджер.&lt;Имя последовательности&gt;.СоздатьНаборЗаписей (SequenceManager.&lt;Sequence name&gt;.CreateRecordSet)",
+                  "signature": "СоздатьНаборЗаписей()",
+                  "snippet": "﻿ ПоследовательностьМенеджер.&lt;Имя последовательности&gt;.СоздатьНаборЗаписей (SequenceManager.&lt;Sequence name&gt;.CreateRecordSet) ПоследовательностьМенеджер.&lt;Имя последовательности&gt; (SequenceManager.&lt;Sequence name&gt;) СоздатьНаборЗаписей (CreateRecordSet) Доступен, начиная с версии 8.0. Синтаксис: СоздатьНаборЗаписей() Возвращаемое значение: Тип: ПоследовательностьНаборЗаписей.&lt;",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 5,
+                  "providerScore": 12.70571231842041,
+                  "documentId": "platform-syntax-help:syntax-context:objects/catalog125/catalog161/object163/methods/CreateRecordSet355.html",
+                  "title": "РегистрСведенийМенеджер.&lt;Имя регистра сведений&gt;.СоздатьНаборЗаписей (InformationRegisterManager.&lt;Information register name&gt;.CreateRecordSet)",
+                  "signature": "СоздатьНаборЗаписей()",
+                  "snippet": "﻿ РегистрСведенийМенеджер.&lt;Имя регистра сведений&gt;.СоздатьНаборЗаписей (InformationRegisterManager.&lt;Information register name&gt;.CreateRecordSet) РегистрСведенийМенеджер.&lt;Имя регистра сведений&gt; (InformationRegisterManager.&lt;Information register name&gt;) СоздатьНаборЗаписей (CreateRecordSet) Доступен, начиная с версии 8.0. Синтаксис: СоздатьНаборЗаписей() Возвращаемое значение: Ти",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 6,
+                  "providerScore": 12.704519271850586,
+                  "documentId": "platform-syntax-help:syntax-context:objects/catalog125/catalog486/object489/methods/Write1236.html",
+                  "title": "РегистрРасчетаНаборЗаписей.&lt;Имя регистра расчета&gt;.Записать (CalculationRegisterRecordSet.&lt;Calculation register name&gt;.Write)",
+                  "signature": "Записать(<?>,,,);",
+                  "snippet": "﻿ РегистрРасчетаНаборЗаписей.&lt;Имя регистра расчета&gt;.Записать (CalculationRegisterRecordSet.&lt;Calculation register name&gt;.Write) РегистрРасчетаНаборЗаписей.&lt;Имя регистра расчета&gt; (CalculationRegisterRecordSet.&lt;Calculation register name&gt;) Записать (Write) Доступен, начиная с версии 8.0. Синтаксис: Записать(&lt;Замещать&gt;, &lt;ТолькоЗапись&gt;, &lt;ЗаписьФактическогоПериодаДей",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 7,
+                  "providerScore": 12.698904037475586,
+                  "documentId": "platform-syntax-help:syntax-context:objects/catalog125/catalog486/catalog494/object498/methods/Write1261.html",
+                  "title": "ПерерасчетНаборЗаписей.&lt;Имя перерасчета&gt;.Записать (RecalculationRecordSet.&lt;Recalculation name&gt;.Write)",
+                  "signature": "Записать(<?>);",
+                  "snippet": "﻿ ПерерасчетНаборЗаписей.&lt;Имя перерасчета&gt;.Записать (RecalculationRecordSet.&lt;Recalculation name&gt;.Write) ПерерасчетНаборЗаписей.&lt;Имя перерасчета&gt; (RecalculationRecordSet.&lt;Recalculation name&gt;) Записать (Write) Доступен, начиная с версии 8.0. Синтаксис: Записать(&lt;Замещать&gt;) Параметры: &lt;Замещать&gt; (необязательный) Тип: Булево . Определяет режим замещения существующих",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 8,
+                  "providerScore": 12.680038452148438,
+                  "documentId": "platform-syntax-help:syntax-context:objects/catalog125/catalog204/object210/methods/CreateRecordSet542.html",
+                  "title": "РегистрНакопленияМенеджер.&lt;Имя регистра накопления&gt;.СоздатьНаборЗаписей (AccumulationRegisterManager.&lt;Accumulation register name&gt;.CreateRecordSet)",
+                  "signature": "СоздатьНаборЗаписей()",
+                  "snippet": "﻿ РегистрНакопленияМенеджер.&lt;Имя регистра накопления&gt;.СоздатьНаборЗаписей (AccumulationRegisterManager.&lt;Accumulation register name&gt;.CreateRecordSet) РегистрНакопленияМенеджер.&lt;Имя регистра накопления&gt; (AccumulationRegisterManager.&lt;Accumulation register name&gt;) СоздатьНаборЗаписей (CreateRecordSet) Доступен, начиная с версии 8.0. Синтаксис: СоздатьНаборЗаписей() Возвращаемое ",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 9,
+                  "providerScore": 12.622665405273438,
+                  "documentId": "platform-syntax-help:syntax-context:objects/catalog125/catalog462/object464/methods/CreateRecordSet1181.html",
+                  "title": "РегистрБухгалтерииМенеджер.&lt;Имя регистра бухгалтерии&gt;.СоздатьНаборЗаписей (AccountingRegisterManager.&lt;Accounting register name&gt;.CreateRecordSet)",
+                  "signature": "СоздатьНаборЗаписей()",
+                  "snippet": "﻿ РегистрБухгалтерииМенеджер.&lt;Имя регистра бухгалтерии&gt;.СоздатьНаборЗаписей (AccountingRegisterManager.&lt;Accounting register name&gt;.CreateRecordSet) РегистрБухгалтерииМенеджер.&lt;Имя регистра бухгалтерии&gt; (AccountingRegisterManager.&lt;Accounting register name&gt;) СоздатьНаборЗаписей (CreateRecordSet) Доступен, начиная с версии 8.0. Синтаксис: СоздатьНаборЗаписей() Возвращаемое знач",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 10,
+                  "providerScore": 12.553617477416992,
+                  "documentId": "platform-syntax-help:syntax-context:objects/catalog125/catalog204/object208/methods/Write524.html",
+                  "title": "РегистрНакопленияНаборЗаписей.&lt;Имя регистра накопления&gt;.Записать (AccumulationRegisterRecordSet.&lt;Accumulation register name&gt;.Write)",
+                  "signature": "Записать(<?>);",
+                  "snippet": "﻿ РегистрНакопленияНаборЗаписей.&lt;Имя регистра накопления&gt;.Записать (AccumulationRegisterRecordSet.&lt;Accumulation register name&gt;.Write) РегистрНакопленияНаборЗаписей.&lt;Имя регистра накопления&gt; (AccumulationRegisterRecordSet.&lt;Accumulation register name&gt;) Записать (Write) Доступен, начиная с версии 8.0. Синтаксис: Записать(&lt;Замещать&gt;) Параметры: &lt;Замещать&gt; (необязате",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 11,
+                  "providerScore": 12.544245719909668,
+                  "documentId": "platform-syntax-help:syntax-context:objects/catalog125/catalog486/catalog494/object498/events/BeforeWrite210.html",
+                  "title": "ПерерасчетНаборЗаписей.&lt;Имя перерасчета&gt;.ПередЗаписью (RecalculationRecordSet.&lt;Recalculation name&gt;.BeforeWrite)",
+                  "signature": "Процедура ПередЗаписью(Отказ, Замещение)\r\n    <?>\r\nКонецПроцедуры",
+                  "snippet": "﻿ ПерерасчетНаборЗаписей.&lt;Имя перерасчета&gt;.ПередЗаписью (RecalculationRecordSet.&lt;Recalculation name&gt;.BeforeWrite) ПерерасчетНаборЗаписей.&lt;Имя перерасчета&gt; (RecalculationRecordSet.&lt;Recalculation name&gt;) ПередЗаписью (BeforeWrite) Доступен, начиная с версии 8.0. Синтаксис: ПередЗаписью(&lt;Отказ&gt;, &lt;Замещение&gt;) Параметры: &lt;Отказ&gt; Тип: Булево . Признак отказа от з",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 12,
+                  "providerScore": 12.519609451293944,
+                  "documentId": "platform-syntax-help:syntax-context:objects/catalog125/catalog345/object349/events/BeforeWrite208.html",
+                  "title": "ПоследовательностьНаборЗаписей.&lt;Имя последовательности&gt;.ПередЗаписью (SequenceRecordSet.&lt;Sequence name&gt;.BeforeWrite)",
+                  "signature": "Процедура ПередЗаписью(Отказ, Замещение)\r\n    <?>\r\nКонецПроцедуры",
+                  "snippet": "﻿ ПоследовательностьНаборЗаписей.&lt;Имя последовательности&gt;.ПередЗаписью (SequenceRecordSet.&lt;Sequence name&gt;.BeforeWrite) ПоследовательностьНаборЗаписей.&lt;Имя последовательности&gt; (SequenceRecordSet.&lt;Sequence name&gt;) ПередЗаписью (BeforeWrite) Доступен, начиная с версии 8.0. Синтаксис: ПередЗаписью(&lt;Отказ&gt;, &lt;Замещение&gt;) Параметры: &lt;Отказ&gt; Тип: Булево . Признак о",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 13,
+                  "providerScore": 12.51088047027588,
+                  "documentId": "platform-syntax-help:syntax-context:objects/catalog125/catalog204/object208/events/BeforeWrite189.html",
+                  "title": "РегистрНакопленияНаборЗаписей.&lt;Имя регистра накопления&gt;.ПередЗаписью (AccumulationRegisterRecordSet.&lt;Accumulation register name&gt;.BeforeWrite)",
+                  "signature": "Процедура ПередЗаписью(Отказ, Замещение)\r\n    <?>\r\nКонецПроцедуры",
+                  "snippet": "﻿ РегистрНакопленияНаборЗаписей.&lt;Имя регистра накопления&gt;.ПередЗаписью (AccumulationRegisterRecordSet.&lt;Accumulation register name&gt;.BeforeWrite) РегистрНакопленияНаборЗаписей.&lt;Имя регистра накопления&gt; (AccumulationRegisterRecordSet.&lt;Accumulation register name&gt;) ПередЗаписью (BeforeWrite) Доступен, начиная с версии 8.0. Синтаксис: ПередЗаписью(&lt;Отказ&gt;, &lt;Замещение&gt;",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 14,
+                  "providerScore": 12.508227348327637,
+                  "documentId": "platform-syntax-help:syntax-context:objects/catalog125/catalog462/object539/methods/Write1329.html",
+                  "title": "РегистрБухгалтерииНаборЗаписей.&lt;Имя регистра бухгалтерии&gt;.Записать (AccountingRegisterRecordSet.&lt;Accounting register name&gt;.Write)",
+                  "signature": "Записать(<?>);",
+                  "snippet": "﻿ РегистрБухгалтерииНаборЗаписей.&lt;Имя регистра бухгалтерии&gt;.Записать (AccountingRegisterRecordSet.&lt;Accounting register name&gt;.Write) РегистрБухгалтерииНаборЗаписей.&lt;Имя регистра бухгалтерии&gt; (AccountingRegisterRecordSet.&lt;Accounting register name&gt;) Записать (Write) Доступен, начиная с версии 8.0. Синтаксис: Записать(&lt;Замещать&gt;) Параметры: &lt;Замещать&gt; (необязательны",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 15,
+                  "providerScore": 12.502405166625977,
+                  "documentId": "platform-syntax-help:syntax-context:objects/catalog125/catalog462/Accounting register record set form extension/methods/Refresh1342.html",
+                  "title": "Расширение формы набора записей регистра бухгалтерии.Обновить (Accounting register record set form extension.Refresh)",
+                  "signature": "Обновить();",
+                  "snippet": "﻿ Расширение формы набора записей регистра бухгалтерии.Обновить (Accounting register record set form extension.Refresh) Расширение формы набора записей регистра бухгалтерии (Accounting register record set form extension) Обновить (Refresh) Доступен, начиная с версии 8.0. Синтаксис: Обновить() Описание: Обновляет набор записей перечитыванием данных из базы данных. Доступность: Толстый клиент. Приме",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 16,
+                  "providerScore": 12.501934051513672,
+                  "documentId": "platform-syntax-help:syntax-context:objects/catalog125/catalog486/object489/methods/Load1244.html",
+                  "title": "РегистрРасчетаНаборЗаписей.&lt;Имя регистра расчета&gt;.Загрузить (CalculationRegisterRecordSet.&lt;Calculation register name&gt;.Load)",
+                  "signature": "Загрузить(<?>);",
+                  "snippet": "﻿ РегистрРасчетаНаборЗаписей.&lt;Имя регистра расчета&gt;.Загрузить (CalculationRegisterRecordSet.&lt;Calculation register name&gt;.Load) РегистрРасчетаНаборЗаписей.&lt;Имя регистра расчета&gt; (CalculationRegisterRecordSet.&lt;Calculation register name&gt;) Загрузить (Load) Доступен, начиная с версии 8.0. Синтаксис: Загрузить(&lt;ТаблицаЗначений&gt;) Параметры: &lt;ТаблицаЗначений&gt; (обязательн",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 17,
+                  "providerScore": 12.47969913482666,
+                  "documentId": "platform-syntax-help:syntax-context:objects/catalog125/catalog486/Calculation register record set form extension/events/BeforeWrite108.html",
+                  "title": "Расширение формы набора записей регистра расчета.ПередЗаписью (Calculation register record set form extension.BeforeWrite)",
+                  "signature": "Процедура ПередЗаписью(Отказ)\r\n    <?>\r\nКонецПроцедуры",
+                  "snippet": "﻿ Расширение формы набора записей регистра расчета.ПередЗаписью (Calculation register record set form extension.BeforeWrite) Расширение формы набора записей регистра расчета (Calculation register record set form extension) ПередЗаписью (BeforeWrite) Доступен, начиная с версии 8.0. Синтаксис: ПередЗаписью(&lt;Отказ&gt;) Параметры: &lt;Отказ&gt; Тип: Булево . Признак отказа от записи объекта. Если в",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 18,
+                  "providerScore": 12.469038009643556,
+                  "documentId": "platform-syntax-help:syntax-context:objects/catalog125/catalog462/Accounting register record set form extension/events/BeforeWrite166.html",
+                  "title": "Расширение формы набора записей регистра бухгалтерии.ПередЗаписью (Accounting register record set form extension.BeforeWrite)",
+                  "signature": "Процедура ПередЗаписью(Отказ)\r\n    <?>\r\nКонецПроцедуры",
+                  "snippet": "﻿ Расширение формы набора записей регистра бухгалтерии.ПередЗаписью (Accounting register record set form extension.BeforeWrite) Расширение формы набора записей регистра бухгалтерии (Accounting register record set form extension) ПередЗаписью (BeforeWrite) Доступен, начиная с версии 8.0. Синтаксис: ПередЗаписью(&lt;Отказ&gt;) Параметры: &lt;Отказ&gt; Тип: Булево . Признак отказа от записи объекта. ",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 19,
+                  "providerScore": 12.469038009643556,
+                  "documentId": "platform-syntax-help:syntax-context:objects/catalog125/catalog204/Accumulation register record set form extension/events/BeforeWrite169.html",
+                  "title": "Расширение формы набора записей регистра накопления.ПередЗаписью (Accumulation register record set form extension.BeforeWrite)",
+                  "signature": "Процедура ПередЗаписью(Отказ)\r\n    <?>\r\nКонецПроцедуры",
+                  "snippet": "﻿ Расширение формы набора записей регистра накопления.ПередЗаписью (Accumulation register record set form extension.BeforeWrite) Расширение формы набора записей регистра накопления (Accumulation register record set form extension) ПередЗаписью (BeforeWrite) Доступен, начиная с версии 8.0. Синтаксис: ПередЗаписью(&lt;Отказ&gt;) Параметры: &lt;Отказ&gt; Тип: Булево . Признак отказа от записи объекта",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 20,
+                  "providerScore": 12.467070579528809,
+                  "documentId": "platform-syntax-help:syntax-context:objects/catalog125/catalog462/object539/events/BeforeWrite191.html",
+                  "title": "РегистрБухгалтерииНаборЗаписей.&lt;Имя регистра бухгалтерии&gt;.ПередЗаписью (AccountingRegisterRecordSet.&lt;Accounting register name&gt;.BeforeWrite)",
+                  "signature": "Процедура ПередЗаписью(Отказ, Замещение)\r\n    <?>\r\nКонецПроцедуры",
+                  "snippet": "﻿ РегистрБухгалтерииНаборЗаписей.&lt;Имя регистра бухгалтерии&gt;.ПередЗаписью (AccountingRegisterRecordSet.&lt;Accounting register name&gt;.BeforeWrite) РегистрБухгалтерииНаборЗаписей.&lt;Имя регистра бухгалтерии&gt; (AccountingRegisterRecordSet.&lt;Accounting register name&gt;) ПередЗаписью (BeforeWrite) Доступен, начиная с версии 8.0. Синтаксис: ПередЗаписью(&lt;Отказ&gt;, &lt;Замещение&gt;) Па",
+                  "applicableVersion": "8.3.27.1936"
+                }
+              ]
+            },
+            {
+              "provider": "platform-syntax-help",
+              "corpus": "platform-guides",
+              "sourceKind": "platform-help",
+              "authority": "vendor",
+              "language": "ru",
+              "status": "ok",
+              "diagnostic": null,
+              "warnings": [],
+              "hits": [
+                {
+                  "rank": 1,
+                  "providerScore": 8.014749526977539,
+                  "documentId": "platform-syntax-help:platform-guides:form_mdinforegview",
+                  "title": "Редактирование регистра сведений",
+                  "signature": null,
+                  "snippet": "﻿ Редактирование регистра сведений Основная задача регистра сведений — хранить существенную для прикладной задачи информацию, состав которой развернут по определенной комбинации значений и, при необходимости, развернут во времени. Регистры сведений, информация в которых развернута во времени, называются периодическими. Для периодических регистров сведений система поддерживает такие стандартные опе",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 2,
+                  "providerScore": 7.902936935424805,
+                  "documentId": "platform-syntax-help:platform-guides:SKD_Functions_Expressions",
+                  "title": "Работа с выражениями",
+                  "signature": null,
+                  "snippet": "﻿ Работа с выражениями Вычислить ВычислитьВыражение ВычислитьВыражениеСГруппировкойМассив ВычислитьВыражениеСГруппировкойТаблицаЗначений Вычислить (Eval) Функция Вычислить предназначена для вычисления выражения в контексте некоторой группировки. Функция используется для совместимости с предыдущими версиями платформы. Вместо&nbsp;неё рекомендуется использовать функцию ВычислитьВыражение . Синтаксис",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 3,
+                  "providerScore": 7.701448440551758,
+                  "documentId": "platform-syntax-help:platform-guides:EventSubscription",
+                  "title": "Подписки на события",
+                  "signature": null,
+                  "snippet": "﻿ Подписки на события Подписки на события позволяют назначать обработчики событий для одного или группы объектов встроенного языка. При добавлении новой подписки на событие, кроме общих свойств объектов конфигурации, следует указать источник события, само событие, обработчик которого назначается, и процедуру, являющуюся обработчиком этого события. Источниками событий могут являться прикладные объе",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 4,
+                  "providerScore": 7.184155464172363,
+                  "documentId": "platform-syntax-help:platform-guides:MainXBase",
+                  "title": "Основные понятия XBASE",
+                  "signature": null,
+                  "snippet": "﻿ Основные понятия XBASE Общее Поля и записи Таблица, структура таблицы, файл базы данных Индексы, выражения индекса и фильтра, индексный файл Запись изменений в базу данных Работа с индексными файлами Удаление записей Создание базы данных, индекса, индексного файла Ограничения Для облегчения понимания материала данного раздела читателем, не имеющим опыта работы с базами данных, ниже приводятся по",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 5,
+                  "providerScore": 7.151654243469238,
+                  "documentId": "platform-syntax-help:platform-guides:GROUPING",
+                  "title": "Функция СГРУППИРОВАНОПО&nbsp;",
+                  "signature": null,
+                  "snippet": "﻿ Функция СГРУППИРОВАНОПО&nbsp; СГРУППИРОВАНОПО (&lt;Выражение&gt;) &lt;Выражение&gt; – столбец или выражение, которое содержит столбец в предложении СГРУППИРОВАТЬ ПО . Функция предназначена для различения наборов, по которым ведется группировка. Возвращаемое значение: &nbsp; Функция возвращает ИСТИНА для записей, которые были получены для группировки по этому полю (одному или с другими полями). Ф",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 6,
+                  "providerScore": 7.1126251220703125,
+                  "documentId": "platform-syntax-help:platform-guides:Administration",
+                  "title": "Администрирование работы пользователей",
+                  "signature": null,
+                  "snippet": "﻿ Администрирование работы пользователей Общее Наборы прав (ролей) Индивидуальный пользовательский интерфейс Список пользователей При работе пользователей с системой 1С:Предприятие в сети значение приобретают два вопроса — интеграция и разделение доступа. Каждый пользователь системы должен иметь свободный доступ к общей информации, такой, как справочники или константы. С другой стороны, необходимо",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 7,
+                  "providerScore": 6.47763729095459,
+                  "documentId": "platform-syntax-help:platform-guides:form_EDBCubeFormWizardDlg",
+                  "title": "Конструктор формы&nbsp;куба внешнего источника данных",
+                  "signature": null,
+                  "snippet": "﻿ Конструктор формы&nbsp;куба внешнего источника данных На первом шаге конструктор предлагает выбрать вид формы и указать имя, синоним и комментарий формы. Группа элементов управления \" Выбор типа формы \" предназначена для выбора типа формы.&nbsp; Форма записи Форма списка Фора набора записей Произвольная форма &nbsp; Если у объекта несколько форм одного типа, то одну из них можно выбрать в качест",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 8,
+                  "providerScore": 6.4402971267700195,
+                  "documentId": "platform-syntax-help:platform-guides:GROUPStatement",
+                  "title": "Предложение СГРУППИРОВАТЬ ПО",
+                  "signature": null,
+                  "snippet": "﻿ .prequery { font-family: Courier New, courier; } Предложение СГРУППИРОВАТЬ ПО Группировка по нескольким группам Предложение СГРУППИРОВАТЬ ПО &lt;Поля группировки&gt; позволяет описать порядок группировки результатов запроса. Исходные данные в запросе могут быть сгруппированы с помощью агрегатных функций , указанных в качестве полей в списке выборки. Это означает, что строки в результате запроса ",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 9,
+                  "providerScore": 6.359981060028076,
+                  "documentId": "platform-syntax-help:platform-guides:ConfigurationObjectsAccountingRegisters",
+                  "title": "Регистры бухгалтерии",
+                  "signature": null,
+                  "snippet": "﻿ Регистры бухгалтерии Для отражения в бухгалтерском учете информации о хозяйственных операциях в системе 1С:Предприятие используются регистры бухгалтерии, описываемые на ветви дерева конфигурации \"Регистры бухгалтерии\". По своему виду регистр бухгалтерии напоминает регистр накопления. При его редактировании разрабатывается структура регистра: создаются наборы измерений, ресурсов и реквизитов реги",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 10,
+                  "providerScore": 6.3326005935668945,
+                  "documentId": "platform-syntax-help:platform-guides:TrainingVersion",
+                  "title": "1С:Предприятие 8 Учебная версия",
+                  "signature": null,
+                  "snippet": "﻿ 1С:Предприятие 8 Учебная версия Учебная версия платформы \"1С:Предприятие 8\" - реально действующая платформа \"1С:Предприятие 8\" со следующими ограничениями: не может использоваться на предприятии для ведения реального учета пользователями; не может использоваться для сборки дистрибутивов мобильных приложений, предназначенных для дальнейшей публикации и тиражирования; ограничено количество данных:",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 11,
+                  "providerScore": 6.193154811859131,
+                  "documentId": "platform-syntax-help:platform-guides:form_QDWTotalsGroupDlg",
+                  "title": "Выбор иерархических записей для расчета ресурса",
+                  "signature": null,
+                  "snippet": "﻿ Выбор иерархических записей для расчета ресурса Для указания необходимости расчета ресурса в иерархических записях&nbsp;установите флажок в строках, в которых указано слово Иерархия .",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 12,
+                  "providerScore": 6.184300422668457,
+                  "documentId": "platform-syntax-help:platform-guides:form_QueryWizardDlg",
+                  "title": "Конструктор схемы компоновки данных",
+                  "signature": null,
+                  "snippet": "﻿ Конструктор схемы компоновки данных Как создать наборы данных, источники данных, запрос и поля запроса? Как настроить схему компоновки данных? Как настроить структуру отчета? Параметры настройки С помощью конструктора схемы компоновки данных производится формирование новой и редактирование имеющейся схемы компоновки данных. Закладка \"Наборы данных\" На закладке Наборы данных выполняется создание ",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 13,
+                  "providerScore": 6.001511573791504,
+                  "documentId": "platform-syntax-help:platform-guides:form_RoleDlg",
+                  "title": "Редактирование роли поля набора данных схемы компоновки данных",
+                  "signature": null,
+                  "snippet": "﻿ Редактирование роли поля набора данных схемы компоновки данных Роль поля указывает, каким образом следует интерпретировать поле. Роль поля содержит следующие свойства: Период – число, содержащее номер периода в случае, если поле является полем – периодом. Значение 0 означает, что данное поле периодом не является. Самый младший период должен иметь номер 1. Его родительский период – 2 и т.д. Напри",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 14,
+                  "providerScore": 5.653526306152344,
+                  "documentId": "platform-syntax-help:platform-guides:form_mdchartofaccountsview",
+                  "title": "Редактирование плана счетов",
+                  "signature": null,
+                  "snippet": "﻿ Редактирование плана счетов План счетов является одним из основных понятий бухгалтерского учета. Планом счетов называется совокупность синтетических счетов, предназначенных для группировки информации о хозяйственной деятельности предприятия. Информация, накапливаемая на таких синтетических счетах, позволяет получить полную картину состояния средств предприятия в денежном выражении. Помимо кода и",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 15,
+                  "providerScore": 5.568851470947266,
+                  "documentId": "platform-syntax-help:platform-guides:form_mdplanofcharacteristickindsview",
+                  "title": "План видов характеристик",
+                  "signature": null,
+                  "snippet": "﻿ План видов характеристик В системе 1С:Предприятие объекты планы видов характеристик предназначены для описания множеств однотипных объектов аналитического учета. Механизм поддержки планов видов характеристик позволяет спроектировать и поддерживать самые различные виды характеристик. На этапе конфигурирования можно описать, какими свойствами обладает каждый конкретный план видов характеристик. По",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 16,
+                  "providerScore": 5.322690486907959,
+                  "documentId": "platform-syntax-help:platform-guides:form_mdrefview",
+                  "title": "Редактирование справочника",
+                  "signature": null,
+                  "snippet": "﻿ Редактирование справочника Для работы с постоянной и условно постоянной информацией с некоторым множеством значений в системе используются объекты типа \" Справочник \" Механизм поддержки справочников позволяет спроектировать и поддерживать самые различные справочники. На этапе конфигурирования можно описать, какими свойствами обладает каждый конкретный справочник. К настраиваемым свойствам относя",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 17,
+                  "providerScore": 5.1735711097717285,
+                  "documentId": "platform-syntax-help:platform-guides:form_ErrorViewer",
+                  "title": "Сообщение об ошибке",
+                  "signature": null,
+                  "snippet": "﻿ Сообщение об ошибке В случае возникновения ошибки при выполнении программы на экран выводится предупреждение (может содержать разное число кнопок, назначение кнопок также может быть разным), содержащее краткую информацию об ошибке. Кнопка \" Подробно… \" может отсутствовать. Кнопка появляется в следующих случаях: если включен режим отладки; ошибка является ошибкой языка и содержит техническую инфо",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 18,
+                  "providerScore": 5.167272090911865,
+                  "documentId": "platform-syntax-help:platform-guides:form_inforegformwizarddlg",
+                  "title": "Конструктор формы регистра сведений",
+                  "signature": null,
+                  "snippet": "﻿ Конструктор формы регистра сведений На первом шаге конструктор предлагает выбрать вид формы и указать имя, синоним и комментарий формы. Группа элементов управления \" Выбор типа формы \" предназначена для выбора типа формы.&nbsp; Форма записи регистра сведений Форма списка&nbsp;регистра сведений Форма набора записей регистра сведений Произвольная форма&nbsp; Если в настройках параметров на закладк",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 19,
+                  "providerScore": 5.072737693786621,
+                  "documentId": "platform-syntax-help:platform-guides:reportFormVariant",
+                  "title": "Редактирование варианта отчета",
+                  "signature": null,
+                  "snippet": "﻿ Редактирование варианта отчета Общее Изменение структуры&nbsp;отчета Элемент группировки Элемент таблица Элемент диаграмма Настройка отчета Настройка элементов отчета В форме производится редактирование&nbsp;текущего варианта&nbsp;настроек отчета. В верхней части формы&nbsp;расположено поле структуры отчета,&nbsp;в нижней части формы -&nbsp;поле настроек отчета и элементов настроек. Изменение ст",
+                  "applicableVersion": "8.3.27.1936"
+                },
+                {
+                  "rank": 20,
+                  "providerScore": 5.068767070770264,
+                  "documentId": "platform-syntax-help:platform-guides:form_modulepropdlg",
+                  "title": "Параметры текстов модулей",
+                  "signature": null,
+                  "snippet": "﻿ Параметры текстов модулей Настройки редактирования текстов модулей Установка режимов проверки модулей Настройка показа группировки Настройка контекстной подсказки Настройка рефакторинга Редактирование текста модулей На закладке \" Редактирование \" определяется выделение цветом синтаксических конструкций в модулях, автоотступ и задать шаг табуляции для модулей. Выделение цветом синтаксических конс",
+                  "applicableVersion": "8.3.27.1936"
+                }
+              ]
+            },
+            {
+              "provider": "kb-1ci",
+              "corpus": "kb-developer-guide",
+              "sourceKind": "platform-help",
+              "authority": "vendor",
+              "language": "en",
+              "status": "ok",
+              "diagnostic": null,
+              "warnings": [],
+              "hits": [
+                {
+                  "rank": 1,
+                  "providerScore": 31.13409996032715,
+                  "documentId": "https://kb.1ci.com/1C_Enterprise_Platform/Guides/Developer_Guides/1C_Enterprise_Developer_Guide/8.3.27/Chapter_10._Data_composition_system/10.8._Calculation_of_totals_by_balance_fields_in_the_data_composition_system/?language=en",
+                  "title": "10.8. Calculation of totals by balance fields in the data composition system",
+                  "signature": null,
+                  "snippet": "Balance field in terms of data composition template is a field where the Balance checkbox is selected as a role.",
+                  "applicableVersion": "8.3.27"
+                },
+                {
+                  "rank": 2,
+                  "providerScore": 27.961824417114254,
+                  "documentId": "https://kb.1ci.com/1C_Enterprise_Platform/Guides/Developer_Guides/1C_Enterprise_Developer_Guide/8.3.27/Chapter_22._Event_log/22.6._Getting_event_log_records/?language=en",
+                  "title": "22.6. Getting event log records",
+                  "signature": null,
+                  "snippet": "During application runtime, there might be some situations that require programmatic event log analysis, which includes getting events in the event log by some criteria (filter). To get event log entries programmatically, use the UnloadEventLog() global context method. You can programmatically get both event log entries of the infobase where 1C:Enterprise language code is performed and of any othe",
+                  "applicableVersion": "8.3.27"
+                },
+                {
+                  "rank": 3,
+                  "providerScore": 26.685741424560547,
+                  "documentId": "https://kb.1ci.com/1C_Enterprise_Platform/Guides/Developer_Guides/1C_Enterprise_Developer_Guide/8.3.27/Chapter_34._Other_mechanisms/34.5._Notification_of_the_client_application_from_the_server_side/?language=en",
+                  "title": "34.5. Notification of the client application from the server side",
+                  "signature": null,
+                  "snippet": "When developing information systems, there may be a need to notify the client application that some action has been completed on the server side. If the action is not an explicit call to server code from the client application code, then the interaction system can be used for such notification. This method requires the connection of the infobase to the collaboration system. If the only feature of ",
+                  "applicableVersion": "8.3.27"
+                },
+                {
+                  "rank": 4,
+                  "providerScore": 24.294300079345703,
+                  "documentId": "https://kb.1ci.com/1C_Enterprise_Platform/Guides/Developer_Guides/1C_Enterprise_Developer_Guide/8.3.27/Chapter_8.Working_with_queries/8.2._Query_data__table__sources/?language=en",
+                  "title": "8.2. Query data (table) sources",
+                  "signature": null,
+                  "snippet": "Sources of data for query language data are database tables. Tables are divided into two main classes: real and virtual. Real tables are stored in a database, that is, they are interpreted from a real database table. In case of a real table, there may be present the calculable fields whose values are calculated as function of several real fields. Virtual tables are not stored in database. When acc",
+                  "applicableVersion": "8.3.27"
+                },
+                {
+                  "rank": 5,
+                  "providerScore": 23.72056007385254,
+                  "documentId": "https://kb.1ci.com/1C_Enterprise_Platform/Guides/Developer_Guides/1C_Enterprise_Developer_Guide/8.3.27/Appendix_8._XBase_operations/8.4._Writing_changes_to_the_database/?language=en",
+                  "title": "8.4. Writing changes to the database",
+                  "signature": null,
+                  "snippet": "Each object is a data structure located in the computer's memory. Changing the object properties does not immediately change the database files. When auto-save mode is enabled, the object is written to the database files when its position changes (when you move to the next record, search by key, and other). When auto-save mode is disabled, changes are recorded only when the corresponding object me",
+                  "applicableVersion": "8.3.27"
+                },
+                {
+                  "rank": 6,
+                  "providerScore": 21.89523124694824,
+                  "documentId": "https://kb.1ci.com/1C_Enterprise_Platform/Guides/Developer_Guides/1C_Enterprise_Developer_Guide/8.3.27/Chapter_11._Accounting/11.5._Accounting_register_records_and_record_sets/?language=en",
+                  "title": "11.5. Accounting register records and record sets",
+                  "signature": null,
+                  "snippet": "",
+                  "applicableVersion": "8.3.27"
+                },
+                {
+                  "rank": 7,
+                  "providerScore": 20.955368041992188,
+                  "documentId": "https://kb.1ci.com/1C_Enterprise_Platform/Guides/Developer_Guides/1C_Enterprise_Developer_Guide/8.3.27/Chapter_10._Data_composition_system/10.10._Using_the_data_composition_system_for_application_development/?language=en",
+                  "title": "10.10. Using the data composition system for application development",
+                  "signature": null,
+                  "snippet": "",
+                  "applicableVersion": "8.3.27"
+                },
+                {
+                  "rank": 8,
+                  "providerScore": 20.915752410888672,
+                  "documentId": "https://kb.1ci.com/1C_Enterprise_Platform/Guides/Developer_Guides/1C_Enterprise_Developer_Guide/8.3.27/Chapter_2._Managing_configurations/2.9._Creating_and_deleting_configuration_objects/?language=en",
+                  "title": "2.9. Creating and deleting configuration objects",
+                  "signature": null,
+                  "snippet": "",
+                  "applicableVersion": "8.3.27"
+                },
+                {
+                  "rank": 9,
+                  "providerScore": 20.287952423095703,
+                  "documentId": "https://kb.1ci.com/1C_Enterprise_Platform/Guides/Developer_Guides/1C_Enterprise_Developer_Guide/8.3.27/Chapter_2._Managing_configurations/2.23._Saving_the_configuration_ID_to_a_file/?language=en",
+                  "title": "2.23. Saving the configuration ID to a file",
+                  "signature": null,
+                  "snippet": "",
+                  "applicableVersion": "8.3.27"
+                },
+                {
+                  "rank": 10,
+                  "providerScore": 20.049480438232425,
+                  "documentId": "https://kb.1ci.com/1C_Enterprise_Platform/Guides/Developer_Guides/1C_Enterprise_Developer_Guide/8.3.27/Chapter_22._Event_log/22.4._Event_log_management/?language=en",
+                  "title": "22.4. Event log management",
+                  "signature": null,
+                  "snippet": "",
+                  "applicableVersion": "8.3.27"
+                },
+                {
+                  "rank": 11,
+                  "providerScore": 19.79737663269043,
+                  "documentId": "https://kb.1ci.com/1C_Enterprise_Platform/Guides/Developer_Guides/1C_Enterprise_Developer_Guide/8.3.27/Chapter_27._Global_search/27.4._Search_string_processing_and_new_type_of_search/?language=en",
+                  "title": "27.4. Search string processing and new type of search",
+                  "signature": null,
+                  "snippet": "",
+                  "applicableVersion": "8.3.27"
+                },
+                {
+                  "rank": 12,
+                  "providerScore": 19.700937271118164,
+                  "documentId": "https://kb.1ci.com/1C_Enterprise_Platform/Guides/Developer_Guides/1C_Enterprise_Developer_Guide/8.3.27/Chapter_10._Data_composition_system/10.9._Hierarchy_operations_in_the_data_composition_system/?language=en",
+                  "title": "10.9. Hierarchy operations in the data composition system",
+                  "signature": null,
+                  "snippet": "",
+                  "applicableVersion": "8.3.27"
+                },
+                {
+                  "rank": 13,
+                  "providerScore": 18.637229919433594,
+                  "documentId": "https://kb.1ci.com/1C_Enterprise_Platform/Guides/Developer_Guides/1C_Enterprise_Developer_Guide/8.3.27/Chapter_14._Data_analysis_and_forecasting/14.5.__Search_for_sequences__analysis_type/?language=en",
+                  "title": "14.5. \"Search for sequences\" analysis type",
+                  "signature": null,
+                  "snippet": "",
+                  "applicableVersion": "8.3.27"
+                },
+                {
+                  "rank": 14,
+                  "providerScore": 18.38851547241211,
+                  "documentId": "https://kb.1ci.com/1C_Enterprise_Platform/Guides/Developer_Guides/1C_Enterprise_Developer_Guide/8.3.27/Appendix_3._List_of_automatically_saved_settings/3.4._Storage__dynamic_list_settings/?language=en",
+                  "title": "3.4. Storage: dynamic list settings",
+                  "signature": null,
+                  "snippet": "",
+                  "applicableVersion": "8.3.27"
+                },
+                {
+                  "rank": 15,
+                  "providerScore": 18.23772430419922,
+                  "documentId": "https://kb.1ci.com/1C_Enterprise_Platform/Guides/Developer_Guides/1C_Enterprise_Developer_Guide/8.3.27/Chapter_1._General_concepts/1.4._Operating_modes__interaction_modes__and_client_application_types/?language=en",
+                  "title": "1.4. Operating modes, interaction modes, and client application types",
+                  "signature": null,
+                  "snippet": "",
+                  "applicableVersion": "8.3.27"
+                },
+                {
+                  "rank": 16,
+                  "providerScore": 18.054489135742188,
+                  "documentId": "https://kb.1ci.com/1C_Enterprise_Platform/Guides/Developer_Guides/1C_Enterprise_Developer_Guide/8.3.27/Chapter_17._Integration_with_external_systems/17.6._External_data_sources/?language=en",
+                  "title": "17.6. External data sources",
+                  "signature": null,
+                  "snippet": "",
+                  "applicableVersion": "8.3.27"
+                },
+                {
+                  "rank": 17,
+                  "providerScore": 17.914447784423828,
+                  "documentId": "https://kb.1ci.com/1C_Enterprise_Platform/Guides/Developer_Guides/1C_Enterprise_Developer_Guide/8.3.27/Chapter_10._Data_composition_system/10.3._Data_composition_schema/?language=en",
+                  "title": "10.3. Data composition schema",
+                  "signature": null,
+                  "snippet": "",
+                  "applicableVersion": "8.3.27"
+                },
+                {
+                  "rank": 18,
+                  "providerScore": 17.20824432373047,
+                  "documentId": "https://kb.1ci.com/1C_Enterprise_Platform/Guides/Developer_Guides/1C_Enterprise_Developer_Guide/8.3.27/Chapter_26._Database_copies_funtionality/26.6._Creating_a_copy_in_a_database/?language=en",
+                  "title": "26.6. Creating a copy in a database",
+                  "signature": null,
+                  "snippet": "",
+                  "applicableVersion": "8.3.27"
+                },
+                {
+                  "rank": 19,
+                  "providerScore": 16.850933074951172,
+                  "documentId": "https://kb.1ci.com/1C_Enterprise_Platform/Guides/Developer_Guides/1C_Enterprise_Developer_Guide/8.3.27/Chapter_5._Configuration_objects/5.2._Managed_application_module/?language=en",
+                  "title": "5.2. Managed application module",
+                  "signature": null,
+                  "snippet": "",
+                  "applicableVersion": "8.3.27"
+                },
+                {
+                  "rank": 20,
+                  "providerScore": 16.610136032104492,
+                  "documentId": "https://kb.1ci.com/1C_Enterprise_Platform/Guides/Developer_Guides/1C_Enterprise_Developer_Guide/8.3.27/Chapter_10._Data_composition_system/10.4._Data_composition_template/?language=en",
+                  "title": "10.4. Data composition template",
+                  "signature": null,
+                  "snippet": "",
+                  "applicableVersion": "8.3.27"
+                }
+              ]
+            },
+            {
+              "provider": "kb-1ci",
+              "corpus": "kb-administrator-guide",
+              "sourceKind": "platform-help",
+              "authority": "vendor",
+              "language": "ru",
+              "status": "unavailable",
+              "diagnostic": {
+                "reason": "version-missing",
+                "detail": "на площадке нет ни одной версии руководства"
+              },
+              "warnings": [],
+              "hits": []
+            },
+            {
+              "provider": "v8std",
+              "corpus": "public-standards",
+              "sourceKind": "development-standard",
+              "authority": "community",
+              "language": "ru",
+              "status": "ok",
+              "diagnostic": null,
+              "warnings": [],
+              "hits": [
+                {
+                  "rank": 1,
+                  "providerScore": 4216.67919921875,
+                  "documentId": "https://v8std.ru/std/792/",
+                  "title": "Многократная запись регистров сведений и накопления #std792",
+                  "signature": null,
+                  "snippet": "Не записывайте наборы записей регистров сведений и накопления в цикле по одной или нескольким записям. Это в несколько раз медленнее, чем запись одним набором.",
+                  "applicableVersion": "unversioned"
+                },
+                {
+                  "rank": 2,
+                  "providerScore": 3838.1806640625,
+                  "documentId": "https://v8std.ru/std/447/",
+                  "title": "Использование объекта РегистрСведенийМенеджерЗаписи #std447",
+                  "signature": null,
+                  "snippet": "Чтение записи (или набора записей) из регистра сведений без последующей модификации выполняйте запросом.",
+                  "applicableVersion": "unversioned"
+                },
+                {
+                  "rank": 3,
+                  "providerScore": 3380.6494140625,
+                  "documentId": "https://v8std.ru/diagnostics/acc/105/",
+                  "title": "Использована явная запись наборов записей регистров (с помощью метода Записать) в процедуре обработки проведения. АПК:105",
+                  "signature": null,
+                  "snippet": "Использована явная запись наборов записей регистров (с помощью метода Записать) в процедуре обработки проведения.",
+                  "applicableVersion": "unversioned"
+                },
+                {
+                  "rank": 4,
+                  "providerScore": 3240.15478515625,
+                  "documentId": "https://v8std.ru/std/450/",
+                  "title": "Порядок записи движений документов #std450",
+                  "signature": null,
+                  "snippet": "Не используйте явную запись наборов записей регистров методом Записать() в процедуре обработки проведения документа.",
+                  "applicableVersion": "unversioned"
+                },
+                {
+                  "rank": 5,
+                  "providerScore": 3124.77978515625,
+                  "documentId": "https://v8std.ru/std/465/",
+                  "title": "Обработчик события ПриЗаписи #std465",
+                  "signature": null,
+                  "snippet": "В обработчике ПриЗаписи модуля объекта (набора записей, значения константы) выполняйте действия, связанные с уже записанным объектом:",
+                  "applicableVersion": "unversioned"
+                },
+                {
+                  "rank": 6,
+                  "providerScore": 2716.53271484375,
+                  "documentId": "https://v8std.ru/std/787/",
+                  "title": "Вычисление количества записей в запросах #std787",
+                  "signature": null,
+                  "snippet": "При вычислении количества записей в запросе всегда используйте функцию КОЛИЧЕСТВО, а не СУММА.",
+                  "applicableVersion": "unversioned"
+                },
+                {
+                  "rank": 7,
+                  "providerScore": 2714.385498046875,
+                  "documentId": "https://v8std.ru/std/396/",
+                  "title": "Обработчик события ОбработкаЗаполнения #std396",
+                  "signature": null,
+                  "snippet": "Если нужно ограничить ввод по команде Создать на основании, выполняйте проверку в обработчике ОбработкаЗаполнения модуля объекта (или набора записей).",
+                  "applicableVersion": "unversioned"
+                },
+                {
+                  "rank": 8,
+                  "providerScore": 2456.221435546875,
+                  "documentId": "https://v8std.ru/diagnostics/bslls/UsingCancelParameter/",
+                  "title": "Работа с параметром \"Отказ\" BSLLS:UsingCancelParameter",
+                  "signature": null,
+                  "snippet": "В обработчиках событий модулей объектов, наборов записей, форм и т.п., содержащих параметр Отказ (ПриЗаписи, ОбработкаПроверкиЗаполнения, ТоварыПередНачаломДобавления и т.п.), не...",
+                  "applicableVersion": "unversioned"
+                },
+                {
+                  "rank": 9,
+                  "providerScore": 2430.821044921875,
+                  "documentId": "https://v8std.ru/diagnostics/acc/359/",
+                  "title": "Ограничения на уровне записей в разных ролях не совпадает для той же таблицы и права. АПК:359",
+                  "signature": null,
+                  "snippet": "Ограничения на уровне записей в разных ролях не совпадает для той же таблицы и права.",
+                  "applicableVersion": "unversioned"
+                },
+                {
+                  "rank": 10,
+                  "providerScore": 2165.546142578125,
+                  "documentId": "https://v8std.ru/std/451/",
+                  "title": "Программное создание прикладных объектов #std451",
+                  "signature": null,
+                  "snippet": "Для программного создания прикладных объектов используйте методы соответствующих менеджеров (СоздатьЭлемент(), СоздатьДокумент(), СоздатьНаборЗаписей() и т.п.).",
+                  "applicableVersion": "unversioned"
+                },
+                {
+                  "rank": 11,
+                  "providerScore": 2044.87548828125,
+                  "documentId": "https://v8std.ru/std/412/",
+                  "title": "Упорядочивание результатов запроса #std412",
+                  "signature": null,
+                  "snippet": "Если алгоритм обработки зависит от порядка записей или результат показывается пользователю, в тексте запроса следует использовать УПОРЯДОЧИТЬ ПО.",
+                  "applicableVersion": "unversioned"
+                },
+                {
+                  "rank": 12,
+                  "providerScore": 1680.480224609375,
+                  "documentId": "https://v8std.ru/diagnostics/bslls/InternetAccess/",
+                  "title": "Обращение к Интернет-ресурсам BSLLS:InternetAccess",
+                  "signature": null,
+                  "snippet": "Проверьте обращение к Интернет-ресурсам и набор передаваемых данных для исключения передачи конфиденциальной или защищенной информации.",
+                  "applicableVersion": "unversioned"
+                },
+                {
+                  "rank": 13,
+                  "providerScore": 1572.0142822265625,
+                  "documentId": "https://v8std.ru/diagnostics/bslls/FileSystemAccess/",
+                  "title": "Доступ к файловой системе BSLLS:FileSystemAccess",
+                  "signature": null,
+                  "snippet": "При код-ревью или аудите кода необходимо проверять обращения к файлам, каталогам и набор действий, выполняемых с ними, для исключения передачи конфиденциальной или защищенной...",
+                  "applicableVersion": "unversioned"
+                },
+                {
+                  "rank": 14,
+                  "providerScore": 1481.874755859375,
+                  "documentId": "https://v8std.ru/std/783/",
+                  "title": "Транзакции: правила использования #std783",
+                  "signature": null,
+                  "snippet": "Транзакция - это действие, которое может быть выполнено только целиком. Если часть действия не выполнена - все действие отменяется.",
+                  "applicableVersion": "unversioned"
+                },
+                {
+                  "rank": 15,
+                  "providerScore": 1463.37451171875,
+                  "documentId": "https://v8std.ru/diagnostics/v8-code-style/ql-temp-table-index/",
+                  "title": "Временная таблица должна содержать индексы (ql-temp-table-index)",
+                  "signature": null,
+                  "snippet": "2. Маленькие временные таблицы индексировать не нужно (менее 1000 записей).",
+                  "applicableVersion": "unversioned"
+                },
+                {
+                  "rank": 16,
+                  "providerScore": 1369.7032470703125,
+                  "documentId": "https://v8std.ru/diagnostics/bslls/NonStandardRegion/",
+                  "title": "Нестандартные разделы модуля BSLLS:NonStandardRegion",
+                  "signature": null,
+                  "snippet": "Весь код модуля должен быть структурирован и разделен по разделам (областям). Набор разделов для каждого типа модуля (модуль формы, модуль объект, общий модуль и т.д.) однозначно...",
+                  "applicableVersion": "unversioned"
+                },
+                {
+                  "rank": 17,
+                  "providerScore": 1341.6785888671875,
+                  "documentId": "https://v8std.ru/std/648/",
+                  "title": "Ответственное чтение данных #std648",
+                  "signature": null,
+                  "snippet": "Ответственным считается любое чтение, по результатам которого:",
+                  "applicableVersion": "unversioned"
+                },
+                {
+                  "rank": 18,
+                  "providerScore": 1238.756103515625,
+                  "documentId": "https://v8std.ru/patterns/solid/",
+                  "title": "SOLID",
+                  "signature": null,
+                  "snippet": "SOLID — это набор из пяти принципов, которые помогают делать объектную архитектуру расширяемой и предсказуемой.",
+                  "applicableVersion": "unversioned"
+                },
+                {
+                  "rank": 19,
+                  "providerScore": 1235.1683349609375,
+                  "documentId": "https://v8std.ru/patterns/grasp/",
+                  "title": "GRASP",
+                  "signature": null,
+                  "snippet": "GRASP — это набор принципов, которые помогают распределять ответственность между объектами и модулями.",
+                  "applicableVersion": "unversioned"
+                },
+                {
+                  "rank": 20,
+                  "providerScore": 1200.9154052734375,
+                  "documentId": "https://v8std.ru/diagnostics/acc/1103/",
+                  "title": "Отсутствует справочник \"НаборыСвойств\". АПК:1103",
+                  "signature": null,
+                  "snippet": "Отсутствует справочник \"НаборыСвойств\".",
+                  "applicableVersion": "unversioned"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "isError": false
+    }
+  }
+}

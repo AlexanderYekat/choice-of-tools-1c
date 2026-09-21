@@ -18,9 +18,9 @@
 |---|---|---|---|---|---|
 | C1 explore без дампа | **r15 выбран** (13 1С-tools + core); r02 сильный, но не в контуре; r01 частично (`search`/`view`); r19 RAG | r15 частичное→сильное как заявка | c15-bsl-thirteen; c15-entry; c15-cli-core; c15-index-simple; c15-search-callers-simple; c15-mcp-simple | r15 продуктовый; CLI и MCP RUN на sample | точность на большой выгрузке; `[tools].enabled` NOT_RUN |
 | C2 связи BSL | r15 (индекс callers + 1С-tools); r02 хелперы не трассированы; r01 call graph на v0.13 нет | частичное | c15-bsl-thirteen; c15-entry; c15-search-callers-simple; c15-mcp-simple; c01-search-limits | CLI callers + MCP handlers/writers RUN на sample | подписки: dump пуст; большая конф. |
-| C3 метаданные и УФ | метаданные: r01, r15, r02, r12; УФ: r01 edit, r15 read. Обычные формы в v2 не обязательны; пробел Form.bin не блокер | частичное (достаточно для v2) | c01-forms-managed, c01-view-simple, c15-forms-managed-src, c15-autodetect, c02-forms-managed-xml | edit УФ заявлен; r01 view RUN | execution apply; ОФ не ищем |
-| C4 справка API | r01 `unica.docs` выбран; r04 core; r10/r18 не в контуре | частичное→сильное у r01/r04 | c01-docs, c04-*, c10-* | r01 как адаптер контура | проверка на HBK 8.3.27 |
-| C5 edit | r01 основной; r12 дубль, не в контуре; r17 только EDT | частичное (УФ+метаданные) | c01-facade, c01-apply-fence, c12-managed-forms | высокая заявка | execution apply; ОФ не требуется |
+| C3 метаданные и УФ | метаданные: r01, r15, r02, r12; УФ: r01 edit, r15 read. Обычные формы в v2 не обязательны; пробел Form.bin не блокер | частичное (достаточно для v2) | c01-forms-managed, c01-view-simple, c15-forms-managed-src, c15-autodetect, c02-forms-managed-xml | edit УФ заявлен; r01 view RUN | apply preview на Designer 2.20; ОФ не ищем |
+| C4 справка API | r01 `unica.docs` выбран; r04 core; r10/r18 не в контуре | частичное→сильное у r01/r04 | c01-docs-simple, c04-*, c10-* | r01 docs RUN на 8.3.27.1936 | полный текст страницы; admin-guide unavailable |
+| C5 edit | r01 основной; r12 дубль, не в контуре; r17 только EDT | частичное (УФ+метаданные) | c01-facade, c01-apply-fence, c01-apply-dryrun-simple, c12-managed-forms | забор ifRev RUN; dryRun на этой фикстуре `invalid_source` | apply preview на Designer 2.20; ОФ не требуется |
 | C6 static | r01 `unica.check`; **r22 syntax designer/edt** (r09 не в контуре) | частичное | c01, c01-check-format-simple, c22-eight-tools; c22-ib-simple | продуктовая; r22 modules RUN clean; Unica.check ответил на фикстуре `source_unreadable` | check на выгрузке 2.20, которую Unica принимает |
 | C7 build/run | r01 `unica.run`; **r22 CLI `build`/`launch` + `--json-message`** | частичное→сильное у r22 | c22-entry; c22-json-envelope; c22-ib-simple; c01-entry | r22 init/build RUN; r01 static | launch/apply; dual-IB |
 | C8 runtime/UI test | **r22 YaXUnit CLI + `test va`**; **r20 Answer42**; **r21 Vanessa (движок)** | частичное | c22-entry; c20-entry; c20-target; c20-evidence-file; c21-cli-target; c21-cli-status | r20/r21/r22 static, runtime NOT_RUN | execution |
@@ -72,12 +72,12 @@
 
 Все связи `PROPOSED_INTEGRATION`. Фасад не запускался
 (`VERIFIED_INTEGRATION` нет). Dump-only: r15 CLI+MCP, r22 IB, r01
-`view`/`check`. r01/r15/r20/r21/r22 прочитаны в объёме S1–S5.
+`view`/`check`/`apply` dryRun/`docs`. r01/r15/r20/r21/r22 прочитаны в объёме S1–S5.
 
 ## Пробелы
 
-1. Execution пяти: индекс выгрузки r15 и Unica `view` на sample есть;
-   `unica.apply`, Answer42, Vanessa ещё нет.
+1. Execution пяти: индекс выгрузки r15, Unica `view`/`docs`/`apply` dryRun на sample есть;
+   публикация apply, Answer42, Vanessa ещё нет.
 2. Call graph на поверхности Unica v0.13 — не поддержан (explore закрывает r15).
 3. Структура обычных форм — по-прежнему отсутствует, **не блокер** цели v2.
 4. Признаки автоопределения 1С-проекта фасадом: ориентиры есть у r01/r15/r22;

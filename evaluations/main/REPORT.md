@@ -4,7 +4,8 @@
 r15 code-index-mcp, r20 Answer42, r21 Vanessa и r22 v8-runner-rust
 углублены до DEEP_STATIC по S1–S5**.
 **r15 CLI ядра PASS**; **r15 daemon+MCP PASS**; **r22 init/build/syntax PASS**;
-**r01 `view`/`check` PASS** на стенде `simple`.
+**r01 `view`/`check` PASS**; **r01 `apply` dryRun + `docs` PASS** на стенде
+`simple`.
 Static стыковка пяти закрыта. Состав:
 **r22 вместо r09** (решение пользователя 2026-09-21).
 
@@ -24,9 +25,9 @@ r09 METR выведен: тот же слой, что r22. Vanessa остаёт�
 
 Это не разрешение внедрять. Static S1–S5 пяти закрыт
 ([FACADE.md](FACADE.md), [VALIDATION.md](VALIDATION.md)).
-r15 CLI, r15 daemon+MCP, r22 init/build/syntax и r01 `view`/`check`
-прогнаны на стенде `simple`. Следующий этап — `unica.apply` dryRun /
-`unica.docs` / Answer42 по отдельной просьбе.
+r15 CLI, r15 daemon+MCP, r22 init/build/syntax, r01 `view`/`check`
+и r01 `apply` dryRun + `docs` прогнаны на стенде `simple`. Следующий
+этап — Answer42 (живой Test Client) по отдельной просьбе.
 
 Вывод обзора при цели v1 сохранён в снимке `history/goal-v1/REPORT.md`.
 Его не читать при обычном CONTINUE; как рекомендация v2 он не действует.
@@ -66,7 +67,7 @@ DEEP_STATIC по S1–S5. **r15 — DEEP_STATIC по S1–S5** на том же 
 Наиболее существенные неизвестные цели v2:
 
 1. Execution (индекс r15, smoke остальных). Static S1–S5 пяти есть.
-2. Для Unica r01 остаются execution `view`/`apply`; для Answer42 r20 — dual live Test Client; для Vanessa r21 — execution; для r22 — smoke `test yaxunit` / `test va`.
+2. Для Unica r01 остаются публикация `apply` на выгрузке 2.20 и dual-workspace; для Answer42 r20 — dual live Test Client; для Vanessa r21 — execution; для r22 — smoke `test yaxunit` / `test va`.
 3. Точность индекса r15 и компактность JSON-отчёта r22.
 4. Лицензии Unica (LGPL) и r22 (AGPL-3.0) — не юридическое заключение.
 5. Сборка r04, если `unica.docs` не хватит.
@@ -87,9 +88,10 @@ DEEP_STATIC по S1–S5. **r15 — DEEP_STATIC по S1–S5** на том же 
 
 Не V1 (Unica в Cursor) и не внедрение. Static S1–S5 пяти закрыт —
 [INTEGRATION.md](INTEGRATION.md); статусы — [VALIDATION.md](VALIDATION.md).
-Этот отчёт не запускает остальные продукты. **r15 CLI** и **r22
-init/build/syntax** PASS на стенде `simple` (ИБ создана). Точка
-продолжения — [STATE.md](STATE.md).
+Этот отчёт не запускает остальные продукты. **r15 CLI**, **r22
+init/build/syntax**, **r01 view/check** и **r01 apply dryRun + docs**
+PASS на стенде `simple` (ИБ создана). Точка продолжения —
+[STATE.md](STATE.md).
 
 
 ## Частичный CONTINUE-AUDIT r20
@@ -121,8 +123,12 @@ MCP разумно оставить для интерактивной отлад
 (`Configuration.xml` / EDT `.mdo`) и **подтверждён** `unica.view {}` на
 simple1CAiConf (`config.state=autodetected`, source-set `main`). Живой
 `tools/list` = 11. `unica.check` на этом дампе ответил
-`source_unreadable` (формат 2.20). Две ИБ обмена — два корня, как у
-r22. Патч не нужен. Состав не менялся. `apply` NOT_RUN.
+`source_unreadable` (формат 2.20). `unica.apply` dryRun на том же узле
+— `invalid_source` (format 1.0 vs writable 2.20); без `ifRev` публикация
+отвергается живьём. `unica.docs` «НаборЗаписей» сначала отдаёт Task
+`working`; фасад должен poll `unica.task.result` (здесь 5 раз) — 5 секций,
+80 hits. Две ИБ обмена — два корня, как у r22. Патч не нужен. Состав не
+менялся. Публикация `apply` NOT_RUN.
 
 ## Частичный CONTINUE-AUDIT r15
 

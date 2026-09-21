@@ -2,7 +2,7 @@
 
 Версия цели: **2**. Статус: COMPOSITION_R22_CHOSEN; STATIC_S1S5_FIVE_DONE;
 FIXTURE_HARNESS_ATTACHED; R15_CLI_SMOKE_PASS; R15_MCP_SMOKE_PASS;
-R22_IB_SMOKE_PASS; R01_MCP_SMOKE_PASS.
+R22_IB_SMOKE_PASS; R01_MCP_SMOKE_PASS; R01_APPLY_DOCS_SMOKE_PASS.
 Последнее обновление: 2026-09-21.
 
 Состав контура выбран ([DECISION.md](DECISION.md)): Unica, code-index-mcp,
@@ -10,8 +10,8 @@ R22_IB_SMOKE_PASS; R01_MCP_SMOKE_PASS.
 План: [INTEGRATION-PLAN.md](INTEGRATION-PLAN.md).
 Стыковка: **r01 Unica, r15 code-index-mcp, r20 Answer42, r21 Vanessa
 и r22 v8-runner достигли DEEP_STATIC по S1–S5**. r15 CLI, r15 daemon+MCP,
-r22 init/build/syntax и r01 `view`/`check` на стенде `simple` — PASS.
-Фасад не писался.
+r22 init/build/syntax, r01 `view`/`check` и r01 `apply` dryRun + `docs`
+на стенде `simple` — PASS. Фасад не писался.
 
 ## Восстановление без чата
 
@@ -32,7 +32,9 @@ r22 init/build/syntax и r01 `view`/`check` на стенде `simple` — PASS.
 - **r01 Unica: AVAILABLE / DEEP_STATIC**, commit
   `56a67d4a460c97101b6b542b4fe940298ab0edd8` (ветка `main`, HEAD совпал).
   stdio MCP dump-only PASS; живой `tools/list` = 11; `view {}`
-  autodetected `main`; `check` отказал фикстуре по формату 2.20.
+  autodetected `main`; `check` отказал фикстуре по формату 2.20;
+  `apply` dryRun — `invalid_source` (format 1.0 vs writable 2.20);
+  забор `ifRev` живой; `docs` НаборЗаписей — 5 секций / 80 hits.
 - **r15 code-index-mcp: AVAILABLE / DEEP_STATIC**, commit
   `4bde72b60a09187c0667d451a02c7be5e0169835` (ветка `main`, v1.4.0).
   HEAD 2026-09-21 = `309cddb…` (v1.4.2); SHA не подменялся.
@@ -53,7 +55,8 @@ r22 init/build/syntax и r01 `view`/`check` на стенде `simple` — PASS.
 тестовую ИБ `.v8/ib/simple` из выгрузки и прогнать smoke r22.
 «что там дальше по плану — выполняй» (2026-09-21) — dump-only MCP r15.
 ИБ создана. Vanessa/YaXUnit (`tools.* = false`) не запускались.
-Runtime r20/r21 остаются NOT_RUN. `unica.apply` / `unica.docs` NOT_RUN.
+Runtime r20/r21 остаются NOT_RUN. Публикация `apply` (`dryRun:false`
++ живой `ifRev`) NOT_RUN.
 
 Фикстура: opt-in v8-harness @ `322398ae…`, стенд `simple`, `from: file`.
 Выгрузка `source-checkouts/simple1CAiConf` @ `1dbc395d…`.
@@ -72,13 +75,18 @@ Runtime r20/r21 остаются NOT_RUN. `unica.apply` / `unica.docs` NOT_RUN.
 **r01 MCP smoke PASS** (`run-r01-mcp-simple`): изолированный
 `UNICA_PROVIDER_STATE_DIR`, stdio `unica` с cwd выгрузки. 6/6.
 Лог: [logs/r01-mcp-simple.md](logs/r01-mcp-simple.md).
+**r01 apply+docs PASS** (`run-r01-apply-simple`): dryRun `props.set`
+отказал `invalid_source`; забор без `ifRev` — `bad_value`; `docs`
+через Task (5 poll) — 80 hits; дамп не изменился. 6/6.
+Лог: [logs/r01-mcp-apply-simple.md](logs/r01-mcp-apply-simple.md).
 
 ## Следующий шаг
 
-`unica.apply` (сначала `dryRun`), `unica.docs` или Answer42 — по
-отдельной просьбе. Не писать код фасада. Vanessa/YaXUnit не гонять:
-в выгрузке нет тестов, `tools.* = false`. `[tools].enabled` r15 не
-гоняли. Dual-workspace Unica NOT_RUN.
+Answer42 (живой Test Client) — по отдельной просьбе. Не писать код
+фасада. Vanessa/YaXUnit не гонять: в выгрузке нет тестов,
+`tools.* = false`. `[tools].enabled` r15 не гоняли. Dual-workspace
+Unica NOT_RUN. Публикация `apply` на этой фикстуре не делать: Unica
+требует перевыгрузку 2.20.
 
 ## Журнал
 
@@ -125,3 +133,7 @@ path sources поправлен на абсолютный.
 `C:\MyProjects\choice-of-tools-1c`. Утренний снимок сохранён как
 `C:\MyProjects\choice-of-tools-1c.old-20260921`. Абсолютные пути стенда
 и smoke поправлены. Журналы прошлых прогонов оставлены как снято.
+2026-09-21 → «закомить, если закончено и продолжи по плану»: зафиксирован
+r01 `view`/`check`; выполнен `unica.apply` dryRun + `unica.docs`
+(`run-r01-apply-simple`, 6/6 PASS). Публикация не вызывалась. Answer42
+не запускался.

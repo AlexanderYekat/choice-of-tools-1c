@@ -6,8 +6,8 @@ v8-runner**. r09 из контура выведен, S1–S5 для него н�
 
 Шкала: [FACADE.md](FACADE.md). План:
 [INTEGRATION-PLAN.md](INTEGRATION-PLAN.md).
-Все связи — `PROPOSED_INTEGRATION`. r01 `view`/`check` на simple1CAiConf
-выполнен; `apply` нет.
+Все связи — `PROPOSED_INTEGRATION`. r01 `view`/`check`, `apply` dryRun
+и `docs` на simple1CAiConf выполнены; публикация `apply` нет.
 
 ## S1–S5
 
@@ -107,6 +107,7 @@ docs / edit.view / edit.apply / static.check
   -> cwd=<корень с v8project.yaml или выгрузкой>
   -> stdio MCP: unica
   -> subset: unica.docs / unica.view / unica.apply / unica.check
+  -> docs: если envelope Task working — фасад сам poll `unica.task.result`
   -> apply: сначала dryRun true, публикация только с ifRev
   -> compact summary агенту; search/run/task.* не светить
 ```
@@ -143,5 +144,7 @@ Static S1–S5 пяти закрыты. **r15 CLI ядра PASS**. **r15 daemon+
 PASS** на simple1CAiConf (`tools/list` = 33, handlers/structure/writers).
 **r22 init/build/syntax PASS** на ИБ `.v8/ib/simple`. **r01 stdio MCP
 `view`/`check` PASS** (`tools/list` = 11, autodetect `main`; `check`
-отказал этой фикстуре по формату 2.20). Runtime r20/r21 NOT_RUN.
-`unica.apply` не вызывался. Внедрение и код фасада не начинались.
+отказал этой фикстуре по формату 2.20). **r01 `apply` dryRun + `docs`
+PASS** (dryRun `invalid_source` format 1.0 vs writable 2.20; забор
+`ifRev` живой; `docs` 80 hits через Task). Runtime r20/r21 NOT_RUN.
+Публикация `apply` не вызывалась. Внедрение и код фасада не начинались.

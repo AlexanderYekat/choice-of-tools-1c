@@ -1,0 +1,19 @@
+{
+  "jsonrpc": "2.0",
+  "id": 10,
+  "result": {
+    "content": [],
+    "structuredContent": {
+      "ok": false,
+      "summary": "docs query must be non-blank",
+      "diagnostics": [
+        {
+          "code": "bad_value",
+          "outcome": "fixCall",
+          "message": "docs query must be non-blank"
+        }
+      ]
+    },
+    "isError": true
+  }
+}

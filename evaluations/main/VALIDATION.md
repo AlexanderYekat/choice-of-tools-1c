@@ -1,8 +1,8 @@
 # Проверки и следующий эксперимент
 
 Ограниченные dump-only прогоны r15 (CLI + daemon/MCP), r22
-(init/build/syntax) и r01 Unica (`view`/`check`) выполнены. Answer42
-и Vanessa не запускались.
+(init/build/syntax) и r01 Unica (`view`/`check`, `apply` dryRun,
+`docs`) выполнены. Answer42 и Vanessa не запускались.
 Основания: [EVIDENCE.json](EVIDENCE.json).
 Версия цели: 2.
 
@@ -40,9 +40,13 @@ Execution: **r15 CLI ядра PASS**; **r15 daemon+MCP PASS**
 ([logs/r15-mcp-simple.md](logs/r15-mcp-simple.md)); **r22
 init/build/syntax PASS** на ИБ стенда `simple`
 ([logs/r22-ib-simple.md](logs/r22-ib-simple.md)); **r01
-`view`/`check` PASS** ([logs/r01-mcp-simple.md](logs/r01-mcp-simple.md)).
+`view`/`check` PASS** ([logs/r01-mcp-simple.md](logs/r01-mcp-simple.md));
+**r01 `apply` dryRun + `docs` PASS**
+([logs/r01-mcp-apply-simple.md](logs/r01-mcp-apply-simple.md)).
 r20, r21 остаются NOT_RUN. YaXUnit/Vanessa не запускались (в выгрузке
 нет тестов). `unica.check` на этом дампе ответил `source_unreadable`
-(формат 2.20).
+(формат 2.20). `unica.apply` dryRun на том же дампе — `invalid_source`
+(format 1.0 vs writable 2.20); забор `ifRev` подтверждён живьём.
+`unica.docs` «НаборЗаписей» — 5 секций / 80 hits через `task.result`.
 
-Следующее — `unica.apply` dryRun / `unica.docs` / Answer42, не код фасада.
+Следующее — Answer42 (живой Test Client), не код фасада.

@@ -1,0 +1,20 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [],
+    "structuredContent": {
+      "ok": false,
+      "at": "main:Document.ЗаказПокупателя",
+      "summary": "Configuration.xml: export format 1.0 is older than the writable profile 2.20 for 1C 8.3.27; re-export the sources with the platform before editing them",
+      "diagnostics": [
+        {
+          "code": "invalid_source",
+          "outcome": "fixSource",
+          "message": "Configuration.xml: export format 1.0 is older than the writable profile 2.20 for 1C 8.3.27; re-export the sources with the platform before editing them"
+        }
+      ]
+    },
+    "isError": true
+  }
+}

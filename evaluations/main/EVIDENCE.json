@@ -1840,8 +1840,10 @@
         "s01-apply-dryrun",
         "s01-tool-catalog-v13"
       ],
-      "run_ids": [],
-      "limitations": "Publication on a real dump was not executed."
+      "run_ids": [
+        "run-r01-apply-simple"
+      ],
+      "limitations": "Live apply without ifRev on simple1CAiConf returned bad_value at ifRev. Publication with a real ifRev was not executed. Cross-source-set ops.at remains static-only."
     },
     {
       "id": "c01-single-ib",
@@ -1896,9 +1898,10 @@
         "s01-apply-dryrun"
       ],
       "run_ids": [
-        "run-r01-mcp-simple"
+        "run-r01-mcp-simple",
+        "run-r01-apply-simple"
       ],
-      "limitations": "Architectural inference. Live view/check on simple1CAiConf succeeded as stdio MCP with cwd=dump; apply still NOT_RUN."
+      "limitations": "Architectural inference. Live view/check/apply dryRun/docs on simple1CAiConf succeeded as stdio MCP with cwd=dump. Facade must poll unica.task.result after docs working receipts and must not show task.* to the agent. Publication apply still NOT_RUN."
     },
     {
       "id": "c01-multitarget",
@@ -1945,6 +1948,28 @@
         "run-r01-mcp-simple"
       ],
       "limitations": "ConfigDumpInfo.xml header is version 2.20; Unica still refused this hand-written dump. Does not prove check fails on a Designer 2.20 export. r22 syntax on the same dump was clean."
+    },
+    {
+      "id": "c01-apply-dryrun-simple",
+      "repository_id": "r01",
+      "status": "RUN",
+      "statement": "unica.apply dryRun:true props.set Comment on main:Document.ЗаказПокупателя returned structured ok=false invalid_source/fixSource: Configuration.xml export format 1.0 is older than the writable profile 2.20 for 1C 8.3.27; dump SHA-256 fingerprint of 22 files was unchanged.",
+      "source_ids": [],
+      "run_ids": [
+        "run-r01-apply-simple"
+      ],
+      "limitations": "Hand-written simple1CAiConf: ConfigDumpInfo.xml says version 2.20, Unica writable profile still reads format 1.0 from Configuration.xml. Does not prove apply preview fails on a Designer 2.20 export. Publication was not attempted."
+    },
+    {
+      "id": "c01-docs-simple",
+      "repository_id": "r01",
+      "status": "RUN",
+      "statement": "unica.docs query НаборЗаписей first returned a Task working receipt; after polling unica.task.result the envelope was ok with 5 sections and 80 hits (platform-syntax-help syntax-context and platform-guides ok; kb-1ci developer-guide ok; kb-1ci administrator-guide unavailable version-missing; v8std public-standards ok). Syntax-help hits carried applicableVersion 8.3.27.1936. Blank query returned bad_value.",
+      "source_ids": [],
+      "run_ids": [
+        "run-r01-apply-simple"
+      ],
+      "limitations": "Full page body was not fetched. One vendor admin-guide section was unavailable. Network providers (kb-1ci, v8std) answered in this environment; offline behavior unknown."
     },
     {
       "id": "c15-entry",
@@ -2273,6 +2298,23 @@
       "expected": "initialize name=unica; tools/list exactly 11; view {} autodetected main; view document ok; check answers; missing object refused",
       "result": "All six passed. tools/list=11. view {} config.state=autodetected source-set main. view document title Заказ покупателя. check structured source_unreadable (outside supported 2.20 format). missing not_found. First cold spawn missed 5s CONNECT_TIMEOUT; retry after warmup succeeded.",
       "log": "logs/r01-mcp-simple.md",
+      "tests": 6,
+      "assertions": 6,
+      "skipped": 0,
+      "mocks_only": false,
+      "reason": null
+    },
+    {
+      "id": "run-r01-apply-simple",
+      "repository_id": "r01",
+      "commit": "56a67d4a460c97101b6b542b4fe940298ab0edd8",
+      "status": "PASS",
+      "kind": "INTEGRATION",
+      "command": "UNICA_PROVIDER_STATE_DIR=.v8/work/r01-apply/provider-state unica.exe (stdio MCP cwd=simple1CAiConf); initialize; unica.apply dryRun props.set Comment; unica.apply without ifRev; unica.docs НаборЗаписей + task.result poll; unica.docs blank; dump fingerprint",
+      "environment": "Windows 10.0.26200; unica.exe 0.12.0 debug from pinned SHA 56a67d4a…; isolated provider-state .v8/work/r01-apply; dump simple1CAiConf @ 1dbc395d; no publish/run/1C client",
+      "expected": "initialize unica; apply dryRun answers preview or named refusal without writing files; apply without ifRev refused; docs completes with sections after optional task poll; blank docs refused; dump fingerprint unchanged",
+      "result": "All six passed. dryRun invalid_source format 1.0 vs writable 2.20. Fence bad_value ifRev. docs: Task working then 5 sections / 80 hits via 5 task.result polls; admin-guide unavailable version-missing. Blank query refused. Fingerprint 22 files unchanged.",
+      "log": "logs/r01-mcp-apply-simple.md",
       "tests": 6,
       "assertions": 6,
       "skipped": 0,

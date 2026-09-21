@@ -1,0 +1,31 @@
+{
+  "jsonrpc": "2.0",
+  "id": 4,
+  "result": {
+    "content": [],
+    "structuredContent": {
+      "ok": true,
+      "summary": "Task is still working",
+      "data": {
+        "task": {
+          "taskId": "ccf4de68-50cf-4906-ace3-9d42df4f3277",
+          "status": "working",
+          "createdAtEpochMs": 1790000358078,
+          "updatedAtEpochMs": 1790000358078,
+          "ttlMs": 3600000,
+          "pollIntervalMs": 100
+        }
+      },
+      "next": [
+        {
+          "tool": "unica.task.result",
+          "args": {
+            "taskId": "ccf4de68-50cf-4906-ace3-9d42df4f3277",
+            "waitMs": 100
+          }
+        }
+      ]
+    },
+    "isError": false
+  }
+}

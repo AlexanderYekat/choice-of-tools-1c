@@ -1,0 +1,70 @@
+{
+  "binary": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r01\\target\\debug\\unica.exe",
+  "dump": "C:\\MyProjects\\choice-of-tools-1c\\source-checkouts\\simple1CAiConf",
+  "state": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r01-apply\\provider-state",
+  "checks": [
+    {
+      "name": "initialize",
+      "expected": "serverInfo.name=unica",
+      "actual": "name=unica version=0.12.0",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "unica.apply dryRun props.set Comment",
+      "expected": "structured preview or named refusal; no publish",
+      "actual": "ok=False summary=Configuration.xml: export format 1.0 is older than the writable profile 2.20 for 1C 8.3.27; re-export the sources with the platform before editing them rpc_error=False",
+      "pass": true,
+      "extra": {
+        "envelope_keys": [
+          "ok",
+          "at",
+          "summary",
+          "diagnostics"
+        ],
+        "diagnostics": [
+          {
+            "code": "invalid_source",
+            "outcome": "fixSource",
+            "message": "Configuration.xml: export format 1.0 is older than the writable profile 2.20 for 1C 8.3.27; re-export the sources with the platform before editing them"
+          }
+        ]
+      }
+    },
+    {
+      "name": "unica.apply without ifRev (publish fence)",
+      "expected": "refusal naming ifRev / dryRun",
+      "actual": "ok=False summary=ifRev: apply requires ifRev from a prior dryRun preview rpc_error=False blob={\"ok\": false, \"at\": \"ifrev\", \"summary\": \"ifrev: apply requires ifrev from a prior dryrun preview\", \"diagnostics\": [{\"code\": \"bad_value\", \"outcome\": \"fixcall\", \"message\": \"ifrev: apply requires ifrev from a prior dryrun preview\"}]}",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "unica.docs query=НаборЗаписей",
+      "expected": "completed docs result with sections (poll task.result if working)",
+      "actual": "ok=True task=None sections=5 statuses=['ok', 'ok', 'ok', 'unavailable', 'ok'] hits=80 summary=unica.docs completed",
+      "pass": true,
+      "extra": {
+        "taskId": "ccf4de68-50cf-4906-ace3-9d42df4f3277",
+        "task_status": null
+      }
+    },
+    {
+      "name": "unica.docs blank query",
+      "expected": "refusal for blank query",
+      "actual": "ok=False summary=docs query must be non-blank rpc_error=False",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "dump fingerprint unchanged",
+      "expected": "no files added/removed/modified under dump (excluding .build/.code-index)",
+      "actual": "changed=[] count=0 files_before=22",
+      "pass": true,
+      "extra": null
+    }
+  ],
+  "failed": 0,
+  "killed_daemon_pids": [],
+  "stderr_log": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r01-apply\\unica.stderr.log",
+  "changed_files": []
+}
