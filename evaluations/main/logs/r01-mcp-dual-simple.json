@@ -1,0 +1,118 @@
+{
+  "binary": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r01\\target\\debug\\unica.exe",
+  "dump_a": "C:\\MyProjects\\choice-of-tools-1c\\source-checkouts\\simple1CAiConf",
+  "dump_b": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\simple-cf-220",
+  "state": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r01-dual\\provider-state",
+  "checks": [
+    {
+      "name": "initialize-a",
+      "expected": "serverInfo.name=unica on handwritten dump",
+      "actual": "name=unica version=0.12.0 pid=32052",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "daemon-after-a",
+      "expected": "exactly one --daemon process for this state root",
+      "actual": "pids=[23920]",
+      "pass": true,
+      "extra": {
+        "daemons": [
+          {
+            "pid": 23920,
+            "parent": 32052,
+            "command": "\"C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r01\\target\\debug\\unica.exe\" --daemon --state-root C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r01-dual\\provider-state --core-identity 884b76181583ce34907a2a9758e2b493e5b40883e7cbb0d7f88dcec0e468cfa0 --idle-grace-ms 120000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "initialize-b",
+      "expected": "serverInfo.name=unica on cf220 while A is still connected",
+      "actual": "name=unica version=0.12.0 pid=33900",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "daemon-shared",
+      "expected": "same single daemon pid; both stdio pids differ from it",
+      "actual": "before=[23920] after=[23920] stdio=[32052,33900]",
+      "pass": true,
+      "extra": {
+        "daemons": [
+          {
+            "pid": 23920,
+            "parent": 32052,
+            "command": "\"C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r01\\target\\debug\\unica.exe\" --daemon --state-root C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r01-dual\\provider-state --core-identity 884b76181583ce34907a2a9758e2b493e5b40883e7cbb0d7f88dcec0e468cfa0 --idle-grace-ms 120000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "view-workspace-a",
+      "expected": "workspaceRoot is handwritten simple1CAiConf",
+      "actual": "ok=True root=C:\\MyProjects\\choice-of-tools-1c\\source-checkouts\\simple1CAiConf",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "view-workspace-b",
+      "expected": "workspaceRoot is simple-cf-220",
+      "actual": "ok=True root=C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\simple-cf-220",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "view-comment-a",
+      "expected": "handwritten document Comment is empty",
+      "actual": "ok=True comment='' rev=unica-source-sha256-v1:1:6ae3445b8114483b750d6e0cbd5fd558e003a790c55bf2bf1d922e191c621f8f",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "view-comment-b",
+      "expected": "cf220 document Comment is r01-publish-ifRev-20260921",
+      "actual": "ok=True comment='r01-publish-ifRev-20260921' rev=unica-source-sha256-v1:1:032c15427cf9d501360f2ef5c7e144ebfa8a3821b4bb521f664a21c23c87190e",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "view-comment-a-again",
+      "expected": "handwritten Comment stays empty after cf220 view",
+      "actual": "ok=True comment='' rev=unica-source-sha256-v1:1:6ae3445b8114483b750d6e0cbd5fd558e003a790c55bf2bf1d922e191c621f8f",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "receipt-scopes",
+      "expected": "one core identity and two requestScopeHash values, one per cwd",
+      "actual": "identities=['884b76181583ce34907a2a9758e2b493e5b40883e7cbb0d7f88dcec0e468cfa0'] scopes=['fdf737481b81b106a05cab0a672f98dc8129c2ed5692d4f684b7d3bb2002c55f', '848996cf8f928ed581d25b133d6b4428a9397903e8abfc922b6deb8fdd4f2f46'] receipts=9",
+      "pass": true,
+      "extra": {
+        "expected_scopes": [
+          "848996cf8f928ed581d25b133d6b4428a9397903e8abfc922b6deb8fdd4f2f46",
+          "fdf737481b81b106a05cab0a672f98dc8129c2ed5692d4f684b7d3bb2002c55f"
+        ]
+      }
+    },
+    {
+      "name": "dumps-unchanged",
+      "expected": "both document XML sha256 unchanged",
+      "actual": "before={'handwritten': '00f4771e7800d662d8b2b426592eea521d37abcec06327bc69f77b2530ab8983', 'cf220': '1275cfce6228e5f39b01fd997c7932466c4e1d175c17a784c2a7def1df744d74'} after={'handwritten': '00f4771e7800d662d8b2b426592eea521d37abcec06327bc69f77b2530ab8983', 'cf220': '1275cfce6228e5f39b01fd997c7932466c4e1d175c17a784c2a7def1df744d74'}",
+      "pass": true,
+      "extra": null
+    }
+  ],
+  "failed": 0,
+  "killed_daemon_pids": [
+    23920
+  ],
+  "fingerprints_before": {
+    "handwritten": "00f4771e7800d662d8b2b426592eea521d37abcec06327bc69f77b2530ab8983",
+    "cf220": "1275cfce6228e5f39b01fd997c7932466c4e1d175c17a784c2a7def1df744d74"
+  },
+  "fingerprints_after": {
+    "handwritten": "00f4771e7800d662d8b2b426592eea521d37abcec06327bc69f77b2530ab8983",
+    "cf220": "1275cfce6228e5f39b01fd997c7932466c4e1d175c17a784c2a7def1df744d74"
+  }
+}

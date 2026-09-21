@@ -1,0 +1,20 @@
+{
+  "grep_code": {
+    "jsonrpc": "2.0",
+    "id": 4,
+    "error": {
+      "code": -32602,
+      "message": "tool 'grep_code' is disabled by [tools].enabled whitelist in daemon.toml"
+    },
+    "_http_status": 200
+  },
+  "get_object_structure": {
+    "jsonrpc": "2.0",
+    "id": 5,
+    "error": {
+      "code": -32602,
+      "message": "tool 'get_object_structure' is disabled by [tools].enabled whitelist in daemon.toml"
+    },
+    "_http_status": 200
+  }
+}

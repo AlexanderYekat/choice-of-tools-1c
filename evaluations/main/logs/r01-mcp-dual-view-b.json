@@ -1,0 +1,51 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [],
+    "structuredContent": {
+      "ok": true,
+      "summary": "source sets autodetected; v8project.yaml is not present",
+      "data": {
+        "workspaceRoot": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\simple-cf-220",
+        "config": {
+          "state": "autodetected",
+          "path": "v8project.yaml"
+        },
+        "sourceSets": [
+          {
+            "name": "main",
+            "kind": "configuration",
+            "path": ".",
+            "sourceFormat": "platform_xml",
+            "sourceState": "supported",
+            "formatEvidence": [
+              "Configuration.xml"
+            ]
+          }
+        ],
+        "infobase": {
+          "configured": false,
+          "source": null
+        },
+        "effectiveSourceSet": "main",
+        "effectiveSourceRoot": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\simple-cf-220",
+        "sourceSelectionError": null,
+        "setup": {
+          "path": "v8project.yaml",
+          "content": "format: DESIGNER\nsource-set:\n- name: main\n  type: CONFIGURATION\n  path: .\n",
+          "sourceSetExample": null,
+          "reason": "Persist the autodetected source sets so future discovery is explicit and stable."
+        }
+      },
+      "next": [
+        {
+          "tool": "unica.check",
+          "args": {},
+          "reason": "готовность рабочего пространства, проверки и диагностики"
+        }
+      ]
+    },
+    "isError": false
+  }
+}

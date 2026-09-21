@@ -1,0 +1,34 @@
+{
+  "jsonrpc": "2.0",
+  "id": 3,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"result\":{\"form_name\":\"ФормаДокумента\",\"handlers\":[{\"element\":\"ТоварыКоличество\",\"event\":\"ПриИзменении\",\"handler\":\"ТоварыКоличествоПриИзменении\"},{\"element\":\"ТоварыЦена\",\"event\":\"ПриИзменении\",\"handler\":\"ТоварыЦенаПриИзменении\"}],\"handlers_included\":true,\"handlers_total\":2,\"owner_full_name\":\"Documents.ЗаказПокупателя\"}}"
+      }
+    ],
+    "structuredContent": {
+      "result": {
+        "form_name": "ФормаДокумента",
+        "handlers": [
+          {
+            "element": "ТоварыКоличество",
+            "event": "ПриИзменении",
+            "handler": "ТоварыКоличествоПриИзменении"
+          },
+          {
+            "element": "ТоварыЦена",
+            "event": "ПриИзменении",
+            "handler": "ТоварыЦенаПриИзменении"
+          }
+        ],
+        "handlers_included": true,
+        "handlers_total": 2,
+        "owner_full_name": "Documents.ЗаказПокупателя"
+      }
+    },
+    "isError": false
+  },
+  "_http_status": 200
+}

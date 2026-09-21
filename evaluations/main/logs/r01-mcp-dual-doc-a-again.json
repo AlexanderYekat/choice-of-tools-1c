@@ -1,0 +1,86 @@
+{
+  "jsonrpc": "2.0",
+  "id": 4,
+  "result": {
+    "content": [],
+    "structuredContent": {
+      "ok": true,
+      "at": "main:Document.ЗаказПокупателя",
+      "summary": "logical node resolved",
+      "data": {
+        "at": "main:Document.ЗаказПокупателя",
+        "kind": "Document",
+        "title": "Заказ покупателя",
+        "props": {
+          "kind": "Document",
+          "synonym": "Заказ покупателя",
+          "support": "supported",
+          "Comment": "",
+          "UseStandardCommands": true,
+          "Numerator": "",
+          "NumberType": "String",
+          "NumberLength": 9,
+          "NumberAllowedLength": "Variable",
+          "NumberPeriodicity": "Nonperiodical",
+          "CheckUnique": true,
+          "Autonumbering": true,
+          "CreateOnInput": "Use",
+          "SearchStringModeOnInputByString": "Begin",
+          "FullTextSearchOnInputByString": "DontUse",
+          "ChoiceDataGetModeOnInputByString": "Directly",
+          "DefaultObjectForm": "Document.ЗаказПокупателя.Form.ФормаДокумента",
+          "DefaultListForm": "Document.ЗаказПокупателя.Form.ФормаСписка",
+          "DefaultChoiceForm": "",
+          "AuxiliaryObjectForm": "",
+          "AuxiliaryListForm": "",
+          "AuxiliaryChoiceForm": "",
+          "Posting": "Allow",
+          "RegisterRecordsDeletion": "AutoDelete",
+          "RegisterRecordsWritingOnPost": "WriteModified",
+          "PostInPrivilegedMode": true,
+          "UnpostInPrivilegedMode": true,
+          "IncludeHelpInContents": false,
+          "DataLockControlMode": "Managed",
+          "FullTextSearch": "Use",
+          "ObjectPresentation": "{\"kind\":\"localizedString\",\"values\":[]}",
+          "ExtendedObjectPresentation": "{\"kind\":\"localizedString\",\"values\":[]}",
+          "ListPresentation": "{\"kind\":\"localizedString\",\"values\":[]}",
+          "ExtendedListPresentation": "{\"kind\":\"localizedString\",\"values\":[]}",
+          "Explanation": "{\"kind\":\"localizedString\",\"values\":[]}",
+          "ChoiceHistoryOnInput": "Auto",
+          "DataHistory": "DontUse",
+          "UpdateDataHistoryImmediatelyAfterWrite": false,
+          "ExecuteAfterWriteDataHistoryVersionProcessing": false
+        },
+        "branches": [
+          {
+            "at": "main:Document.ЗаказПокупателя.Attribute",
+            "count": 2
+          },
+          {
+            "at": "main:Document.ЗаказПокупателя.StandardAttribute",
+            "count": 5
+          },
+          {
+            "at": "main:Document.ЗаказПокупателя.TabularSection",
+            "count": 1
+          },
+          {
+            "at": "main:Document.ЗаказПокупателя.Form",
+            "count": 2
+          },
+          {
+            "at": "main:Document.ЗаказПокупателя.Relation",
+            "count": 2
+          },
+          {
+            "at": "main:Document.ЗаказПокупателя.Module",
+            "count": 2
+          }
+        ]
+      },
+      "rev": "unica-source-sha256-v1:1:6ae3445b8114483b750d6e0cbd5fd558e003a790c55bf2bf1d922e191c621f8f"
+    },
+    "isError": false
+  }
+}

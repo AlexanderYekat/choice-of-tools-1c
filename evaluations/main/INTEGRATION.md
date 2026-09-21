@@ -14,8 +14,8 @@ PASS (`run-r01-apply-publish`).
 
 | Кандидат | S1 вызов | S2 source / target | S3 surface | S4 две цели | S5 проект |
 |---|---|---|---|---|---|
-| **r01 Unica** | **терпимо** — stdio MCP `unica`, не one-shot CLI; живой initialize PASS | **терпимо** — cwd / `v8project.yaml`; `view {}` autodetected `main` без yaml | **удобно** — живой `tools/list` = 11; фасад зовёт subset | **терпимо** — несколько source-set; одна ИБ на yaml; два процесса | **удобно** — `view {}` без yaml, `Configuration.xml` на `.` |
-| **r15 code-index-mcp** | **терпимо** — CLI ядра + stdio/HTTP MCP `serve`; 1С-tools только MCP+демон | **удобно** — `--path alias=dir` / `[[paths]]` / `repo=`; ИБ нет | **удобно CLI / терпимо MCP** — живой `tools/list` = 33; `[tools].enabled` режет list (whitelist NOT_RUN) | **удобно** — несколько alias, отдельный `index.db` | **удобно** на корне выгрузки; `daemon.toml` не обязателен для one-shot |
+| **r01 Unica** | **терпимо** — stdio MCP `unica`, не one-shot CLI; живой initialize PASS | **терпимо** — cwd / `v8project.yaml`; `view {}` autodetected `main` без yaml | **удобно** — живой `tools/list` = 11; фасад зовёт subset | **терпимо** — dual-workspace RUN: один демон, два cwd; одна ИБ на yaml; два source-set в одном yaml NOT_RUN | **удобно** — `view {}` без yaml, `Configuration.xml` на `.` |
+| **r15 code-index-mcp** | **терпимо** — CLI ядра + stdio/HTTP MCP `serve`; 1С-tools только MCP+демон | **удобно** — `--path alias=dir` / `[[paths]]` / `repo=`; ИБ нет | **удобно** — CLI без tools/list; MCP с `[tools].enabled` list = 9 и `-32602` вне списка (без секции list = 33) | **удобно** — несколько alias, отдельный `index.db` | **удобно** на корне выгрузки; `daemon.toml` не обязателен для one-shot |
 | r09 mcp-onec-test-runner | OUT OF CONTOUR | — | — | — | — |
 | **r22 v8-runner** (конкурент r09) | **удобно** — CLI `v8-runner`; MCP optional stdio/HTTP | **терпимо** — `--config` / один `infobase` на yaml | **удобно** — CLI без tools; MCP ровно 8 | **терпимо** — два yaml / два процесса; dual-IB NOT_RUN | **удобно** — родной `v8project.yaml` |
 | **r20 Answer42** | **терпимо** — CLI поднимает stdio/HTTP MCP, не one-shot form CLI; живой initialize PASS | **удобно** — `base_url` путь файловой ИБ + `session_id`; креды на simple не нужны | **терпимо** — живой `ui` = 103; дефолт `full` 122 static; `--tool-profile` / `--disable-rag` | **удобно по контракту / simultaneous NOT_RUN**; дубль id отказал RUN | **терпимо** — явный `base_url`; RAG-scan не детектор фасада |
@@ -131,7 +131,7 @@ explore(source, op, args)
   -> bsl-indexer index --path <source>          # или daemon watch
   -> CODE_INDEX_HOME=<facade>
        daemon.toml [[paths]] + [tools].enabled
-  -> stdio MCP: bsl-indexer serve --config <toml>
+  -> bsl-indexer serve --config <toml>   # без --path: иначе конфиг игнорируется
   -> tools/call repo=<alias> subset explore
   -> compact summary; raw tools/list не показывать
 ```
@@ -152,4 +152,7 @@ PASS** (dryRun `invalid_source` format 1.0 vs writable 2.20; забор
 **Vanessa smoke 1/1 PASS**. **Runtime r20 PASS**
 (`run-r20-mcp-simple`: `tools/list` = 103, сессия к simple, screenshot
 path). **Публикация `apply` PASS** (`run-r01-apply-publish`: `mode=published`,
-stale `ifRev`). Внедрение и код фасада не начинались.
+stale `ifRev`). **r15 whitelist PASS** (`run-r15-mcp-whitelist`:
+`tools/list` = 9). **r01 dual-workspace PASS** (`run-r01-dual-simple`:
+один `--daemon`, два cwd, Comment не смешался). Внедрение и код фасада
+не начинались. Dual live Test Client r20 NOT_RUN. Dual-IB Unica NOT_RUN.

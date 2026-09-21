@@ -4,7 +4,8 @@
 FIXTURE_HARNESS_ATTACHED; R15_CLI_SMOKE_PASS; R15_MCP_SMOKE_PASS;
 R22_IB_SMOKE_PASS; R01_MCP_SMOKE_PASS; R01_APPLY_DOCS_SMOKE_PASS;
 R22_DUMP_CF220_PASS; R01_APPLY_CF220_PASS; R22_YAXUNIT_VA_EMPTY_FAIL; R22_VA_SMOKE_PASS;
-R20_MCP_SMOKE_PASS; R01_APPLY_PUBLISH_PASS.
+R20_MCP_SMOKE_PASS; R01_APPLY_PUBLISH_PASS; R15_MCP_WHITELIST_PASS;
+R01_DUAL_WORKSPACE_PASS.
 Последнее обновление: 2026-09-21.
 
 Состав контура выбран ([DECISION.md](DECISION.md)): Unica, code-index-mcp,
@@ -16,7 +17,9 @@ r22 init/build/syntax, r01 `view`/`check`, r01 `apply` dryRun + `docs`
 на рукописном дампе, r22 `dump` 2.20 и r01 `apply` dryRun на этой
 выгрузке — PASS. YaXUnit на simple — отказ (нет тестов/профиля).
 Vanessa smoke-engine.feature 1/1 PASS. **r20 Answer42 smoke PASS**.
-**r01 `apply` публикация на cf220 PASS**. Фасад не писался.
+**r01 `apply` публикация на cf220 PASS**. **r15 `[tools].enabled`
+PASS** (живой `tools/list` = 9). **r01 dual-workspace PASS**
+(две выгрузки, один демон). Фасад не писался.
 
 ## Восстановление без чата
 
@@ -42,11 +45,14 @@ Vanessa smoke-engine.feature 1/1 PASS. **r20 Answer42 smoke PASS**.
   на Designer dump `.v8/work/simple-cf-220` — план `preview` + `rev`;
   публикация `dryRun:false` + `ifRev` — `mode=published`; stale `ifRev`
   отказал; `docs` НаборЗаписей — 5 секций / 80 hits.
+  Dual-workspace: два cwd, один `--daemon`, Comment не смешался.
 - **r15 code-index-mcp: AVAILABLE / DEEP_STATIC**, commit
   `4bde72b60a09187c0667d451a02c7be5e0169835` (ветка `main`, v1.4.0).
   HEAD 2026-09-21 = `309cddb…` (v1.4.2); SHA не подменялся.
   CLI ядра + HTTP MCP dump-only PASS; живой `tools/list` = 33
-  (13 1С-tools); alias `simple`.
+  (13 1С-tools); alias `simple`. `[tools].enabled` из 9 имён explore
+  плюс опечатка: `tools/list` = 9; `grep_code` и `get_object_structure`
+  — `-32602`; `get_form_handlers` живой.
 - r09: OVERVIEW, **не в контуре** (C14, решение 2026-09-21).
 - **r20 Answer42: AVAILABLE / DEEP_STATIC**, commit
   `0406669a88144834bfdf6086c7040a25cb76d24c` (ветка `beta`, v0.5.3).
@@ -114,13 +120,25 @@ stdio `--tool-profile ui --disable-rag`; `tools/list` = 103; сессия к
 `<Comment>r01-publish-ifRev-20260921</Comment>`; повтор того же `ifRev`
 — `stale_revision`. Рукописный дамп и ИБ не трогались. Лог:
 [logs/r01-mcp-apply-publish-simple.md](logs/r01-mcp-apply-publish-simple.md).
+**r15 `[tools].enabled` PASS** (`run-r15-mcp-whitelist`): HTTP `serve
+--config` без `--path`; `tools/list` = 9; опечатка в логе; отказ
+`-32602` на `grep_code` и `get_object_structure`. Лог:
+[logs/r15-mcp-whitelist-simple.md](logs/r15-mcp-whitelist-simple.md).
+**r01 dual-workspace PASS** (`run-r01-dual-simple`): два stdio с cwd
+`simple1CAiConf` и `.v8/work/simple-cf-220`, один `--daemon` pid 23920.
+`view {}` вернул свой корень каждому; Comment пустой на рукописном
+дампе и `r01-publish-ifRev-20260921` на cf220, повторный view A не
+смешался. Квитанции: один `coreIdentityDigest`, два `requestScopeHash`.
+XML документов не изменились. Лог:
+[logs/r01-mcp-dual-simple.md](logs/r01-mcp-dual-simple.md).
 
 ## Следующий шаг
 
-Не писать код фасада. Dump-only `[tools].enabled` r15 (whitelist MCP)
-— следующий дешёвый эксперимент. Dual-workspace Unica NOT_RUN.
-Dual live Test Client Answer42 NOT_RUN. YaXUnit на simple по-прежнему
-без расширения/модулей. Рабочий дамп `.v8/work/simple-cf-220` несёт
+Не писать код фасада. Dual live Test Client Answer42 — следующий
+эксперимент. stdio-whitelist r15 и связка `--path`+`--config` NOT_RUN
+(`serve --help`: `--path` игнорирует конфиг). YaXUnit на simple
+по-прежнему без расширения/модулей. Две ИБ Unica и два source-set
+в одном yaml NOT_RUN. Рабочий дамп `.v8/work/simple-cf-220` несёт
 smoke-Comment; повторный Designer dump затрёт его.
 
 ## Журнал
@@ -186,3 +204,13 @@ r01 `view`/`check`; выполнен `unica.apply` dryRun + `unica.docs`
 2026-09-21 → «давай дальше, что по плану»: публикация `unica.apply`
 (`dryRun:false` + `ifRev`) на `.v8/work/simple-cf-220` — 6/6 PASS
 (`run-r01-apply-publish`). Фасад не писался.
+2026-09-21 → «давай дальше по плану»: dump-only `[tools].enabled` r15.
+Изолированный `CODE_INDEX_HOME` `.v8/work/r15-whitelist/home`; HTTP
+`serve --config` без `--path`. 7/7 PASS (`run-r15-mcp-whitelist`).
+`tools/list` = 9; опечатка предупреждена; вне списка `-32602`.
+Фасад не писался.
+2026-09-21 → «продолжай дальше по плану»: dual-workspace Unica.
+Два stdio MCP, один `--daemon` (pid 23920) на изолированном
+`UNICA_PROVIDER_STATE_DIR`. 11/11 PASS (`run-r01-dual-simple`).
+`view` не смешал корни и Comment; sha256 XML не изменился.
+`apply` не вызывался. Фасад не писался.

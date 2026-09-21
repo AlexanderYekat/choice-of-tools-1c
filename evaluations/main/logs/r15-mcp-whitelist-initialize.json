@@ -1,0 +1,21 @@
+{
+  "url": "http://127.0.0.1:54852/mcp",
+  "status": 200,
+  "body": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "protocolVersion": "2024-11-05",
+      "capabilities": {
+        "tools": {
+          "listChanged": true
+        }
+      },
+      "serverInfo": {
+        "name": "code-index-mcp",
+        "version": "1.4.0"
+      }
+    }
+  },
+  "session": "428c39df-0f34-435b-acf0-b5ce0e14d975"
+}

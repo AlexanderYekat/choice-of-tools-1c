@@ -1,0 +1,66 @@
+{
+  "binary": "C:\\Users\\Enduro\\Documents\\1c\\Tools\\bsl-indexer\\bsl-indexer.exe",
+  "version": "1.4.0",
+  "commit": "4bde72b60a09187c0667d451a02c7be5e0169835",
+  "dump": "C:\\MyProjects\\choice-of-tools-1c\\source-checkouts\\simple1CAiConf",
+  "home": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r15-whitelist\\home",
+  "port": 54852,
+  "allowed": [
+    "search_function",
+    "get_function",
+    "get_callers",
+    "read_file",
+    "get_object_profile",
+    "get_form_handlers",
+    "get_event_subscriptions",
+    "get_register_writers",
+    "find_references"
+  ],
+  "typo": "not_a_real_tool",
+  "checks": [
+    {
+      "name": "daemon online",
+      "expected": "status mentions online or ready",
+      "actual": "Демон code-index\n  статус:    running\n  версия:    1.4.0\n  PID:       3520\n  старт:     2026-09-21T17:19:56.956097700+00:00\n  uptime:    1с\n  папок:     1\n    - [ready] \\\\?\\C:\\MyProjects\\choice-of-tools-1c\\source-checkouts\\simple1CAiConf",
+      "pass": true
+    },
+    {
+      "name": "serve listening",
+      "expected": "127.0.0.1:54852",
+      "actual": "ready=True exit=None",
+      "pass": true
+    },
+    {
+      "name": "tools/list whitelist",
+      "expected": "exactly 9 names, no extras",
+      "actual": "count=9 missing=[] extra=[]",
+      "pass": true
+    },
+    {
+      "name": "typo warning",
+      "expected": "stderr names not_a_real_tool as unknown",
+      "actual": "warning present",
+      "pass": true
+    },
+    {
+      "name": "allowed get_form_handlers",
+      "expected": "both OnChange handlers",
+      "actual": "{\"result\":{\"form_name\":\"ФормаДокумента\",\"handlers\":[{\"element\":\"ТоварыКоличество\",\"event\":\"ПриИзменении\",\"handler\":\"ТоварыКоличествоПриИзменении\"},{\"element\":\"ТоварыЦена\",\"event\":\"ПриИзменении\",\"handler\":\"ТоварыЦенаПриИзменении\"}],\"handlers_included\":true,\"handlers_total\":2,\"owner_full_name\":\"Documents.ЗаказПокупателя\"}}\n{\"result\": {\"form_name\": \"ФормаДокумента\", \"handlers\": [{\"element\": \"ТоварыКоличество\", \"event\": \"ПриИзменении\", \"handler\": \"ТоварыКоличествоПриИзменении\"}, {\"element\": \"ТоварыЦ",
+      "pass": true
+    },
+    {
+      "name": "denied grep_code",
+      "expected": "-32602 whitelist",
+      "actual": "code=-32602 message=tool 'grep_code' is disabled by [tools].enabled whitelist in daemon.toml",
+      "pass": true
+    },
+    {
+      "name": "denied get_object_structure",
+      "expected": "-32602 whitelist",
+      "actual": "code=-32602 message=tool 'get_object_structure' is disabled by [tools].enabled whitelist in daemon.toml",
+      "pass": true
+    }
+  ],
+  "passed": 7,
+  "failed": 0
+}

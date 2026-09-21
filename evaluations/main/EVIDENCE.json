@@ -1910,9 +1910,10 @@
         "s01-mcp-stdio"
       ],
       "run_ids": [
-        "run-r01-mcp-simple"
+        "run-r01-mcp-simple",
+        "run-r01-dual-simple"
       ],
-      "limitations": "Isolated UNICA_PROVIDER_STATE_DIR was used. Cold debug spawn missed the 5s CONNECT_TIMEOUT once; warmed retry connected. Dual-workspace isolation still NOT_RUN."
+      "limitations": "Isolated UNICA_PROVIDER_STATE_DIR was used. Cold debug spawn missed the 5s CONNECT_TIMEOUT once; warmed retry connected. Dual-workspace: one --daemon pid served two cwd values; endpoint.json stayed exclusively locked, so the pid came from the process list."
     },
     {
       "id": "c01-adapter-choice",
@@ -1942,8 +1943,10 @@
         "s01-apply-dryrun",
         "s01-daemon-router"
       ],
-      "run_ids": [],
-      "limitations": "Simultaneous dual-IB/dual-workspace was not executed."
+      "run_ids": [
+        "run-r01-dual-simple"
+      ],
+      "limitations": "Shared daemon scoped by workspace_hint is run-r01-dual-simple. Two source-sets in one yaml and dual-IB were not executed."
     },
     {
       "id": "c01-mcp-simple",
@@ -2023,6 +2026,20 @@
         "run-r01-apply-publish"
       ],
       "limitations": "Only props.set Comment on one document node. Load of the published dump back into the IB was not executed. The work dump now carries the smoke Comment until a new Designer dump."
+    },
+    {
+      "id": "c01-dual-workspace-simple",
+      "repository_id": "r01",
+      "status": "RUN",
+      "statement": "Two live stdio MCP clients with cwd simple1CAiConf and .v8/work/simple-cf-220 shared one unica --daemon under an isolated UNICA_PROVIDER_STATE_DIR. unica.view {} returned each cwd as workspaceRoot. Document Comment stayed empty on the handwritten dump and r01-publish-ifRev-20260921 on cf220, including a repeat view of the handwritten dump after the cf220 view. Receipts used one coreIdentityDigest and two requestScopeHash values matching those cwd strings. Both document XML sha256 values were unchanged.",
+      "source_ids": [
+        "s01-mcp-stdio",
+        "s01-daemon-router"
+      ],
+      "run_ids": [
+        "run-r01-dual-simple"
+      ],
+      "limitations": "endpoint.json was exclusively locked while the daemon lived, so the pid was taken from Win32_Process. Active receipt count includes an earlier probe in the same state directory; unique scopes were still exactly the two cwd hashes. apply was not called. Dual-IB and two source-sets in one yaml were not executed."
     },
     {
       "id": "c22-yaxunit-empty-simple",
@@ -2115,17 +2132,17 @@
     {
       "id": "c15-mcp-whitelist",
       "repository_id": "r15",
-      "status": "SOURCE",
-      "statement": "daemon.toml [tools].enabled whitelists MCP short names; empty list means all registered tools (about 20 core plus 13 BSL when language=bsl).",
+      "status": "RUN",
+      "statement": "On bsl-indexer 1.4.0, daemon.toml [tools].enabled with nine explore names plus one unknown name made HTTP tools/list return exactly those nine. get_form_handlers still returned both OnChange handlers of ФормаДокумента. tools/call of grep_code and get_object_structure returned JSON-RPC -32602 disabled by the whitelist. Startup warned that not_a_real_tool is unknown and counted 9 known of 10 listed.",
       "source_ids": [
         "s15-tools-whitelist",
         "s15-processor",
         "s15-readme-s1"
       ],
       "run_ids": [
-        "run-r15-mcp-simple"
+        "run-r15-mcp-whitelist"
       ],
-      "limitations": "Live HTTP tools/list without whitelist was 33 names (20 core + 13 BSL). [tools].enabled cutting that list was not executed."
+      "limitations": "HTTP serve --config only, one alias simple on simple1CAiConf. stdio was not re-tested. serve --help says a simultaneous --path ignores the config; that override was not executed. Empty enabled was not re-tested; the earlier run without the section listed 33 names."
     },
     {
       "id": "c15-multirepo",
@@ -2192,9 +2209,10 @@
       ],
       "run_ids": [
         "run-r15-cli-simple",
-        "run-r15-mcp-simple"
+        "run-r15-mcp-simple",
+        "run-r15-mcp-whitelist"
       ],
-      "limitations": "CLI core and daemon+MCP named tools PASS on simple1CAiConf. [tools].enabled whitelist and dual live serve remain NOT_RUN."
+      "limitations": "CLI core, daemon+MCP named tools, and HTTP [tools].enabled whitelist PASS on simple1CAiConf. Dual live serve remains NOT_RUN. stdio whitelist was not re-tested."
     },
     {
       "id": "c15-index-simple",
@@ -2385,6 +2403,23 @@
       "reason": null
     },
     {
+      "id": "run-r15-mcp-whitelist",
+      "repository_id": "r15",
+      "commit": "4bde72b60a09187c0667d451a02c7be5e0169835",
+      "status": "PASS",
+      "kind": "INTEGRATION",
+      "command": "CODE_INDEX_HOME=.v8/work/r15-whitelist/home bsl-indexer.exe daemon run; bsl-indexer.exe serve --transport http --host 127.0.0.1 --port <ephemeral> --config daemon.toml; MCP tools/list and tools/call",
+      "environment": "Windows 10.0.26200; bsl-indexer.exe 1.4.0 from GitHub release v1.4.0 (SHA 4bde72b…); dump simple1CAiConf @ 1dbc395d; isolated CODE_INDEX_HOME; [tools].enabled = 9 explore names + typo not_a_real_tool; no --path; no 1C platform",
+      "expected": "tools/list is exactly the 9 known names; startup warns about the typo; get_form_handlers returns both OnChange handlers; grep_code and get_object_structure return -32602 disabled by the whitelist",
+      "result": "All seven checks passed. tools/list count=9. Log: 9 known of 10 listed, unknown not_a_real_tool. Form handlers ТоварыКоличествоПриИзменении and ТоварыЦенаПриИзменении. Both denied calls code=-32602. Processes stopped with daemon stop.",
+      "log": "logs/r15-mcp-whitelist-simple.md",
+      "tests": 7,
+      "assertions": 7,
+      "skipped": 0,
+      "mocks_only": false,
+      "reason": null
+    },
+    {
       "id": "run-r01-mcp-simple",
       "repository_id": "r01",
       "commit": "56a67d4a460c97101b6b542b4fe940298ab0edd8",
@@ -2533,6 +2568,23 @@
       "log": "logs/r01-mcp-apply-publish-simple.md",
       "tests": 6,
       "assertions": 6,
+      "skipped": 0,
+      "mocks_only": false,
+      "reason": null
+    },
+    {
+      "id": "run-r01-dual-simple",
+      "repository_id": "r01",
+      "commit": "56a67d4a460c97101b6b542b4fe940298ab0edd8",
+      "status": "PASS",
+      "kind": "INTEGRATION",
+      "command": "UNICA_PROVIDER_STATE_DIR=.v8/work/r01-dual/provider-state unica.exe stdio MCP; cwd=simple1CAiConf and cwd=.v8/work/simple-cf-220 together; unica.view {} and unica.view at=main:Document.ЗаказПокупателя",
+      "environment": "Windows 10.0.26200; unica.exe 0.12.0 debug 56a67d4a…; isolated provider-state .v8/work/r01-dual; handwritten dump and Designer dump 2.20; no apply, no 1C client",
+      "expected": "one --daemon pid for both stdio clients; each view {} returns its own workspaceRoot; document Comment stays empty on the handwritten dump and equals the publish marker on cf220; two requestScopeHash values; document XML sha256 unchanged",
+      "result": "All eleven passed. Daemon pid 23920; stdio pids 32052 and 33900. workspace roots matched the two cwd values. Comment empty vs r01-publish-ifRev-20260921; repeat view of the handwritten dump kept rev 6ae3445b…. Receipt identity 884b7618… with scopes 848996cf… and fdf73748…. XML sha256 unchanged.",
+      "log": "logs/r01-mcp-dual-simple.md",
+      "tests": 11,
+      "assertions": 11,
       "skipped": 0,
       "mocks_only": false,
       "reason": null

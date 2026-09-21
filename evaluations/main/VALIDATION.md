@@ -1,6 +1,6 @@
 # Проверки и следующий эксперимент
 
-Ограниченные dump-only прогоны r15 (CLI + daemon/MCP), r22
+Ограниченные dump-only прогоны r15 (CLI + daemon/MCP + `[tools].enabled`), r22
 (init/build/syntax) и r01 Unica (`view`/`check`, `apply` dryRun,
 `docs`, **публикация `ifRev`**) выполнены. **Answer42 smoke PASS**.
 Vanessa engine smoke PASS. Основания: [EVIDENCE.json](EVIDENCE.json).
@@ -19,14 +19,14 @@ static стыковка для него не требуется.
 |---|---|---|---|---|---|---|
 | S1 | Чем звать | SOURCE+RUN: бинарь `unica` = stdio MCP; one-shot CLI предметных операций нет; живой initialize 0.12.0 | SOURCE+RUN: CLI ядра + HTTP `serve`; 1С-tools только MCP; живой демон нужен | SOURCE+RUN: CLI `answer42` = stdio MCP; initialize name=Answer42; one-shot form CLI нет | DOCUMENTATION+SOURCE: batch CLI через 1С; дополнительно Streamable HTTP MCP | SOURCE: CLI `v8-runner` first-class; MCP `mcp serve stdio\|http` optional |
 | S2 | Как передать feature/ИБ | SOURCE+RUN: cwd выгрузки; `view {}` autodetected `main`; yaml не обязателен; ИБ в yaml (здесь `infobase.configured=false`) | SOURCE: `--path alias=dir` / `--config` `[[paths]]` / `repo=`; ИБ не участвует | SOURCE+RUN: `start_session(base_url=путь файловой ИБ, session_id)`; креды не нужны на simple | DOCUMENTATION+SOURCE: один feature через featurepath, scenariofilter, Test Client definitions/profiles | DOCUMENTATION+SOURCE: `--config` / `V8TR_CONFIG` / cwd → один `infobase` в yaml |
-| S3 | Узкая surface | SOURCE+RUN: живой `tools/list` = 11; фасад зовёт subset docs/view/apply/check | SOURCE+RUN: живой `tools/list` = 33 (20+13); CLI без tools/list; `[tools].enabled` режет MCP (whitelist NOT_RUN) | SOURCE+RUN: статический `full` 122; живой `ui`+`--disable-rag` = 103 | SOURCE+INFERENCE: CLI без MCP tools; MCP 37 statically active, скрывать фасадом | SOURCE: CLI без tools/list; MCP ровно 8 `#[tool]` |
-| S4 | Две цели | SOURCE+INFERENCE: несколько source-set; одна ИБ на yaml; демон общий, scope по cwd; dual-IB NOT_RUN | SOURCE: несколько alias, отдельный `.code-index/index.db`; dual live serve NOT_RUN | SOURCE+RUN: повтор того же `session_id` отказал; dual live Test Client NOT_RUN | SOURCE+INFERENCE: несколько definitions/profiles; simultaneous two-target UNKNOWN | INFERENCE: два yaml / два процесса; dual-IB NOT_RUN |
+| S3 | Узкая surface | SOURCE+RUN: живой `tools/list` = 11; фасад зовёт subset docs/view/apply/check | SOURCE+RUN: без секции list = 33; с `[tools].enabled` list = 9 и `tools/call` вне списка = `-32602`; CLI без tools/list | SOURCE+RUN: статический `full` 122; живой `ui`+`--disable-rag` = 103 | SOURCE+INFERENCE: CLI без MCP tools; MCP 37 statically active, скрывать фасадом | SOURCE: CLI без tools/list; MCP ровно 8 `#[tool]` |
+| S4 | Две цели | SOURCE+RUN: два cwd, один демон, два requestScopeHash; несколько source-set в одном yaml NOT_RUN; одна ИБ на yaml; dual-IB NOT_RUN | SOURCE: несколько alias, отдельный `.code-index/index.db`; dual live serve NOT_RUN | SOURCE+RUN: повтор того же `session_id` отказал; dual live Test Client NOT_RUN | SOURCE+INFERENCE: несколько definitions/profiles; simultaneous two-target UNKNOWN | INFERENCE: два yaml / два процесса; dual-IB NOT_RUN |
 | S5 | Project detection | SOURCE+RUN: `view {}` без yaml, source-set `main` из `Configuration.xml` на `.` | SOURCE: processor — `Configuration.xml` (≤2) и EDT `Configuration.mdo`; `daemon.toml` не обязателен для one-shot; детектор демона слабее | INFERENCE: явный `base_url`; RAG-scan EDT/XML не детектор фасада | INFERENCE: explicit WorkspaceRoot/projectpath; generic 1C detection facade-side | DOCUMENTATION: родной `v8project.yaml` + `config init` |
 
 Шкала r01: S1 терпимо; S2 терпимо; S3 удобно; S4 терпимо; S5 удобно.
 
-Шкала r15: S1 терпимо; S2 удобно; S3 удобно через CLI / терпимо через MCP;
-S4 удобно; S5 удобно на корне выгрузки.
+Шкала r15: S1 терпимо; S2 удобно; S3 удобно (CLI или MCP с
+`[tools].enabled`); S4 удобно; S5 удобно на корне выгрузки.
 
 Шкала r20: S1 терпимо; S2 удобно; S3 терпимо (живой `ui` = 103, фасад всё равно нужен);
 S4 удобно по контракту (дубль id RUN), simultaneous NOT_RUN; S5 терпимо.
@@ -51,5 +51,9 @@ YaXUnit/Vanessa на simple **сначала отказали** без сцен�
 **r20 Answer42 smoke PASS** ([logs/r20-mcp-simple.md](logs/r20-mcp-simple.md)).
 **r01 apply publish PASS** ([logs/r01-mcp-apply-publish-simple.md](logs/r01-mcp-apply-publish-simple.md)):
 `mode=published`; XML Comment записан; stale `ifRev` — `stale_revision`.
+**r15 `[tools].enabled` PASS** ([logs/r15-mcp-whitelist-simple.md](logs/r15-mcp-whitelist-simple.md)):
+`tools/list` = 9; опечатка в логе; `grep_code` и `get_object_structure` — `-32602`.
+**r01 dual-workspace PASS** ([logs/r01-mcp-dual-simple.md](logs/r01-mcp-dual-simple.md)):
+два stdio, один `--daemon`; `view` не смешал корни и Comment.
 
-Следующее — dump-only `[tools].enabled` r15, не код фасада.
+Следующее — dual live Test Client Answer42, не код фасада.

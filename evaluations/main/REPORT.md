@@ -29,8 +29,10 @@ r09 METR выведен: тот же слой, что r22. Vanessa остаёт�
 ([FACADE.md](FACADE.md), [VALIDATION.md](VALIDATION.md)).
 r15 CLI, r15 daemon+MCP, r22 init/build/syntax, r01 `view`/`check`
 и r01 `apply` dryRun + `docs` прогнаны на стенде `simple`. Публикация
-`apply` с `ifRev` на Designer dump 2.20 — PASS. Следующий этап —
-dump-only `[tools].enabled` r15 по отдельной просьбе.
+`apply` с `ifRev` на Designer dump 2.20 — PASS. `[tools].enabled` r15
+— PASS (`tools/list` = 9). Dual-workspace Unica — PASS (один демон,
+два cwd). Следующий этап — dual live Test Client Answer42,
+не код фасада.
 
 Вывод обзора при цели v1 сохранён в снимке `history/goal-v1/REPORT.md`.
 Его не читать при обычном CONTINUE; как рекомендация v2 он не действует.
@@ -70,7 +72,7 @@ DEEP_STATIC по S1–S5. **r15 — DEEP_STATIC по S1–S5** на том же 
 Наиболее существенные неизвестные цели v2:
 
 1. Execution (индекс r15, smoke остальных). Static S1–S5 пяти есть.
-2. Для Unica r01 остаётся dual-workspace; для Answer42 r20 — dual live Test Client; для r22 — фикстура YaXUnit с модулями.
+2. Для Answer42 r20 остаётся dual live Test Client; для r22 — фикстура YaXUnit с модулями. Dual-workspace Unica закрыт (`run-r01-dual-simple`); dual-IB и два source-set в одном yaml ещё NOT_RUN.
 3. Точность индекса r15 и компактность JSON-отчёта r22.
 4. Лицензии Unica (LGPL) и r22 (AGPL-3.0) — не юридическое заключение.
 5. Сборка r04, если `unica.docs` не хватит.
@@ -79,9 +81,9 @@ DEEP_STATIC по S1–S5. **r15 — DEEP_STATIC по S1–S5** на том же 
 Контрпример «пять MCP торчат агенту» опрокидывает внедрение без фасада
 (у r20 дефолт 122 tools — самый сильный пример). Контрпример
 «singleton затирает обмен» для r20 слабее: есть именованный `session_id`,
-но фасад обязан его всегда передавать. Для r01 слабее тем же смыслом:
-одна yaml = одна ИБ, две цели = два корня/cwd; общий user-daemon скоупится
-по `workspace_hint`.
+но фасад обязан его всегда передавать. Для r01 две выгрузки на одном
+демоне не смешали `workspaceRoot` и Comment (`run-r01-dual-simple`);
+одна yaml по-прежнему одна ИБ, dual-IB не исполнялся.
 Контрпример «вернуть r09 рядом с r22» опрокидывается C14.
 Вывод «не подключать все 19» контрпримером не опрокинут.
 
@@ -94,7 +96,7 @@ DEEP_STATIC по S1–S5. **r15 — DEEP_STATIC по S1–S5** на том же 
 Этот отчёт не запускает остальные продукты. **r15 CLI**, **r22
 init/build/syntax**, **r01 view/check**, **r01 apply dryRun + docs** и
 **r01 apply publish** PASS на стенде `simple` (ИБ создана). **r20 Answer42 smoke PASS**.
-Точка продолжения — [STATE.md](STATE.md).
+**r01 dual-workspace PASS**. Точка продолжения — [STATE.md](STATE.md).
 
 
 ## Частичный CONTINUE-AUDIT r20
@@ -144,8 +146,9 @@ MCP `serve` (только чтение). Именованные 1С-tools (13) �
 требуют `daemon run` (`daemon_offline` без него). Выгрузка задаётся
 `--path alias=dir` или `[[paths]]`; две выгрузки — два alias и два
 `index.db`. Автодетект: `Configuration.xml` и EDT `Configuration.mdo`.
-Широкий `tools/list` режется `[tools].enabled`. Патч не нужен. HEAD
-`309cddb…` не подменял pinned `4bde72b…`. Состав не менялся.
-Dump-only MCP на simple1CAiConf: живой `tools/list` = 33; handlers,
-structure и register writers PASS.
+Широкий `tools/list` режется `[tools].enabled` (живой list = 9 из
+заданного subset; вне списка `-32602`). Патч не нужен. `serve --help`:
+одновременный `--path` игнорирует конфиг. HEAD `309cddb…` не подменял
+pinned `4bde72b…`. Состав не менялся. Dump-only MCP на simple1CAiConf:
+без секции `tools/list` = 33; с секцией = 9.
 
