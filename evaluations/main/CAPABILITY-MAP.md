@@ -5,8 +5,9 @@
 (читать только если нужен старый критерий).
 Основания обзора — [EVIDENCE.json](EVIDENCE.json), кандидаты —
 [INVENTORY.json](INVENTORY.json).
-Глубина: r01–r19 overview; r20 PENDING; **r21 DEEP_STATIC по S1–S5**.
+Глубина: r01–r19 overview; **r20, r21 и r22 DEEP_STATIC по S1–S5**.
 Покрытие — по прочитанному объёму. Полная стыковка пяти ещё не закрыта.
+Слот сборки: **r22 выбран** (2026-09-21); r09 не в контуре.
 
 Обозначения покрытия: **полное** (в роли кандидата), **частичное**,
 **не установлено**, **неприменимо**.
@@ -20,15 +21,15 @@
 | C3 метаданные и УФ | метаданные: r01, r15, r02, r12; УФ: r01 edit, r15 read. Обычные формы в v2 не обязательны; пробел Form.bin не блокер | частичное (достаточно для v2) | c01-forms-managed, c15-forms-managed-src, c02-forms-managed-xml | edit УФ заявлен | стыковка Unica; ОФ не ищем |
 | C4 справка API | r01 `unica.docs` выбран; r04 core; r10/r18 не в контуре | частичное→сильное у r01/r04 | c01-docs, c04-*, c10-* | r01 как адаптер контура | проверка на HBK 8.3.27 |
 | C5 edit | r01 основной; r12 дубль, не в контуре; r17 только EDT | частичное (УФ+метаданные) | c01-facade, c12-managed-forms | высокая заявка | стыковка Unica; ОФ не требуется |
-| C6 static | r01 `unica.check`; r09 CheckConfig/EDT | частичное | c01, c09-eight-tools | продуктовая заявка | компактность отчёта |
-| C7 build/run | r01 `unica.run`; r09 build/launch | частичное | c09-eight-tools | высокая заявка | стыковка / execution |
-| C8 runtime/UI test | r09 YaXUnit; r20 Answer42 PENDING; **r21 Vanessa: batch single-feature run + status file и MCP run_scenario/get_test_results подтверждены static** | частичное | c09-eight-tools; c21-cli-target; c21-cli-status | r21 static готовность подтверждена, runtime NOT_RUN | r09/r20 static; r21 execution/two-target |
-| C9 compact results | r01 typed data; r15 fragments; r02 truncation (не в контуре) | частичное | architecture/tool-surface | заложено | замер токенов; фасад |
-| C10 min surface | фасад обязателен; r01 11 tools, r15 широкая, r09 8; r21 MCP 37 active static, **но r21 имеет batch CLI без MCP surface** | частичное | c01-facade, c15, c09-eight-tools, c21-tool-surface, c21-adapter-choice | r21 CLI хорошо ложится за facade | стыковка остальных |
+| C6 static | r01 `unica.check`; **r22 syntax designer/edt** (r09 не в контуре) | частичное | c01, c22-eight-tools | продуктовая заявка | компактность отчёта; execution |
+| C7 build/run | r01 `unica.run`; **r22 CLI `build`/`launch` + `--json-message`** | частичное→сильное у r22 как заявка | c22-entry; c22-json-envelope | r22 static | стыковка r01; execution |
+| C8 runtime/UI test | **r22 YaXUnit CLI + `test va`**; **r20 Answer42**; **r21 Vanessa (движок)** | частичное | c22-entry; c20-entry; c20-target; c20-evidence-file; c21-cli-target; c21-cli-status | r20/r21/r22 static, runtime NOT_RUN | execution |
+| C9 compact results | r01 typed data; r15 fragments; **r22 Envelope + retained_paths**; r02 truncation (не в контуре) | частичное | architecture/tool-surface; c22-json-envelope | заложено | замер токенов; фасад |
+| C10 min surface | фасад обязателен; r01 11 tools, r15 широкая; **r22 CLI без tools/list**; **r20 122 tools default, режется `--tool-profile`**; r21 MCP 37, **но scenario идёт через r22 CLI** | частичное | c01-facade, c15, c22-eight-tools, c22-adapter-choice, c20-tool-surface, c20-tool-profile, c21-tool-surface, c21-adapter-choice | r20/r21/r22 можно спрятать за facade без патча | стыковка r01/r15 |
 | C11 знания вне окна | r15 SQLite; r01 кэш; r04 | полное у индексных | c15; c01; c04 | высокая | — |
-| C12 независимость от адаптера | r01 ядро vs plugin; r15 бинарь; Cursor не критерий | частичное | c01-mcp-json | средняя | свой фасад |
-| C13 feedback loop | контур r15→r01→r01.check/r09→r09/r20/r21 | системное, не закрыто одним | синтез v2 | собираемый на бумаге | стыковка; оркестратор |
-| C14 без дубля | explore r15 не вместе с r02; edit r01 не вместе с r12/r13; docs unica.docs не вместе с r10/r18 | решение в DECISION | карточки | — | не подключать дубли |
+| C12 независимость от адаптера | r01 ядро vs plugin; r15 бинарь; r22 CLI; Cursor не критерий | частичное | c01-mcp-json; c22-entry | средняя | свой фасад |
+| C13 feedback loop | контур r15→r01→r01.check/r22→r22/r20/r21 | системное, не закрыто одним | синтез v2; c22-adapter-choice | собираемый на бумаге | стыковка r01/r15 |
+| C14 без дубля | explore r15 не вместе с r02; edit r01 не вместе с r12/r13; docs unica.docs не вместе с r10/r18; **r09 не вместе с r22** | решение в DECISION + c22-vs-r09 | карточки | — | не возвращать r09 |
 
 ## Альтернативы и сочетания
 
@@ -50,12 +51,13 @@
 
 ### Verify / loop
 
-- **Сборка+YaXUnit:** r09.
-- **Клиент без тестов:** r01 `unica.run`.
-- **UI формы / сценарий:** r20 Answer42 остаётся PENDING. r21 Vanessa
-  static подтверждён; для `verify.scenario` предпочтителен batch CLI,
-  MCP — дополнительный интерактивный backend.
-- **Спецслучаи:** r06, r07, r17 (EDT; конфликт с обязательными ОФ в v1 снят, роль EDT не выросла).
+- **Сборка+YaXUnit: выбран r22** (2026-09-21). r09 METR не в контуре.
+- **Клиент без тестов:** r01 `unica.run`; r22 `launch`.
+- **UI формы:** r20 Answer42 — stdio MCP, `--tool-profile ui --disable-rag`,
+  `session_id`.
+- **Сценарий:** движок r21 Vanessa; запуск через r22 `test va` (не сырой
+  `1cv8 /Execute` фасада). MCP Vanessa — интерактивная отладка.
+- **Спецслучаи:** r06, r07, r17 (EDT не основа контура).
 
 ### Предлагаемый минимальный контур (цель v2)
 
@@ -64,21 +66,19 @@
          ├ explore → r15
          ├ docs    → unica.docs
          ├ edit    → r01
-         ├ static  → unica.check и/или r09 Check*
-         └ verify  → r09 YaXUnit; form → r20; scenario → r21
+         ├ static  → unica.check и/или r22 syntax
+         └ verify  → r22 YaXUnit; form → r20; scenario → r21 через r22
 ```
 
-Все связи `PROPOSED_INTEGRATION`. Стыковка не проверялась
-(`VERIFIED_INTEGRATION` нет). Взаимных зависимостей в коде обзора 19
-между r01/r15/r09 не найдено; r20/r21 в том обзоре не входили и ещё
-не читались.
+Все связи `PROPOSED_INTEGRATION`. Стыковка не проверялась запуском
+(`VERIFIED_INTEGRATION` нет). r20/r21/r22 прочитаны в объёме S1–S5;
+r01/r15 — OVERVIEW.
 
 ## Пробелы
 
-1. Стыковка пяти выбранных с фасадом — не исследована (главный пробел v2).
-2. r20 Answer42 и r21 Vanessa — заготовки, глубина не достигнута.
-3. Точность графа r15 и компактность отчёта r09 — не execution.
-4. Call graph на поверхности Unica v0.13 — не поддержан (explore закрывает r15).
-5. Структура обычных форм — по-прежнему отсутствует, **не блокер** цели v2.
-6. Признаки автоопределения 1С-проекта — не зафиксированы аудитом.
+1. Стыковка r01/r15 с фасадом; r22 static S1–S5 уже есть.
+2. r20/r21/r22: execution не выполнялся.
+3. Call graph на поверхности Unica v0.13 — не поддержан (explore закрывает r15).
+4. Структура обычных форм — по-прежнему отсутствует, **не блокер** цели v2.
+5. Признаки автоопределения 1С-проекта — не зафиксированы аудитом.
 

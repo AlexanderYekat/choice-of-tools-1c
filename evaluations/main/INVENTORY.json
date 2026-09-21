@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "input_count": 21,
+  "input_count": 22,
   "repositories": [
     {
       "id": "r01",
@@ -224,7 +224,7 @@
         "test-execution",
         "feedback-loop"
       ],
-      "priority": "Высокий: единственный кандидат связки сборка → YaXUnit. README пишет 11 tools, код — 8.",
+      "priority": "Не в контуре (2026-09-21): тот же слой, что r22. Overview сохранён.",
       "scope": "OVERVIEW",
       "duplicate_of": null,
       "report": "reports/r09.md"
@@ -482,21 +482,25 @@
       "id": "r20",
       "input_index": 20,
       "input_url": "https://gitlab.com/platform42/answer42-mcp",
-      "canonical_url": null,
-      "access": "NOT_CHECKED",
-      "access_reason": "Доступность ещё не проверялась.",
-      "default_branch": null,
-      "commit": null,
-      "commit_source": null,
+      "canonical_url": "https://gitlab.com/platform42/answer42-mcp",
+      "access": "AVAILABLE",
+      "access_reason": "GitLab API projects/platform42%2Fanswer42-mcp отвечает 200; файлы raw/beta прочитаны 2026-09-21.",
+      "default_branch": "beta",
+      "commit": "0406669a88144834bfdf6086c7040a25cb76d24c",
+      "commit_source": "https://gitlab.com/api/v4/projects/platform42%2Fanswer42-mcp/repository/commits/beta",
       "origin": {
-        "kind": "UNKNOWN",
+        "kind": "ORIGINAL",
         "upstream_url": null,
-        "comparison": "NOT_CHECKED"
+        "comparison": "NOT_APPLICABLE"
       },
-      "project_type": null,
-      "roles": [],
-      "priority": null,
-      "scope": "PENDING",
+      "project_type": "Python MCP-сервер (stdio/StreamableHTTP) для UI 1С через Test Client; пакет PyPI answer42 0.5.3",
+      "roles": [
+        "ui-form-testing",
+        "runtime-verification",
+        "mcp-integration"
+      ],
+      "priority": "Высокий для verify.form: подтверждены start_session(base_url, session_id), 122 MCP tools, --tool-profile subset, screenshot path.",
+      "scope": "DEEP_STATIC",
       "duplicate_of": null,
       "report": "reports/r20.md"
     },
@@ -526,6 +530,34 @@
       "scope": "DEEP_STATIC",
       "duplicate_of": null,
       "report": "reports/r21.md"
+    },
+    {
+      "id": "r22",
+      "input_index": 22,
+      "input_url": "https://github.com/alkoleft/v8-runner-rust",
+      "canonical_url": "https://github.com/alkoleft/v8-runner-rust",
+      "access": "AVAILABLE",
+      "access_reason": "GitHub API repos/alkoleft/v8-runner-rust отвечает 200; master HEAD и файлы raw прочитаны 2026-09-21. Форк 1C-Migration-Lab/v8-runner-rust на том же SHA не отдельный вход.",
+      "default_branch": "master",
+      "commit": "7ce1b062843d86644fe55741dbe0ee79f7ca767d",
+      "commit_source": "https://api.github.com/repos/alkoleft/v8-runner-rust/commits/master",
+      "origin": {
+        "kind": "ORIGINAL",
+        "upstream_url": null,
+        "comparison": "NOT_APPLICABLE"
+      },
+      "project_type": "Rust CLI и MCP (stdio/HTTP) локального цикла 1С: v8project.yaml, Designer/IBCMD, YaXUnit, Vanessa, JSON envelope; пакет v8-runner 0.5.1",
+      "roles": [
+        "build-and-update",
+        "test-execution",
+        "feedback-loop",
+        "batch-cli",
+        "mcp-integration"
+      ],
+      "priority": "Выбран в контур 2026-09-21 как verify.unit/build: CLI --json-message, v8project.yaml, запуск YaXUnit и Vanessa. Не вместе с r09.",
+      "scope": "DEEP_STATIC",
+      "duplicate_of": null,
+      "report": "reports/r22.md"
     }
   ]
 }

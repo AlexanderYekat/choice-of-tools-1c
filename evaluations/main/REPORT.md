@@ -1,36 +1,37 @@
 # Общая картина: main
 
-Версия цели: 2. r01–r19 остаются overview; r20 — PENDING; **r21 Vanessa
-углублён до DEEP_STATIC по S1–S5**. Запуски кода не выполнялись.
-Стыковка пяти начата частично.
+Версия цели: 2. r01–r19 остаются overview; **r20 Answer42, r21 Vanessa
+и r22 v8-runner-rust углублены до DEEP_STATIC по S1–S5**. Запуски кода
+не выполнялись. Стыковка пяти начата частично. Состав: **r22 вместо r09**
+(решение пользователя 2026-09-21).
 
 Самопроверка координатора, не независимый аудит.
 
 ## Ответ для пользователя
 
 Готового монолита среди обзора 19 нет. Состав контура **выбран**
-(цель v2): Unica, code-index-mcp, mcp-onec-test-runner, Answer42, Vanessa
+(цель v2): Unica, code-index-mcp, v8-runner, Answer42, Vanessa
 и тонкий фасад. Подробности — [DECISION.md](DECISION.md).
+
+r09 METR выведен: тот же слой, что r22. Vanessa остаётся движком
+сценариев; запускает r22.
 
 Обычные формы и хост Cursor **не обязательны**. rlm и skills Cursor/Claude
 в контур не входят.
 
-Это не разрешение внедрять. Следующий этап — проверка интерфейсов и
-стыковки пяти продуктов с фасадом ([FACADE.md](FACADE.md),
-[VALIDATION.md](VALIDATION.md)). Answer42 и Vanessa в активном реестре:
-r20, r21 (`NOT_CHECKED` / `PENDING`).
+Это не разрешение внедрять. Следующий этап — проверка интерфейсов
+r01/r15 с фасадом ([FACADE.md](FACADE.md), [VALIDATION.md](VALIDATION.md)).
 
 Вывод обзора при цели v1 сохранён в снимке `history/goal-v1/REPORT.md`.
 Его не читать при обычном CONTINUE; как рекомендация v2 он не действует.
 
 ## Цель и охват
 
-Критерии C1–C14 — [BRIEF.md](BRIEF.md), версия 2. Входов 21: r01–r19
-уникальны и AVAILABLE; r20/r21 ещё не проверялись. Недоступных среди
-обзора 19: 0. r12 и r13 — содержательно один toolkit в двух упаковках.
-Карточки обзора r01–r19: [reports/](reports/) — не переписывались;
-меняется оценка роли, не SHA. r20/r21 — заготовки. Реестр:
-[INVENTORY.json](INVENTORY.json).
+Критерии C1–C14 — [BRIEF.md](BRIEF.md), версия 2. Входов 22: r01–r22
+AVAILABLE. Недоступных среди обзора 19: 0. r12 и r13 — содержательно
+один toolkit в двух упаковках. Карточки обзора r01–r19: [reports/](reports/)
+— не переписывались; меняется оценка роли, не SHA. r20/r21/r22 — DEEP_STATIC
+по S1–S5. Реестр: [INVENTORY.json](INVENTORY.json).
 
 Обзор, не deep-static: списки tools r09 (8 `@Tool`) и 1С-надстройка r15
 (13 tools) закреплены по исходникам; r10 и универсальные 20 tools r15
@@ -42,9 +43,9 @@ r20, r21 (`NOT_CHECKED` / `PENDING`).
 |---|---|---|
 | Explore-ядро за фасадом | r15 | не сырой tools/list |
 | Edit/docs/static/run | r01 | хост любой, где зовётся бинарь |
-| Verify unit/build | r09 | GPL-3.0 как отдельный процесс |
-| UI form / scenario | r20 Answer42, r21 Vanessa | r20 PENDING; r21 deep-static: существующий batch CLI + MCP, single-feature run и status file |
-| Не в контуре | r02, r12, r13, r10, r18 и прочие из DECISION | дубль или не та роль |
+| Verify unit/build | **r22 выбран**; r09 не в контуре | AGPL-3.0; CLI `--json-message` |
+| UI form / scenario | r20 Answer42, r21 Vanessa (запуск через r22) | r20: MCP stdio, `session_id`, `--tool-profile`; r21: движок `.feature` |
+| Не в контуре | r09, r02, r12, r13, r10, r18 и прочие из DECISION | дубль или не та роль |
 | Спецслучай | r04, r06, r07, r17 | по пробелу, не по умолчанию |
 
 Варианты A/B/C обзора v1 (rlm+Unica; без Unica+r12; EDT-only) — исторические
@@ -57,15 +58,18 @@ r20, r21 (`NOT_CHECKED` / `PENDING`).
 
 Наиболее существенные неизвестные цели v2:
 
-1. Стыковка пяти выбранных с фасадом (вызов, путь/ИБ, узкая поверхность,
-   две цели, признаки 1С-проекта).
-2. Answer42 r20 остаётся PENDING; для Vanessa r21 остаются execution и simultaneous two-target exchange.
-3. Точность индекса r15 и компактность отчёта r09.
-4. Лицензии Unica (LGPL) и METR/r09 (GPL-3.0) — не юридическое заключение.
+1. Стыковка r01/r15 с фасадом. r20/r21/r22 static уже есть.
+2. Для Answer42 r20 остаются execution и dual live Test Client; для Vanessa r21 — execution; для r22 — smoke `test yaxunit` / `test va`.
+3. Точность индекса r15 и компактность JSON-отчёта r22.
+4. Лицензии Unica (LGPL) и r22 (AGPL-3.0) — не юридическое заключение.
 5. Сборка r04, если `unica.docs` не хватит.
 
 Контрпример «обычные формы доминируют» в v2 не опрокидывает контур.
-Контрпример «пять MCP торчат агенту» опрокидывает внедрение без фасада.
+Контрпример «пять MCP торчат агенту» опрокидывает внедрение без фасада
+(у r20 дефолт 122 tools — самый сильный пример). Контрпример
+«singleton затирает обмен» для r20 слабее: есть именованный `session_id`,
+но фасад обязан его всегда передавать.
+Контрпример «вернуть r09 рядом с r22» опрокидывается C14.
 Вывод «не подключать все 19» контрпримером не опрокинут.
 
 Механический `kit.py check-run` проверяет структуру, не истинность.
@@ -77,6 +81,15 @@ r20, r21 (`NOT_CHECKED` / `PENDING`).
 [VALIDATION.md](VALIDATION.md). Этот отчёт его не запускает.
 Точка продолжения — [STATE.md](STATE.md).
 
+
+## Частичный CONTINUE-AUDIT r20
+
+[Answer42](reports/r20.md) — MCP-драйвер Test Client, не пакетный CLI
+формы. CLI `answer42` поднимает stdio (или HTTP) MCP. Цель задаётся
+`start_session(base_url, session_id)`; screenshot пишет путь, не base64.
+На SHA 122 `@mcp.tool()` при профиле `full`, но продукт уже режет
+поверхность через `--tool-profile ui|core` и `--disable-rag`. RAG не
+брать как explore. Состав не менялся. Execution NOT_RUN.
 
 ## Частичный CONTINUE-AUDIT r21
 

@@ -13,7 +13,7 @@
 
 Агент должен видеть **мало стабильных действий**: найти, прочитать справку,
 посмотреть/поменять исходник, статически проверить, прогнать проверку.
-Внутри — Unica, code-index-mcp, mcp-onec-test-runner, Answer42, Vanessa.
+Внутри — Unica, code-index-mcp, v8-runner, Answer42, Vanessa.
 
 Без фасада в `tools/list` снова окажутся десятки операций пяти MCP.
 Фасад не пишет парсер BSL, индекс, справку платформы, сборку 1С и UI-тесты.
@@ -133,10 +133,10 @@
 explore                 → code-index-mcp / bsl-indexer   (+ source)
 docs                    → Unica
 edit.view / edit.apply  → Unica                          (apply — явно)
-static                  → Unica и/или синтаксис r09
-verify.unit             → r09 + YaXUnit                  (+ target)
+static                  → Unica и/или синтаксис r22
+verify.unit             → r22 + YaXUnit                  (+ target)
 verify.form             → Answer42                       (+ target)
-verify.scenario         → Vanessa                        (+ target, опционально peer)
+verify.scenario         → Vanessa через r22 test va      (+ target, опционально peer)
 ```
 
 Нет бэкенда или нет живой базы — операция отвечает «недоступно, почему»,
@@ -178,9 +178,11 @@ verify.scenario         → Vanessa                        (+ target, опцио
 по графу и UI-тестом. Хост Codex/Claude — нормально, фасад может
 звать тот же stdio-бинарь.
 
-**mcp-onec-test-runner**  
-Сборка и YaXUnit на **указанной** ИБ; компактный отчёт одного модуля;
-не требует, чтобы это была единственная база на машине.
+**v8-runner (`r22`)**  
+Сборка и YaXUnit на **указанной** ИБ через `--config` / отдельный
+`v8project.yaml` цели; компактный JSON (`--json-message`); `test va`
+запускает Vanessa, не заменяя её шаги. CLI, не сырой MCP. Одна yaml —
+одна ИБ; две цели обмена — два процесса.
 
 **Answer42**  
 Сессия Test Client на указанном `base_url` / цели; короткая проверка
@@ -188,9 +190,10 @@ verify.scenario         → Vanessa                        (+ target, опцио
 основной explore. Две базы обмена — две сессии или смена `target`.
 
 **Vanessa**  
-Запуск конкретного `.feature` / сценария; результат pass/fail по шагам
-в компактном виде; привязка к базе (и при обмене — к паре баз, хотя бы
-двумя запусками). Не обязана заменять Answer42 в коротком цикле.
+Движок `.feature` / сценария; результат pass/fail по шагам в компактном
+виде. Фасад запускает через r22 (`test va` / при отладке `launch mcp va`),
+не обязан сам собирать VAParams и звать `1cv8 /Execute`. Не заменяет
+Answer42 в коротком цикле формы.
 
 ## Порядок доработки
 
@@ -213,7 +216,8 @@ verify.scenario         → Vanessa                        (+ target, опцио
 5. Вывод: удобно / терпимо / мешает; что менять в фасаде; нужен ли патч.
 
 Answer42 и Vanessa в обзоре 19 не разбирались; в активном реестре это
-r20 и r21 (PENDING). Для стыковки смотреть их наравне с Unica, r15 и r09.
+r20 и r21 (DEEP_STATIC). Для стыковки смотреть их наравне с Unica, r15
+и r22. r09 из контура выведен.
 
 Пока стыковка не сделана, не внедрять пять MCP глобально и не считать
 фасад готовым к работе. Следующий этап — [VALIDATION.md](VALIDATION.md);

@@ -511,6 +511,414 @@
       ],
       "captured_at": "2026-09-20",
       "note": "Connect by profileName; profile table stores infobase path/status."
+    },
+    {
+      "id": "s20-meta",
+      "repository_id": "r20",
+      "kind": "METADATA",
+      "commit": "0406669a88144834bfdf6086c7040a25cb76d24c",
+      "url": "https://gitlab.com/api/v4/projects/platform42%2Fanswer42-mcp",
+      "path": null,
+      "lines": null,
+      "captured_at": "2026-09-21",
+      "note": "public; path platform42/answer42-mcp; default_branch=beta; forks_count=0; last_activity 2026-09-09."
+    },
+    {
+      "id": "s20-commit",
+      "repository_id": "r20",
+      "kind": "METADATA",
+      "commit": "0406669a88144834bfdf6086c7040a25cb76d24c",
+      "url": "https://gitlab.com/api/v4/projects/platform42%2Fanswer42-mcp/repository/commits/beta",
+      "path": null,
+      "lines": null,
+      "captured_at": "2026-09-21",
+      "note": "HEAD beta id=0406669a88144834bfdf6086c7040a25cb76d24c; title «Релиз Answer42 v0.5.3»."
+    },
+    {
+      "id": "s20-pypi",
+      "repository_id": "r20",
+      "kind": "METADATA",
+      "commit": null,
+      "url": "https://pypi.org/pypi/answer42/json",
+      "path": null,
+      "lines": null,
+      "captured_at": "2026-09-21",
+      "note": "info.version=0.5.3; license MIT; requires_python>=3.11; project_urls null; wheel+sdist 2026-09-09. PyPI is not a git commit."
+    },
+    {
+      "id": "s20-readme",
+      "repository_id": "r20",
+      "kind": "DOCUMENTATION",
+      "commit": "0406669a88144834bfdf6086c7040a25cb76d24c",
+      "url": "https://gitlab.com/platform42/answer42-mcp/-/blob/0406669a88144834bfdf6086c7040a25cb76d24c/README.md",
+      "path": "README.md",
+      "lines": [
+        17,
+        51
+      ],
+      "captured_at": "2026-09-21",
+      "note": "pipx install; CLI `answer42` starts stdio MCP; start_session(base_url, session_id)."
+    },
+    {
+      "id": "s20-arch",
+      "repository_id": "r20",
+      "kind": "DOCUMENTATION",
+      "commit": "0406669a88144834bfdf6086c7040a25cb76d24c",
+      "url": "https://gitlab.com/platform42/answer42-mcp/-/blob/0406669a88144834bfdf6086c7040a25cb76d24c/docs/architecture.md",
+      "path": "docs/architecture.md",
+      "lines": [
+        1,
+        90
+      ],
+      "captured_at": "2026-09-21",
+      "note": "SessionState.session_id; start_session pipeline; RAG EDT/XML; default rag_enabled=false."
+    },
+    {
+      "id": "s20-pyproject",
+      "repository_id": "r20",
+      "kind": "SOURCE",
+      "commit": "0406669a88144834bfdf6086c7040a25cb76d24c",
+      "url": "https://gitlab.com/platform42/answer42-mcp/-/blob/0406669a88144834bfdf6086c7040a25cb76d24c/pyproject.toml#L1-L36",
+      "path": "pyproject.toml",
+      "lines": [
+        1,
+        36
+      ],
+      "captured_at": "2026-09-21",
+      "note": "name answer42 0.5.3; scripts.answer42 = mcp_1c.server:main; MIT; Python>=3.11."
+    },
+    {
+      "id": "s20-server-entry",
+      "repository_id": "r20",
+      "kind": "SOURCE",
+      "commit": "0406669a88144834bfdf6086c7040a25cb76d24c",
+      "url": "https://gitlab.com/platform42/answer42-mcp/-/blob/0406669a88144834bfdf6086c7040a25cb76d24c/src/mcp_1c/server.py#L48-L54",
+      "path": "src/mcp_1c/server.py",
+      "lines": [
+        48,
+        54
+      ],
+      "captured_at": "2026-09-21",
+      "note": "MCPServer('Answer42'); DEFAULT_SESSION=default-{pid}."
+    },
+    {
+      "id": "s20-server-sessions",
+      "repository_id": "r20",
+      "kind": "SOURCE",
+      "commit": "0406669a88144834bfdf6086c7040a25cb76d24c",
+      "url": "https://gitlab.com/platform42/answer42-mcp/-/blob/0406669a88144834bfdf6086c7040a25cb76d24c/src/mcp_1c/server.py#L681",
+      "path": "src/mcp_1c/server.py",
+      "lines": [
+        681,
+        681
+      ],
+      "captured_at": "2026-09-21",
+      "note": "_SESSIONS: dict[str, SessionState] = {}."
+    },
+    {
+      "id": "s20-start-session",
+      "repository_id": "r20",
+      "kind": "SOURCE",
+      "commit": "0406669a88144834bfdf6086c7040a25cb76d24c",
+      "url": "https://gitlab.com/platform42/answer42-mcp/-/blob/0406669a88144834bfdf6086c7040a25cb76d24c/src/mcp_1c/server.py#L4369-L4454",
+      "path": "src/mcp_1c/server.py",
+      "lines": [
+        4369,
+        4454
+      ],
+      "captured_at": "2026-09-21",
+      "note": "start_session(base_url, session_id,...); web/server/file; reject duplicate session_id."
+    },
+    {
+      "id": "s20-tool-profile",
+      "repository_id": "r20",
+      "kind": "SOURCE",
+      "commit": "0406669a88144834bfdf6086c7040a25cb76d24c",
+      "url": "https://gitlab.com/platform42/answer42-mcp/-/blob/0406669a88144834bfdf6086c7040a25cb76d24c/src/mcp_1c/server.py#L161-L220",
+      "path": "src/mcp_1c/server.py",
+      "lines": [
+        161,
+        220
+      ],
+      "captured_at": "2026-09-21",
+      "note": "TOOL_PROFILE_GROUPS and aliases core/ui/all/full."
+    },
+    {
+      "id": "s20-apply-profile",
+      "repository_id": "r20",
+      "kind": "SOURCE",
+      "commit": "0406669a88144834bfdf6086c7040a25cb76d24c",
+      "url": "https://gitlab.com/platform42/answer42-mcp/-/blob/0406669a88144834bfdf6086c7040a25cb76d24c/src/mcp_1c/server.py#L10020-L10201",
+      "path": "src/mcp_1c/server.py",
+      "lines": [
+        10020,
+        10201
+      ],
+      "captured_at": "2026-09-21",
+      "note": "_apply_tool_profile removes tools; CLI --tool-profile default full; --disable-rag; stdio or --http."
+    },
+    {
+      "id": "s20-click-session",
+      "repository_id": "r20",
+      "kind": "SOURCE",
+      "commit": "0406669a88144834bfdf6086c7040a25cb76d24c",
+      "url": "https://gitlab.com/platform42/answer42-mcp/-/blob/0406669a88144834bfdf6086c7040a25cb76d24c/src/mcp_1c/server.py#L6527-L6534",
+      "path": "src/mcp_1c/server.py",
+      "lines": [
+        6527,
+        6534
+      ],
+      "captured_at": "2026-09-21",
+      "note": "click_button takes session_id=DEFAULT_SESSION."
+    },
+    {
+      "id": "s20-tools-span",
+      "repository_id": "r20",
+      "kind": "SOURCE",
+      "commit": "0406669a88144834bfdf6086c7040a25cb76d24c",
+      "url": "https://gitlab.com/platform42/answer42-mcp/-/blob/0406669a88144834bfdf6086c7040a25cb76d24c/src/mcp_1c/server.py#L3693-L9789",
+      "path": "src/mcp_1c/server.py",
+      "lines": [
+        3693,
+        9789
+      ],
+      "captured_at": "2026-09-21",
+      "note": "Enumerated 122 @mcp.tool() from rag_source_add through screenshot, plus 2 @mcp.prompt near 6662/6705."
+    },
+    {
+      "id": "s20-screenshot",
+      "repository_id": "r20",
+      "kind": "SOURCE",
+      "commit": "0406669a88144834bfdf6086c7040a25cb76d24c",
+      "url": "https://gitlab.com/platform42/answer42-mcp/-/blob/0406669a88144834bfdf6086c7040a25cb76d24c/src/mcp_1c/server.py#L9789-L9805",
+      "path": "src/mcp_1c/server.py",
+      "lines": [
+        9789,
+        9805
+      ],
+      "captured_at": "2026-09-21",
+      "note": "screenshot returns filesystem path, never image base64."
+    },
+    {
+      "id": "s20-license",
+      "repository_id": "r20",
+      "kind": "DOCUMENTATION",
+      "commit": "0406669a88144834bfdf6086c7040a25cb76d24c",
+      "url": "https://gitlab.com/platform42/answer42-mcp/-/blob/0406669a88144834bfdf6086c7040a25cb76d24c/LICENSE",
+      "path": "LICENSE",
+      "lines": [
+        1,
+        10
+      ],
+      "captured_at": "2026-09-21",
+      "note": "MIT License, copyright 2026 Kosolapov / 42Clouds."
+    },
+    {
+      "id": "s22-readme",
+      "repository_id": "r22",
+      "kind": "DOCUMENTATION",
+      "commit": "7ce1b062843d86644fe55741dbe0ee79f7ca767d",
+      "url": "https://github.com/alkoleft/v8-runner-rust/blob/7ce1b062843d86644fe55741dbe0ee79f7ca767d/README.md",
+      "path": "README.md",
+      "lines": [
+        1,
+        40
+      ],
+      "captured_at": "2026-09-21",
+      "note": "CLI+MCP для локального цикла 1С: v8project.yaml, build/test/syntax, --json-message, mcp serve stdio."
+    },
+    {
+      "id": "s22-capabilities",
+      "repository_id": "r22",
+      "kind": "DOCUMENTATION",
+      "commit": "7ce1b062843d86644fe55741dbe0ee79f7ca767d",
+      "url": "https://github.com/alkoleft/v8-runner-rust/blob/7ce1b062843d86644fe55741dbe0ee79f7ca767d/docs/CAPABILITIES.md",
+      "path": "docs/CAPABILITIES.md",
+      "lines": [
+        19,
+        43
+      ],
+      "captured_at": "2026-09-21",
+      "note": "Матрица CLI; MCP публикует 8 инструментов, уже уже CLI. --no-build — CLI-only (строки про test)."
+    },
+    {
+      "id": "s22-capabilities-mcp",
+      "repository_id": "r22",
+      "kind": "DOCUMENTATION",
+      "commit": "7ce1b062843d86644fe55741dbe0ee79f7ca767d",
+      "url": "https://github.com/alkoleft/v8-runner-rust/blob/7ce1b062843d86644fe55741dbe0ee79f7ca767d/docs/CAPABILITIES.md#L358-L387",
+      "path": "docs/CAPABILITIES.md",
+      "lines": [
+        358,
+        387
+      ],
+      "captured_at": "2026-09-21",
+      "note": "mcp serve stdio|http; таблица 8 tools: build_project, run_all_tests, run_module_tests, dump_config, launch_app, check_syntax_*."
+    },
+    {
+      "id": "s22-capabilities-nobuild",
+      "repository_id": "r22",
+      "kind": "DOCUMENTATION",
+      "commit": "7ce1b062843d86644fe55741dbe0ee79f7ca767d",
+      "url": "https://github.com/alkoleft/v8-runner-rust/blob/7ce1b062843d86644fe55741dbe0ee79f7ca767d/docs/CAPABILITIES.md#L194-L216",
+      "path": "docs/CAPABILITIES.md",
+      "lines": [
+        194,
+        216
+      ],
+      "captured_at": "2026-09-21",
+      "note": "test --no-build CLI-only; MCP run_all_tests сохраняет build-first."
+    },
+    {
+      "id": "s22-config-ib",
+      "repository_id": "r22",
+      "kind": "DOCUMENTATION",
+      "commit": "7ce1b062843d86644fe55741dbe0ee79f7ca767d",
+      "url": "https://github.com/alkoleft/v8-runner-rust/blob/7ce1b062843d86644fe55741dbe0ee79f7ca767d/docs/CONFIGURATION.md#L105-L127",
+      "path": "docs/CONFIGURATION.md",
+      "lines": [
+        105,
+        127
+      ],
+      "captured_at": "2026-09-21",
+      "note": "Один infobase.connection на v8project.yaml; local overlay рядом."
+    },
+    {
+      "id": "s22-config-infobase-section",
+      "repository_id": "r22",
+      "kind": "DOCUMENTATION",
+      "commit": "7ce1b062843d86644fe55741dbe0ee79f7ca767d",
+      "url": "https://github.com/alkoleft/v8-runner-rust/blob/7ce1b062843d86644fe55741dbe0ee79f7ca767d/docs/CONFIGURATION.md#L299-L316",
+      "path": "docs/CONFIGURATION.md",
+      "lines": [
+        299,
+        316
+      ],
+      "captured_at": "2026-09-21",
+      "note": "Секция infobase обязательна целиком; connection — одна строка, не список целей."
+    },
+    {
+      "id": "s22-cargo",
+      "repository_id": "r22",
+      "kind": "SOURCE",
+      "commit": "7ce1b062843d86644fe55741dbe0ee79f7ca767d",
+      "url": "https://github.com/alkoleft/v8-runner-rust/blob/7ce1b062843d86644fe55741dbe0ee79f7ca767d/Cargo.toml#L1-L8",
+      "path": "Cargo.toml",
+      "lines": [
+        1,
+        8
+      ],
+      "captured_at": "2026-09-21",
+      "note": "package name v8-runner, version 0.5.1, bin path src/main.rs."
+    },
+    {
+      "id": "s22-license",
+      "repository_id": "r22",
+      "kind": "DOCUMENTATION",
+      "commit": "7ce1b062843d86644fe55741dbe0ee79f7ca767d",
+      "url": "https://github.com/alkoleft/v8-runner-rust/blob/7ce1b062843d86644fe55741dbe0ee79f7ca767d/LICENSE#L1-L5",
+      "path": "LICENSE",
+      "lines": [
+        1,
+        5
+      ],
+      "captured_at": "2026-09-21",
+      "note": "GNU Affero General Public License Version 3."
+    },
+    {
+      "id": "s22-main",
+      "repository_id": "r22",
+      "kind": "SOURCE",
+      "commit": "7ce1b062843d86644fe55741dbe0ee79f7ca767d",
+      "url": "https://github.com/alkoleft/v8-runner-rust/blob/7ce1b062843d86644fe55741dbe0ee79f7ca767d/src/main.rs",
+      "path": "src/main.rs",
+      "lines": [
+        1,
+        19
+      ],
+      "captured_at": "2026-09-21",
+      "note": "Единственная точка входа: app::run(); process::exit."
+    },
+    {
+      "id": "s22-cli-args",
+      "repository_id": "r22",
+      "kind": "SOURCE",
+      "commit": "7ce1b062843d86644fe55741dbe0ee79f7ca767d",
+      "url": "https://github.com/alkoleft/v8-runner-rust/blob/7ce1b062843d86644fe55741dbe0ee79f7ca767d/src/cli/args.rs#L1-L78",
+      "path": "src/cli/args.rs",
+      "lines": [
+        1,
+        78
+      ],
+      "captured_at": "2026-09-21",
+      "note": "Глобальные --config (V8TR_CONFIG), --json-message; subcommands Version/Bootstrap/Config/Tools/Init/Build/Test/Dump/Launch/Mcp."
+    },
+    {
+      "id": "s22-cli-mcp",
+      "repository_id": "r22",
+      "kind": "SOURCE",
+      "commit": "7ce1b062843d86644fe55741dbe0ee79f7ca767d",
+      "url": "https://github.com/alkoleft/v8-runner-rust/blob/7ce1b062843d86644fe55741dbe0ee79f7ca767d/src/cli/args.rs#L465-L489",
+      "path": "src/cli/args.rs",
+      "lines": [
+        465,
+        489
+      ],
+      "captured_at": "2026-09-21",
+      "note": "mcp serve Stdio | Http."
+    },
+    {
+      "id": "s22-mcp-enum",
+      "repository_id": "r22",
+      "kind": "SOURCE",
+      "commit": "7ce1b062843d86644fe55741dbe0ee79f7ca767d",
+      "url": "https://github.com/alkoleft/v8-runner-rust/blob/7ce1b062843d86644fe55741dbe0ee79f7ca767d/src/mcp/server.rs#L56-L105",
+      "path": "src/mcp/server.rs",
+      "lines": [
+        56,
+        105
+      ],
+      "captured_at": "2026-09-21",
+      "note": "Enum McpTool из 8 вариантов; as_str совпадает с именами r09."
+    },
+    {
+      "id": "s22-mcp-tools",
+      "repository_id": "r22",
+      "kind": "SOURCE",
+      "commit": "7ce1b062843d86644fe55741dbe0ee79f7ca767d",
+      "url": "https://github.com/alkoleft/v8-runner-rust/blob/7ce1b062843d86644fe55741dbe0ee79f7ca767d/src/mcp/server.rs#L736-L871",
+      "path": "src/mcp/server.rs",
+      "lines": [
+        736,
+        871
+      ],
+      "captured_at": "2026-09-21",
+      "note": "Ровно восемь #[tool] handlers; stdio bootstrap serve_stdio выше в файле."
+    },
+    {
+      "id": "s22-envelope",
+      "repository_id": "r22",
+      "kind": "SOURCE",
+      "commit": "7ce1b062843d86644fe55741dbe0ee79f7ca767d",
+      "url": "https://github.com/alkoleft/v8-runner-rust/blob/7ce1b062843d86644fe55741dbe0ee79f7ca767d/src/command_envelope.rs#L32-L44",
+      "path": "src/command_envelope.rs",
+      "lines": [
+        32,
+        44
+      ],
+      "captured_at": "2026-09-21",
+      "note": "Envelope: ok, command, duration_ms, data, warnings, steps, optional error."
+    },
+    {
+      "id": "s22-meta",
+      "repository_id": "r22",
+      "kind": "METADATA",
+      "commit": "7ce1b062843d86644fe55741dbe0ee79f7ca767d",
+      "url": "https://api.github.com/repos/alkoleft/v8-runner-rust/commits/master",
+      "path": null,
+      "lines": null,
+      "captured_at": "2026-09-21",
+      "note": "master HEAD = 7ce1b062843d86644fe55741dbe0ee79f7ca767d; default_branch master; не fork."
     }
   ],
   "claims": [
@@ -889,6 +1297,220 @@
       ],
       "run_ids": [],
       "limitations": "This is an architectural inference; performance and error detail require execution comparison."
+    },
+    {
+      "id": "c20-entry",
+      "repository_id": "r20",
+      "status": "SOURCE",
+      "statement": "The answer42 console script starts mcp_1c.server:main, which runs a stdio MCP server by default or StreamableHTTP with --http; it is not a one-shot form-test CLI.",
+      "source_ids": [
+        "s20-pyproject",
+        "s20-apply-profile",
+        "s20-readme"
+      ],
+      "run_ids": [],
+      "limitations": "The process was not started; install-skills is a documented no-op."
+    },
+    {
+      "id": "c20-target",
+      "repository_id": "r20",
+      "status": "SOURCE",
+      "statement": "start_session accepts base_url as web publication, server/infobase, or file infobase path, plus an explicit session_id; credentials can be resolved from a local store by URL or title.",
+      "source_ids": [
+        "s20-start-session",
+        "s20-readme"
+      ],
+      "run_ids": [],
+      "limitations": "No infobase was connected."
+    },
+    {
+      "id": "c20-tool-surface",
+      "repository_id": "r20",
+      "status": "SOURCE",
+      "statement": "Pinned server.py defines 122 @mcp.tool() handlers (including _metadata_objects_from_catalog_impl) and 2 prompts; default --tool-profile full does not remove tools.",
+      "source_ids": [
+        "s20-tools-span",
+        "s20-tool-profile",
+        "s20-apply-profile"
+      ],
+      "run_ids": [],
+      "limitations": "Static decorator count from the fetched file; live tools/list was not captured. Whether the SDK hides the underscore-prefixed tool is UNKNOWN."
+    },
+    {
+      "id": "c20-tool-profile",
+      "repository_id": "r20",
+      "status": "SOURCE",
+      "statement": "CLI --tool-profile / ONEC_MCP_TOOL_PROFILE can subset tools (core, ui, group names) via mcp.remove_tool; --disable-rag disables built-in RAG tools.",
+      "source_ids": [
+        "s20-tool-profile",
+        "s20-apply-profile"
+      ],
+      "run_ids": [],
+      "limitations": "Filtered remaining_count was not observed at runtime."
+    },
+    {
+      "id": "c20-sessions",
+      "repository_id": "r20",
+      "status": "SOURCE",
+      "statement": "Multiple named sessions are stored in _SESSIONS; UI tools such as click_button take session_id; starting an existing session_id raises.",
+      "source_ids": [
+        "s20-server-sessions",
+        "s20-start-session",
+        "s20-click-session",
+        "s20-server-entry"
+      ],
+      "run_ids": [],
+      "limitations": "Two live Test Clients against two infobases were not started."
+    },
+    {
+      "id": "c20-evidence-file",
+      "repository_id": "r20",
+      "status": "SOURCE",
+      "statement": "screenshot writes a PNG path and does not put image base64 into the tool result.",
+      "source_ids": [
+        "s20-screenshot"
+      ],
+      "run_ids": [],
+      "limitations": "File size and host attachment behavior were not measured."
+    },
+    {
+      "id": "c20-not-explore",
+      "repository_id": "r20",
+      "status": "INFERENCE",
+      "statement": "RAG source discovery of EDT/Designer XML is optional and must not replace r15 as the explore layer of the selected contour.",
+      "source_ids": [
+        "s20-arch",
+        "s20-readme"
+      ],
+      "run_ids": [],
+      "limitations": "RAG parser internals were not deep-traced; this is a contour-role inference from DECISION plus documented RAG purpose."
+    },
+    {
+      "id": "c20-adapter-choice",
+      "repository_id": "r20",
+      "status": "INFERENCE",
+      "statement": "For verify.form the facade should host Answer42 as stdio MCP with --tool-profile ui --disable-rag and always pass session_id; the default full tools/list must not be shown to the coding agent.",
+      "source_ids": [
+        "s20-apply-profile",
+        "s20-start-session",
+        "s20-tool-profile"
+      ],
+      "run_ids": [],
+      "limitations": "Architectural inference; smoke start_session is NOT_RUN."
+    },
+    {
+      "id": "c22-entry",
+      "repository_id": "r22",
+      "status": "SOURCE",
+      "statement": "v8-runner is a CLI binary (Cargo.toml 0.5.1) whose subcommands include build, test, syntax, dump, launch and mcp serve stdio|http; MCP is optional, not the only entry.",
+      "source_ids": [
+        "s22-cargo",
+        "s22-main",
+        "s22-cli-args",
+        "s22-cli-mcp"
+      ],
+      "run_ids": [],
+      "limitations": "The binary was not started in this evaluation run."
+    },
+    {
+      "id": "c22-eight-tools",
+      "repository_id": "r22",
+      "status": "SOURCE",
+      "statement": "Pinned server.rs registers exactly eight #[tool] handlers with the same names as r09 METR: run_all_tests, run_module_tests, build_project, dump_config, launch_app, check_syntax_edt, check_syntax_designer_config, check_syntax_designer_modules.",
+      "source_ids": [
+        "s22-mcp-enum",
+        "s22-mcp-tools",
+        "s22-capabilities-mcp"
+      ],
+      "run_ids": [],
+      "limitations": "Static decorator/enum count; live tools/list was not captured."
+    },
+    {
+      "id": "c22-json-envelope",
+      "repository_id": "r22",
+      "status": "SOURCE",
+      "statement": "CLI --json-message and MCP structured_content share Envelope { ok, command, duration_ms, data, warnings, steps, optional error }.",
+      "source_ids": [
+        "s22-cli-args",
+        "s22-envelope",
+        "s22-capabilities"
+      ],
+      "run_ids": [],
+      "limitations": "Actual YaXUnit report payload shape was not observed at runtime."
+    },
+    {
+      "id": "c22-single-ib",
+      "repository_id": "r22",
+      "status": "DOCUMENTATION",
+      "statement": "One v8project.yaml binds a single infobase.connection; credentials belong in v8project.local.yaml; --config / V8TR_CONFIG selects the file.",
+      "source_ids": [
+        "s22-config-ib",
+        "s22-config-infobase-section",
+        "s22-cli-args"
+      ],
+      "run_ids": [],
+      "limitations": "No second infobase was configured."
+    },
+    {
+      "id": "c22-nobuild-cli-only",
+      "repository_id": "r22",
+      "status": "DOCUMENTATION",
+      "statement": "test --no-build is a CLI-only contract; MCP run_all_tests keeps build-first behaviour.",
+      "source_ids": [
+        "s22-capabilities-nobuild"
+      ],
+      "run_ids": [],
+      "limitations": "MCP handler body in service.rs was not line-traced for a hidden skip-build flag."
+    },
+    {
+      "id": "c22-license",
+      "repository_id": "r22",
+      "status": "DOCUMENTATION",
+      "statement": "The repository is licensed under GNU Affero GPL v3.",
+      "source_ids": [
+        "s22-license"
+      ],
+      "run_ids": [],
+      "limitations": "Not legal advice; calling as a local process vs network service has different AGPL implications."
+    },
+    {
+      "id": "c22-vs-r09",
+      "repository_id": "r22",
+      "status": "INFERENCE",
+      "statement": "r22 occupies the same build+YaXUnit MCP surface as r09 and additionally offers first-class CLI, JSON envelopes, v8project.yaml and Vanessa launch; C14 forbids putting both in the contour.",
+      "source_ids": [
+        "s22-mcp-enum",
+        "s22-cli-args",
+        "s22-readme"
+      ],
+      "run_ids": [],
+      "limitations": "Cross-repo comparison uses r09 card c09-eight-tools as the other side; r09 bodies were not re-read in this step. Execution of neither product was done."
+    },
+    {
+      "id": "c22-adapter-choice",
+      "repository_id": "r22",
+      "status": "INFERENCE",
+      "statement": "For verify.unit/build the facade should call v8-runner CLI with --json-message and per-target --config, not expose the 8 MCP tools; MCP remains optional.",
+      "source_ids": [
+        "s22-cli-args",
+        "s22-envelope",
+        "s22-capabilities-nobuild",
+        "s22-mcp-tools"
+      ],
+      "run_ids": [],
+      "limitations": "Architectural inference; smoke test yaxunit is NOT_RUN."
+    },
+    {
+      "id": "c22-multitarget",
+      "repository_id": "r22",
+      "status": "INFERENCE",
+      "statement": "Two exchange infobases map to two v8project.yaml files or two runner processes; the product is not a machine-wide singleton, but one process/config is one IB.",
+      "source_ids": [
+        "s22-config-infobase-section",
+        "s22-cli-args"
+      ],
+      "run_ids": [],
+      "limitations": "Simultaneous dual-IB was not executed."
     }
   ],
   "runs": [
@@ -925,6 +1547,40 @@
       "skipped": 0,
       "mocks_only": false,
       "reason": "Глубина overview; permissions.fetch_sources/run_tests=false; код кандидатов не запускался."
+    },
+    {
+      "id": "run-r20-no-exec",
+      "repository_id": "r20",
+      "commit": "0406669a88144834bfdf6086c7040a25cb76d24c",
+      "status": "NOT_RUN",
+      "kind": "OTHER",
+      "command": null,
+      "environment": "Windows 10, Cursor Agent; static GitLab/PyPI read only",
+      "expected": "Не применимо на этапе deep-static без permissions.run_tests",
+      "result": null,
+      "log": null,
+      "tests": 0,
+      "assertions": 0,
+      "skipped": 0,
+      "mocks_only": false,
+      "reason": "permissions.fetch_sources/install_dependencies/run_tests/start_services=false; Answer42, 1C and Test Client were not started."
+    },
+    {
+      "id": "run-r22-no-exec",
+      "repository_id": "r22",
+      "commit": "7ce1b062843d86644fe55741dbe0ee79f7ca767d",
+      "status": "NOT_RUN",
+      "kind": "OTHER",
+      "command": null,
+      "environment": "Windows 10, Cursor Agent; static GitHub API/raw read only",
+      "expected": "Не применимо на этапе deep-static без permissions.run_tests",
+      "result": null,
+      "log": null,
+      "tests": 0,
+      "assertions": 0,
+      "skipped": 0,
+      "mocks_only": false,
+      "reason": "permissions.fetch_sources/install_dependencies/build/run_tests/start_services=false; v8-runner, 1C and YaXUnit were not started in this evaluation."
     }
   ]
 }

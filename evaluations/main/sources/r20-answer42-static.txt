@@ -1,0 +1,28 @@
+# r20 Answer42 — static evidence receipt
+
+Date: 2026-09-21
+Commit: 0406669a88144834bfdf6086c7040a25cb76d24c (branch beta, title «Релиз Answer42 v0.5.3»)
+PyPI: answer42 0.5.3 (upload 2026-09-09T20:14Z); project_urls empty
+Execution: NOT_RUN
+
+Read coordinates (line numbers from fetched raw files at this commit):
+
+- GitLab project API platform42/answer42-mcp: public; default_branch=beta; forks_count=0
+- pyproject.toml: name=answer42, version=0.5.3, script answer42 = mcp_1c.server:main, MIT
+- README.md: pipx/pip install; `answer42 --ws-host/--ws-port`; start_session(base_url); stdio/HTTP; credentials file
+- docs/architecture.md: SessionState.session_id; start_session pipeline; RAG EDT/XML layouts; default rag_enabled=false
+- docs/agent-installation.md: Windows interactive desktop; smoke start_session → active_window → stop_session
+- LICENSE: MIT
+- src/mcp_1c/server.py:
+  - L48 MCPServer("Answer42")
+  - L54 DEFAULT_SESSION = default-{pid}
+  - L161–220 TOOL_PROFILE_GROUPS / CORE / ALIASES (core, ui, all, full)
+  - L681 _SESSIONS: dict[str, SessionState]
+  - L4369–4454 start_session(base_url, session_id, ...); reject duplicate session_id
+  - L6527–6533 click_button(..., session_id=DEFAULT_SESSION)
+  - L9789–9805 screenshot writes path, never base64
+  - L10008–10050 _register_dev_tools / _apply_tool_profile (remove_tool)
+  - L10052–10201 main(): install-skills no-op path; --tool-profile; --disable-rag; --http; stdio default
+  - 122 @mcp.tool() including _metadata_objects_from_catalog_impl; 2 @mcp.prompt
+
+Not started: pip install, answer42 process, 1C, Test Client, live tools/list.
