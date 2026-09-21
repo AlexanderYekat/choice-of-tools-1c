@@ -4,7 +4,8 @@
 r15 code-index-mcp, r20 Answer42, r21 Vanessa и r22 v8-runner-rust
 углублены до DEEP_STATIC по S1–S5**.
 **r15 CLI ядра PASS**; **r15 daemon+MCP PASS**; **r22 init/build/syntax PASS**;
-**r01 `view`/`check` PASS**; **r01 `apply` dryRun + `docs` PASS** на стенде
+**r01 `view`/`check` PASS**; **r01 `apply` dryRun + `docs` PASS**;
+**Vanessa smoke PASS**; **Answer42 smoke PASS** на стенде
 `simple`.
 Static стыковка пяти закрыта. Состав:
 **r22 вместо r09** (решение пользователя 2026-09-21).
@@ -67,7 +68,7 @@ DEEP_STATIC по S1–S5. **r15 — DEEP_STATIC по S1–S5** на том же 
 Наиболее существенные неизвестные цели v2:
 
 1. Execution (индекс r15, smoke остальных). Static S1–S5 пяти есть.
-2. Для Unica r01 остаются публикация `apply` на выгрузке 2.20 и dual-workspace; для Answer42 r20 — dual live Test Client; для Vanessa r21 — execution; для r22 — smoke `test yaxunit` / `test va`.
+2. Для Unica r01 остаются публикация `apply` на выгрузке 2.20 и dual-workspace; для Answer42 r20 — dual live Test Client; для r22 — фикстура YaXUnit с модулями.
 3. Точность индекса r15 и компактность JSON-отчёта r22.
 4. Лицензии Unica (LGPL) и r22 (AGPL-3.0) — не юридическое заключение.
 5. Сборка r04, если `unica.docs` не хватит.
@@ -90,8 +91,8 @@ DEEP_STATIC по S1–S5. **r15 — DEEP_STATIC по S1–S5** на том же 
 [INTEGRATION.md](INTEGRATION.md); статусы — [VALIDATION.md](VALIDATION.md).
 Этот отчёт не запускает остальные продукты. **r15 CLI**, **r22
 init/build/syntax**, **r01 view/check** и **r01 apply dryRun + docs**
-PASS на стенде `simple` (ИБ создана). Точка продолжения —
-[STATE.md](STATE.md).
+PASS на стенде `simple` (ИБ создана). **r20 Answer42 smoke PASS**.
+Точка продолжения — [STATE.md](STATE.md).
 
 
 ## Частичный CONTINUE-AUDIT r20
@@ -100,8 +101,10 @@ PASS на стенде `simple` (ИБ создана). Точка продолж
 формы. CLI `answer42` поднимает stdio (или HTTP) MCP. Цель задаётся
 `start_session(base_url, session_id)`; screenshot пишет путь, не base64.
 На SHA 122 `@mcp.tool()` при профиле `full`, но продукт уже режет
-поверхность через `--tool-profile ui|core` и `--disable-rag`. RAG не
-брать как explore. Состав не менялся. Execution NOT_RUN.
+поверхность через `--tool-profile ui|core` и `--disable-rag`. Живой
+`tools/list` при `ui` = **103**. RAG не брать как explore. Состав не
+менялся. Execution smoke `start_session`/`active_window`/`screenshot`/
+`stop_session` на simple — PASS.
 
 ## Частичный CONTINUE-AUDIT r21
 

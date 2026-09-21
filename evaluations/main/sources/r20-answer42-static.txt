@@ -3,7 +3,7 @@
 Date: 2026-09-21
 Commit: 0406669a88144834bfdf6086c7040a25cb76d24c (branch beta, title «Релиз Answer42 v0.5.3»)
 PyPI: answer42 0.5.3 (upload 2026-09-09T20:14Z); project_urls empty
-Execution: NOT_RUN
+Execution: PASS 2026-09-21, logs/r20-mcp-simple.md (venv answer42==0.5.3, ui profile, stand simple).
 
 Read coordinates (line numbers from fetched raw files at this commit):
 

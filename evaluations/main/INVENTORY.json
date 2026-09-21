@@ -500,7 +500,7 @@
         "runtime-verification",
         "mcp-integration"
       ],
-      "priority": "Высокий для verify.form: подтверждены start_session(base_url, session_id), 122 MCP tools, --tool-profile subset, screenshot path.",
+      "priority": "Высокий для verify.form: живой ui tools/list=103, start_session по пути файловой ИБ, screenshot path, отказ дубля session_id.",
       "scope": "DEEP_STATIC",
       "duplicate_of": null,
       "report": "reports/r20.md"

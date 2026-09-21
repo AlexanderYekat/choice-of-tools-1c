@@ -8,7 +8,8 @@ r15 code-index-mcp — DEEP_STATIC по S1–S5**. **r20 Answer42, r21 Vanessa
 записан ([INTEGRATION-PLAN.md](INTEGRATION-PLAN.md)); static стыковка
 пяти закрыта; стенд `simple` с ИБ; **r15 CLI+MCP PASS**; **r22
 init/build/syntax PASS**; **r01 `view`/`check` PASS**; **r01 `apply`
-dryRun + `docs` PASS**; Answer42/Vanessa не начаты.
+dryRun + `docs` PASS**; **Vanessa smoke 1/1 PASS**; **Answer42 smoke
+PASS**.
 Снимок v1 и текст перехода — по необходимости, не для обычного CONTINUE:
 `history/goal-v1/`, `GOAL-CHANGE.md`.
 

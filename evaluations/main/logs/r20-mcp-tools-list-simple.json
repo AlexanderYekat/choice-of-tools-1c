@@ -1,0 +1,3147 @@
+{
+  "names": [
+    "sessions_list",
+    "session_status",
+    "start_session",
+    "stop_session",
+    "export_eventlog",
+    "credentials_check",
+    "credentials_save",
+    "credentials_remove",
+    "credentials_list",
+    "credentials_titles",
+    "active_window",
+    "windows_list",
+    "activate_window",
+    "goto_start_page",
+    "goto_previous_window",
+    "goto_next_window",
+    "wait_object",
+    "wait_form",
+    "wait_window",
+    "user_messages",
+    "close_user_messages_panel",
+    "current_error_info",
+    "client_busy_status",
+    "wait_client_idle",
+    "set_file_dialog_result",
+    "clear_file_dialog_result",
+    "field_info",
+    "field_value_text",
+    "field_tooltip",
+    "field_dropdown_items",
+    "form_next_element",
+    "form_previous_element",
+    "form_state",
+    "form_default_button",
+    "wait_form_closed",
+    "object_command_panel",
+    "object_context_menu",
+    "window_command_interface",
+    "command_interface_sections",
+    "command_interface_commands",
+    "command_interface_search",
+    "group_expand",
+    "group_collapse",
+    "group_current_page",
+    "group_activate_page",
+    "group_state",
+    "decoration_links",
+    "decoration_click_link",
+    "decoration_click",
+    "ui_tree",
+    "ui_tree_resource_search",
+    "ui_tree_resource_get_node",
+    "ui_tree_resource_children",
+    "ui_tree_diff",
+    "ui_tree_resource_action",
+    "command_bar",
+    "click_button",
+    "find_object",
+    "search_objects",
+    "get_object",
+    "focus_object",
+    "open_navigation_link",
+    "current_element",
+    "field_dropdown_state",
+    "field_dropdown_close",
+    "table_current_row",
+    "table_selected_rows",
+    "table_cell_text",
+    "tabular_documents",
+    "tabular_document_text",
+    "tabular_document_save",
+    "tabular_document_state_display",
+    "toggle_field",
+    "set_field_value",
+    "activate_field",
+    "choose_field_from_list",
+    "choose_field_first_row",
+    "choose_current_row",
+    "table_rows",
+    "table_find_row",
+    "table_goto_row",
+    "table_move_row",
+    "table_add_row",
+    "table_set_field",
+    "table_set_row_values",
+    "set_form_fields",
+    "table_choose_field_from_list",
+    "table_edit_info",
+    "table_select_all",
+    "table_clear_selection",
+    "table_delete_row",
+    "table_copy_row",
+    "table_toggle_delete_mark",
+    "table_begin_edit",
+    "table_end_edit",
+    "table_editing_state",
+    "form_open_settings",
+    "save_form",
+    "close_form",
+    "recording_start",
+    "recording_capture",
+    "recording_stop",
+    "screenshot"
+  ],
+  "pages": [
+    {
+      "ttl_ms": 0,
+      "cache_scope": "private",
+      "tools": [
+        {
+          "name": "sessions_list",
+          "description": "List active/restorable Answer42 sessions and their connection state.",
+          "input_schema": {
+            "properties": {},
+            "type": "object",
+            "title": "sessions_listArguments"
+          },
+          "output_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "title": "sessions_listDictOutput"
+          }
+        },
+        {
+          "name": "session_status",
+          "description": "Return bridge, runtime, test-client and RAG state for a session.",
+          "input_schema": {
+            "properties": {
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "session_statusArguments"
+          },
+          "output_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "title": "session_statusDictOutput"
+          }
+        },
+        {
+          "name": "start_session",
+          "description": "One-shot session factory: detect version, start infrastructure, and connect the 1C test client.\n\n`base_url` may be a web publication URL, `server/infobase`, or a file\ninfobase path. Prefer credentials saved with `credentials_save` over\npassing secrets in tool calls. After a long UI operation, use\n`client_busy_status` or `wait_client_idle` before sending more commands.\n",
+          "input_schema": {
+            "properties": {
+              "base_url": {
+                "default": "",
+                "title": "Base Url",
+                "type": "string"
+              },
+              "username": {
+                "default": "",
+                "title": "Username",
+                "type": "string"
+              },
+              "password": {
+                "default": "",
+                "title": "Password",
+                "type": "string"
+              },
+              "version": {
+                "default": "",
+                "title": "Version",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "",
+                "title": "Session Id",
+                "type": "string"
+              },
+              "idle_timeout_minutes": {
+                "default": 60,
+                "title": "Idle Timeout Minutes",
+                "type": "integer"
+              },
+              "extra_args": {
+                "default": "",
+                "title": "Extra Args",
+                "type": "string"
+              },
+              "execute": {
+                "default": "",
+                "title": "Execute",
+                "type": "string"
+              },
+              "command_parameter": {
+                "default": "",
+                "title": "Command Parameter",
+                "type": "string"
+              },
+              "rag_enabled": {
+                "default": false,
+                "title": "Rag Enabled",
+                "type": "boolean"
+              },
+              "summary_rag_config": {
+                "default": "",
+                "title": "Summary Rag Config",
+                "type": "string"
+              },
+              "include_timings": {
+                "default": false,
+                "title": "Include Timings",
+                "type": "boolean"
+              }
+            },
+            "type": "object",
+            "title": "start_sessionArguments"
+          },
+          "output_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "title": "start_sessionDictOutput"
+          }
+        },
+        {
+          "name": "stop_session",
+          "description": "Tear down a session: disconnect test-client, stop test-manager, ibsrv, Xvfb and bridge.",
+          "input_schema": {
+            "properties": {
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              },
+              "clean_data": {
+                "default": false,
+                "title": "Clean Data",
+                "type": "boolean"
+              }
+            },
+            "type": "object",
+            "title": "stop_sessionArguments"
+          },
+          "output_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "title": "stop_sessionDictOutput"
+          }
+        },
+        {
+          "name": "export_eventlog",
+          "description": "Export the 1C event log.",
+          "input_schema": {
+            "properties": {
+              "platform_dir": {
+                "default": "",
+                "title": "Platform Dir",
+                "type": "string"
+              },
+              "eventlog_dir": {
+                "default": "",
+                "title": "Eventlog Dir",
+                "type": "string"
+              },
+              "out_path": {
+                "default": "",
+                "title": "Out Path",
+                "type": "string"
+              },
+              "from_time": {
+                "default": "",
+                "title": "From Time",
+                "type": "string"
+              },
+              "to_time": {
+                "default": "",
+                "title": "To Time",
+                "type": "string"
+              },
+              "fmt": {
+                "default": "json",
+                "title": "Fmt",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "export_eventlogArguments"
+          },
+          "output_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "title": "export_eventlogDictOutput"
+          }
+        },
+        {
+          "name": "credentials_check",
+          "description": "Check whether credentials exist for a base URL or saved title without returning secrets.",
+          "input_schema": {
+            "properties": {
+              "base_url": {
+                "title": "Base Url",
+                "type": "string"
+              }
+            },
+            "required": [
+              "base_url"
+            ],
+            "type": "object",
+            "title": "credentials_checkArguments"
+          },
+          "output_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "title": "credentials_checkDictOutput"
+          }
+        },
+        {
+          "name": "credentials_save",
+          "description": "Save or update credentials for a URL pattern in the local credentials store.\n\nThe credentials file is never committed to git.  Use this tool to persist\nlogin/password pairs so that ``start_session`` can pick them up automatically\nwithout exposing secrets in MCP tool-call arguments.  Entries are scoped to the\ncurrent MCP account.\n",
+          "input_schema": {
+            "properties": {
+              "url": {
+                "title": "Url",
+                "type": "string"
+              },
+              "username": {
+                "title": "Username",
+                "type": "string"
+              },
+              "password": {
+                "title": "Password",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "aliases": {
+                "default": "",
+                "title": "Aliases",
+                "type": "string"
+              }
+            },
+            "required": [
+              "url",
+              "username",
+              "password"
+            ],
+            "type": "object",
+            "title": "credentials_saveArguments"
+          },
+          "output_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "title": "credentials_saveDictOutput"
+          }
+        },
+        {
+          "name": "credentials_remove",
+          "description": "Remove a credential entry from the local store by exact URL match.",
+          "input_schema": {
+            "properties": {
+              "url": {
+                "title": "Url",
+                "type": "string"
+              }
+            },
+            "required": [
+              "url"
+            ],
+            "type": "object",
+            "title": "credentials_removeArguments"
+          },
+          "output_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "title": "credentials_removeDictOutput"
+          }
+        },
+        {
+          "name": "credentials_list",
+          "description": "List configured credential URL patterns/titles (no usernames or passwords).",
+          "input_schema": {
+            "properties": {},
+            "type": "object",
+            "title": "credentials_listArguments"
+          },
+          "output_schema": {
+            "properties": {
+              "result": {
+                "items": {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                "title": "Result",
+                "type": "array"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "type": "object",
+            "title": "credentials_listOutput"
+          }
+        },
+        {
+          "name": "credentials_titles",
+          "description": "List saved credential titles/aliases that can be used as start_session base_url.",
+          "input_schema": {
+            "properties": {},
+            "type": "object",
+            "title": "credentials_titlesArguments"
+          },
+          "output_schema": {
+            "properties": {
+              "result": {
+                "items": {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                "title": "Result",
+                "type": "array"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "type": "object",
+            "title": "credentials_titlesOutput"
+          }
+        },
+        {
+          "name": "active_window",
+          "description": "Return active 1C test client window state.",
+          "input_schema": {
+            "properties": {
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "active_windowArguments"
+          }
+        },
+        {
+          "name": "windows_list",
+          "description": "Return all windows of the tested 1C client application.",
+          "input_schema": {
+            "properties": {
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "windows_listArguments"
+          }
+        },
+        {
+          "name": "activate_window",
+          "description": "Activate/switch to a tested 1C client window by index, title or name.",
+          "input_schema": {
+            "properties": {
+              "index": {
+                "default": -1,
+                "title": "Index",
+                "type": "integer"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "activate_windowArguments"
+          }
+        },
+        {
+          "name": "goto_start_page",
+          "description": "Navigate the main test-client window to the start page.",
+          "input_schema": {
+            "properties": {
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "goto_start_pageArguments"
+          }
+        },
+        {
+          "name": "goto_previous_window",
+          "description": "Navigate the main test-client window to the previous open window.",
+          "input_schema": {
+            "properties": {
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "goto_previous_windowArguments"
+          }
+        },
+        {
+          "name": "goto_next_window",
+          "description": "Navigate the main test-client window to the next open window.",
+          "input_schema": {
+            "properties": {
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "goto_next_windowArguments"
+          }
+        },
+        {
+          "name": "wait_object",
+          "description": "Wait until an object appears in the tested client UI tree.",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "type": {
+                "default": "",
+                "title": "Type",
+                "type": "string"
+              },
+              "timeout": {
+                "default": 15,
+                "title": "Timeout",
+                "type": "integer"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "wait_objectArguments"
+          }
+        },
+        {
+          "name": "wait_form",
+          "description": "Wait until a form appears.",
+          "input_schema": {
+            "properties": {
+              "form_name": {
+                "default": "",
+                "title": "Form Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "timeout": {
+                "default": 15,
+                "title": "Timeout",
+                "type": "integer"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "wait_formArguments"
+          }
+        },
+        {
+          "name": "wait_window",
+          "description": "Wait until a client window appears.",
+          "input_schema": {
+            "properties": {
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "timeout": {
+                "default": 15,
+                "title": "Timeout",
+                "type": "integer"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "wait_windowArguments"
+          }
+        },
+        {
+          "name": "user_messages",
+          "description": "Return current user messages shown in the active test-client window.",
+          "input_schema": {
+            "properties": {
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "user_messagesArguments"
+          }
+        },
+        {
+          "name": "close_user_messages_panel",
+          "description": "Close the user messages panel in the active test-client window.",
+          "input_schema": {
+            "properties": {
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "close_user_messages_panelArguments"
+          }
+        },
+        {
+          "name": "current_error_info",
+          "description": "Return current 1C script error information displayed in the tested client, if any.",
+          "input_schema": {
+            "properties": {
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "current_error_infoArguments"
+          }
+        },
+        {
+          "name": "client_busy_status",
+          "description": "Check whether the 1C test client/bridge is responsive and whether a dangerous action is blocking the interface.",
+          "input_schema": {
+            "properties": {
+              "probe_timeout": {
+                "default": 2,
+                "title": "Probe Timeout",
+                "type": "integer"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "client_busy_statusArguments"
+          }
+        },
+        {
+          "name": "wait_client_idle",
+          "description": "Wait until the 1C test client/bridge becomes responsive after a long or blocking UI action.",
+          "input_schema": {
+            "properties": {
+              "timeout": {
+                "default": 60,
+                "title": "Timeout",
+                "type": "integer"
+              },
+              "interval": {
+                "default": 3,
+                "title": "Interval",
+                "type": "integer"
+              },
+              "probe_timeout": {
+                "default": 2,
+                "title": "Probe Timeout",
+                "type": "integer"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "wait_client_idleArguments"
+          }
+        },
+        {
+          "name": "set_file_dialog_result",
+          "description": "Preload the result for the next 1C file selection dialog.",
+          "input_schema": {
+            "properties": {
+              "paths": {
+                "title": "Paths",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "paths"
+            ],
+            "type": "object",
+            "title": "set_file_dialog_resultArguments"
+          }
+        },
+        {
+          "name": "clear_file_dialog_result",
+          "description": "Clear queued file selection dialog results.",
+          "input_schema": {
+            "properties": {
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "clear_file_dialog_resultArguments"
+          }
+        },
+        {
+          "name": "field_info",
+          "description": "Return diagnostics for a form field: visibility, availability, readonly, kind, title.",
+          "input_schema": {
+            "properties": {
+              "field_name": {
+                "title": "Field Name",
+                "type": "string"
+              },
+              "search_by_title": {
+                "default": false,
+                "title": "Search By Title",
+                "type": "boolean"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "field_name"
+            ],
+            "type": "object",
+            "title": "field_infoArguments"
+          }
+        },
+        {
+          "name": "field_value_text",
+          "description": "Return field data presentation text via ПолучитьПредставлениеДанных().",
+          "input_schema": {
+            "properties": {
+              "field_name": {
+                "title": "Field Name",
+                "type": "string"
+              },
+              "search_by_title": {
+                "default": false,
+                "title": "Search By Title",
+                "type": "boolean"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "field_name"
+            ],
+            "type": "object",
+            "title": "field_value_textArguments"
+          }
+        },
+        {
+          "name": "field_tooltip",
+          "description": "Return field tooltip text.",
+          "input_schema": {
+            "properties": {
+              "field_name": {
+                "title": "Field Name",
+                "type": "string"
+              },
+              "search_by_title": {
+                "default": false,
+                "title": "Search By Title",
+                "type": "boolean"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "field_name"
+            ],
+            "type": "object",
+            "title": "field_tooltipArguments"
+          }
+        },
+        {
+          "name": "field_dropdown_items",
+          "description": "Open a form field dropdown and return visible choice items when exposed by the 1C test-client API.\n\nThis is a convenience action for the common \"open dropdown and read choices\" scenario.\nFor non-mutating diagnostics of an already-open dropdown use field_dropdown_state.\n",
+          "input_schema": {
+            "properties": {
+              "field_name": {
+                "title": "Field Name",
+                "type": "string"
+              },
+              "search_by_title": {
+                "default": false,
+                "title": "Search By Title",
+                "type": "boolean"
+              },
+              "timeout": {
+                "default": 10,
+                "title": "Timeout",
+                "type": "integer"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "field_name"
+            ],
+            "type": "object",
+            "title": "field_dropdown_itemsArguments"
+          }
+        },
+        {
+          "name": "form_next_element",
+          "description": "Move focus to the next form element and return the current element.",
+          "input_schema": {
+            "properties": {
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "form_next_elementArguments"
+          }
+        },
+        {
+          "name": "form_previous_element",
+          "description": "Move focus to the previous form element and return the current element.",
+          "input_schema": {
+            "properties": {
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "form_previous_elementArguments"
+          }
+        },
+        {
+          "name": "form_state",
+          "description": "Return active form availability/modified/readonly state.",
+          "input_schema": {
+            "properties": {
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "form_stateArguments"
+          }
+        },
+        {
+          "name": "form_default_button",
+          "description": "Return the active form default button, when available.",
+          "input_schema": {
+            "properties": {
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "form_default_buttonArguments"
+          }
+        },
+        {
+          "name": "wait_form_closed",
+          "description": "Wait until the active form closes.",
+          "input_schema": {
+            "properties": {
+              "timeout": {
+                "default": 15,
+                "title": "Timeout",
+                "type": "integer"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "wait_form_closedArguments"
+          }
+        },
+        {
+          "name": "object_command_panel",
+          "description": "Return command panel for a found UI object, when supported.",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "type": {
+                "default": "",
+                "title": "Type",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "object_command_panelArguments"
+          }
+        },
+        {
+          "name": "object_context_menu",
+          "description": "Return context menu for a found UI object, when supported.",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "type": {
+                "default": "",
+                "title": "Type",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "object_context_menuArguments"
+          }
+        },
+        {
+          "name": "window_command_interface",
+          "description": "Return active window command interface, when supported.",
+          "input_schema": {
+            "properties": {
+              "window_title": {
+                "default": "",
+                "title": "Window Title",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "window_command_interfaceArguments"
+          }
+        },
+        {
+          "name": "command_interface_sections",
+          "description": "Return top-level sections of the active window command interface.",
+          "input_schema": {
+            "properties": {
+              "window_title": {
+                "default": "",
+                "title": "Window Title",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "command_interface_sectionsArguments"
+          }
+        },
+        {
+          "name": "command_interface_commands",
+          "description": "Return command-interface command tree and flattened command list, optionally filtered by section.",
+          "input_schema": {
+            "properties": {
+              "section": {
+                "default": "",
+                "title": "Section",
+                "type": "string"
+              },
+              "window_title": {
+                "default": "",
+                "title": "Window Title",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "command_interface_commandsArguments"
+          }
+        },
+        {
+          "name": "command_interface_search",
+          "description": "Search live command-interface commands by title, path or navigation URL.",
+          "input_schema": {
+            "properties": {
+              "query": {
+                "title": "Query",
+                "type": "string"
+              },
+              "section": {
+                "default": "",
+                "title": "Section",
+                "type": "string"
+              },
+              "max_results": {
+                "default": 20,
+                "title": "Max Results",
+                "type": "integer"
+              },
+              "window_title": {
+                "default": "",
+                "title": "Window Title",
+                "type": "string"
+              },
+              "include_timings": {
+                "default": false,
+                "title": "Include Timings",
+                "type": "boolean"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "type": "object",
+            "title": "command_interface_searchArguments"
+          }
+        },
+        {
+          "name": "group_expand",
+          "description": "Expand a collapsible form group.",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "group_expandArguments"
+          }
+        },
+        {
+          "name": "group_collapse",
+          "description": "Collapse a collapsible form group.",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "group_collapseArguments"
+          }
+        },
+        {
+          "name": "group_current_page",
+          "description": "Return current page of a page-group form element.",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "group_current_pageArguments"
+          }
+        },
+        {
+          "name": "group_activate_page",
+          "description": "Activate/switch to another page in a page-group form element.",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "page_name": {
+                "default": "",
+                "title": "Page Name",
+                "type": "string"
+              },
+              "page_title": {
+                "default": "",
+                "title": "Page Title",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "group_activate_pageArguments"
+          }
+        },
+        {
+          "name": "group_state",
+          "description": "Return form group expanded/visible/available state.",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "group_stateArguments"
+          }
+        },
+        {
+          "name": "decoration_links",
+          "description": "Return hyperlink presentations from a formatted-string decoration.",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "decoration_linksArguments"
+          }
+        },
+        {
+          "name": "decoration_click_link",
+          "description": "Click a hyperlink inside a formatted-string decoration.",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "presentation": {
+                "default": "",
+                "title": "Presentation",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "decoration_click_linkArguments"
+          }
+        },
+        {
+          "name": "decoration_click",
+          "description": "Click a form decoration.",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "decoration_clickArguments"
+          }
+        },
+        {
+          "name": "ui_tree",
+          "description": "Return a serialized snapshot of the active 1C UI tree.\n\nDefault profile is `navigation`: visible elements, compact fields, no data\npresentations, no RAG enrichment, and command panels excluded unless requested.\n`include_rag_types` defaults to `auto`: RAG enrichment is enabled for\n`diagnostic`, `data` and `full` profiles and disabled for navigation profiles.\nThe tree has no depth limit. Use `include_hidden=true` for hidden pages/elements.\nPass `parent_name` to serialize only the subtree rooted at a specific form element.\nUse `fields=minimal|navigation|diagnostic|data|full` (or a comma-separated\nfield list) to control returned node fields without changing traversal.\n\n`include_data=true` may call 1C `ПолучитьПредставлениеДанных()` for many nodes;\ndo not enable it casually on large forms. Prefer targeted tools for data:\n`field_value_text` for one field, `table_rows` for tables/dynamic lists, and\n`tabular_document_text`/`tabular_document_save` for reports/tabular documents.\n\nWhen `name`, `title` or `type` filter is set, the result is a flat `objects` list instead\nof a nested tree. For finding one control, prefer `search_objects`/`find_object`.\n`format=outline` and `format=yaml|yml` return readable text representations\ninside a structured tool result; JSON remains the default machine-readable form.\n\n`delivery=auto` is the default: small results stay inline, but large results\nabove `ONEC_MCP_UI_TREE_RESOURCE_AUTO_THRESHOLD_TOKENS` (default 50k estimated tokens) are\nsaved as MCP resources. Use `delivery=inline` to force inline output and\n`delivery=resource` to force resource output for large/verbose diagnostics\n(`profile=full`, `include_hidden=true`, `include_data=true`). Resource\nresponses contain only `resource_uri`, `snapshot_id`, summary, metrics and a\nsmall preview. Then inspect the saved snapshot with\n`ui_tree_resource_search`, `ui_tree_resource_get_node`,\n`ui_tree_resource_children`, or `ui_tree_diff` instead of loading the whole\ntree into the agent context.\n",
+          "input_schema": {
+            "properties": {
+              "include_rag_types": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "default": "auto",
+                "title": "Include Rag Types"
+              },
+              "include_hidden": {
+                "default": false,
+                "title": "Include Hidden",
+                "type": "boolean"
+              },
+              "compact": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Compact"
+              },
+              "include_data": {
+                "default": false,
+                "title": "Include Data",
+                "type": "boolean"
+              },
+              "include_command_panels": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Include Command Panels"
+              },
+              "command_panels": {
+                "default": "auto",
+                "title": "Command Panels",
+                "type": "string"
+              },
+              "profile": {
+                "default": "navigation",
+                "title": "Profile",
+                "type": "string"
+              },
+              "parent_name": {
+                "default": "",
+                "title": "Parent Name",
+                "type": "string"
+              },
+              "type": {
+                "default": "",
+                "title": "Type",
+                "type": "string"
+              },
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "fields": {
+                "default": "auto",
+                "title": "Fields",
+                "type": "string"
+              },
+              "group_mode": {
+                "default": "include",
+                "title": "Group Mode",
+                "type": "string"
+              },
+              "format": {
+                "default": "json",
+                "title": "Format",
+                "type": "string"
+              },
+              "rag_snapshot": {
+                "default": "",
+                "title": "Rag Snapshot",
+                "type": "string"
+              },
+              "delivery": {
+                "default": "auto",
+                "title": "Delivery",
+                "type": "string"
+              },
+              "preview_max_nodes": {
+                "default": 40,
+                "title": "Preview Max Nodes",
+                "type": "integer"
+              },
+              "include_timings": {
+                "default": false,
+                "title": "Include Timings",
+                "type": "boolean"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "ui_treeArguments"
+          }
+        },
+        {
+          "name": "ui_tree_resource_search",
+          "description": "Search a saved ui_tree resource without loading the full tree into context.\n\nUse after `ui_tree(delivery='resource')` when you need a few controls from a\nlarge snapshot. The result includes `path` and `index_path`; use either with\n`ui_tree_resource_get_node`, `ui_tree_resource_children`, or\n`ui_tree_resource_action`.\n",
+          "input_schema": {
+            "properties": {
+              "resource_uri": {
+                "default": "",
+                "title": "Resource Uri",
+                "type": "string"
+              },
+              "snapshot_id": {
+                "default": "",
+                "title": "Snapshot Id",
+                "type": "string"
+              },
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "type": {
+                "default": "",
+                "title": "Type",
+                "type": "string"
+              },
+              "text": {
+                "default": "",
+                "title": "Text",
+                "type": "string"
+              },
+              "fields": {
+                "default": "navigation",
+                "title": "Fields",
+                "type": "string"
+              },
+              "limit": {
+                "default": 20,
+                "title": "Limit",
+                "type": "integer"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "ui_tree_resource_searchArguments"
+          }
+        },
+        {
+          "name": "ui_tree_resource_get_node",
+          "description": "Return one node from a saved ui_tree resource by `index_path` or `path`.",
+          "input_schema": {
+            "properties": {
+              "resource_uri": {
+                "default": "",
+                "title": "Resource Uri",
+                "type": "string"
+              },
+              "snapshot_id": {
+                "default": "",
+                "title": "Snapshot Id",
+                "type": "string"
+              },
+              "path": {
+                "default": "",
+                "title": "Path",
+                "type": "string"
+              },
+              "index_path": {
+                "default": "",
+                "title": "Index Path",
+                "type": "string"
+              },
+              "fields": {
+                "default": "diagnostic",
+                "title": "Fields",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "ui_tree_resource_get_nodeArguments"
+          }
+        },
+        {
+          "name": "ui_tree_resource_children",
+          "description": "Return a small subtree from a saved ui_tree resource.\n\nPrefer this over MCP resource reads when the full snapshot is large. Set\n`depth=1` to inspect direct children, `depth=2` for immediate context.\n",
+          "input_schema": {
+            "properties": {
+              "resource_uri": {
+                "default": "",
+                "title": "Resource Uri",
+                "type": "string"
+              },
+              "snapshot_id": {
+                "default": "",
+                "title": "Snapshot Id",
+                "type": "string"
+              },
+              "path": {
+                "default": "",
+                "title": "Path",
+                "type": "string"
+              },
+              "index_path": {
+                "default": "",
+                "title": "Index Path",
+                "type": "string"
+              },
+              "depth": {
+                "default": 1,
+                "title": "Depth",
+                "type": "integer"
+              },
+              "fields": {
+                "default": "navigation",
+                "title": "Fields",
+                "type": "string"
+              },
+              "format": {
+                "default": "json",
+                "title": "Format",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "ui_tree_resource_childrenArguments"
+          }
+        },
+        {
+          "name": "ui_tree_diff",
+          "description": "Compare two saved ui_tree snapshots and return compact added/removed/changed node samples.",
+          "input_schema": {
+            "properties": {
+              "before_resource_uri": {
+                "default": "",
+                "title": "Before Resource Uri",
+                "type": "string"
+              },
+              "after_resource_uri": {
+                "default": "",
+                "title": "After Resource Uri",
+                "type": "string"
+              },
+              "before_snapshot_id": {
+                "default": "",
+                "title": "Before Snapshot Id",
+                "type": "string"
+              },
+              "after_snapshot_id": {
+                "default": "",
+                "title": "After Snapshot Id",
+                "type": "string"
+              },
+              "fields": {
+                "default": "navigation",
+                "title": "Fields",
+                "type": "string"
+              },
+              "limit": {
+                "default": 50,
+                "title": "Limit",
+                "type": "integer"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "ui_tree_diffArguments"
+          }
+        },
+        {
+          "name": "ui_tree_resource_action",
+          "description": "Run a safe first-class UI action using a node selected from a saved ui_tree snapshot.\n\nThe snapshot is only used to extract stable name/title/type hints; the actual\naction is executed against the current live 1C UI via existing tools. Refresh\nthe snapshot after large UI changes before relying on old selectors.\n",
+          "input_schema": {
+            "properties": {
+              "resource_uri": {
+                "default": "",
+                "title": "Resource Uri",
+                "type": "string"
+              },
+              "snapshot_id": {
+                "default": "",
+                "title": "Snapshot Id",
+                "type": "string"
+              },
+              "path": {
+                "default": "",
+                "title": "Path",
+                "type": "string"
+              },
+              "index_path": {
+                "default": "",
+                "title": "Index Path",
+                "type": "string"
+              },
+              "action": {
+                "default": "focus",
+                "title": "Action",
+                "type": "string"
+              },
+              "watchdog_timeout": {
+                "default": 120,
+                "title": "Watchdog Timeout",
+                "type": "integer"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "ui_tree_resource_actionArguments"
+          }
+        },
+        {
+          "name": "command_bar",
+          "description": "Low-level diagnostic: return active window/form command-bar data when available.\n\nPrefer command_interface_sections/commands/search for application navigation commands,\nand object_command_panel/object_context_menu for commands of a specific UI object.\n",
+          "input_schema": {
+            "properties": {
+              "include_timings": {
+                "default": false,
+                "title": "Include Timings",
+                "type": "boolean"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "command_barArguments"
+          }
+        },
+        {
+          "name": "click_button",
+          "description": "Find a button in the active UI tree and press it.",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "title": "Name",
+                "type": "string"
+              },
+              "search_by_title": {
+                "default": false,
+                "title": "Search By Title",
+                "type": "boolean"
+              },
+              "watchdog_timeout": {
+                "default": 120,
+                "title": "Watchdog Timeout",
+                "type": "integer"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "type": "object",
+            "title": "click_buttonArguments"
+          }
+        },
+        {
+          "name": "find_object",
+          "description": "Find an object in the active UI hierarchy by name, title, or test object type.",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "type": {
+                "default": "",
+                "title": "Type",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "find_objectArguments"
+          }
+        },
+        {
+          "name": "search_objects",
+          "description": "Find all UI objects matching name, title and/or 1C test object type.",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "type": {
+                "default": "",
+                "title": "Type",
+                "type": "string"
+              },
+              "limit": {
+                "default": 50,
+                "title": "Limit",
+                "type": "integer"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "search_objectsArguments"
+          }
+        },
+        {
+          "name": "get_object",
+          "description": "Low-level escape hatch: call TestedApplication.GetObject with optional wildcard name/title.\n\nPrefer find_object/search_objects for structured diagnostics and focus_object for changing focus.\nKeep this tool for platform/test-client edge cases where direct GetObject semantics matter.\n",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "type": {
+                "default": "",
+                "title": "Type",
+                "type": "string"
+              },
+              "timeout": {
+                "default": 0,
+                "title": "Timeout",
+                "type": "integer"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "get_objectArguments"
+          }
+        },
+        {
+          "name": "focus_object",
+          "description": "Move focus to a UI object in the active test client window.\n\nThis tool only changes focus/activation; it does not change values. For radio\nbuttons and dropdowns use set_field_value with the visible caption. To switch\nto an inactive page, focus the page object first, then interact with its\nchildren.\n",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "type": {
+                "default": "",
+                "title": "Type",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "focus_objectArguments"
+          }
+        },
+        {
+          "name": "open_navigation_link",
+          "description": "Open an explicit 1C navigation link in the active test-client window.\n\nThis tool intentionally rejects arbitrary form command names such as\n`ФормаНайти` or `СледующаяСтрока`. Use first-class MCP tools for form\nactions, table navigation, search/settings, and dynamic-list operations.\n",
+          "input_schema": {
+            "properties": {
+              "navigation_link": {
+                "title": "Navigation Link",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "navigation_link"
+            ],
+            "type": "object",
+            "title": "open_navigation_linkArguments"
+          }
+        },
+        {
+          "name": "current_element",
+          "description": "Return the current active form element.",
+          "input_schema": {
+            "properties": {
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "current_elementArguments"
+          }
+        },
+        {
+          "name": "field_dropdown_state",
+          "description": "Return whether a field dropdown is open and its visible choice items.",
+          "input_schema": {
+            "properties": {
+              "field_name": {
+                "title": "Field Name",
+                "type": "string"
+              },
+              "search_by_title": {
+                "default": false,
+                "title": "Search By Title",
+                "type": "boolean"
+              },
+              "timeout": {
+                "default": 60,
+                "title": "Timeout",
+                "type": "integer"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "field_name"
+            ],
+            "type": "object",
+            "title": "field_dropdown_stateArguments"
+          }
+        },
+        {
+          "name": "field_dropdown_close",
+          "description": "Close an open dropdown for a form field, if it is open.",
+          "input_schema": {
+            "properties": {
+              "field_name": {
+                "title": "Field Name",
+                "type": "string"
+              },
+              "search_by_title": {
+                "default": false,
+                "title": "Search By Title",
+                "type": "boolean"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "field_name"
+            ],
+            "type": "object",
+            "title": "field_dropdown_closeArguments"
+          }
+        },
+        {
+          "name": "table_current_row",
+          "description": "Return current row of a tested table as key/value text mapping.",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "table_current_rowArguments"
+          }
+        },
+        {
+          "name": "table_selected_rows",
+          "description": "Return selected rows of a tested table as key/value text mappings.",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "table_selected_rowsArguments"
+          }
+        },
+        {
+          "name": "table_cell_text",
+          "description": "Return cell text from a tested table via GetCellText().",
+          "input_schema": {
+            "properties": {
+              "cell": {
+                "default": "",
+                "title": "Cell",
+                "type": "string"
+              },
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "table_cell_textArguments"
+          }
+        },
+        {
+          "name": "tabular_documents",
+          "description": "List tabular document fields with dimensions; optionally include a cells range.\n\ninclude_text is intended for small/partial ranges. For large tabular\ndocuments, save/export the report to a file and analyze that file instead.\n",
+          "input_schema": {
+            "properties": {
+              "include_text": {
+                "default": false,
+                "title": "Include Text",
+                "type": "boolean"
+              },
+              "row_start": {
+                "default": 1,
+                "title": "Row Start",
+                "type": "integer"
+              },
+              "row_end": {
+                "default": 0,
+                "title": "Row End",
+                "type": "integer"
+              },
+              "column_start": {
+                "default": 1,
+                "title": "Column Start",
+                "type": "integer"
+              },
+              "column_end": {
+                "default": 0,
+                "title": "Column End",
+                "type": "integer"
+              },
+              "max_rows": {
+                "default": 50,
+                "title": "Max Rows",
+                "type": "integer"
+              },
+              "max_columns": {
+                "default": 20,
+                "title": "Max Columns",
+                "type": "integer"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "tabular_documentsArguments"
+          }
+        },
+        {
+          "name": "tabular_document_text",
+          "description": "Return dimensions and a cells range of a tabular document field in the active window.\n\nUse this for small tables or partial reads (headers, totals, spot checks). For\nlarge reports/tabular documents, prefer tabular_document_save/report export\nand analyze the saved PDF/XLSX/TXT/HTML file instead of reading UI cells one\nby one.\n",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "row_start": {
+                "default": 1,
+                "title": "Row Start",
+                "type": "integer"
+              },
+              "row_end": {
+                "default": 0,
+                "title": "Row End",
+                "type": "integer"
+              },
+              "column_start": {
+                "default": 1,
+                "title": "Column Start",
+                "type": "integer"
+              },
+              "column_end": {
+                "default": 0,
+                "title": "Column End",
+                "type": "integer"
+              },
+              "max_rows": {
+                "default": 50,
+                "title": "Max Rows",
+                "type": "integer"
+              },
+              "max_columns": {
+                "default": 20,
+                "title": "Max Columns",
+                "type": "integer"
+              },
+              "compact": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Compact"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "tabular_document_textArguments"
+          }
+        },
+        {
+          "name": "tabular_document_save",
+          "description": "Save a tabular document field to a file in the selected format.\n\nPrefer this export to reading a large report cell by cell. Confirm the\nreturned `saved` state and output path before reporting success. Saving can\nblock a thin client; when `interface_blocked=true`, wait with\n`client_busy_status` or `wait_client_idle` before sending further UI calls.\n",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "path": {
+                "default": "",
+                "title": "Path",
+                "type": "string"
+              },
+              "format": {
+                "default": "pdf",
+                "title": "Format",
+                "type": "string"
+              },
+              "exact_filter_only": {
+                "default": false,
+                "title": "Exact Filter Only",
+                "type": "boolean"
+              },
+              "watchdog_timeout": {
+                "default": 120,
+                "title": "Watchdog Timeout",
+                "type": "integer"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "tabular_document_saveArguments"
+          }
+        },
+        {
+          "name": "tabular_document_state_display",
+          "description": "Return the state display of a tabular document field, when exposed by 1C.",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "tabular_document_state_displayArguments"
+          }
+        },
+        {
+          "name": "toggle_field",
+          "description": "Set a checkbox-like field using the 1C test client API.",
+          "input_schema": {
+            "properties": {
+              "field_name": {
+                "title": "Field Name",
+                "type": "string"
+              },
+              "value": {
+                "default": false,
+                "title": "Value",
+                "type": "boolean"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "field_name"
+            ],
+            "type": "object",
+            "title": "toggle_fieldArguments"
+          }
+        },
+        {
+          "name": "set_field_value",
+          "description": "Set a value in a form field by name or title.",
+          "input_schema": {
+            "properties": {
+              "field_name": {
+                "title": "Field Name",
+                "type": "string"
+              },
+              "value": {
+                "title": "Value",
+                "type": "string"
+              },
+              "search_by_title": {
+                "default": false,
+                "title": "Search By Title",
+                "type": "boolean"
+              },
+              "create_if_missing": {
+                "default": false,
+                "title": "Create If Missing",
+                "type": "boolean"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "field_name",
+              "value"
+            ],
+            "type": "object",
+            "title": "set_field_valueArguments"
+          }
+        },
+        {
+          "name": "activate_field",
+          "description": "Activate/focus a form field by name or title.",
+          "input_schema": {
+            "properties": {
+              "field_name": {
+                "title": "Field Name",
+                "type": "string"
+              },
+              "search_by_title": {
+                "default": false,
+                "title": "Search By Title",
+                "type": "boolean"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "field_name"
+            ],
+            "type": "object",
+            "title": "activate_fieldArguments"
+          }
+        },
+        {
+          "name": "choose_field_from_list",
+          "description": "Open the standard selection form for a reference field.",
+          "input_schema": {
+            "properties": {
+              "field_name": {
+                "title": "Field Name",
+                "type": "string"
+              },
+              "search_by_title": {
+                "default": false,
+                "title": "Search By Title",
+                "type": "boolean"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "field_name"
+            ],
+            "type": "object",
+            "title": "choose_field_from_listArguments"
+          }
+        },
+        {
+          "name": "choose_field_first_row",
+          "description": "Open reference selection form and press its standard Choose button.",
+          "input_schema": {
+            "properties": {
+              "field_name": {
+                "title": "Field Name",
+                "type": "string"
+              },
+              "search_by_title": {
+                "default": false,
+                "title": "Search By Title",
+                "type": "boolean"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "field_name"
+            ],
+            "type": "object",
+            "title": "choose_field_first_rowArguments"
+          }
+        },
+        {
+          "name": "choose_current_row",
+          "description": "Choose the current row in the active selection/list form.",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "Список",
+                "title": "Name",
+                "type": "string"
+              },
+              "expected_text": {
+                "default": "",
+                "title": "Expected Text",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "choose_current_rowArguments"
+          }
+        },
+        {
+          "name": "table_rows",
+          "description": "Return rows of a tested table as key/value mappings.",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "limit": {
+                "default": 50,
+                "title": "Limit",
+                "type": "integer"
+              },
+              "compact": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Compact"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "table_rowsArguments"
+          }
+        },
+        {
+          "name": "table_find_row",
+          "description": "Find a tested table row containing text.",
+          "input_schema": {
+            "properties": {
+              "text": {
+                "title": "Text",
+                "type": "string"
+              },
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "limit": {
+                "default": 200,
+                "title": "Limit",
+                "type": "integer"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "text"
+            ],
+            "type": "object",
+            "title": "table_find_rowArguments"
+          }
+        },
+        {
+          "name": "table_goto_row",
+          "description": "Move cursor to the Nth tested table row containing text.",
+          "input_schema": {
+            "properties": {
+              "text": {
+                "title": "Text",
+                "type": "string"
+              },
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "limit": {
+                "default": 200,
+                "title": "Limit",
+                "type": "integer"
+              },
+              "occurrence": {
+                "default": 1,
+                "title": "Occurrence",
+                "type": "integer"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "text"
+            ],
+            "type": "object",
+            "title": "table_goto_rowArguments"
+          }
+        },
+        {
+          "name": "table_move_row",
+          "description": "Move current row using official test-client table navigation methods.",
+          "input_schema": {
+            "properties": {
+              "direction": {
+                "default": "next",
+                "title": "Direction",
+                "type": "string"
+              },
+              "steps": {
+                "default": 1,
+                "title": "Steps",
+                "type": "integer"
+              },
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "table_move_rowArguments"
+          }
+        },
+        {
+          "name": "table_add_row",
+          "description": "Add a row to the active tested table via the 1C test-client API (Insert / plus).",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "table_add_rowArguments"
+          }
+        },
+        {
+          "name": "table_set_field",
+          "description": "Set a field in the currently edited row of a form table.\n\nFinds the editor field for the column (e.g. ТоварыНоменклатура), activates it,\ndelegates to the general set_field_value logic, ends row editing, and verifies\nthe value in the current table row.",
+          "input_schema": {
+            "properties": {
+              "table": {
+                "title": "Table",
+                "type": "string"
+              },
+              "field": {
+                "title": "Field",
+                "type": "string"
+              },
+              "value": {
+                "title": "Value",
+                "type": "string"
+              },
+              "search_by_title": {
+                "default": false,
+                "title": "Search By Title",
+                "type": "boolean"
+              },
+              "create_if_missing": {
+                "default": false,
+                "title": "Create If Missing",
+                "type": "boolean"
+              },
+              "row": {
+                "default": "",
+                "title": "Row",
+                "type": "string"
+              },
+              "search_limit": {
+                "default": 2000,
+                "title": "Search Limit",
+                "type": "integer"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "table",
+              "field",
+              "value"
+            ],
+            "type": "object",
+            "title": "table_set_fieldArguments"
+          }
+        },
+        {
+          "name": "table_set_row_values",
+          "description": "Set multiple fields in the current row of a form table and verify each value.",
+          "input_schema": {
+            "properties": {
+              "table": {
+                "title": "Table",
+                "type": "string"
+              },
+              "values": {
+                "title": "Values",
+                "type": "string"
+              },
+              "search_by_title": {
+                "default": false,
+                "title": "Search By Title",
+                "type": "boolean"
+              },
+              "create_if_missing": {
+                "default": false,
+                "title": "Create If Missing",
+                "type": "boolean"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "table",
+              "values"
+            ],
+            "type": "object",
+            "title": "table_set_row_valuesArguments"
+          }
+        },
+        {
+          "name": "set_form_fields",
+          "description": "Set multiple ordinary form fields using the same logic as set_field_value.",
+          "input_schema": {
+            "properties": {
+              "values": {
+                "title": "Values",
+                "type": "string"
+              },
+              "search_by_title": {
+                "default": false,
+                "title": "Search By Title",
+                "type": "boolean"
+              },
+              "create_if_missing": {
+                "default": false,
+                "title": "Create If Missing",
+                "type": "boolean"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "values"
+            ],
+            "type": "object",
+            "title": "set_form_fieldsArguments"
+          }
+        },
+        {
+          "name": "table_choose_field_from_list",
+          "description": "Open the selection form for a reference field in a form table row.",
+          "input_schema": {
+            "properties": {
+              "table": {
+                "title": "Table",
+                "type": "string"
+              },
+              "field": {
+                "title": "Field",
+                "type": "string"
+              },
+              "search_by_title": {
+                "default": false,
+                "title": "Search By Title",
+                "type": "boolean"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "table",
+              "field"
+            ],
+            "type": "object",
+            "title": "table_choose_field_from_listArguments"
+          }
+        },
+        {
+          "name": "table_edit_info",
+          "description": "Return diagnostics for currently edited table row and its child fields.",
+          "input_schema": {
+            "properties": {
+              "table": {
+                "default": "ДополнительнаяИнформация",
+                "title": "Table",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "table_edit_infoArguments"
+          }
+        },
+        {
+          "name": "table_select_all",
+          "description": "Select all rows in a form table.",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "table_select_allArguments"
+          }
+        },
+        {
+          "name": "table_clear_selection",
+          "description": "Clear all row selection in a form table.",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "table_clear_selectionArguments"
+          }
+        },
+        {
+          "name": "table_delete_row",
+          "description": "Delete the current row in a form table.",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "table_delete_rowArguments"
+          }
+        },
+        {
+          "name": "table_copy_row",
+          "description": "Copy the current row in a form table.",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "table_copy_rowArguments"
+          }
+        },
+        {
+          "name": "table_toggle_delete_mark",
+          "description": "Toggle the delete mark on the current row.",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "table_toggle_delete_markArguments"
+          }
+        },
+        {
+          "name": "table_begin_edit",
+          "description": "Begin editing the current row in a form table.",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "table_begin_editArguments"
+          }
+        },
+        {
+          "name": "table_end_edit",
+          "description": "End editing the current row in a form table.",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "table_end_editArguments"
+          }
+        },
+        {
+          "name": "table_editing_state",
+          "description": "Return whether a form table is currently in edit mode.",
+          "input_schema": {
+            "properties": {
+              "name": {
+                "default": "",
+                "title": "Name",
+                "type": "string"
+              },
+              "title": {
+                "default": "",
+                "title": "Title",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "table_editing_stateArguments"
+          }
+        },
+        {
+          "name": "form_open_settings",
+          "description": "Open the current form customization dialog via 'Изменить форму'.",
+          "input_schema": {
+            "properties": {
+              "button": {
+                "default": "",
+                "title": "Button",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "form_open_settingsArguments"
+          }
+        },
+        {
+          "name": "save_form",
+          "description": "Save/write the active form.",
+          "input_schema": {
+            "properties": {
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "save_formArguments"
+          }
+        },
+        {
+          "name": "close_form",
+          "description": "Close the active form.",
+          "input_schema": {
+            "properties": {
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "close_formArguments"
+          }
+        },
+        {
+          "name": "recording_start",
+          "description": "Start automatic evidence recording: each recorded tool call gets screenshot + annotated slide.",
+          "input_schema": {
+            "properties": {
+              "output_dir": {
+                "default": "build/recordings/session",
+                "title": "Output Dir",
+                "type": "string"
+              },
+              "display": {
+                "default": "",
+                "title": "Display",
+                "type": "string"
+              },
+              "window": {
+                "default": false,
+                "title": "Window",
+                "type": "boolean"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "recording_startArguments"
+          },
+          "output_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "title": "recording_startDictOutput"
+          }
+        },
+        {
+          "name": "recording_capture",
+          "description": "Manually capture a screenshot/slide in the active recording session.",
+          "input_schema": {
+            "properties": {
+              "action": {
+                "title": "Action",
+                "type": "string"
+              },
+              "note": {
+                "default": "",
+                "title": "Note",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object",
+            "title": "recording_captureArguments"
+          },
+          "output_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "title": "recording_captureDictOutput"
+          }
+        },
+        {
+          "name": "recording_stop",
+          "description": "Stop recording and build PDF evidence from captured slides.",
+          "input_schema": {
+            "properties": {
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "recording_stopArguments"
+          },
+          "output_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "title": "recording_stopDictOutput"
+          }
+        },
+        {
+          "name": "screenshot",
+          "description": "Capture a screenshot from the MCP host. Defaults to the active visible 1C window.\n\nThe response always contains the saved path, never image base64. In\nStreamableHTTP mode it additionally contains an opaque download URL that\nexpires after one hour by default (``ONEC_MCP_SCREENSHOT_URL_TTL_SECONDS``).\nScreenshots are for user evidence and UI diagnostics only. Do not use them\nto analyze report/table/tabular-document/list data; use structured tools\nsuch as tabular_document_text, tabular_documents, table_rows,\ndynamic_list_output, or report export/save tools instead.\n",
+          "input_schema": {
+            "properties": {
+              "path": {
+                "default": "build/screenshots/screenshot.png",
+                "title": "Path",
+                "type": "string"
+              },
+              "window": {
+                "default": true,
+                "title": "Window",
+                "type": "boolean"
+              },
+              "display": {
+                "default": "",
+                "title": "Display",
+                "type": "string"
+              },
+              "session_id": {
+                "default": "default-31604",
+                "title": "Session Id",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "screenshotArguments"
+          },
+          "output_schema": {
+            "type": "object",
+            "additionalProperties": true,
+            "title": "screenshotDictOutput"
+          }
+        }
+      ],
+      "result_type": "complete"
+    }
+  ]
+}

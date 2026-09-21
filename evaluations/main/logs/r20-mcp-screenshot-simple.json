@@ -1,0 +1,26 @@
+{
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"path\": \"C:\\\\MyProjects\\\\choice-of-tools-1c\\\\.v8\\\\work\\\\r20-mcp\\\\screenshots\\\\simple-smoke.png\",\n  \"bytes\": 296716,\n  \"window_geometry\": null,\n  \"fallback\": \"full_display\",\n  \"fallback_reason\": \"1C window geometry was not detected\"\n}"
+      }
+    ],
+    "structured_content": {
+      "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-mcp\\screenshots\\simple-smoke.png",
+      "bytes": 296716,
+      "window_geometry": null,
+      "fallback": "full_display",
+      "fallback_reason": "1C window geometry was not detected"
+    },
+    "is_error": false,
+    "result_type": "complete"
+  },
+  "payload": {
+    "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r20-mcp\\screenshots\\simple-smoke.png",
+    "bytes": 296716,
+    "window_geometry": null,
+    "fallback": "full_display",
+    "fallback_reason": "1C window geometry was not detected"
+  }
+}

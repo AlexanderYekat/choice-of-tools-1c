@@ -92,7 +92,8 @@ r22 **не** библиотека шагов Vanessa.
   часть C8 (YaXUnit через r22; UI — r20/r21).
 - Только вместе с фасадом: C10, C13.
 - r01/r15/r20/r21/r22 static S1–S5 есть; r15/r22/r01 dump-only RUN
-  (включая apply dryRun и docs); r20/r21 runtime NOT_RUN.
+  (включая apply dryRun и docs); r21 Vanessa engine smoke RUN; r20
+  Answer42 smoke RUN; dual live Test Client r20 и публикация apply NOT_RUN.
 - Не закрывают и не блокируют: отладчик вне EDT; структура обычных форм.
 
 ## Следующий этап — не внедрение

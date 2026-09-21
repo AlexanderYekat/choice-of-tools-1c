@@ -17,7 +17,7 @@ v8-runner**. r09 из контура выведен, S1–S5 для него н�
 | **r15 code-index-mcp** | **терпимо** — CLI ядра + stdio/HTTP MCP `serve`; 1С-tools только MCP+демон | **удобно** — `--path alias=dir` / `[[paths]]` / `repo=`; ИБ нет | **удобно CLI / терпимо MCP** — живой `tools/list` = 33; `[tools].enabled` режет list (whitelist NOT_RUN) | **удобно** — несколько alias, отдельный `index.db` | **удобно** на корне выгрузки; `daemon.toml` не обязателен для one-shot |
 | r09 mcp-onec-test-runner | OUT OF CONTOUR | — | — | — | — |
 | **r22 v8-runner** (конкурент r09) | **удобно** — CLI `v8-runner`; MCP optional stdio/HTTP | **терпимо** — `--config` / один `infobase` на yaml | **удобно** — CLI без tools; MCP ровно 8 | **терпимо** — два yaml / два процесса; dual-IB NOT_RUN | **удобно** — родной `v8project.yaml` |
-| **r20 Answer42** | **терпимо** — CLI поднимает stdio/HTTP MCP, не one-shot form CLI | **удобно** — `base_url` + `session_id`; креды из файла | **терпимо** — 122 tools default `full`; есть `--tool-profile` / `--disable-rag` | **удобно по контракту / simultaneous NOT_RUN** | **терпимо** — явный `base_url`; RAG-scan не детектор фасада |
+| **r20 Answer42** | **терпимо** — CLI поднимает stdio/HTTP MCP, не one-shot form CLI; живой initialize PASS | **удобно** — `base_url` путь файловой ИБ + `session_id`; креды на simple не нужны | **терпимо** — живой `ui` = 103; дефолт `full` 122 static; `--tool-profile` / `--disable-rag` | **удобно по контракту / simultaneous NOT_RUN**; дубль id отказал RUN | **терпимо** — явный `base_url`; RAG-scan не детектор фасада |
 | **r21 Vanessa** | **удобно** — batch CLI через 1С; дополнительно HTTP MCP | **удобно** — один feature, scenario filter, Test Client data/profiles | **удобно CLI / терпимо MCP** — CLI без tools; MCP 37 active static | **терпимо / simultaneous UNKNOWN** | **терпимо** — explicit workspace/projectpath, generic detection facade-side |
 
 Подробности: [reports/r01.md](reports/r01.md), [reports/r15.md](reports/r15.md),
@@ -147,6 +147,7 @@ PASS** на simple1CAiConf (`tools/list` = 33, handlers/structure/writers).
 отказал этой фикстуре по формату 2.20). **r01 `apply` dryRun + `docs`
 PASS** (dryRun `invalid_source` format 1.0 vs writable 2.20; забор
 `ifRev` живой; `docs` 80 hits через Task). **r22 dump 2.20 PASS** в `.v8/work/simple-cf-220`. **r01 apply dryRun на
-2.20 PASS** (preview + `rev`). YaXUnit/Vanessa на simple запускались:
-JUnit не появился / нет `tests.va.profile`. Runtime r20 NOT_RUN.
-Публикация `apply` не вызывалась. Внедрение и код фасада не начинались.
+2.20 PASS** (preview + `rev`). YaXUnit на simple — клиент без движка.
+**Vanessa smoke 1/1 PASS**. **Runtime r20 PASS**
+(`run-r20-mcp-simple`: `tools/list` = 103, сессия к simple, screenshot
+path). Публикация `apply` не вызывалась. Внедрение и код фасада не начинались.

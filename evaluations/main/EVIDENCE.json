@@ -1577,27 +1577,31 @@
     {
       "id": "c20-entry",
       "repository_id": "r20",
-      "status": "SOURCE",
+      "status": "RUN",
       "statement": "The answer42 console script starts mcp_1c.server:main, which runs a stdio MCP server by default or StreamableHTTP with --http; it is not a one-shot form-test CLI.",
       "source_ids": [
         "s20-pyproject",
         "s20-apply-profile",
         "s20-readme"
       ],
-      "run_ids": [],
-      "limitations": "The process was not started; install-skills is a documented no-op."
+      "run_ids": [
+        "run-r20-mcp-simple"
+      ],
+      "limitations": "Live initialize advertised name=Answer42 and protocol 2025-11-25; server version string was empty. HTTP transport was not started."
     },
     {
       "id": "c20-target",
       "repository_id": "r20",
-      "status": "SOURCE",
+      "status": "RUN",
       "statement": "start_session accepts base_url as web publication, server/infobase, or file infobase path, plus an explicit session_id; credentials can be resolved from a local store by URL or title.",
       "source_ids": [
         "s20-start-session",
         "s20-readme"
       ],
-      "run_ids": [],
-      "limitations": "No infobase was connected."
+      "run_ids": [
+        "run-r20-mcp-simple"
+      ],
+      "limitations": "Only a file infobase path (stand simple, no users, credential store disabled) was connected. Web publication and saved-title lookup were not exercised."
     },
     {
       "id": "c20-tool-surface",
@@ -1610,24 +1614,26 @@
         "s20-apply-profile"
       ],
       "run_ids": [],
-      "limitations": "Static decorator count from the fetched file; live tools/list was not captured. Whether the SDK hides the underscore-prefixed tool is UNKNOWN."
+      "limitations": "Static decorator count from the fetched file; live tools/list for full was not captured. Live ui+--disable-rag listed 103 tools (run-r20-mcp-simple). Whether the SDK hides the underscore-prefixed tool is UNKNOWN."
     },
     {
       "id": "c20-tool-profile",
       "repository_id": "r20",
-      "status": "SOURCE",
+      "status": "RUN",
       "statement": "CLI --tool-profile / ONEC_MCP_TOOL_PROFILE can subset tools (core, ui, group names) via mcp.remove_tool; --disable-rag disables built-in RAG tools.",
       "source_ids": [
         "s20-tool-profile",
         "s20-apply-profile"
       ],
-      "run_ids": [],
-      "limitations": "Filtered remaining_count was not observed at runtime."
+      "run_ids": [
+        "run-r20-mcp-simple"
+      ],
+      "limitations": "Observed ui+--disable-rag remaining=103 removed=26 at startup; live full profile was not listed. RAG tools were absent from tools/list."
     },
     {
       "id": "c20-sessions",
       "repository_id": "r20",
-      "status": "SOURCE",
+      "status": "RUN",
       "statement": "Multiple named sessions are stored in _SESSIONS; UI tools such as click_button take session_id; starting an existing session_id raises.",
       "source_ids": [
         "s20-server-sessions",
@@ -1635,19 +1641,23 @@
         "s20-click-session",
         "s20-server-entry"
       ],
-      "run_ids": [],
-      "limitations": "Two live Test Clients against two infobases were not started."
+      "run_ids": [
+        "run-r20-mcp-simple"
+      ],
+      "limitations": "A second start_session with the same id returned isError (FastMCP UnexpectedToolError, original 'already exists' text hidden). Two live Test Clients against two infobases were not started. click_button was not called."
     },
     {
       "id": "c20-evidence-file",
       "repository_id": "r20",
-      "status": "SOURCE",
+      "status": "RUN",
       "statement": "screenshot writes a PNG path and does not put image base64 into the tool result.",
       "source_ids": [
         "s20-screenshot"
       ],
-      "run_ids": [],
-      "limitations": "File size and host attachment behavior were not measured."
+      "run_ids": [
+        "run-r20-mcp-simple"
+      ],
+      "limitations": "This run wrote 296716 bytes to an isolated path and used fallback full_display because 1C window geometry was not detected. StreamableHTTP screenshot URL was not exercised."
     },
     {
       "id": "c20-not-explore",
@@ -1671,8 +1681,25 @@
         "s20-start-session",
         "s20-tool-profile"
       ],
-      "run_ids": [],
-      "limitations": "Architectural inference; smoke start_session is NOT_RUN."
+      "run_ids": [
+        "run-r20-mcp-simple"
+      ],
+      "limitations": "Architectural inference. Live ui tools/list is still 103 names, so C10 still requires a facade. Dual live Test Client remains NOT_RUN."
+    },
+    {
+      "id": "c20-mcp-simple",
+      "repository_id": "r20",
+      "status": "RUN",
+      "statement": "On stand simple, answer42 0.5.3 stdio MCP with --tool-profile ui --disable-rag listed 103 tools, started a named Test Client session against the file infobase, returned active_window title Простая конфигурация, wrote a PNG path from screenshot, refused a duplicate session_id, and stopped the session.",
+      "source_ids": [
+        "s20-start-session",
+        "s20-apply-profile",
+        "s20-screenshot"
+      ],
+      "run_ids": [
+        "run-r20-mcp-simple"
+      ],
+      "limitations": "click_button and document form were not opened. Screenshot used full_display fallback. Packaged MCPTestManager.cf was loaded via ibcmd (~46s). Live full tools/list was not captured."
     },
     {
       "id": "c22-entry",
@@ -2457,6 +2484,23 @@
       "log": "logs/r22-va-smoke-simple.md",
       "tests": 1,
       "assertions": 1,
+      "skipped": 0,
+      "mocks_only": false,
+      "reason": null
+    },
+    {
+      "id": "run-r20-mcp-simple",
+      "repository_id": "r20",
+      "commit": "0406669a88144834bfdf6086c7040a25cb76d24c",
+      "status": "PASS",
+      "kind": "INTEGRATION",
+      "command": "ONEC_MCP_DATA_DIR=.v8/work/r20-mcp/data ONEC_PLATFORM_DIR=.../8.3.27.1936/bin answer42 --disable-rag --disable-credential-store --tool-profile ui; stdio MCP start_session(session_id=simple-smoke, base_url=.v8/ib/simple) → active_window → screenshot → duplicate start_session → stop_session",
+      "environment": "Windows 10.0.26200; Python 3.13.6 isolated venv .v8/work/r20-mcp/venv; answer42==0.5.3 from PyPI (pinned SHA 0406669a…); mcp 2.2.0; platform 8.3.27.1936 with ibcmd+ibsrv; IB .v8/ib/simple no users; interactive desktop",
+      "expected": "initialize name=Answer42; tools/list ui subset with start_session/active_window/stop_session/screenshot and no RAG; session connects; non-empty window; PNG path without large base64; duplicate session_id refused; stop_session",
+      "result": "7/7 PASS. tools/list=103 (startup remaining=103 removed=26). Window title Простая конфигурация. screenshot 296716 bytes path-only, fallback full_display. Duplicate isError UnexpectedToolError. stop_session stopped=true. start_session ~104s. leftover 1C processes none.",
+      "log": "logs/r20-mcp-simple.md",
+      "tests": 7,
+      "assertions": 7,
       "skipped": 0,
       "mocks_only": false,
       "reason": null

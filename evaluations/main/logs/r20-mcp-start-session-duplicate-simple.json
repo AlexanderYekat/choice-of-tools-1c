@@ -1,0 +1,15 @@
+{
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Error executing tool start_session"
+      }
+    ],
+    "is_error": true,
+    "result_type": "complete"
+  },
+  "payload": {
+    "text": "Error executing tool start_session"
+  }
+}

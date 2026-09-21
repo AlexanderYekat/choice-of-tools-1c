@@ -3,7 +3,8 @@
 Версия цели: **2**. Статус: COMPOSITION_R22_CHOSEN; STATIC_S1S5_FIVE_DONE;
 FIXTURE_HARNESS_ATTACHED; R15_CLI_SMOKE_PASS; R15_MCP_SMOKE_PASS;
 R22_IB_SMOKE_PASS; R01_MCP_SMOKE_PASS; R01_APPLY_DOCS_SMOKE_PASS;
-R22_DUMP_CF220_PASS; R01_APPLY_CF220_PASS; R22_YAXUNIT_VA_EMPTY_FAIL; R22_VA_SMOKE_PASS.
+R22_DUMP_CF220_PASS; R01_APPLY_CF220_PASS; R22_YAXUNIT_VA_EMPTY_FAIL; R22_VA_SMOKE_PASS;
+R20_MCP_SMOKE_PASS.
 Последнее обновление: 2026-09-21.
 
 Состав контура выбран ([DECISION.md](DECISION.md)): Unica, code-index-mcp,
@@ -13,7 +14,8 @@ R22_DUMP_CF220_PASS; R01_APPLY_CF220_PASS; R22_YAXUNIT_VA_EMPTY_FAIL; R22_VA_SMO
 и r22 v8-runner достигли DEEP_STATIC по S1–S5**. r15 CLI, r15 daemon+MCP,
 r22 init/build/syntax, r01 `view`/`check`, r01 `apply` dryRun + `docs`
 на рукописном дампе, r22 `dump` 2.20 и r01 `apply` dryRun на этой
-выгрузке — PASS. YaXUnit/Vanessa на simple — отказ (нет тестов/профиля).
+выгрузке — PASS. YaXUnit на simple — отказ (нет тестов/профиля).
+Vanessa smoke-engine.feature 1/1 PASS. **r20 Answer42 smoke PASS**.
 Фасад не писался.
 
 ## Восстановление без чата
@@ -47,6 +49,9 @@ r22 init/build/syntax, r01 `view`/`check`, r01 `apply` dryRun + `docs`
 - r09: OVERVIEW, **не в контуре** (C14, решение 2026-09-21).
 - **r20 Answer42: AVAILABLE / DEEP_STATIC**, commit
   `0406669a88144834bfdf6086c7040a25cb76d24c` (ветка `beta`, v0.5.3).
+  Runtime smoke PASS (`run-r20-mcp-simple`): живой `tools/list` = 103
+  (`ui` + `--disable-rag`); `start_session` → `active_window` →
+  `screenshot` → дубль id отказал → `stop_session`.
 - **r21 Vanessa: AVAILABLE / DEEP_STATIC**, commit
   `7db5c2bbbf91fd965613a6119121a098bf64cd9e`. Движок `.feature`; запуск
   через r22.
@@ -62,8 +67,9 @@ r22 init/build/syntax, r01 `view`/`check`, r01 `apply` dryRun + `docs`
 `source-checkouts/simple1CAiConf` не затирался). YaXUnit на simple:
 клиент стартовал, JUnit не появился (нет движка/сценариев в ИБ).
 Vanessa: сначала `tests.va.profile is not configured`; после feature +
-EPF — **1/1 PASS** (`run-r22-va-smoke-simple`). Runtime r20 NOT_RUN.
-Публикация `apply` (`dryRun:false` + `ifRev` с cf220) NOT_RUN.
+EPF — **1/1 PASS** (`run-r22-va-smoke-simple`). **Runtime r20 PASS**
+(`run-r20-mcp-simple`). Публикация `apply` (`dryRun:false` + `ifRev`
+с cf220) NOT_RUN. Dual live Test Client r20 NOT_RUN.
 
 Фикстура: opt-in v8-harness @ `322398ae…`, стенд `simple`, `from: file`.
 Выгрузка `source-checkouts/simple1CAiConf` @ `1dbc395d…`.
@@ -96,13 +102,18 @@ EPF — **1/1 PASS** (`run-r22-va-smoke-simple`). Runtime r20 NOT_RUN.
 **r22 Vanessa smoke PASS** (`run-r22-va-smoke-simple`): написан
 `tests/features/smoke-engine.feature`, EPF 1.2.043.1, 1/1 за 122 с.
 Лог: [logs/r22-va-smoke-simple.md](logs/r22-va-smoke-simple.md).
+**r20 Answer42 smoke PASS** (`run-r20-mcp-simple`): venv `answer42==0.5.3`,
+stdio `--tool-profile ui --disable-rag`; `tools/list` = 103; сессия к
+`.v8/ib/simple`; окно «Простая конфигурация»; PNG path 296716 bytes;
+дубль `session_id` отказал; `stop_session`. Лог:
+[logs/r20-mcp-simple.md](logs/r20-mcp-simple.md).
 
 ## Следующий шаг
 
-Публикация `apply` (`dryRun:false` + `ifRev` с cf220) или Answer42 —
-по отдельной просьбе. Не писать код фасада. YaXUnit на simple по-прежнему
-без расширения/модулей. `[tools].enabled` r15 не гоняли. Dual-workspace
-Unica NOT_RUN.
+Публикация `apply` (`dryRun:false` + `ifRev` с cf220) — по отдельной
+просьбе. Не писать код фасада. YaXUnit на simple по-прежнему без
+расширения/модулей. `[tools].enabled` r15 не гоняли. Dual-workspace
+Unica NOT_RUN. Dual live Test Client Answer42 NOT_RUN.
 
 ## Журнал
 
@@ -160,3 +171,7 @@ r01 `view`/`check`; выполнен `unica.apply` dryRun + `unica.docs`
 2026-09-21 → пользователь указал ошибку: тесты надо написать, а не ждать
 их в дампе. Добавлен `tests/features/smoke-engine.feature`, Vanessa EPF
 1.2.043.1, `test --no-build va` — 1/1 PASS (`run-r22-va-smoke-simple`).
+2026-09-21 → «продолжи что там по плану? answer42»: изолированный venv
+`answer42==0.5.3`, stdio MCP `--tool-profile ui`, smoke на ИБ simple —
+7/7 PASS (`run-r20-mcp-simple`). Публикация `apply` не вызывалась.
+Фасад не писался.
