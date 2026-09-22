@@ -1,0 +1,118 @@
+{
+  "ok": false,
+  "command": "test",
+  "duration_ms": 300503,
+  "data": {
+    "ok": false,
+    "target": "all",
+    "mode": "compact",
+    "error_kind": null,
+    "diagnostics": [
+      "runtime error: enterprise test run timed out"
+    ],
+    "retained_paths": {
+      "run_dir": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790064063033-29120-094e7efa1f704498aa173337960bfb73",
+      "config_json": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790064063033-29120-094e7efa1f704498aa173337960bfb73\\config.json",
+      "junit_xml": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790064063033-29120-094e7efa1f704498aa173337960bfb73\\report.xml",
+      "yaxunit_log": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790064063033-29120-094e7efa1f704498aa173337960bfb73\\runner.log",
+      "platform_log": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790064063033-29120-094e7efa1f704498aa173337960bfb73\\enterprise.out.log",
+      "sentinel": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790064063033-29120-094e7efa1f704498aa173337960bfb73\\run.inprogress"
+    },
+    "report": null,
+    "execution": {
+      "status": "timed_out",
+      "diagnostics": [
+        "runtime error: enterprise test run timed out"
+      ],
+      "artifacts": {
+        "root_dir": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790064063033-29120-094e7efa1f704498aa173337960bfb73",
+        "items": [
+          {
+            "kind": "run_directory",
+            "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790064063033-29120-094e7efa1f704498aa173337960bfb73",
+            "role": "run_dir"
+          },
+          {
+            "kind": "config",
+            "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790064063033-29120-094e7efa1f704498aa173337960bfb73\\config.json",
+            "role": "config"
+          },
+          {
+            "kind": "report",
+            "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790064063033-29120-094e7efa1f704498aa173337960bfb73\\report.xml",
+            "role": "report"
+          },
+          {
+            "kind": "runner_log",
+            "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790064063033-29120-094e7efa1f704498aa173337960bfb73\\runner.log",
+            "role": "runner_log"
+          },
+          {
+            "kind": "platform_log",
+            "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790064063033-29120-094e7efa1f704498aa173337960bfb73\\enterprise.out.log",
+            "role": "platform_log"
+          },
+          {
+            "kind": "sentinel",
+            "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790064063033-29120-094e7efa1f704498aa173337960bfb73\\run.inprogress",
+            "role": "sentinel"
+          }
+        ]
+      },
+      "interruptions": [
+        {
+          "kind": "timed_out",
+          "deferred": false,
+          "phase": "run",
+          "message": "enterprise test run timed out"
+        }
+      ]
+    }
+  },
+  "warnings": [],
+  "steps": [
+    {
+      "name": "build",
+      "ok": true,
+      "status": "skipped",
+      "kind": "platform_command",
+      "duration_ms": 0,
+      "message": "build prerequisite explicitly skipped by --no-build"
+    },
+    {
+      "name": "prepare_artifacts",
+      "ok": true,
+      "status": "succeeded",
+      "kind": "prepare_workspace",
+      "duration_ms": 0,
+      "target": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790064063033-29120-094e7efa1f704498aa173337960bfb73",
+      "message": "created C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790064063033-29120-094e7efa1f704498aa173337960bfb73"
+    },
+    {
+      "name": "prepare_runner",
+      "ok": true,
+      "status": "succeeded",
+      "kind": "prepare_workspace",
+      "duration_ms": 0,
+      "target": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790064063033-29120-094e7efa1f704498aa173337960bfb73\\config.json",
+      "message": "YaXUnit config written"
+    },
+    {
+      "name": "run",
+      "ok": false,
+      "status": "failed",
+      "kind": "platform_command",
+      "duration_ms": 300502,
+      "target": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790064063033-29120-094e7efa1f704498aa173337960bfb73\\enterprise.out.log",
+      "message": "runtime error: enterprise test run timed out",
+      "diagnostics": [
+        "runtime error: enterprise test run timed out"
+      ]
+    }
+  ],
+  "error": {
+    "code": "runtime_failure",
+    "kind": "runtime",
+    "message": "enterprise test run timed out"
+  }
+}

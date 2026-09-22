@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "command": "syntax",
+  "duration_ms": 3686,
+  "data": {
+    "status": "clean",
+    "exit_code": 0,
+    "check_name": "designer-modules",
+    "issues": [],
+    "summary": {
+      "errors": 0,
+      "warnings": 0,
+      "info": 0
+    },
+    "duration_ms": 3686,
+    "platform_log_path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r22-e2b\\.v8/work/r22-e2b/work\\logs\\platform\\syntax_designer-modules_1790065842750_38752_0.log"
+  },
+  "warnings": [],
+  "steps": []
+}

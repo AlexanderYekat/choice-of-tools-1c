@@ -2262,6 +2262,83 @@
         "run-r15-mcp-simple"
       ],
       "limitations": "Small Designer dump without EventSubscriptions. HTTP transport on an ephemeral port, not stdio. [tools].enabled was not applied. Dual-repo serve was not run."
+    },
+    {
+      "id": "c22-yaxunit-mergecfg-path-bug",
+      "repository_id": "r22",
+      "status": "RUN",
+      "statement": "v8-runner 0.5.1 load --mode merge builds the /MergeCfg artifact path argument from a Windows verbatim (\\\\?\\) canonicalized path; the platform's file:// resolution of that combined string then fails with 'Файл не обнаружен'. Stripping the \\\\?\\ prefix before use (local patch to src/platform/designer.rs, rebuilt, not published) fixed it; --mode load does not hit this path.",
+      "source_ids": [],
+      "run_ids": [
+        "run-r22-yaxunit-merge-load-simple"
+      ],
+      "limitations": "Reproduced only on this Windows host with this pinned build; not filed upstream; not tested on non-Windows."
+    },
+    {
+      "id": "c22-yaxunit-extension-scaffold-simple",
+      "repository_id": "r22",
+      "status": "RUN",
+      "statement": "A hand-authored Designer-format EXTENSION source tree (no EDT/1cedtcli available) loads via v8-runner build --source-set only if the root MetaDataObject carries a version= attribute matching the base config's dump format, Configuration/Properties/ObjectBelonging=Adopted is set, and InterfaceCompatibilityMode is omitted entirely (any explicit value fails update_db_cfg with a controlled-property mismatch against the base configuration's implicit value).",
+      "source_ids": [],
+      "run_ids": [
+        "run-r22-e1tests-build-simple"
+      ],
+      "limitations": "Derived by trial and error against Designer error text, not from documentation; may not generalize to other platform versions or base-config compatibility modes."
+    },
+    {
+      "id": "c22-yaxunit-safemode-name-resolution-simple",
+      "repository_id": "r22",
+      "status": "RUN",
+      "statement": "v8-runner's extensions (SafeMode toggle), dump --extension and load --extension all resolve their --name/--extension argument against the v8project.yaml source-set name, not the extension's real platform Name property; a mismatch (e.g. source-set named yaxunit-shell for an extension whose real Name is YAXUNIT) fails with 'extension ... not found' even though the extension is active.",
+      "source_ids": [],
+      "run_ids": [
+        "run-r22-yaxunit-safemode-simple"
+      ],
+      "limitations": "Observed for these three commands only; not exhaustively checked against every v8-runner subcommand that takes an extension name."
+    },
+    {
+      "id": "c22-yaxunit-crossext-discovery-unresolved-simple",
+      "repository_id": "r22",
+      "status": "RUN",
+      "statement": "With YaXUnit 25.12 and a separate, property-matched (to YaXUnit's own reference test module), SafeMode-disabled test extension both active, test yaxunit finds 0 scenarios. Instrumenting a local copy of YAXUNIT's own ЮТМетодыСлужебный.МетодМодуляСуществует shows the platform raises 'Метод объекта не обнаружен' for both the real ИсполняемыеСценарии probe and a freshly-added, unrelated, parameterless probe method on the same module — the whole test module, not one method, is unresolvable by bare name from dynamic (Выполнить) client-side code running inside the sibling extension.",
+      "source_ids": [],
+      "run_ids": [
+        "run-r22-yaxunit-crossext-discovery-simple"
+      ],
+      "limitations": "Root cause not isolated: unknown whether this is specific to a hand-authored (non-Designer/non-EDT) extension scaffold or a general platform/YaXUnit limitation for any two independently-loaded sibling extensions. Load-order/priority and extension-dependency-declaration hypotheses not tested. This blocks E1 (verify.unit PASS with both a passing and failing test) and is an open risk for the facade's verify.unit capability, not a confirmed dead end. Local diagnostic instrumentation was left in the IB's YAXUNIT extension at time of writing and must be reverted before the stand is reused."
+    },
+    {
+      "id": "c22-yaxunit-crossext-hypotheses-ruled-out-simple",
+      "repository_id": "r22",
+      "status": "RUN",
+      "statement": "Same-day follow-up ruled out every config/order-level hypothesis for the c22-yaxunit-crossext-discovery-unresolved-simple failure: (1) extension load-order/priority only governs &Before/&After/&Instead interceptor sequencing per documentation, not native-object name resolution; (2) YaXUnit's own config.json filter.extensions (added to the local v8-runner patch) narrowed the scanned-module set but did not fix ТестыE1's own resolution; (3) renaming the test extension to sort alphabetically before YAXUNIT (e1tests to AE1TESTS) did not help; (4) rebuilding YAXUNIT again after the renamed extension already existed did not help; (5) a literal, non-dynamic static call ТестыE1.Пинг() inside YAXUNIT's own module compiled without error but failed at runtime with the identical 'Метод объекта не обнаружен' -- proving the failure is not specific to Выполнить()/dynamic compilation, and that v8-runner build --source-set succeeding is not reliable evidence a cross-extension reference actually resolves.",
+      "source_ids": [],
+      "run_ids": [
+        "run-r22-yaxunit-crossext-hypotheses-simple"
+      ],
+      "limitations": "Root cause still not isolated; by user direction this was parked as an open risk and work moved to E2 rather than continuing to test further hypotheses (e.g. Designer/EDT-authored reference extension, official 1C support channel)."
+    },
+    {
+      "id": "c01-e2a-multi-sourceset-simple",
+      "repository_id": "r01",
+      "status": "RUN",
+      "statement": "One unica.exe stdio process with a single v8project.yaml declaring two CONFIGURATION source-sets (main, cf220) resolves at=\"main:...\" and at=\"cf220:...\" to distinct payloads from their own dumps, lists both from unica.view {}, and refuses at=\"bogus:...\" by name (provider_unavailable) rather than silently defaulting to main. source-set.path must be workspace-relative and may not escape the workspace root (absolute paths are rejected as an invalid v8project.yaml), which forced the config to live at the repo root for this run.",
+      "source_ids": [],
+      "run_ids": [
+        "run-r01-e2a-multi-sourceset-simple"
+      ],
+      "limitations": "Read-only (view only); unica.apply/unica.docs across two source-sets in one process not exercised. Transient root-level v8project.yaml was deleted immediately after the run; not present in the working tree."
+    },
+    {
+      "id": "c22-e2b-two-ibs-simple",
+      "repository_id": "r22",
+      "status": "RUN",
+      "statement": "Two separate v8-runner CLI invocations, each with its own --config pointing at a different File infobase (.v8/ib/simple and the existing .v8/work/r20-dual/ib-b copy), run syntax designer-modules cleanly and independently: each IB's 1Cv8.1CD hash changes only from its own operation, never from the other target's; an explicit --config pointing at a nonexistent file fails with a named invalid_argument error, not a silent fallback.",
+      "source_ids": [],
+      "run_ids": [
+        "run-r22-e2b-two-ibs-simple"
+      ],
+      "limitations": "Only syntax was exercised as the cross-target isolation probe (build/test not run against both targets); no new IB was created, per the plan's permission scope."
     }
   ],
   "runs": [
@@ -2618,6 +2695,125 @@
       "log": "logs/r01-mcp-dual-simple.md",
       "tests": 11,
       "assertions": 11,
+      "skipped": 0,
+      "mocks_only": false,
+      "reason": null
+    },
+    {
+      "id": "run-r22-e1tests-build-simple",
+      "repository_id": "r22",
+      "commit": "7ce1b062843d86644fe55741dbe0ee79f7ca767d",
+      "status": "PASS",
+      "kind": "BUILD",
+      "command": "v8-runner --config .v8/stands/simple/v8project.yaml build --source-set e1tests --full-rebuild",
+      "environment": "Windows 10.0.26200; v8-runner 0.5.1; platform 8.3.27.1936; hand-authored Designer-format EXTENSION source (no EDT/1cedtcli in this environment); IB .v8/ib/simple",
+      "expected": "LoadConfigFromFiles + UpdateDBCfg succeed for a brand-new, hand-written extension source tree",
+      "result": "Failed 4 times (принадлежность/version attribute/InterfaceCompatibilityMode mismatches) before succeeding; final run ok=true, forced full rebuild.",
+      "log": "logs/r22-yaxunit-e1tests-simple.md",
+      "tests": 0,
+      "assertions": 1,
+      "skipped": 0,
+      "mocks_only": false,
+      "reason": null
+    },
+    {
+      "id": "run-r22-yaxunit-merge-load-simple",
+      "repository_id": "r22",
+      "commit": "7ce1b062843d86644fe55741dbe0ee79f7ca767d",
+      "status": "PASS",
+      "kind": "BUILD",
+      "command": "v8-runner tools download yaxunit; build --source-set YAXUNIT (empty shell); load --path YAxUnit-25.12.cfe --extension YAXUNIT --mode merge --settings <version=1.0 file>",
+      "environment": "Windows 10.0.26200; v8-runner 0.5.1 locally patched (strip_verbatim_prefix in src/platform/designer.rs, rebuilt with cargo +1.98.1-x86_64-pc-windows-msvc — not published, not applied upstream); platform 8.3.27.1936",
+      "expected": "real YaXUnit .cfe applied to an existing placeholder extension of the same platform Name",
+      "result": "Plain load --mode load rejected as already-compatible (requires merge); merge failed twice (unpatched binary: file:// + verbatim-path bug; settings version=2.20 rejected as unsupported) before succeeding with the patched binary and settings version=1.0.",
+      "log": "logs/r22-yaxunit-e1tests-simple.md",
+      "tests": 0,
+      "assertions": 1,
+      "skipped": 0,
+      "mocks_only": false,
+      "reason": null
+    },
+    {
+      "id": "run-r22-yaxunit-safemode-simple",
+      "repository_id": "r22",
+      "commit": "7ce1b062843d86644fe55741dbe0ee79f7ca767d",
+      "status": "PASS",
+      "kind": "OTHER",
+      "command": "ibcmd infobase --db-path .v8/ib/simple config extension update --name <e1tests|YAXUNIT> --safe-mode no --unsafe-action-protection no",
+      "environment": "Windows 10.0.26200; ibcmd from platform 8.3.27.1936; v8-runner extensions command resolves --name against the v8project.yaml source-set name, not the platform extension Name, so it failed until the source-set was renamed to YAXUNIT",
+      "expected": "both extensions report safe-mode=no via ibcmd config extension list",
+      "result": "e1tests succeeded directly; YAXUNIT failed once via v8-runner extensions (source-set name mismatch), then succeeded via direct ibcmd call with the real platform name YAXUNIT.",
+      "log": "logs/r22-yaxunit-e1tests-simple.md",
+      "tests": 0,
+      "assertions": 1,
+      "skipped": 0,
+      "mocks_only": false,
+      "reason": null
+    },
+    {
+      "id": "run-r22-yaxunit-crossext-discovery-simple",
+      "repository_id": "r22",
+      "commit": "7ce1b062843d86644fe55741dbe0ee79f7ca767d",
+      "status": "FAIL",
+      "kind": "TEST",
+      "command": "v8-runner test --no-build yaxunit all|module ТестыE1, with a locally instrumented copy of YAXUNIT's ЮТМетодыСлужебный.МетодМодуляСуществует writing the raw platform exception per probed module/method",
+      "environment": "Windows 10.0.26200; v8-runner 0.5.1 (debug log level patched locally); IB .v8/ib/simple; extensions e1tests (test module, properties matched to YaXUnit's own reference ОМ_ЮТКоллекции) and YAXUNIT both active, both SafeMode=no",
+      "expected": "JUnit report with the registered passing and failing test",
+      "result": "0 scenarios both times. Diagnostics: dynamic Выполнить(\"ТестыE1.ИсполняемыеСценарии(...)\") AND a freshly-added, unrelated, parameterless Выполнить(\"ТестыE1.Пинг(...)\") both raised the platform error 'Метод объекта не обнаружен', proving the whole ТестыE1 module (not one method) is unresolvable by bare name from dynamic client-side code running inside the sibling YAXUNIT extension.",
+      "log": "logs/r22-yaxunit-e1tests-simple.md",
+      "tests": 0,
+      "assertions": 2,
+      "skipped": 0,
+      "mocks_only": false,
+      "reason": null
+    },
+    {
+      "id": "run-r22-yaxunit-crossext-hypotheses-simple",
+      "repository_id": "r22",
+      "commit": "7ce1b062843d86644fe55741dbe0ee79f7ca767d",
+      "status": "FAIL",
+      "kind": "TEST",
+      "command": "Sequence: (a) v8-runner test with YaXUnit filter.extensions=[AE1TESTS] set in the local patch; (b) rename extension e1tests to AE1TESTS via build --source-set (LoadConfigFromFiles), delete orphaned old e1tests via ibcmd, re-run; (c) full-rebuild YAXUNIT again after AE1TESTS existed, re-run; (d) add a literal static call ТестыE1.Пинг() inside YAXUNIT's own instrumented module, build, run",
+      "environment": "Windows 10.0.26200; v8-runner 0.5.1 locally patched (filter.extensions support, debug logging -- both reverted after this round); IB .v8/ib/simple; extensions AE1TESTS (renamed from e1tests) and YAXUNIT, both SafeMode=no",
+      "expected": "Any of: extensions-filter, alphabetically-earlier naming, post-rename rebuild, or static (non-dynamic) call resolving ТестыE1/Пинг from within YAXUNIT",
+      "result": "All four failed identically with 'Метод объекта не обнаружен'. The static call (d) is the key new data point: it compiled without error via build --source-set (ok=true) but failed at runtime with the same message, proving the failure is not specific to Выполнить()/dynamic compilation and that a successful build --source-set is not evidence a cross-extension reference resolves.",
+      "log": "logs/r22-yaxunit-e1tests-simple.md",
+      "tests": 0,
+      "assertions": 4,
+      "skipped": 0,
+      "mocks_only": false,
+      "reason": null
+    },
+    {
+      "id": "run-r01-e2a-multi-sourceset-simple",
+      "repository_id": "r01",
+      "commit": "56a67d4a460c97101b6b542b4fe940298ab0edd8",
+      "status": "PASS",
+      "kind": "INTEGRATION",
+      "command": "python r01-mcp-e2a-multi-sourceset.py -- unica.exe stdio MCP, cwd=repo root, v8project.yaml with source-set main+cf220; unica.view {} / at=main:... / at=cf220:... / at=bogus:...",
+      "environment": "Windows 10.0.26200; unica.exe 0.12.0 debug 56a67d4a…; isolated provider-state .v8/work/r01-e2a; source-checkouts/simple1CAiConf (main) and .v8/work/simple-cf-220 (cf220); transient root-level v8project.yaml, deleted after the run",
+      "expected": "one process resolves both source-sets distinctly by name; unknown source-set name gets a named refusal; neither dump's files change",
+      "result": "All eight passed. view {} listed both names; main and cf220 document views both ok=true and byte-distinct; bogus at= refused with provider_unavailable, not a silent default; both dump fingerprints unchanged before/after.",
+      "log": "logs/r01-r22-e2-two-targets.md",
+      "tests": 8,
+      "assertions": 8,
+      "skipped": 0,
+      "mocks_only": false,
+      "reason": null
+    },
+    {
+      "id": "run-r22-e2b-two-ibs-simple",
+      "repository_id": "r22",
+      "commit": "7ce1b062843d86644fe55741dbe0ee79f7ca767d",
+      "status": "PASS",
+      "kind": "INTEGRATION",
+      "command": "v8-runner --config .v8/stands/simple/v8project.yaml syntax designer-modules --server --thin-client; v8-runner --config .v8/work/r22-e2b/v8project.yaml syntax designer-modules --server --thin-client; v8-runner --config <nonexistent> syntax designer-modules --server --thin-client",
+      "environment": "Windows 10.0.26200; v8-runner 0.5.1; platform 8.3.27.1936; target A = .v8/ib/simple; target B = existing copy .v8/work/r20-dual/ib-b (not a new IB); sha256 of each 1Cv8.1CD captured before/after each step",
+      "expected": "each target's IB file changes only from its own operation; both syntax checks report status=clean; a nonexistent --config fails with a named error",
+      "result": "A's hash changed only after A's own syntax run, unchanged by B's run; B's hash changed only after B's own run, unchanged by A's run; both syntax checks status=clean errors=0; nonexistent --config returned ok=false error.code=invalid_argument message='config file not found: …'.",
+      "log": "logs/r01-r22-e2-two-targets.md",
+      "tests": 3,
+      "assertions": 6,
       "skipped": 0,
       "mocks_only": false,
       "reason": null

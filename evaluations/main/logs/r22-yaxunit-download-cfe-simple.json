@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "command": "tools download",
+  "duration_ms": 2052,
+  "data": {
+    "ok": true,
+    "tool": "yaxunit",
+    "mode": "artifacts",
+    "destinations": [
+      {
+        "tool": "yaxunit",
+        "tag": "25.12",
+        "source": "https://github.com/bia-technologies/yaxunit/releases/tag/25.12",
+        "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\build\\tools\\YAxUnit-25.12.cfe",
+        "config": "artifact"
+      }
+    ],
+    "config_path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\v8project.yaml",
+    "local_config_path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\v8project.local.yaml",
+    "duration_ms": 2052
+  },
+  "warnings": [],
+  "steps": []
+}

@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "command": "dump",
+  "duration_ms": 8880,
+  "data": {
+    "ok": true,
+    "source_set": "YAXUNIT",
+    "extension": "YAXUNIT",
+    "mode": "FULL",
+    "target_path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\yaxunit-shell",
+    "platform_log_path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\logs\\platform\\dump-YAXUNIT-full.log",
+    "duration_ms": 8880,
+    "message": "dump completed successfully"
+  },
+  "warnings": [],
+  "steps": []
+}

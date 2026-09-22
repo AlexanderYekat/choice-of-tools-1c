@@ -1,66 +1,66 @@
 {
   "ok": false,
   "command": "test",
-  "duration_ms": 295042,
+  "duration_ms": 32574,
   "data": {
     "ok": false,
     "target": "all",
     "mode": "compact",
-    "error_kind": "junit_not_produced",
+    "error_kind": "junit_empty",
     "diagnostics": [
-      "JUnit report was not produced"
+      "junit file is empty"
     ],
     "retained_paths": {
-      "run_dir": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134",
-      "config_json": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134\\config.json",
-      "junit_xml": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134\\report.xml",
-      "yaxunit_log": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134\\runner.log",
-      "platform_log": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134\\enterprise.out.log",
-      "sentinel": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134\\run.inprogress"
+      "run_dir": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790053210861-25236-1c0506b25ec34e06a1fdfd45262e7b6f",
+      "config_json": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790053210861-25236-1c0506b25ec34e06a1fdfd45262e7b6f\\config.json",
+      "junit_xml": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790053210861-25236-1c0506b25ec34e06a1fdfd45262e7b6f\\report.xml",
+      "yaxunit_log": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790053210861-25236-1c0506b25ec34e06a1fdfd45262e7b6f\\runner.log",
+      "platform_log": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790053210861-25236-1c0506b25ec34e06a1fdfd45262e7b6f\\enterprise.out.log",
+      "sentinel": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790053210861-25236-1c0506b25ec34e06a1fdfd45262e7b6f\\run.inprogress"
     },
     "report": null,
     "execution": {
       "status": "invalid_output",
       "diagnostics": [
-        "JUnit report was not produced"
+        "junit file is empty"
       ],
       "errors": [
         {
-          "code": "junit_not_produced",
-          "message": "JUnit report was not produced"
+          "code": "junit_empty",
+          "message": "junit file is empty"
         }
       ],
       "artifacts": {
-        "root_dir": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134",
+        "root_dir": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790053210861-25236-1c0506b25ec34e06a1fdfd45262e7b6f",
         "items": [
           {
             "kind": "run_directory",
-            "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134",
+            "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790053210861-25236-1c0506b25ec34e06a1fdfd45262e7b6f",
             "role": "run_dir"
           },
           {
             "kind": "config",
-            "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134\\config.json",
+            "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790053210861-25236-1c0506b25ec34e06a1fdfd45262e7b6f\\config.json",
             "role": "config"
           },
           {
             "kind": "report",
-            "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134\\report.xml",
+            "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790053210861-25236-1c0506b25ec34e06a1fdfd45262e7b6f\\report.xml",
             "role": "report"
           },
           {
             "kind": "runner_log",
-            "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134\\runner.log",
+            "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790053210861-25236-1c0506b25ec34e06a1fdfd45262e7b6f\\runner.log",
             "role": "runner_log"
           },
           {
             "kind": "platform_log",
-            "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134\\enterprise.out.log",
+            "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790053210861-25236-1c0506b25ec34e06a1fdfd45262e7b6f\\enterprise.out.log",
             "role": "platform_log"
           },
           {
             "kind": "sentinel",
-            "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134\\run.inprogress",
+            "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790053210861-25236-1c0506b25ec34e06a1fdfd45262e7b6f\\run.inprogress",
             "role": "sentinel"
           }
         ]
@@ -82,9 +82,9 @@
       "ok": true,
       "status": "succeeded",
       "kind": "prepare_workspace",
-      "duration_ms": 1,
-      "target": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134",
-      "message": "created C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134"
+      "duration_ms": 0,
+      "target": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790053210861-25236-1c0506b25ec34e06a1fdfd45262e7b6f",
+      "message": "created C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790053210861-25236-1c0506b25ec34e06a1fdfd45262e7b6f"
     },
     {
       "name": "prepare_runner",
@@ -92,36 +92,33 @@
       "status": "succeeded",
       "kind": "prepare_workspace",
       "duration_ms": 0,
-      "target": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134\\config.json",
+      "target": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790053210861-25236-1c0506b25ec34e06a1fdfd45262e7b6f\\config.json",
       "message": "YaXUnit config written"
     },
     {
       "name": "run",
-      "ok": false,
-      "status": "failed",
+      "ok": true,
+      "status": "succeeded",
       "kind": "platform_command",
-      "duration_ms": 295039,
-      "target": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134\\enterprise.out.log",
-      "message": "enterprise exit code -1",
-      "diagnostics": [
-        "enterprise exit code -1"
-      ]
+      "duration_ms": 30282,
+      "target": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790053210861-25236-1c0506b25ec34e06a1fdfd45262e7b6f\\enterprise.out.log",
+      "message": "enterprise exit code 0"
     },
     {
       "name": "parse_junit",
       "ok": false,
       "status": "failed",
       "kind": "parse_output",
-      "duration_ms": 0,
-      "target": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790001417805-30072-60cb14f4431f405b92f75ba102f94134\\report.xml",
-      "message": "JUnit report was not produced",
+      "duration_ms": 2289,
+      "target": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\yaxunit\\runs\\1790053210861-25236-1c0506b25ec34e06a1fdfd45262e7b6f\\report.xml",
+      "message": "junit file is empty",
       "diagnostics": [
-        "JUnit report was not produced"
+        "junit file is empty"
       ],
       "errors": [
         {
-          "code": "junit_not_produced",
-          "message": "JUnit report was not produced"
+          "code": "junit_empty",
+          "message": "junit file is empty"
         }
       ]
     }
@@ -129,6 +126,6 @@
   "error": {
     "code": "runtime_failure",
     "kind": "runtime",
-    "message": "JUnit report was not produced"
+    "message": "junit file is empty"
   }
 }

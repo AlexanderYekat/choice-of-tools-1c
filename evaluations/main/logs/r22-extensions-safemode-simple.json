@@ -1,0 +1,32 @@
+{
+  "ok": false,
+  "command": "extensions",
+  "duration_ms": 16874,
+  "data": {
+    "ok": false,
+    "steps": [
+      {
+        "target": "e1tests",
+        "action": "disable_safety",
+        "ok": true,
+        "message": "безопасный режим и защита от опасных действий отключены",
+        "duration_ms": 3393
+      },
+      {
+        "target": "yaxunit-shell",
+        "action": "disable_safety",
+        "ok": false,
+        "message": "extension update failed for extension 'yaxunit-shell' with exit code 1; stdout: [INFO] Установка свойств расширения: 'yaxunit-shell'; stderr: [ERROR] Операция не может быть выполнена, так как расширение конфигурации 'yaxunit-shell' не найдено.",
+        "duration_ms": 13478
+      }
+    ],
+    "duration_ms": 16874
+  },
+  "warnings": [],
+  "steps": [],
+  "error": {
+    "code": "platform_failure",
+    "kind": "platform",
+    "message": "extension update failed for extension 'yaxunit-shell' with exit code 1; stdout: [INFO] Установка свойств расширения: 'yaxunit-shell'; stderr: [ERROR] Операция не может быть выполнена, так как расширение конфигурации 'yaxunit-shell' не найдено."
+  }
+}

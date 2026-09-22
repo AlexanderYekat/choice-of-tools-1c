@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "command": "dump",
+  "duration_ms": 16588,
+  "data": {
+    "ok": true,
+    "source_set": "e1tests",
+    "extension": "e1tests",
+    "mode": "FULL",
+    "target_path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\e1tests",
+    "platform_log_path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\logs\\platform\\dump-e1tests-full.log",
+    "duration_ms": 16588,
+    "message": "dump completed successfully"
+  },
+  "warnings": [],
+  "steps": []
+}

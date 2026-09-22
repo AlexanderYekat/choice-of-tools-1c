@@ -1,0 +1,37 @@
+{
+  "ok": true,
+  "command": "load",
+  "duration_ms": 42924,
+  "data": {
+    "ok": true,
+    "mode": "merge",
+    "artifact_path": "\\\\?\\C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\build\\tools\\YAxUnit-25.12.cfe",
+    "artifact_type": "extension_cfe",
+    "target_kind": "extension",
+    "compatibility_state": "supported",
+    "extension": "YAxUnit",
+    "platform_log_path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\logs\\platform\\load-update-db-cfg.log",
+    "duration_ms": 42924,
+    "message": "merge \\\\?\\C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\build\\tools\\YAxUnit-25.12.cfe applied successfully after Supported compatibility probe",
+    "execution": {
+      "status": "succeeded",
+      "artifacts": {
+        "items": [
+          {
+            "kind": "platform_log",
+            "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\logs\\platform\\load-update-db-cfg.log",
+            "role": "platform_log"
+          }
+        ]
+      },
+      "payload": {
+        "applied": true,
+        "target_kind": "extension",
+        "compatibility_state": "supported",
+        "update_db_cfg_ran": true
+      }
+    }
+  },
+  "warnings": [],
+  "steps": []
+}

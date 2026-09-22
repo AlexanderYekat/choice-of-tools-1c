@@ -1,0 +1,25 @@
+{
+  "ok": false,
+  "command": "build",
+  "duration_ms": 8807,
+  "data": {
+    "ok": false,
+    "steps": [
+      {
+        "source_set": "e1tests",
+        "mode": "full",
+        "ok": false,
+        "message": "platform error: update_db_cfg failed for source-set 'e1tests' with exit code 101; platform log: ﻿e1tests: Значение контролируемого свойства РежимСовместимостиИнтерфейса у объекта  не совпадает со значением в расширяемой конфигурации; platform log path: C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\logs\\platform\\build-00-e1tests-update.log",
+        "duration_ms": 0
+      }
+    ],
+    "duration_ms": 8807
+  },
+  "warnings": [],
+  "steps": [],
+  "error": {
+    "code": "platform_failure",
+    "kind": "platform",
+    "message": "update_db_cfg failed for source-set 'e1tests' with exit code 101; platform log: ﻿e1tests: Значение контролируемого свойства РежимСовместимостиИнтерфейса у объекта  не совпадает со значением в расширяемой конфигурации; platform log path: C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\logs\\platform\\build-00-e1tests-update.log"
+  }
+}

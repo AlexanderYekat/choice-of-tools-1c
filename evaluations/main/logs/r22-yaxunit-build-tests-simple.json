@@ -1,0 +1,25 @@
+{
+  "ok": false,
+  "command": "build",
+  "duration_ms": 36658,
+  "data": {
+    "ok": false,
+    "steps": [
+      {
+        "source_set": "tests",
+        "mode": "full",
+        "ok": false,
+        "message": "platform error: load failed for source-set 'tests' with exit code 1; platform log: ﻿Файл объекта не существует - C:/MyProjects/choice-of-tools-1c/.v8/stands/simple/tests/Configuration.xml\r\nФайл объекта не существует - C:/MyProjects/choice-of-tools-1c/.v8/stands/simple/tests/Configuration.xml; platform log path: C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\logs\\platform\\build-00-tests-load.log",
+        "duration_ms": 0
+      }
+    ],
+    "duration_ms": 36658
+  },
+  "warnings": [],
+  "steps": [],
+  "error": {
+    "code": "platform_failure",
+    "kind": "platform",
+    "message": "load failed for source-set 'tests' with exit code 1; platform log: ﻿Файл объекта не существует - C:/MyProjects/choice-of-tools-1c/.v8/stands/simple/tests/Configuration.xml\r\nФайл объекта не существует - C:/MyProjects/choice-of-tools-1c/.v8/stands/simple/tests/Configuration.xml; platform log path: C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\logs\\platform\\build-00-tests-load.log"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "ok": false,
+  "command": "load",
+  "duration_ms": 9698,
+  "data": {
+    "ok": false,
+    "mode": "load",
+    "artifact_path": "\\\\?\\C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\build\\tools\\YAxUnit-25.12.cfe",
+    "artifact_type": "extension_cfe",
+    "target_kind": "extension",
+    "compatibility_state": "supported",
+    "extension": "YAxUnit",
+    "platform_log_path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\logs\\platform\\load-probe.log",
+    "duration_ms": 9698,
+    "message": "validation error: extension 'YAxUnit' is already compatible with merge; use --mode merge instead",
+    "execution": {
+      "status": "failed",
+      "errors": [
+        {
+          "code": "artifact_load_failed",
+          "message": "validation error: extension 'YAxUnit' is already compatible with merge; use --mode merge instead"
+        }
+      ],
+      "artifacts": {
+        "items": [
+          {
+            "kind": "platform_log",
+            "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\logs\\platform\\load-probe.log",
+            "role": "platform_log"
+          }
+        ]
+      },
+      "payload": {
+        "applied": false,
+        "target_kind": "extension",
+        "compatibility_state": "supported",
+        "update_db_cfg_ran": false
+      }
+    }
+  },
+  "warnings": [],
+  "steps": [],
+  "error": {
+    "code": "invalid_argument",
+    "kind": "validation",
+    "message": "extension 'YAxUnit' is already compatible with merge; use --mode merge instead"
+  }
+}

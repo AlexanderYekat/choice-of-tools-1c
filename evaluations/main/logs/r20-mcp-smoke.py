@@ -27,8 +27,9 @@ WORK = ROOT / r".v8\work\r20-mcp"
 DATA = WORK / "data"
 IB = ROOT / r".v8\ib\simple"
 PLATFORM_BIN = Path(r"C:\Program Files\1cv8\8.3.27.1936\bin")
-LOGS_OUT = ROOT / r"evaluations\main\logs"
-SESSION_ID = "simple-smoke"
+LOGS_OUT = Path(os.environ.get("R20_SMOKE_LOG_DIR", str(ROOT / r"evaluations\main\logs")))
+SESSION_ID = os.environ.get("R20_SMOKE_SESSION_ID", "simple-smoke")
+PAUSE_SECONDS = int(os.environ.get("R20_SMOKE_PAUSE", "0"))
 REQUIRED_TOOLS = ("start_session", "active_window", "stop_session", "screenshot")
 FORBIDDEN_TOOLS = ("rag_query", "rag_index_build", "metadata_objects_from_catalog")
 
@@ -277,6 +278,10 @@ async def main_async() -> int:
                 f"isError={is_error_result(shot)} path={returned_path or shot_path} exists={exists} large_b64={has_b64}",
                 (not is_error_result(shot)) and exists and not has_b64,
             )
+
+            if PAUSE_SECONDS > 0:
+                print(f"WATCH: 1C windows stay open {PAUSE_SECONDS}s; firewall prompt is ibsrv")
+                await asyncio.sleep(PAUSE_SECONDS)
 
             dup = await client.call_tool(
                 "start_session",

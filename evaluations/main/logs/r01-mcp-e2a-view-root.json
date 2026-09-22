@@ -1,0 +1,56 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [],
+    "structuredContent": {
+      "ok": true,
+      "summary": "workspace configuration and source sets discovered",
+      "data": {
+        "workspaceRoot": "C:\\MyProjects\\choice-of-tools-1c",
+        "config": {
+          "state": "configured",
+          "path": "v8project.yaml"
+        },
+        "sourceSets": [
+          {
+            "name": "main",
+            "kind": "configuration",
+            "path": "source-checkouts/simple1CAiConf",
+            "sourceFormat": "platform_xml",
+            "sourceState": "supported",
+            "formatEvidence": [
+              "source-checkouts/simple1CAiConf/Configuration.xml"
+            ]
+          },
+          {
+            "name": "cf220",
+            "kind": "configuration",
+            "path": ".v8/work/simple-cf-220",
+            "sourceFormat": "platform_xml",
+            "sourceState": "supported",
+            "formatEvidence": [
+              ".v8/work/simple-cf-220/Configuration.xml"
+            ]
+          }
+        ],
+        "infobase": {
+          "configured": false,
+          "source": null
+        },
+        "effectiveSourceSet": "main",
+        "effectiveSourceRoot": "C:\\MyProjects\\choice-of-tools-1c\\source-checkouts\\simple1CAiConf",
+        "sourceSelectionError": null,
+        "setup": null
+      },
+      "next": [
+        {
+          "tool": "unica.check",
+          "args": {},
+          "reason": "готовность рабочего пространства, проверки и диагностики"
+        }
+      ]
+    },
+    "isError": false
+  }
+}

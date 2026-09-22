@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "command": "build",
+  "duration_ms": 22018,
+  "data": {
+    "ok": true,
+    "steps": [
+      {
+        "source_set": "AE1TESTS",
+        "mode": "full",
+        "ok": true,
+        "message": "forced full rebuild",
+        "duration_ms": 22017
+      }
+    ],
+    "duration_ms": 22018
+  },
+  "warnings": [],
+  "steps": []
+}

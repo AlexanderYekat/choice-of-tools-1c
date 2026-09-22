@@ -30,3 +30,13 @@
 
 Не создавать commits, push, PR, удалённые репозитории, глобальные
 установки и пользовательские настройки без отдельного задания.
+
+## Language
+
+Communicate with the user in Russian.
+
+All progress reports, explanations, conclusions, questions, and summaries
+must be written in Russian.
+
+Keep source-code identifiers, commands, file paths, API names, and exact
+error/log messages in their original language.

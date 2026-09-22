@@ -1,0 +1,15 @@
+{
+  "ok": false,
+  "command": "convert",
+  "duration_ms": 0,
+  "data": {
+    "message": "Designer source-set path must contain 'Configuration.xml' or a top-level XML descriptor: C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\tests"
+  },
+  "warnings": [],
+  "steps": [],
+  "error": {
+    "code": "invalid_argument",
+    "kind": "validation",
+    "message": "Designer source-set path must contain 'Configuration.xml' or a top-level XML descriptor: C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\tests"
+  }
+}

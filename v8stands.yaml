@@ -3,7 +3,7 @@
 
 tools:
   vanessa: true
-  yaxunit: false
+  yaxunit: true
 stands:
   simple:
     from: file

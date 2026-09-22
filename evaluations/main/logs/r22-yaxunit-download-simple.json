@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "command": "tools download",
+  "duration_ms": 9193,
+  "data": {
+    "ok": true,
+    "tool": "yaxunit",
+    "mode": "sources",
+    "destinations": [
+      {
+        "tool": "yaxunit",
+        "tag": "25.12",
+        "source": "https://github.com/bia-technologies/yaxunit/releases/tag/25.12",
+        "path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\tests",
+        "config": "source-set tests"
+      }
+    ],
+    "config_path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\v8project.yaml",
+    "local_config_path": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\v8project.local.yaml",
+    "duration_ms": 9193
+  },
+  "warnings": [],
+  "steps": []
+}

@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "command": "build",
+  "duration_ms": 12204,
+  "data": {
+    "ok": true,
+    "steps": [
+      {
+        "source_set": "YAXUNIT",
+        "mode": "full",
+        "ok": true,
+        "message": "forced full rebuild",
+        "duration_ms": 12202
+      }
+    ],
+    "duration_ms": 12204
+  },
+  "warnings": [],
+  "steps": []
+}

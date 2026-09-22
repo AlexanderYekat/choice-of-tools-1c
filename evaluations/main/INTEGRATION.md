@@ -158,3 +158,8 @@ stale `ifRev`). **r15 whitelist PASS** (`run-r15-mcp-whitelist`:
 один `--daemon`, два cwd, Comment не смешался). Внедрение и код фасада
 не начинались. **r20 dual live Test Client PASS**
 (`run-r20-mcp-dual`). Dual-IB Unica NOT_RUN.
+
+Очередь закрытия оставшегося переписана 2026-09-22 —
+[INTEGRATION-PLAN.md](INTEGRATION-PLAN.md): E1 YaXUnit, E2 две цели
+(r01 и r22), E3 сквозной прогон с замером цены контекста, E4
+stdio-whitelist r15. Все связи остаются `PROPOSED_INTEGRATION`.

@@ -1,0 +1,112 @@
+{
+  "binary": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r01\\target\\debug\\unica.exe",
+  "cwd": "C:\\MyProjects\\choice-of-tools-1c",
+  "checks": [
+    {
+      "name": "initialize",
+      "expected": "serverInfo.name=unica",
+      "actual": "name=unica",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "unica.view {} lists both source-sets from one process",
+      "expected": "response mentions both 'main' and 'cf220'",
+      "actual": "has_main_and_cf220=True keys=['ok', 'summary', 'data', 'next']",
+      "pass": true,
+      "extra": {
+        "ok": true,
+        "summary": "workspace configuration and source sets discovered",
+        "data": {
+          "workspaceRoot": "C:\\MyProjects\\choice-of-tools-1c",
+          "config": {
+            "state": "configured",
+            "path": "v8project.yaml"
+          },
+          "sourceSets": [
+            {
+              "name": "main",
+              "kind": "configuration",
+              "path": "source-checkouts/simple1CAiConf",
+              "sourceFormat": "platform_xml",
+              "sourceState": "supported",
+              "formatEvidence": [
+                "source-checkouts/simple1CAiConf/Configuration.xml"
+              ]
+            },
+            {
+              "name": "cf220",
+              "kind": "configuration",
+              "path": ".v8/work/simple-cf-220",
+              "sourceFormat": "platform_xml",
+              "sourceState": "supported",
+              "formatEvidence": [
+                ".v8/work/simple-cf-220/Configuration.xml"
+              ]
+            }
+          ],
+          "infobase": {
+            "configured": false,
+            "source": null
+          },
+          "effectiveSourceSet": "main",
+          "effectiveSourceRoot": "C:\\MyProjects\\choice-of-tools-1c\\source-checkouts\\simple1CAiConf",
+          "sourceSelectionError": null,
+          "setup": null
+        },
+        "next": [
+          {
+            "tool": "unica.check",
+            "args": {},
+            "reason": "готовность рабочего пространства, проверки и диагностики"
+          }
+        ]
+      }
+    },
+    {
+      "name": "unica.view at=main:Document.ЗаказПокупателя",
+      "expected": "resolves within main source-set",
+      "actual": "ok=True error=None",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "unica.view at=cf220:Document.ЗаказПокупателя",
+      "expected": "resolves within cf220 source-set, distinct dump",
+      "actual": "ok=True error=None",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "main and cf220 views are distinct payloads",
+      "expected": "not byte-identical (different dumps, same logical address)",
+      "actual": "distinct=True",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "unica.view at=bogus:... (unknown source-set)",
+      "expected": "named refusal, not a silent default to 'main'",
+      "actual": "ok=False summary=view source set was not admitted by the workspace actor blob={\"ok\": false, \"at\": \"bogus:document.заказпокупателя\", \"summary\": \"view source set was not admitted by the workspace actor\", \"diagnostics\": [{\"code\": \"provider_unavailable\", \"outcome\": \"needshuman\", \"m",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "main dump fingerprint unchanged",
+      "expected": "no files added/removed/modified",
+      "actual": "changed=[] count=0",
+      "pass": true,
+      "extra": null
+    },
+    {
+      "name": "cf220 dump fingerprint unchanged",
+      "expected": "no files added/removed/modified",
+      "actual": "changed=[] count=0",
+      "pass": true,
+      "extra": null
+    }
+  ],
+  "failed": 0,
+  "killed_daemon_pids": [],
+  "stderr_log": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r01-e2a\\unica.stderr.log"
+}
