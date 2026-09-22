@@ -3,13 +3,29 @@
 Версия цели: 2. r02–r14, r16–r19 остаются overview; **r01 Unica,
 r15 code-index-mcp, r20 Answer42, r21 Vanessa и r22 v8-runner-rust
 углублены до DEEP_STATIC по S1–S5**.
-**r15 CLI ядра PASS**; **r15 daemon+MCP PASS**; **r22 init/build/syntax PASS**;
+**r15 CLI ядра PASS**; **r15 daemon+MCP PASS**; **r15 `[tools].enabled`
+PASS на HTTP и stdio, связка `--path`+`--config` прояснена (E4)**;
+**r22 init/build/syntax PASS**;
 **r01 `view`/`check` PASS**; **r01 `apply` dryRun + `docs` PASS**;
 **r01 `apply` публикация ifRev PASS**;
 **Vanessa smoke PASS**; **Answer42 smoke PASS** на стенде
-`simple`.
+`simple`. **Две цели одновременно — PASS** (E2: Unica два source-set в
+одном yaml; r22 два процесса на двух ИБ). **Сквозной прогон и цена
+контекста — PASS** (E3: 8 операций внешней поверхности измерены,
+7 стыков между продуктами записаны).
 Static стыковка пяти закрыта. Состав:
 **r22 вместо r09** (решение пользователя 2026-09-21).
+
+**Этап исполнения (E1–E4) закрыт с одним открытым риском.** `verify.unit`
+через YaXUnit **не PASS**: движок и тестовое расширение реально
+установлены и запускаются, но платформа не резолвит модуль стороннего
+расширения ни статически, ни динамически при вызове изнутри соседнего
+расширения (`Метод объекта не обнаружен`) — причина не изолирована,
+несколько гипотез проверены и исключены (порядок/приоритет расширений,
+имя, `filter.extensions`, момент пересборки). Это единственный
+незакрытый критерий завершения этапа; остальные три выполнены.
+Подробности: [STATE.md](STATE.md), [VALIDATION.md](VALIDATION.md),
+[logs/r22-yaxunit-e1tests-simple.md](logs/r22-yaxunit-e1tests-simple.md).
 
 Самопроверка координатора, не независимый аудит.
 
@@ -30,9 +46,12 @@ r09 METR выведен: тот же слой, что r22. Vanessa остаёт�
 r15 CLI, r15 daemon+MCP, r22 init/build/syntax, r01 `view`/`check`
 и r01 `apply` dryRun + `docs` прогнаны на стенде `simple`. Публикация
 `apply` с `ifRev` на Designer dump 2.20 — PASS. `[tools].enabled` r15
-— PASS (`tools/list` = 9). Dual-workspace Unica — PASS (один демон,
-два cwd). **r20 dual live Test Client PASS**. Следующий этап —
-stdio-whitelist r15 и связка `--path`+`--config`, не код фасада.
+— PASS на HTTP и stdio (`tools/list` = 9). Dual-workspace Unica — PASS
+(один демон, два cwd). **r20 dual live Test Client PASS**. Этап
+исполнения E1–E4 пройден: две цели одновременно (E2) и сквозной прогон
+с ценой контекста (E3) — PASS; `verify.unit` через YaXUnit (E1) —
+**открытый риск, не PASS**. Код фасада по-прежнему не писать —
+запрет снимается отдельным решением пользователя.
 
 Вывод обзора при цели v1 сохранён в снимке `history/goal-v1/REPORT.md`.
 Его не читать при обычном CONTINUE; как рекомендация v2 он не действует.
@@ -96,7 +115,18 @@ DEEP_STATIC по S1–S5. **r15 — DEEP_STATIC по S1–S5** на том же 
 Этот отчёт не запускает остальные продукты. **r15 CLI**, **r22
 init/build/syntax**, **r01 view/check**, **r01 apply dryRun + docs** и
 **r01 apply publish** PASS на стенде `simple` (ИБ создана). **r20 Answer42 smoke PASS**. **r20 dual live Test Client PASS**.
-**r01 dual-workspace PASS**. Точка продолжения — [STATE.md](STATE.md).
+**r01 dual-workspace PASS**.
+
+Этап исполнения 2026-09-22 ([INTEGRATION-PLAN.md](INTEGRATION-PLAN.md)):
+**E2 (две цели) — PASS**, **E3 (сквозной прогон, цена контекста) — PASS**,
+**E4 (r15 stdio-whitelist) — PASS**. **E1 (`verify.unit` через YaXUnit) —
+открытый риск, не PASS**: движок и тестовое расширение реально
+установлены и активны на стенде `simple`, но обнаружение тестового
+модуля соседним расширением не работает ни статически, ни динамически;
+причина не изолирована после нескольких проверенных и исключённых
+гипотез. Очередь E1–E4 исчерпана пользовательским решением зафиксировать
+этап с этим открытым риском, а не критерием «все PASS». Код фасада не
+писался. Точка продолжения — [STATE.md](STATE.md).
 
 
 ## Частичный CONTINUE-AUDIT r20
