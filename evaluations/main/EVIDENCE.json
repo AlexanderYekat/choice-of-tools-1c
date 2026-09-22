@@ -2339,6 +2339,28 @@
         "run-r22-e2b-two-ibs-simple"
       ],
       "limitations": "Only syntax was exercised as the cross-target isolation probe (build/test not run against both targets); no new IB was created, per the plan's permission scope."
+    },
+    {
+      "id": "c-e3-context-budget-simple",
+      "repository_id": "r22",
+      "status": "RUN",
+      "statement": "One real pass through explore(r15) -> docs(r01) -> edit.view/apply dryRun(r01) -> static(r01+r22) -> build(r22) -> verify.unit(r22+YaXUnit) -> verify.form(r20) -> verify.scenario(r21 via r22) on stand simple measured actual raw response size per step. Only two steps require mandatory file offload rather than chat inclusion: unica.docs (77205 bytes / 800 lines, an async task whose final payload is the full hit list, not a digest) and Answer42's screenshot binary (180197-byte PNG, referenced by path in a small JSON wrapper, never inlined). All other steps are in the low single-digit KB range. Sum of all raw payloads in one cycle is ~290000 bytes; with docs and the PNG offloaded to files (summary+path only in chat) the cycle's chat-facing budget drops to ~30000 bytes.",
+      "source_ids": [],
+      "run_ids": [
+        "run-e3-chain-simple"
+      ],
+      "limitations": "verify.unit in this pass is a real FAIL (0 scenarios, see c22-yaxunit-crossext-discovery-unresolved-simple), not a representative successful-test payload size. docs was measured from an earlier successfully-polled run (r01-mcp-apply-simple, 80 hits) because this pass's own polling attempt hit a state-dir/daemon race (task_transport_failed) across two separately-started provider-state directories; the size is real, just sourced from a different run than the size table's other rows."
+    },
+    {
+      "id": "c-e3-joints-simple",
+      "repository_id": "r22",
+      "status": "RUN",
+      "statement": "Named the concrete joints between products found while walking the E3 chain on stand simple: (1) source-checkouts/simple1CAiConf is export format 1.0 -- Unica refuses apply/check on it (invalid_source) while reading (view/docs) works fine; write-path operations require the real Designer 2.20 dump (.v8/work/simple-cf-220); (2) only r22 owns/loads the live file IB, Unica only ever touches the on-disk source dump, so a Unica edit reaching the IB requires a separate r22 build step; (3) .v8/work/simple-cf-220 is a derived r22 dump snapshot, not an alternate source of truth, and still carries a stale smoke-Comment from an earlier apply publish that a future full dump would silently overwrite; (4) several v8-runner subcommands (extensions, dump --extension, load --extension) resolve their target by the v8project.yaml source-set name rather than the real platform extension Name, unlike the platform call itself; (5) YaXUnit's --sources download is EDT-layout and incompatible with a format:DESIGNER project, only the compiled .cfe via load/merge works; (6) unica.docs is asynchronous (task queued/working) and must be polled via unica.task.result within the same provider-state/daemon lifecycle as the original call, or polling fails with task_transport_failed; (7) v8-runner's incremental/partial build can fail after heavy extension churn (\"Ошибка чтения файла-списка загружаемых файлов\") where --full-rebuild succeeds cleanly, so a facade's build step needs a full-rebuild fallback.",
+      "source_ids": [],
+      "run_ids": [
+        "run-e3-chain-simple"
+      ],
+      "limitations": "Joints (4), (5), (6) restate findings already recorded separately under E1/E2 claims; listed together here because the plan's E3 PASS criterion explicitly asks for one consolidated joints list."
     }
   ],
   "runs": [
@@ -2814,6 +2836,23 @@
       "log": "logs/r01-r22-e2-two-targets.md",
       "tests": 3,
       "assertions": 6,
+      "skipped": 0,
+      "mocks_only": false,
+      "reason": null
+    },
+    {
+      "id": "run-e3-chain-simple",
+      "repository_id": "r22",
+      "commit": "7ce1b062843d86644fe55741dbe0ee79f7ca767d",
+      "status": "PASS",
+      "kind": "INTEGRATION",
+      "command": "Sequence: bsl-indexer search-function; unica.docs+poll; unica.view; unica.apply dryRun (cf220); unica.check (cf220); v8-runner syntax; v8-runner build --full-rebuild; v8-runner test yaxunit all; answer42 start_session/active_window/screenshot/stop_session; v8-runner test va",
+      "environment": "Windows 10.0.26200; stand simple; r15 bsl-indexer 1.4.0; r01 unica 0.12.0 debug 56a67d4a…; r22 v8-runner 0.5.1 (locally patched); r20 answer42 0.5.3 venv; r21 Vanessa single EPF 1.2.043.1; targets main (source-checkouts/simple1CAiConf, format 1.0) and cf220 (.v8/work/simple-cf-220, format 2.20)",
+      "expected": "a real byte/line size for each of the 8 external-surface operations from FACADE.md, a named list of the steps requiring mandatory file offload, and a list of the joints between products",
+      "result": "All 8 operations measured with real sizes (337 to 77205 bytes); docs (77205B/800 lines) and the Answer42 screenshot PNG (180197 bytes) are the only two requiring mandatory file offload; 7 joints between products written up; verify.unit step itself is a real FAIL per the open E1 finding, recorded as such rather than skipped.",
+      "log": "logs/e3-chain-simple.md",
+      "tests": 8,
+      "assertions": 9,
       "skipped": 0,
       "mocks_only": false,
       "reason": null

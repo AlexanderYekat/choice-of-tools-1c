@@ -1,0 +1,21 @@
+{
+  "jsonrpc": "2.0",
+  "id": 5,
+  "result": {
+    "content": [],
+    "structuredContent": {
+      "ok": false,
+      "at": "main:Document.ЗаказПокупателя",
+      "summary": "metadata object is outside the supported 2.20 export format",
+      "diagnostics": [
+        {
+          "code": "provider_unavailable",
+          "outcome": "fixSource",
+          "message": "metadata object is outside the supported 2.20 export format",
+          "detailCode": "source_unreadable"
+        }
+      ]
+    },
+    "isError": true
+  }
+}

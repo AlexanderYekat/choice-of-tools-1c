@@ -1,0 +1,19 @@
+{
+  "jsonrpc": "2.0",
+  "id": 3,
+  "result": {
+    "content": [],
+    "structuredContent": {
+      "ok": false,
+      "summary": "Task transport is unavailable",
+      "diagnostics": [
+        {
+          "code": "task_transport_failed",
+          "outcome": "retry",
+          "message": "Task transport is unavailable"
+        }
+      ]
+    },
+    "isError": true
+  }
+}

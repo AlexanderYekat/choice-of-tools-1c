@@ -1,0 +1,110 @@
+{
+  "ok": true,
+  "command": "test",
+  "duration_ms": 105360,
+  "data": {
+    "ok": true,
+    "target": "all",
+    "mode": "compact",
+    "error_kind": null,
+    "diagnostics": [
+      "﻿22.09.2026 14:21:36 Выполнение сценариев закончено. Ошибок не было.\r\n22.09.2026 14:21:37 Записан файл статуса сборки: <path>\r\nЗакрытие TestClient <Этот клиент>\r\nНе найден профиль клиента тестирования <Этот клиент> чтобы его закрыть."
+    ],
+    "retained_paths": null,
+    "report": {
+      "summary": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0
+      },
+      "suites": [],
+      "extracted_errors": [
+        "Error:   0 (0%)"
+      ]
+    },
+    "execution": {
+      "status": "succeeded",
+      "diagnostics": [
+        "﻿22.09.2026 14:21:36 Выполнение сценариев закончено. Ошибок не было.\r\n22.09.2026 14:21:37 Записан файл статуса сборки: <path>\r\nЗакрытие TestClient <Этот клиент>\r\nНе найден профиль клиента тестирования <Этот клиент> чтобы его закрыть."
+      ],
+      "metrics": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "errors": 0
+      },
+      "payload": {
+        "summary": {
+          "total": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "errors": 0
+        },
+        "suites": [],
+        "extracted_errors": [
+          "Error:   0 (0%)"
+        ]
+      }
+    }
+  },
+  "warnings": [],
+  "steps": [
+    {
+      "name": "build",
+      "ok": true,
+      "status": "skipped",
+      "kind": "platform_command",
+      "duration_ms": 0,
+      "message": "build prerequisite explicitly skipped by --no-build"
+    },
+    {
+      "name": "prepare_artifacts",
+      "ok": true,
+      "status": "succeeded",
+      "kind": "prepare_workspace",
+      "duration_ms": 6,
+      "target": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\smoke\\runs\\1790068797045-22084-365d308e05764c4eb542159f4215fcab",
+      "message": "created C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\smoke\\runs\\1790068797045-22084-365d308e05764c4eb542159f4215fcab"
+    },
+    {
+      "name": "prepare_runner",
+      "ok": true,
+      "status": "succeeded",
+      "kind": "prepare_workspace",
+      "duration_ms": 2,
+      "target": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\smoke\\runs\\1790068797045-22084-365d308e05764c4eb542159f4215fcab\\va-params.json",
+      "message": "Vanessa Automation params written"
+    },
+    {
+      "name": "run",
+      "ok": true,
+      "status": "succeeded",
+      "kind": "platform_command",
+      "duration_ms": 104655,
+      "target": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\smoke\\runs\\1790068797045-22084-365d308e05764c4eb542159f4215fcab\\enterprise.out.log",
+      "message": "enterprise exit code 0"
+    },
+    {
+      "name": "parse_junit",
+      "ok": true,
+      "status": "succeeded",
+      "kind": "parse_output",
+      "duration_ms": 299,
+      "target": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\smoke\\runs\\1790068797045-22084-365d308e05764c4eb542159f4215fcab\\junit\\junit.xml",
+      "message": "parsed 1 test cases"
+    },
+    {
+      "name": "parse_log",
+      "ok": true,
+      "status": "succeeded",
+      "kind": "parse_output",
+      "duration_ms": 214,
+      "target": "C:\\MyProjects\\choice-of-tools-1c\\.v8\\stands\\simple\\.v8/work/simple\\temp\\smoke\\runs\\1790068797045-22084-365d308e05764c4eb542159f4215fcab\\runner.log",
+      "message": "extracted 1 Vanessa Automation log line(s)"
+    }
+  ]
+}

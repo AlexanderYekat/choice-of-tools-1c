@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "command": "build",
+  "duration_ms": 37618,
+  "data": {
+    "ok": true,
+    "steps": [
+      {
+        "source_set": "main",
+        "mode": "full",
+        "ok": true,
+        "message": "forced full rebuild",
+        "duration_ms": 37617
+      }
+    ],
+    "duration_ms": 37618
+  },
+  "warnings": [],
+  "steps": []
+}

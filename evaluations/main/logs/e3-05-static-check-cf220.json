@@ -1,0 +1,23 @@
+{
+  "jsonrpc": "2.0",
+  "id": 3,
+  "result": {
+    "content": [],
+    "structuredContent": {
+      "ok": true,
+      "at": "main:Document.ЗаказПокупателя",
+      "summary": "validation passed",
+      "data": {
+        "status": "passed",
+        "at": "main:Document.ЗаказПокупателя",
+        "kind": "Document",
+        "validators": [
+          "meta"
+        ],
+        "diagnostics": []
+      },
+      "rev": "unica-source-sha256-v1:1:032c15427cf9d501360f2ef5c7e144ebfa8a3821b4bb521f664a21c23c87190e"
+    },
+    "isError": false
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "sizes": [
+    {
+      "step": "02-docs",
+      "tool": "unica.docs",
+      "args": {
+        "query": "НаборЗаписей"
+      },
+      "bytes": 682,
+      "lines": 31,
+      "file": "e3-02-docs.json",
+      "ok": true
+    },
+    {
+      "step": "03-edit.view",
+      "tool": "unica.view",
+      "args": {
+        "at": "main:Document.ЗаказПокупателя"
+      },
+      "bytes": 3260,
+      "lines": 86,
+      "file": "e3-03-edit-view.json",
+      "ok": true
+    },
+    {
+      "step": "04-edit.apply-dryrun",
+      "tool": "unica.apply",
+      "args": {
+        "at": "main:Document.ЗаказПокупателя",
+        "dryRun": true,
+        "ops": [
+          {
+            "op": "props.set",
+            "args": {
+              "values": {
+                "Comment": "e3-dryrun-preview-do-not-publish"
+              }
+            }
+          }
+        ]
+      },
+      "bytes": 672,
+      "lines": 20,
+      "file": "e3-04-edit-apply-dryrun.json",
+      "ok": false
+    },
+    {
+      "step": "05-static-check",
+      "tool": "unica.check",
+      "args": {
+        "at": "main:Document.ЗаказПокупателя"
+      },
+      "bytes": 539,
+      "lines": 21,
+      "file": "e3-05-static-check.json",
+      "ok": false
+    }
+  ],
+  "killed_daemon_pids": []
+}

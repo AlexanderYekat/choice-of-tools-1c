@@ -1,0 +1,41 @@
+{
+  "sizes": [
+    {
+      "step": "02-docs-start",
+      "tool": "unica.docs",
+      "bytes": 682,
+      "lines": 31,
+      "file": "e3-02-docs-start.json",
+      "ok": true,
+      "summary": "Task is still working"
+    },
+    {
+      "step": "02-docs-final",
+      "tool": "unica.docs(+poll)",
+      "bytes": 371,
+      "lines": 19,
+      "file": "e3-02-docs-final.json",
+      "ok": false,
+      "polls": 1,
+      "task_status": null
+    },
+    {
+      "step": "04-edit.apply-dryrun-cf220",
+      "tool": "unica.apply",
+      "bytes": 1616,
+      "lines": 59,
+      "file": "e3-04-edit-apply-dryrun-cf220.json",
+      "ok": true,
+      "summary": "metadata apply plan prepared without publication"
+    },
+    {
+      "step": "05-static-check-cf220",
+      "tool": "unica.check",
+      "bytes": 568,
+      "lines": 23,
+      "file": "e3-05-static-check-cf220.json",
+      "ok": true,
+      "summary": "validation passed"
+    }
+  ]
+}
