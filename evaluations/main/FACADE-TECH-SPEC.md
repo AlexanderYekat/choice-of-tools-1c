@@ -1,7 +1,9 @@
 # Техническое ТЗ фасада
 
-Дата: 2026-09-22. Версия цели: 2. Источник — методологическое ТЗ
-[FACADE-TZ.md](FACADE-TZ.md), дефолты его раздела 14.
+Дата: 2026-09-22 (обновлено тем же днём по итогам v8-harness). Версия
+цели: 2. Источник — методологическое ТЗ [FACADE-TZ.md](FACADE-TZ.md),
+дефолты его раздела 14 и решение §2a (v8-harness как основа
+ConfigLoader/TargetRegistry для слоя r22/Vanessa).
 
 **Статус документа:** техническая спецификация для будущей реализации —
 интерфейсы, схемы, алгоритмы, раскладка конфигов. **Не код.** Запрет
@@ -26,11 +28,15 @@
 
 - **Рантайм:** Python 3.11+, изолированный venv (тот же приём, что уже
   применялся для Answer42 в этом исследовании — `answer42==0.5.3` в
-  своём venv, не глобально).
+  своём venv, не глобально). Совпадает с рантаймом v8-harness (см.
+  [FACADE-TZ.md](FACADE-TZ.md) §2a) — только stdlib, Python 3.10+; при
+  таком выборе фасад может **импортировать `v8_harness.py` как модуль**
+  (`load_stands`, `resolve_connection`, `runner_command`, `sync_project`,
+  `status_project`, `register_stand`), не только звать его субпроцессом.
 - **Форма поставки:** CLI-бинарь/entrypoint, поднимающий **stdio MCP
-  сервер** (`facade serve --transport stdio --config .v8/facade.yaml`),
-  по аналогии с уже проверенным паттерном `r15`/`r01`/`r20`. HTTP —
-  опционально, не первично.
+  сервер** (`facade serve --transport stdio --config v8stands.yaml`,
+  формат конфига — §3.1), по аналогии с уже проверенным паттерном
+  `r15`/`r01`/`r20`. HTTP — опционально, не первично.
 - **Место кода:** отдельно от `evaluations/main` (это исследовательское
   дерево, не продукт) — отдельный каталог/репозиторий верхнего уровня
   или вне `choice-of-tools-1c` вовсе. Не определено окончательно.
@@ -39,8 +45,9 @@
 
 | Термин | Значение |
 |---|---|
-| `source` | именованная запись выгрузки в `sources` (путь, формат `cf-xml`/`edt`) |
-| `target` | именованная цель в `targets` (ИБ или сторона обмена: путь/строка соединения, роль, привязанный `source` для записи) |
+| `stand` | запись в `stands` конфига `v8stands.yaml` (терминология v8-harness): `from: launcher\|file\|connection\|cf`, путь `sources`, опционально `read_source`/`role` (расширение фасада) |
+| `target` | имя стенда с точки зрения агента фасада — для RunnerAdapter/ScenarioAdapter это ровно stand id; для UnicaAdapter/FormAdapter — тот же логический идентификатор, транслируемый в свою продуктовую адресацию (source-set/`session_id`) через `TargetRegistry` |
+| `source` | путь чтения (`sources` стенда, либо `read_source`, если задан) — для explore/docs/edit.view |
 | `at` | адрес узла внутри source-set, формат `"<source-set>:<путь>"` (контракт Unica, раздел 4 [FACADE-TZ.md](FACADE-TZ.md)) |
 | adapter | модуль фасада, оборачивающий один продукт (r01/r15/r20/r21/r22) |
 | envelope | единый формат ответа фасада агенту (раздел 5) |
@@ -53,76 +60,111 @@ facade
  ├ Router               — принимает 7 внешних операций, единственная
  │                         точка входа для агента (MCP tools/list = 7,
  │                         не 33–122 продуктовых)
- ├ ProjectDetector       — 3 маркера по умолчанию (FACADE-TZ.md §14.1),
- │                         решает enabled/disabled на корне
- ├ ConfigLoader          — .v8/facade.yaml, .v8/credentials.local
- ├ TargetRegistry        — резолвит source/target по имени, требует
+ ├ ProjectDetector       — единственный маркер v8stands.yaml (FACADE-TZ.md
+ │                         §6, §2a), решает enabled/disabled на корне;
+ │                         больше не эвристика по структуре каталога
+ ├ ConfigLoader          — не пишет свой YAML-парсер: делегирует
+ │                         v8-harness (`v8_harness.load_stands`/`sync`/
+ │                         `status`, см. §3.1); credentials — тоже
+ │                         v8-harness (`v8project.local.yaml`, §3.2)
+ ├ TargetRegistry        — резолвит source/target по имени поверх
+ │                         `document["stands"]` v8-harness; требует
  │                         default_target только если target не указан
- │                         и в конфиге ровно один
+ │                         и в конфиге ровно один стенд
  ├ Adapters
  │   ├ IndexAdapter      → r15 (explore)
  │   ├ UnicaAdapter      → r01 (docs, edit.view, edit.apply, static.unica)
- │   ├ RunnerAdapter     → r22 (static.syntax, build, verify.unit,
- │   │                         verify.scenario transport)
+ │   ├ RunnerAdapter     → r22 через v8-harness `run --stand <id> -- …`
+ │   │                         (static.syntax, build, verify.unit,
+ │   │                         verify.scenario transport) — не собирает
+ │   │                         `--config` сам, см. §9
  │   ├ FormAdapter       → r20 (verify.form)
  │   └ ScenarioAdapter   → r21 через RunnerAdapter (verify.scenario)
  ├ ProcessManager        — держит долгоживущие процессы (r01 daemon,
- │                         r15 daemon, r20 stdio-сессия); r22 — one-shot
+ │                         r15 daemon, r20 stdio-сессия); r22/v8-harness —
+ │                         one-shot subprocess на каждый вызов
  ├ ArtifactStore         — .v8/artifacts/**, порог раздела 6
- └ EnvelopeNormalizer    — сводит разные конверты продуктов к единому
-                           envelope и единой таксономии ошибок (раздел 7)
+ └ EnvelopeNormalizer    — сводит разные конверты продуктов (включая
+                           текстовый вывод v8-harness `print_report`)
+                           к единому envelope и таксономии ошибок (§5)
 ```
 
 Правило: Router не содержит 1С-логики, только маршрутизацию и envelope.
 Вся продуктовая специфика — в Adapters. Это прямое следствие C12
 ([FACADE-TZ.md](FACADE-TZ.md) §13) — 1С-логика не завязана на MCP/CLI/
-хост.
+хост. **Новое правило по итогам v8-harness ([FACADE-TZ.md](FACADE-TZ.md)
+§2a): ConfigLoader/TargetRegistry для слоя r22/Vanessa не пишутся с
+нуля — переиспользуют уже реализованный и протестированный
+`v8_harness.py`** (19 unit-тестов, `python -m unittest discover -s
+tests`), как библиотеку либо как subprocess. Остальные 4 адаптера
+v8-harness не касается и своей адресацией продолжают заниматься сами
+(Unica source-set, Answer42 `session_id`, r15 alias).
 
 ## 3. Конфигурация
 
-### 3.1 `.v8/facade.yaml`
+Пересмотрено 2026-09-22 по итогам [FACADE-TZ.md](FACADE-TZ.md) §2a/§14
+(пп. 1–3): не изобретаем свой формат, переиспользуем уже реализованный
+и работающий конфиг-слой v8-harness.
 
-Дефолт по [FACADE-TZ.md](FACADE-TZ.md) §14.2 — 4 поля на старте.
+### 3.1 `v8stands.yaml` (формат v8-harness, расширенный фасадом)
+
+Корень репозитория, тот же файл, что уже используется этим самым
+исследованием как opt-in-маркер (`AGENTS.md`, стенд `simple`).
+Родные поля — как есть у v8-harness (`v8_harness.py`, `load_stands`/
+`render_project_yaml`); `read_source` и `role` — два новых
+**опциональных** поля фасада поверх существующей схемы (парсер
+v8-harness игнорирует незнакомые ключи, проверено по исходнику —
+`parse_block`/`load_stands` не отвергают лишние ключи в `spec`, кроме
+явно запрещённого `password`).
 
 ```yaml
-enabled: true
+tools:
+  vanessa: true
+  yaxunit: true
 
-sources:
-  main:
-    path: source-checkouts/simple1CAiConf
-    format: cf-xml          # cf-xml | edt
-  cf220:
-    path: .v8/work/simple-cf-220
-    format: cf-xml
+platform:
+  version: '8.3.27.1936'
+  path: 'C:\Program Files\1cv8\8.3.27.1936'
+  strict: true
 
-targets:
+stands:
   simple:
-    kind: file-ib            # file-ib | server-ib
-    path: .v8/ib/simple
-    role: test                # test | dev | never-prod — verify по умолчанию только на test/dev
-    write_source: cf220       # куда идут edit.apply/static; см. §7.1
-    read_source: main         # откуда explore/docs/edit.view; по умолчанию = write_source
-    runner_config: .v8/stands/simple/v8project.yaml   # v8project.yaml самого r22, не путать с этим файлом
-
-default_target: simple
+    from: file                       # launcher | file | connection | cf — родные поля v8-harness
+    path: '.v8/ib/simple'
+    sources: 'source-checkouts/simple1CAiConf'   # source-set r22; читает/пишет apply/build
+    read_source: '.v8/work/simple-cf-220'        # НОВОЕ (фасад): explore/docs/edit.view, если формат sources не 2.20 (§7.1)
+    features: 'tests/features'
+    role: test                                    # НОВОЕ (фасад): test|dev|never-prod — verify только на test/dev
+  cf220:
+    from: file
+    path: '.v8/work/simple-cf-220'
+    sources: '.v8/work/simple-cf-220'
+    role: dev
 ```
 
-`sources`/`targets` — map по имени, не список: адресация всегда по
-имени, никогда по индексу (совпадает с принципом «нет молчаливого
-дефолта на текущую 1С», раздел 4 [FACADE-TZ.md](FACADE-TZ.md)).
+`stands` — map по имени (stand id = `target` фасада), не список:
+адресация всегда по имени, никогда по индексу (совпадает с принципом
+«нет молчаливого дефолта на текущую 1С», раздел 4
+[FACADE-TZ.md](FACADE-TZ.md)). `default_target`, если нужен, — новое
+опциональное поле верхнего уровня рядом с `tools`/`platform`/`stands`;
+обязателен только когда `target` не передан и стендов больше одного.
 
-### 3.2 `.v8/credentials.local`
+`ConfigLoader` не парсит этот файл сам — вызывает
+`v8_harness.load_stands(root)` (или CLI `status`/`sync`) и читает
+`read_source`/`role` из уже распарсенного `dict` как обычные
+дополнительные ключи `spec`.
 
-Дефолт [FACADE-TZ.md](FACADE-TZ.md) §14.3, `.env`-подобный, в
-`.gitignore`:
+### 3.2 Credentials — `v8project.local.yaml` (генерируется v8-harness)
 
-```
-SIMPLE_TEST_USER_PASSWORD=...
-EXCHANGE_A_TOKEN=...
-```
-
-Ключ — `<TARGET_UPPER>_<ROLE>`. Никогда не логируется целиком; при
-ошибке подстановки — сообщение называет имя переменной, не значение.
+Пароль в `v8stands.yaml` запрещён самим v8-harness — `load_stands`
+явно отказывает: `"stand {id}: password belongs in v8project.local.yaml,
+not v8stands.yaml"`. Фасад не заводит отдельный `.env`-файл — секрет
+идёт туда же, куда его уже кладёт `sync`/`attach`:
+`.v8/stands/<id>/v8project.local.yaml`, не в git (`.v8/.gitignore`
+пишет сам v8-harness). Установка пароля — через `v8_harness.attach(...,
+password=...)` (библиотека) или `attach --stand <id> --password ...`
+(subprocess), не через чат и не через аргумент MCP-вызова. Ничего
+специальнее (keyring, шифрование) по умолчанию не вводится.
 
 ## 4. Единый envelope
 
@@ -160,13 +202,13 @@ Unica отдаёт `diagnostics[].code`, r22 — `ok`/`data.report`/
 
 | Код фасада | Откуда (наблюдённый факт) | Когда |
 |---|---|---|
-| `target_not_found` | новое (нет прямого аналога у продуктов) | имя `target`/`source` не в `TargetRegistry` |
-| `target_ambiguous` | новое | `target` не указан, `default_target` не задан, целей > 1 |
+| `target_not_found` | v8-harness `runner_command`: `"unknown stand {id!r}; known: {...}"` (прочитано в исходнике `v8_harness.py`) | имя `target` не в `stands` конфига |
+| `target_ambiguous` | новое | `target` не указан, `default_target` не задан, стендов > 1 |
 | `provider_unavailable` | Unica `at="bogus:…"` → `provider_unavailable` (E2a) | несуществующий source-set |
-| `source_format_unwritable` | Unica `invalid_source`/`source_unreadable` — «export format 1.0 is older than the writable profile 2.20» | `edit.apply`/`static` на нерукописном/старом дампе без `write_source` |
+| `source_format_unwritable` | Unica `invalid_source`/`source_unreadable` — «export format 1.0 is older than the writable profile 2.20» | `edit.apply`/`static` на дампе `sources` не формата 2.20 без `read_source`-разведения |
 | `missing_ifrev` | Unica отказ `apply` без `ifRev` на публикации | `dryRun:false` без предшествующего `dryRun:true` в этой же сессии |
 | `stale_revision` | Unica `stale_revision` на повторном `ifRev` | публикация с устаревшим `ifRev` |
-| `config_invalid` | r22 `invalid_argument` на несуществующий `--config` (E2b) | битый/отсутствующий `runner_config` |
+| `config_invalid` | r22 `invalid_argument` на несуществующий `--config` (E2b); v8-harness `require(config.is_file(), f"stand {id} is not generated; run sync")` | битый/отсутствующий `.v8/stands/<id>/v8project.yaml` — обычно чинится `sync`, не ручной правкой |
 | `extension_name_mismatch` | E1: `source-set` в yaml ≠ реальный `Name` расширения в ИБ | перед `verify.unit`, best-effort проверка (§7.4) |
 | `verify_unavailable` | E1: YaXUnit находит 0 сценариев при активном расширении | `verify.unit` не может дать честный pass/fail — см. раздел 8 |
 | `docs_task_transport_failed` | Unica: разный `UNICA_PROVIDER_STATE_DIR` на старт/опрос `docs` | нарушение инварианта §7.6 |
@@ -203,12 +245,15 @@ screenshot` PNG (180 197) — безусловно в файл независи�
 
 ### 7.1 Формат 2.20 vs 1.0
 
-`UnicaAdapter.edit_view/docs/explore` используют `target.read_source`.
-`UnicaAdapter.edit_apply/static` используют `target.write_source`. Если
-`write_source` не задан в конфиге — используется `read_source`, и при
-первом же `invalid_source`/`source_unreadable` от Unica adapter
-возвращает `source_format_unwritable` с сообщением, что нужно завести
-отдельный `write_source` в `.v8/facade.yaml` — **не** пытается сам
+`UnicaAdapter.edit_apply/static` всегда используют `stand.sources` —
+это тот же путь, который v8-harness кладёт в `source-set` генерируемого
+`v8project.yaml` для `r22`, писать в другое место означало бы
+рассинхронизировать explore/docs и build/verify. `UnicaAdapter.
+edit_view/docs`, `IndexAdapter.explore` используют `stand.read_source`,
+если оно задано в `v8stands.yaml`, иначе тот же `sources`. При первом
+же `invalid_source`/`source_unreadable` от Unica на `sources` adapter
+возвращает `source_format_unwritable` с сообщением, что нужно добавить
+`read_source` в `v8stands.yaml` для этого стенда — **не** пытается сам
 подобрать или сконвертировать дамп.
 
 ### 7.2 Владелец ИБ
@@ -233,9 +278,10 @@ adapter логирует в `diagnostics` (`severity: "warning"`, код
 ### 7.4 Имя расширения у `r22`
 
 Перед `verify.unit` `RunnerAdapter` делает best-effort сверку: если
-`runner_config` описывает `source-set` типа extension, adapter (если
-есть дешёвый способ узнать реальное имя объекта в ИБ — например через
-уже полученный `static`/`syntax` вывод в этом же цикле) сверяет имя.
+сгенерированный v8-harness `.v8/stands/<target>/v8project.yaml`
+описывает `source-set` типа extension, adapter (если есть дешёвый
+способ узнать реальное имя объекта в ИБ — например через уже
+полученный `static`/`syntax` вывод в этом же цикле) сверяет имя.
 Несовпадение → `extension_name_mismatch` **до** вызова YaXUnit, не после
 непонятного «0 сценариев». Если дешёвого способа сверки нет — adapter
 пропускает проверку и передаёт отказ `r22` как есть; ложноотрицательных
@@ -243,10 +289,11 @@ adapter логирует в `diagnostics` (`severity: "warning"`, код
 
 ### 7.5 `--sources` YaXUnit vs `DESIGNER`-проект
 
-`RunnerAdapter` не вызывает `tools download yaxunit --sources` для целей
-с `format: DESIGNER` в `runner_config` — использует путь `load`/`merge`
-скомпилированного `.cfe`. Это статическое правило по `format` цели, не
-попытка запустить оба пути и посмотреть, какой сработает.
+`RunnerAdapter` не вызывает `tools download yaxunit --sources` для
+стендов с `from: cf` (v8-harness пишет туда `format: DESIGNER` —
+`render_project_yaml`) — использует путь `load`/`merge` скомпилированного
+`.cfe`. Это статическое правило по `from` стенда, не попытка запустить
+оба пути и посмотреть, какой сработает.
 
 ### 7.6 Асинхронность `docs`
 
@@ -290,7 +337,7 @@ adapter логирует в `diagnostics` (`severity: "warning"`, код
 |---|---|---|
 | r01 Unica | долгоживущий stdio-демон | один демон на процесс фасада; несколько целей — через `at="<source-set>:…"` в одном `v8project.yaml`, если пути под общим корнем workspace (§4 [FACADE-TZ.md](FACADE-TZ.md) ограничение по workspace-relative путям); иначе — второй cwd/процесс (доказано `run-r01-dual-simple`) |
 | r15 code-index-mcp | демон + `serve` | `daemon run` при старте фасада; `serve --config` с `[tools].enabled`; несколько выгрузок — несколько alias в одном `[[paths]]`, не несколько демонов |
-| r22 v8-runner | one-shot CLI | новый процесс на каждый вызов, `--config <target.runner_config>`; без общего состояния между вызовами |
+| r22 v8-runner | one-shot CLI | новый процесс на каждый вызов, но **не собирается напрямую**: `RunnerAdapter` зовёт `v8-harness run --stand <target> -- <r22-аргументы>` (subprocess) либо `v8_harness.runner_command(root, target, extra)` (импорт) — конфиг `.v8/stands/<target>/v8project.yaml` генерирует и держит актуальным v8-harness (`sync`), фасад его не пишет; без общего состояния между вызовами |
 | r20 Answer42 | долгоживущая stdio-сессия | один MCP-процесс, `session_id = target`; повторный `verify.form` на той же цели переиспользует сессию (идемпотентность, принцип 8 [FACADE-TZ.md](FACADE-TZ.md) §11 расширенный дефолтами методологии), новый процесс — только на новую цель |
 | r21 Vanessa | нет отдельного процесса | транспорт — `RunnerAdapter` (`r22 test va`) |
 
@@ -302,7 +349,12 @@ adapter логирует в `diagnostics` (`severity: "warning"`, код
 
 Не подменяет решение пользователя «разрешить писать код» — это чек-лист
 на момент, когда решение принято. Каждый пункт — воспроизведение уже
-существующего прогона **через фасад**, не заново придуманный сценарий:
+существующего прогона **через фасад**, не заново придуманный сценарий.
+Конфигурация стенда `simple` для `r22`/Vanessa на момент этого чек-листа
+уже существует и сгенерирована v8-harness (`.v8/stands/simple/
+v8project.yaml`, маркер `v8stands.yaml` в корне) — пункты 4, 5, 7, 8
+обязаны идти через `RunnerAdapter`, вызывающий `v8-harness run --stand
+simple -- …`, не через отдельно собранный `--config`:
 
 1. `explore` на `main` — сопоставимо с
    [logs/e3-chain-simple.md](logs/e3-chain-simple.md) шаг 1.
@@ -335,7 +387,12 @@ adapter логирует в `diagnostics` (`severity: "warning"`, код
 требуются. Дополнительно на техническом уровне: фасад не хранит копию
 исходников продуктов и не патчит их код — патч продукта (порядок
 доработки, [FACADE-TZ.md](FACADE-TZ.md) §12) — отдельная задача вне
-этого ТЗ, с отдельной записью зачем.
+этого ТЗ, с отдельной записью зачем. **Добавлено по итогам v8-harness**
+([FACADE-TZ.md](FACADE-TZ.md) §2a): свой генератор `v8project.yaml`,
+свой реестр именованных стендов/ИБ и свою регистрацию в списке запуска
+1С (`ibases.v8i`) фасад тоже не пишет — эта функциональность уже
+реализована и протестирована в `v8-harness`, используется как есть
+(библиотека или subprocess), не переписывается «под фасад».
 
 ## 12. Прослеживаемость
 
@@ -345,8 +402,14 @@ adapter логирует в `diagnostics` (`severity: "warning"`, код
 [logs/r01-r22-e2-two-targets.md](logs/r01-r22-e2-two-targets.md),
 [logs/r22-yaxunit-e1tests-simple.md](logs/r22-yaxunit-e1tests-simple.md),
 [logs/r15-e4-stdio-whitelist-simple.md](logs/r15-e4-stdio-whitelist-simple.md).
-Схемы конфигов, envelope, таксономия ошибок §5 и алгоритмы §7–9 —
-новые технические решения этого документа, не проверены прогоном; при
-написании кода могут потребовать точечной правки, если реальность API
-продуктов не ляжет в предложенную форму. Новых прогонов для составления
-документа не выполнялось.
+Схема конфига §3, таблица процессов §9 (строка r22) и часть таксономии
+§5 (`target_not_found`, `config_invalid`) — по прочтению исходника
+`v8_harness.py` в локальном клоне
+`C:\Users\Enduro\Documents\1c\Tools\v8-harness`
+(`origin/master` = `105b3aa4f162187e223d6aab4e3a6c0794fd0476`,
+`https://github.com/AlexanderYekat/v8-harness`), не по прогону через
+фасад — фасад не существует. Остальные схемы конфигов, envelope,
+таксономия ошибок §5 и алгоритмы §7–9 — новые технические решения этого
+документа, не проверены прогоном; при написании кода могут потребовать
+точечной правки, если реальность API продуктов не ляжет в предложенную
+форму. Новых прогонов для составления документа не выполнялось.
