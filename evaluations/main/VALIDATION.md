@@ -111,3 +111,15 @@ YaXUnit с DESIGNER-проектом, асинхронность `docs`, нен�
 incremental build) записан. `verify.unit` в этом проходе — честный
 `ok=false`, не PASS (см. открытый риск E1 выше). Подробности:
 [logs/e3-chain-simple.md](logs/e3-chain-simple.md).
+
+**E4 статус на 2026-09-22: PASS.** `[tools].enabled` на stdio работает
+как на HTTP (9/9, `grep_code` отказан). Связка `--path`+`--config`:
+`--path` замещает только `[[paths]]` (alias конфига становится
+`unknown_repo`), но whitelist `[tools]` из того же файла продолжает
+применяться даже при указанном `--path` — предупреждение `--help` про
+«конфиг игнорируется» относится не ко всему файлу. Подробности:
+[logs/r15-e4-stdio-whitelist-simple.md](logs/r15-e4-stdio-whitelist-simple.md).
+
+**Итог по очереди E1–E4: очередь исчерпана, этап не закрыт.** Критерии
+завершения этапа требуют `verify.unit` PASS — единственный незакрытый
+пункт (E1, открытый риск). E2/E3/E4 — PASS, код фасада не написан.

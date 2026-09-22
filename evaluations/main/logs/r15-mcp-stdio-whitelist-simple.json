@@ -1,0 +1,41 @@
+{
+  "checks": [
+    {
+      "name": "daemon run",
+      "expected": "exit 0/None",
+      "actual": "exit 0",
+      "pass": true
+    },
+    {
+      "name": "daemon online",
+      "expected": "status mentions online/ready",
+      "actual": "Демон code-index\n  статус:    running\n  версия:    1.4.0\n  PID:       37164\n  старт:     2026-09-22T09:33:17.276439300+00:00\n  uptime:    0с\n  папок:     1\n    - [ready] \\\\?\\C:\\MyProjects\\choice-of-tools-1c\\source-checkouts\\simple1CAiConf",
+      "pass": true
+    },
+    {
+      "name": "A: stdio --config only -> whitelist applies (9 names)",
+      "expected": "count=9, matches ALLOWED",
+      "actual": "count=9 names=['find_references', 'get_callers', 'get_event_subscriptions', 'get_form_handlers', 'get_function', 'get_object_profile', 'get_register_writers', 'read_file', 'search_function']",
+      "pass": true
+    },
+    {
+      "name": "A: grep_code call refused by whitelist",
+      "expected": "error mentioning disabled/whitelist",
+      "actual": "{\"jsonrpc\": \"2.0\", \"id\": 4, \"error\": {\"code\": -32602, \"message\": \"tool 'grep_code' is disabled by [tools].enabled whitelist in daemon.toml\"}}",
+      "pass": true
+    },
+    {
+      "name": "B: stdio --config + --path -> --path wins, whitelist ignored (more than 9 names)",
+      "expected": "count > 9 (full tool set, not the whitelist)",
+      "actual": "count=9 names=['find_references', 'get_callers', 'get_event_subscriptions', 'get_form_handlers', 'get_function', 'get_object_profile', 'get_register_writers', 'read_file', 'search_function']",
+      "pass": false
+    },
+    {
+      "name": "B: grep_code call now succeeds (not whitelist-refused)",
+      "expected": "no disabled/whitelist refusal",
+      "actual": "{\"jsonrpc\": \"2.0\", \"id\": 4, \"error\": {\"code\": -32602, \"message\": \"tool 'grep_code' is disabled by [tools].enabled whitelist in daemon.toml\"}}",
+      "pass": false
+    }
+  ],
+  "failed": 2
+}

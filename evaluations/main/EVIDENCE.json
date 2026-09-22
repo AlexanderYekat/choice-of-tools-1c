@@ -2361,6 +2361,17 @@
         "run-e3-chain-simple"
       ],
       "limitations": "Joints (4), (5), (6) restate findings already recorded separately under E1/E2 claims; listed together here because the plan's E3 PASS criterion explicitly asks for one consolidated joints list."
+    },
+    {
+      "id": "c15-stdio-whitelist-path-override-simple",
+      "repository_id": "r15",
+      "status": "RUN",
+      "statement": "bsl-indexer's [tools].enabled whitelist works identically over stdio transport as previously proven over HTTP (tools/list=9, grep_code refused by name). serve --help's warning that --path makes the --config file 'ignored' is true only for the [[paths]] section: with a deliberately different alias on --path than the config's, the config's alias becomes fully unresolvable (unknown_repo) while --path's alias works -- but the SAME config file's [tools].enabled whitelist still applies even when --path is present (tools/list still 9, grep_code still refused). The daemon indexes per daemon.toml's [[paths]] at daemon-start time regardless of what individual serve sessions later pass via --path.",
+      "source_ids": [],
+      "run_ids": [
+        "run-r15-e4-stdio-whitelist-simple"
+      ],
+      "limitations": "Only one whitelist configuration and one alias-mismatch scenario were tested; other combinations (e.g. --path with no --config, multiple --path aliases) not exercised."
     }
   ],
   "runs": [
@@ -2853,6 +2864,23 @@
       "log": "logs/e3-chain-simple.md",
       "tests": 8,
       "assertions": 9,
+      "skipped": 0,
+      "mocks_only": false,
+      "reason": null
+    },
+    {
+      "id": "run-r15-e4-stdio-whitelist-simple",
+      "repository_id": "r15",
+      "commit": "4bde72b60a09187c0667d451a02c7be5e0169835",
+      "status": "PASS",
+      "kind": "INTEGRATION",
+      "command": "serve --transport stdio --config daemon.toml; serve --transport stdio --config daemon.toml --path simple=<dump>; serve --transport stdio --config daemon.toml --path other=<dump> (deliberately different alias)",
+      "environment": "Windows 10.0.26200; bsl-indexer 1.4.0; isolated CODE_INDEX_HOME .v8/work/r15-stdio-whitelist/home; daemon.toml with [[paths]] alias=simple and [tools].enabled = 9 real names + 1 typo",
+      "expected": "whitelist behaves the same on stdio as on HTTP; --path + --config combination clarified beyond the --help warning",
+      "result": "stdio-only: tools/list=9, grep_code refused by whitelist, identical to the earlier HTTP run. --config+--path with a different alias: config's alias 'simple' became unknown_repo (--path's [[paths]] fully replaces config's), but [tools].enabled from the same config file still applied (tools/list still 9, grep_code still refused) -- the --help warning's 'config is ignored' only covers [[paths]], not [tools].",
+      "log": "logs/r15-e4-stdio-whitelist-simple.md",
+      "tests": 5,
+      "assertions": 5,
       "skipped": 0,
       "mocks_only": false,
       "reason": null

@@ -6,7 +6,8 @@ R22_IB_SMOKE_PASS; R01_MCP_SMOKE_PASS; R01_APPLY_DOCS_SMOKE_PASS;
 R22_DUMP_CF220_PASS; R01_APPLY_CF220_PASS; R22_YAXUNIT_VA_EMPTY_FAIL; R22_VA_SMOKE_PASS;
 R20_MCP_SMOKE_PASS; R01_APPLY_PUBLISH_PASS; R15_MCP_WHITELIST_PASS;
 R01_DUAL_WORKSPACE_PASS; R20_DUAL_LIVE_PASS; R22_YAXUNIT_CROSSEXT_DISCOVERY_UNRESOLVED;
-R01_E2A_MULTI_SOURCESET_PASS; R22_E2B_TWO_IBS_PASS; E3_CHAIN_CONTEXT_BUDGET_PASS.
+R01_E2A_MULTI_SOURCESET_PASS; R22_E2B_TWO_IBS_PASS; E3_CHAIN_CONTEXT_BUDGET_PASS;
+R15_E4_STDIO_WHITELIST_PASS.
 Последнее обновление: 2026-09-22.
 
 Состав контура выбран ([DECISION.md](DECISION.md)): Unica, code-index-mcp,
@@ -215,8 +216,26 @@ XML документов не изменились. Лог:
    PASS. smoke-`Comment` в `.v8/work/simple-cf-220` не тронут в этом
    прогоне (только read-only вызовы). Подробности:
    [logs/e3-chain-simple.md](logs/e3-chain-simple.md).
-4. **E4 r15 stdio-whitelist и `--path` + `--config` — ТЕКУЩИЙ ШАГ.**
-   Догоняющее, ничего не блокирует.
+4. **E4 r15 stdio-whitelist и `--path` + `--config` — ЗАКРЫТ, PASS.**
+   `[tools].enabled` на stdio работает идентично HTTP (9/9, `grep_code`
+   отказан). Связка `--path`+`--config` прояснена точнее, чем в
+   `--help`: `--path` полностью замещает `[[paths]]` конфига (alias из
+   yaml становится `unknown_repo`), но **whitelist `[tools]` из того же
+   файла продолжает действовать** даже при указанном `--path` — «конфиг
+   игнорируется» относится только к секции путей, не ко всему файлу.
+   Демон индексирует по `daemon.toml` на момент своего старта, независимо
+   от `--path` отдельных `serve`-сессий. Подробности:
+   [logs/r15-e4-stdio-whitelist-simple.md](logs/r15-e4-stdio-whitelist-simple.md).
+
+**Очередь E1–E4 исчерпана, но этап не закрыт.** Критерии завершения
+этапа ([INTEGRATION-PLAN.md](INTEGRATION-PLAN.md), «Критерии завершения
+этапа») требуют `verify.unit` PASS с успехом и падением в одном отчёте —
+это единственный незакрытый пункт (E1). Остальные три критерия
+выполнены: две цели PASS (E2), цифры цены контекста и список стыков есть
+(E3), код фасада не написан. Следующий шаг — либо продолжать изоляцию
+причины E1 (Designer/EDT-расширение для сравнения, или официальная
+поддержка 1С), либо пользователь принимает решение зафиксировать этап с
+этим открытым риском.
 
 Код фасада по-прежнему не писать: запрет снимается отдельным решением
 пользователя после критериев завершения этапа.
@@ -373,3 +392,11 @@ stdio-процесс, один yaml с двумя `source-set` (`main`, `cf220`)
 расширений в E1 — вылечено `--full-rebuild`, зафиксировано как отдельный
 стык. `verify.unit` честно FAIL (E1 не закрыт). Подробности:
 [logs/e3-chain-simple.md](logs/e3-chain-simple.md).
+2026-09-22 → «коммить и начинай следующий этап»: коммит `71c7aaf` (E3).
+Выполнен E4 (stdio whitelist). Итог, важнее самого PASS: формулировка
+`serve --help` про `--path` вводит в заблуждение — `--path` замещает
+только `[[paths]]`, а `[tools].enabled` из того же файла продолжает
+действовать. Очередь E1–E4 исчерпана; критерий завершения этапа
+«`verify.unit` PASS» не выполнен из-за незакрытого E1 — этап не закрыт,
+несмотря на закрытую очередь. Подробности:
+[logs/r15-e4-stdio-whitelist-simple.md](logs/r15-e4-stdio-whitelist-simple.md).

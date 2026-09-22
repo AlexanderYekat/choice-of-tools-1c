@@ -1,0 +1,404 @@
+{
+  "label": "config-only",
+  "args": [
+    "serve",
+    "--transport",
+    "stdio",
+    "--config",
+    "C:\\MyProjects\\choice-of-tools-1c\\.v8\\work\\r15-stdio-whitelist\\home\\daemon.toml"
+  ],
+  "initialize": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "protocolVersion": "2024-11-05",
+      "capabilities": {
+        "tools": {
+          "listChanged": true
+        }
+      },
+      "serverInfo": {
+        "name": "code-index-mcp",
+        "version": "1.4.0"
+      }
+    }
+  },
+  "tools_list": {
+    "jsonrpc": "2.0",
+    "id": 2,
+    "result": {
+      "tools": [
+        {
+          "name": "find_references",
+          "description": "Всё, что ссылается на объект метаданных 1С, одним вызовом — «карта влияния» (что затронется при изменении объекта). Объединяет три источника: data_refs — структурные ссылки из метаданных (реквизиты/измерения других объектов, движения, владение, состав подсистем/планов обмена, определяемые типы); code_usages — обращения В КОДЕ (.bsl: менеджер коллекции, тип-ссылка, путь в запросе); role_rights — какие роли выдают права на объект. У каждой секции total + разбивка по видам + примеры (sample, ограничены параметром limit). Объект задаётся канонически: 'Document.РеализацияТоваровУслуг', 'Catalog.Контрагенты', 'AccumulationRegister.ТоварыНаСкладах'. Реверс data_links здесь — это direction=in у get_data_links плюс ещё code_usages и role_rights в одном ответе. For BSL/1C repositories only.",
+          "inputSchema": {
+            "properties": {
+              "limit": {
+                "description": "Потолок примеров (sample) на секцию (default 20, max 200). На счётчики total не влияет.",
+                "minimum": 1,
+                "type": "integer"
+              },
+              "max_response_bytes": {
+                "description": "Бюджет размера ЭТОГО ответа в байтах — перекрывает серверный на один вызов. Больше бюджет — больше строк в странице.",
+                "type": "integer"
+              },
+              "object": {
+                "description": "Канонический объект: 'Document.РеализацияТоваровУслуг', 'Catalog.Контрагенты', 'AccumulationRegister.ТоварыНаСкладах' и т.п.",
+                "type": "string"
+              },
+              "offset": {
+                "description": "Смещение страницы внутри секции (работает вместе с section). Без параметра — с начала.",
+                "minimum": 0,
+                "type": "integer"
+              },
+              "repo": {
+                "description": "Алиас репозитория",
+                "type": "string"
+              },
+              "section": {
+                "description": "Вернуть ОДНУ секцию целиком, страницами по размеру ответа, вместо трёх секций с примерами. Так забирают весь список (у центральных объектов это тысячи ссылок): рядом приходят items_shown/_total/_offset/_has_more и готовый вызов следующей страницы.",
+                "enum": [
+                  "data_refs",
+                  "code_usages",
+                  "role_rights"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "repo",
+              "object"
+            ],
+            "type": "object"
+          }
+        },
+        {
+          "name": "get_callers",
+          "description": "Найти вызывателей функции (callers) в указанном репо. limit — cap (default 200); на «горячих» функциях ответ обрезается с {truncated,total,limit}. Возвращает JSON-массив CallRecord.",
+          "inputSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "properties": {
+              "function_name": {
+                "description": "Точное имя функции. Запасные ключи на входе (модели путают параметр\nс get_function): `name`, `symbol` принимаются как `function_name` —\nиначе слепой вызов get_callers/get_callees падал тёмной ошибкой\nразборщика «missing field function_name» (потерянный ход).",
+                "type": "string"
+              },
+              "language": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "limit": {
+                "description": "Cap на число рёбер графа вызовов (default 200). При обрезке в ответе —\n{truncated, total, limit}. Защищает от мегабайтных ответов на «горячих» функциях.",
+                "format": "uint",
+                "minimum": 0,
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "repo": {
+                "description": "ОБЯЗАТЕЛЕН. Алиас репозитория (из --path alias=dir при запуске сервера).\nБез него вызов не пройдёт. Список доступных алиасов — get_stats.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "repo",
+              "function_name"
+            ],
+            "type": "object"
+          }
+        },
+        {
+          "name": "get_event_subscriptions",
+          "description": "Возвращает список подписок на события 1С: name, event, handler_module, handler_proc, sources. Опциональные фильтры: handler_module, event, source (объект-источник: 'Document.ЗаказКлиента' или короткое имя). Ответ ограничен limit (default 50, max 2000); при превышении рядом — total и truncated=true (сузьте фильтр или дошлите больший limit). For BSL/1C repositories only.",
+          "inputSchema": {
+            "properties": {
+              "event": {
+                "description": "Опционально: фильтр по событию. Принимает русское имя ('ПриЗаписи', 'ОбработкаПроведения') либо английское ('OnWrite', 'Posting') — нормализуется автоматически",
+                "type": "string"
+              },
+              "handler_module": {
+                "description": "Опционально: вернуть только подписки с заданным handler_module",
+                "type": "string"
+              },
+              "limit": {
+                "default": 50,
+                "description": "Потолок строк (default 50, max 2000). При превышении — первые limit + total + truncated=true.",
+                "minimum": 1,
+                "type": "integer"
+              },
+              "repo": {
+                "description": "Алиас репозитория",
+                "type": "string"
+              },
+              "source": {
+                "description": "Опционально: фильтр по объекту-источнику подписки. Принимает 'Document.ЗаказКлиента', 'DocumentObject.ЗаказКлиента' или короткое имя 'ЗаказКлиента'",
+                "type": "string"
+              }
+            },
+            "required": [
+              "repo"
+            ],
+            "type": "object"
+          }
+        },
+        {
+          "name": "get_form_handlers",
+          "description": "Возвращает обработчики событий управляемой формы 1С — тройки (event, handler, element), где element — элемент формы, которому принадлежит обработчик (нет поля — обработчик самой формы). form_name НЕобязателен: без него возвращаются обработчики ВСЕХ форм объекта одним вызовом (на объекте с 255 формами — сотни килобайт, поэтому при нехватке бюджета вернётся перечень форм с числом обработчиков и готовый вызов за нужной формой). Крупные формы отдают сотни записей: сузить выдачу параметром element. For BSL/1C repositories only.",
+          "inputSchema": {
+            "properties": {
+              "element": {
+                "description": "Необязательный фильтр по элементу формы: имя элемента ('СуммаДокумента') — только его обработчики; пустая строка — только обработчики самой формы. Без параметра возвращаются все. Работает вместе с form_name.",
+                "type": "string"
+              },
+              "form_name": {
+                "description": "Имя формы — то, что было каталогом внутри Forms/, например 'ФормаДокумента'. Без параметра возвращаются все формы объекта.",
+                "type": "string"
+              },
+              "max_response_bytes": {
+                "description": "Бюджет размера ЭТОГО ответа в байтах — перекрывает серверный на один вызов. Применяй, когда пришёл перечень вместо обработчиков: повтори тот же вызов с большим значением. Запрос сверх серверного потолка зажимается до потолка.",
+                "type": "integer"
+              },
+              "owner_full_name": {
+                "description": "Полное имя владельца формы — 'Document.РеализацияТоваровУслуг' или в формате папки выгрузки 'Documents.РеализацияТоваровУслуг' (принимаются оба)",
+                "type": "string"
+              },
+              "repo": {
+                "description": "Алиас репозитория",
+                "type": "string"
+              }
+            },
+            "required": [
+              "repo",
+              "owner_full_name"
+            ],
+            "type": "object"
+          }
+        },
+        {
+          "name": "get_function",
+          "description": "Тело функции по ТОЧНОМУ имени (с исходником). Уникальное имя → одно тело. НЕуникальное (совпадений > порога) → тела опускаются, возвращаются локации + hint: уточните path_glob к нужному файлу. Навигация «где символ» без тел — find_symbol; поиск по словам — search_function. Возвращает JSON-массив FunctionRecord (или облегчённые локации при множестве).",
+          "inputSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "properties": {
+              "language": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "name": {
+                "description": "Имя ОДНОГО символа. Для нескольких — `names`.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "path_glob": {
+                "description": "Glob по path (Phase 1, post-filter).",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "repo": {
+                "description": "ОБЯЗАТЕЛЕН. Алиас репозитория (из --path alias=dir при запуске сервера).\nБез него вызов не пройдёт. Список доступных алиасов — get_stats.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "repo"
+            ],
+            "type": "object"
+          }
+        },
+        {
+          "name": "get_object_profile",
+          "description": "Обзорный паспорт объекта конфигурации 1С за ОДИН вызов по полному имени ('Document.РеализацияТоваровУслуг', 'Catalog.Контрагенты'): structure (реквизиты/табличные части/измерения/ресурсы/значения перечислений), forms (перечень форм + число обработчиков у каждой), modules (счётчики модулей по типам; полный список с object_id/property_id — UUID для dbgs-breakpoints — по expand), data_links (счётчики по видам связи, регистры движений для документов / регистраторы для регистров, число входящих ссылок). Отдаёт ОБЗОР: перечни и счётчики, не содержимое. Обработчики конкретной формы — get_form_handlers(owner_full_name, form_name); связи вглубь — get_data_links. expand=['forms.handlers'] вернёт обработчики всех форм, expand=['modules.list'] — полный список модулей: на крупном объекте это сотни килобайт, берите адресно. Обе секции отдаются и без expand, если весь ответ укладывается в бюджет (признаки — forms_handlers_included, modules_listed). Имя — singular meta_type ('<MetaType>.<Name>'). Параметр sections=['structure'|'forms'|'modules'|'data_links'] сужает ответ (по умолчанию все секции) — удешевляет вызов, когда нужна только часть. For BSL/1C repositories only.",
+          "inputSchema": {
+            "properties": {
+              "expand": {
+                "description": "Что вернуть подробно, а не перечнем. 'forms.handlers' — обработчики всех форм объекта; 'modules.list' — полный список модулей с UUID (object_id/property_id для точек останова). На крупном объекте каждая из этих секций — сотни килобайт, поэтому берите их по одной и вместе с sections=['forms'|'modules']. Не путать с sections: sections отвечает, КАКИЕ разделы вернуть, expand — насколько подробно.",
+                "items": {
+                  "enum": [
+                    "forms.handlers",
+                    "modules.list"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "full_name": {
+                "description": "Полное имя объекта вида '<MetaType>.<Name>' (singular), например 'Document.РеализацияТоваровУслуг'",
+                "type": "string"
+              },
+              "max_response_bytes": {
+                "description": "Бюджет размера ЭТОГО ответа в байтах — перекрывает серверный [cap].max_response_bytes на один вызов. Применяй, когда обработчики форм пришли перечнем, а нужны полностью: повтори тот же вызов с большим значением. Запрос сверх серверного потолка зажимается до потолка; фактически применённое возвращается полем response_budget_applied.",
+                "type": "integer"
+              },
+              "repo": {
+                "description": "Алиас репозитория",
+                "type": "string"
+              },
+              "sections": {
+                "description": "Какие секции вернуть. По умолчанию (опущено) — все. Рычаг удешевления: ['structure'] вернёт только реквизиты/ТЧ/измерения/ресурсы без форм, модулей и связей данных.",
+                "items": {
+                  "enum": [
+                    "structure",
+                    "forms",
+                    "modules",
+                    "data_links"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "repo",
+              "full_name"
+            ],
+            "type": "object"
+          }
+        },
+        {
+          "name": "get_register_writers",
+          "description": "Регистраторы регистра и движения документа 1С по recorder-рёбрам (составу движений из метаданных). Для регистра (например 'AccumulationRegister.ТоварыНаСкладах') возвращает в 'writers' список документов, пишущих в него движения. Для документа (например 'Document.РеализацияТоваровУслуг') возвращает в 'writes_to' список регистров, в которые он пишет. Один вызов закрывает оба направления — тип объекта определять заранее не нужно. Точнее разбора кода проведения (источник — декларативный состав движений документа). Каждая сторона ограничена 500 именами (при обрезке — writers_truncated/writes_to_truncated). For BSL/1C repositories only.",
+          "inputSchema": {
+            "properties": {
+              "object": {
+                "description": "Канонический объект: регистр ('AccumulationRegister.ТоварыНаСкладах', 'InformationRegister.Цены', 'AccountingRegister.Хозрасчетный') или документ ('Document.РеализацияТоваровУслуг')",
+                "type": "string"
+              },
+              "repo": {
+                "description": "Алиас репозитория",
+                "type": "string"
+              }
+            },
+            "required": [
+              "repo",
+              "object"
+            ],
+            "type": "object"
+          }
+        },
+        {
+          "name": "read_file",
+          "description": "Прочитать содержимое файла из индекса. ОБЯЗАТЕЛЬНЫ оба параметра: repo (алиас репозитория, список — get_stats) и path. Отдаёт реальный content и для text-файлов (yaml/md/json/toml/xml/sh и др.), и для code-файлов (zstd-decode из file_contents, Phase 2 v0.8.0+); поле category в ответе — \"text\" или \"code\". Oversize code-файлы (> max_code_file_size_bytes) возвращают oversize=true и пустой content (их читать через get_function/grep_body/grep_code). line_start/line_end — 1-based, inclusive. Soft-cap 5000 строк / 500 КБ (truncated=true при обрезке), hard-cap 2 МБ.",
+          "inputSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "properties": {
+              "line_end": {
+                "description": "1-based, inclusive. None — до конца.",
+                "format": "uint",
+                "minimum": 0,
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "line_start": {
+                "description": "1-based, inclusive. None — с начала.",
+                "format": "uint",
+                "minimum": 0,
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "path": {
+                "description": "Путь к файлу как он хранится в индексе (см. list_files).",
+                "type": "string"
+              },
+              "repo": {
+                "description": "ОБЯЗАТЕЛЕН. Алиас репозитория (из --path alias=dir при запуске сервера).\nБез него вызов не пройдёт. Список доступных алиасов — get_stats.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "repo",
+              "path"
+            ],
+            "type": "object"
+          }
+        },
+        {
+          "name": "search_function",
+          "description": "Нечёткий FTS-поиск функций по СЛОВАМ (bm25, OR между словами, префиксные термы): имя важнее qualified_name/docstring. Принимает и точное имя, и описание из слов ('расчёт цены продажи реализация'). Выдача БЕЗ тел — только локации (имя/путь/строки/сигнатура/обрезанный docstring). Тело конкретной функции — get_function; локации по ТОЧНОМУ имени — find_symbol; regex по коду — grep_code. path_glob — фильтр по пути. При 0 совпадений — hint; на BSL-репо он подсказывает search_terms (поиск процедур по смысловым термам).",
+          "inputSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "properties": {
+              "language": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "limit": {
+                "format": "uint",
+                "minimum": 0,
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "path_glob": {
+                "description": "Glob по path для сужения поиска (Phase 1, post-filter в MCP-слое).\nНапример `src/**/*.py` или `Documents/**`.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "query": {
+                "type": "string"
+              },
+              "repo": {
+                "description": "ОБЯЗАТЕЛЕН. Алиас репозитория (из --path alias=dir при запуске сервера).\nБез него вызов не пройдёт. Список доступных алиасов — get_stats.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "repo",
+              "query"
+            ],
+            "type": "object"
+          }
+        }
+      ]
+    }
+  },
+  "names": [
+    "find_references",
+    "get_callers",
+    "get_event_subscriptions",
+    "get_form_handlers",
+    "get_function",
+    "get_object_profile",
+    "get_register_writers",
+    "read_file",
+    "search_function"
+  ],
+  "count": 9,
+  "call_search_function": {
+    "jsonrpc": "2.0",
+    "id": 3,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "failed to deserialize parameters: missing field `query`"
+        }
+      ],
+      "isError": true
+    }
+  },
+  "call_grep_code": {
+    "jsonrpc": "2.0",
+    "id": 4,
+    "error": {
+      "code": -32602,
+      "message": "tool 'grep_code' is disabled by [tools].enabled whitelist in daemon.toml"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "checks": [
+    {
+      "name": "daemon run",
+      "expected": "exit 0/None",
+      "actual": "exit 0",
+      "pass": true
+    },
+    {
+      "name": "daemon online",
+      "expected": "mentions online/ready",
+      "actual": "Демон code-index\n  статус:    running\n  версия:    1.4.0\n  PID:       37196\n  старт:     2026-09-22T09:35:20.589390600+00:00\n  uptime:    0с\n  папок:     1\n    - [ready] \\\\?\\C:\\MyProjects\\choice-of-tools-1c\\source-checkouts\\simple1CAiConf",
+      "pass": true
+    },
+    {
+      "name": "tools/list with --path other=... + --config (alias=simple)",
+      "expected": "9 names (whitelist) or 13/33 (no whitelist) -- either way, decides the merge question",
+      "actual": "count=9 names=['find_references', 'get_callers', 'get_event_subscriptions', 'get_form_handlers', 'get_function', 'get_object_profile', 'get_register_writers', 'read_file', 'search_function']",
+      "pass": true
+    },
+    {
+      "name": "repo=simple (config's alias) resolves?",
+      "expected": "either resolves (config paths kept) or errors unknown-repo (config paths dropped)",
+      "actual": "{\"jsonrpc\": \"2.0\", \"id\": 3, \"result\": {\"content\": [{\"type\": \"text\", \"text\": \"{\\\"status\\\":\\\"unknown_repo\\\",\\\"message\\\":\\\"Неизвестный repo 'simple'. Доступные: [\\\\\\\"other\\\\\\\"]. Укажите один из алиасов, переданных в --path alias=dir при запуске сервера.\\\"}\"}], \"isError\": false}}",
+      "pass": true
+    },
+    {
+      "name": "repo=other (--path's alias) resolves?",
+      "expected": "resolves (CLI --path always wins for path resolution)",
+      "actual": "{\"jsonrpc\": \"2.0\", \"id\": 4, \"result\": {\"content\": [{\"type\": \"text\", \"text\": \"{\\\"result\\\":[{\\\"args\\\":\\\"(ТекущиеДанные)\\\",\\\"docstring\\\":\\\"procedure &НаКлиенте\\\",\\\"file_path\\\":\\\"Documents/ЗаказПокупателя/Forms/ФормаДокумента/Ext/Form/Module.bsl\\\",\\\"line_end\\\":27,\\\"line_start\\\":25,\\\"name\\\":\\\"РассчитатьС",
+      "pass": true
+    }
+  ],
+  "failed": 0
+}
